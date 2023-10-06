@@ -1,0 +1,41 @@
+.loginRegisterPopUp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex : 1;
+    margin: 10%;
+}
+
+#login {
+    flex: 1;
+    padding: 20px;
+}
+
+#register {
+    flex: 1;
+    padding: 20px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input[type=text], input[type=password]{
+    margin-bottom: 10px;
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form input[type=submit]{
+    margin-bottom: 10px;
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

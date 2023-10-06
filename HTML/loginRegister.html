@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="../CSS/loginRegister.css">
+    
+</head>
+
+    <body>
+        <div class="loginRegisterPopUp">
+            <div id="login">
+                <form id="loginFormulaire">
+                    <h1>Login</h1>
+                    <input id="loginLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                    <input id="loginMdp" type="password" name="password" placeholder="Mot de passe" required>
+                    <input id="loginBtn" type="submit" value="Login">
+                </form>
+            </div>
+
+            <div id="register">
+                <form id="registerFormulaire">
+                    <h1>Register</h1>
+                    <input id="registerLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                    <input id="registerMdp" type="password" name="password" placeholder="Mot de passe" required>
+                    <input id="registerMdpVerif" type="password" name="password" placeholder="Vérifier votre mot de passe" required>
+                    <input id="registerBtn" type="submit" value="Register">
+                </form>
+
+            </div>
+        </div> 
+
+    </body>
+    <script src="../TS/loginRegister.js"></script>
+</html>

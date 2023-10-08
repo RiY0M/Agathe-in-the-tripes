@@ -23,6 +23,7 @@ body {
     /* border: 2px dotted yellow; */
 
     font-size: 3rem;
+    text-align: left;
 }
 
 
@@ -76,4 +77,78 @@ body {
     border-top: 9px solid #36393e;
     box-shadow: 5px 5px #1e2124;
 }
-  
+
+
+#trou-accueil-img {
+    position: absolute;
+    left: 15%;
+    bottom: -10%;
+    height: 90%;
+    z-index: -1;
+}
+
+
+header {
+    /* border: 1px dashed green; */
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    
+    text-align: right;
+    vertical-align: baseline;
+
+    background-color:  #282b30;   
+    border-bottom: 2px solid #1e2124;   
+}
+
+header img {
+
+    height: 50px;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+.header-text {
+    /* border: 1px dashed cyan; */
+
+    position: absolute;
+    bottom: 25%;
+    right: 4rem;
+}
+
+header img:hover, .header-text:hover {
+
+    cursor: pointer;
+    color: rgb(149, 2, 2);
+}
+
+.header-text {
+    /* border: 1px dashed cyan; */
+
+    position: absolute;
+    bottom: 25%;
+    right: 4rem;
+}
+
+
+footer {
+    /* border: 1px dashed green; */
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+    
+    text-align: center;
+    font-family: monospace;
+
+    border-top: 2px solid #282b30;    
+    background-color: #36393e;
+}
+
+.bahaha-studio {
+    font-family: 'Rubik', sans-serif;
+}

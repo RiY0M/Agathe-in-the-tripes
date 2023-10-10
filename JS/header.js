@@ -3,7 +3,7 @@ let header = document.querySelector("header");
 // bouton retour accueil
 let headerAccueil = document.createElement("a");
 headerAccueil.id = "header-accueil-button"
-headerAccueil.href = "../html/index.html";
+headerAccueil.href = "../HTML/index.html";
 headerAccueil.textContent = "Accueil";
 
 // dashboard scores

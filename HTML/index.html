@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/loginRegister.css">
+    <link rel="stylesheet" href="../CSS/deconnexion.css">
     <title>Agathe in the tripes</title>
 </head>
 
 <header></header>
 
 <body>
+
+    <!-- MENU PRINCIPAL : TITRE + 2/3 BOUTONS -->
     <div id="header-div"></div>
 
     <div id="main-grid-column">
@@ -27,6 +31,54 @@
         </div>
 
     </div>
+    <!-- MENU PRINCIPAL : TITRE + 2/3 BOUTONS -->
+
+
+
+    <!-- FORMULAIRE CONNEXION / INSCRIPTION -->
+    <div class="loginRegisterPopUp">
+        <div id="croix-log-regis"></div>
+        <div id="login">
+            <form id="loginFormulaire">
+                <h1>Se connecter</h1>
+                <input id="loginLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                <input id="loginMdp" type="password" name="password" placeholder="Mot de passe" required>
+                <input id="emptyBtn" type="password" name="password" placeholder="Mot de passe" style="visibility: hidden;">
+                <input id="loginBtn" type="submit" value="Connexion">
+            </form>
+        </div>
+    
+        <div id="register">
+            <form id="registerFormulaire">
+                <h1>S'inscrire</h1>
+                <input id="registerLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                <input id="registerMdp" type="password" name="password" placeholder="Mot de passe" required>
+                <input id="registerMdpVerif" type="password" name="password" placeholder="Vérifier votre mot de passe" required>
+                <input id="registerBtn" type="submit" value="Inscription">
+            </form>
+    
+        </div>
+    </div>
+    <!-- FORMULAIRE CONNEXION / INSCRIPTION -->
+
+
+
+    <!-- FORMULAIRE DECONNEXION -->
+    <div id="deconnexion-player">
+
+        <div id="croix-deco"></div>
+
+        <div id="deconnexion-title">
+            <h1>Se déconnecter</h1>
+        </div>
+
+        <div id="deconnexion-buttons">
+            <input id="deconnexion-agree-button" type="submit" value="Déconnexion">
+            <input id="deconnexion-cancel-button" type="submit" value="Annuler">
+        </div>
+
+    </div>
+    <!-- FORMULAIRE DECONNEXION -->
 
 </body>
 
@@ -35,5 +87,7 @@
 <script src="../JS/footer.js"></script>
 <script src="../JS/header.js"></script>
 <script src="../JS/index.js"></script>
+<script src="../JS/loginRegister.js"></script>
+<script src="../JS/deconnexion.js"></script>
 
 </html>

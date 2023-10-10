@@ -14,6 +14,8 @@ registerForm.addEventListener('submit', function (event) { //faire code
 
 let btnEnCroix = document.querySelector(".croix");
 btnEnCroix.addEventListener("click", function () {
-    document.querySelector(".loginRegisterPopUp").style.display = "none";
-    console.log("UHEUFUERJHNGJNJNI?");
+    let divInBody = document.querySelectorAll("body>div");
+    divInBody.forEach((div) => div.style.visibility = "visible");
+
+    document.querySelector(".loginRegisterPopUp").style.visibility = "hidden";
 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/loginRegister.css">
     <title>Agathe in the tripes</title>
 </head>
 
@@ -28,6 +29,31 @@
 
     </div>
 
+    <div class="loginRegisterPopUp">
+        <div class="croix">
+        </div>
+        <div id="login">
+            <form id="loginFormulaire">
+                <h1>Se connecter</h1>
+                <input id="loginLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                <input id="loginMdp" type="password" name="password" placeholder="Mot de passe" required>
+                <input id="emptyBtn" type="password" name="password" placeholder="Mot de passe" style="visibility: hidden;">
+                <input id="loginBtn" type="submit" value="Connexion">
+            </form>
+        </div>
+    
+        <div id="register">
+            <form id="registerFormulaire">
+                <h1>S'inscrire</h1>
+                <input id="registerLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                <input id="registerMdp" type="password" name="password" placeholder="Mot de passe" required>
+                <input id="registerMdpVerif" type="password" name="password" placeholder="Vérifier votre mot de passe" required>
+                <input id="registerBtn" type="submit" value="Inscription">
+            </form>
+    
+        </div>
+    </div> 
+
 </body>
 
 <footer></footer>
@@ -35,5 +61,6 @@
 <script src="../JS/footer.js"></script>
 <script src="../JS/header.js"></script>
 <script src="../JS/index.js"></script>
+<script src="../JS/loginRegister.js"></script>
 
 </html>

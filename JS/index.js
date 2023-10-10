@@ -1,6 +1,10 @@
-let isConnected = true;
+let isConnected = false;
 let pseudo = "LLazry";
 let alreadyAGame = true;
+
+let loginRegisterForm = document.querySelector(".loginRegisterPopUp");
+loginRegisterForm.style.visibility = "hidden";
+
 
 let loginRegisterButton = document.querySelector("#login-register-button");
 let nouvellePartyButton = document.querySelector("#restart-game-button");
@@ -17,4 +21,13 @@ if (!alreadyAGame) {
 
 if (isConnected) {
     headerPseudo.textContent = pseudo;
+    loginRegisterButton.value = "Déconnexion";
 }
+
+loginRegisterButton.addEventListener("click", () => {
+
+    let divInBody = document.querySelectorAll("body>div");
+    divInBody.forEach((div) => div.style.visibility = "hidden");
+
+    loginRegisterForm.style.visibility = "visible";
+})

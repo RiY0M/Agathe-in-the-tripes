@@ -1,20 +1,23 @@
 "use strict";
 
-const express = require("express");
-const mysql = require("mysql");
-const port = process.env.PORT;
+// const express = require("express");
+// const mysql = require('mysql');
+const mysql = require("mysql2");
+const port = process.env.PORT || 5000;
 
-const app = express();
+// const app = express();
 
-export const dbConfig =  mysql.createConnection({
+const dbConfig = {
     host: 'devbdd.iutmetz.univ-lorraine.fr',
     user: 'ponzo1u_appli',
     password: '72622503',
     database: 'ponzo1u_sae501',
     // socketPath: "/tmp/mysql/mysql.sock"
-});
+}
 
-dbConfig.connect(err => {
+const db = mysql.createConnection(dbConfig);
+
+db.connect(err => {
     if(err) {
         console.error("Erreur : "+err.stack);
         return;
@@ -22,8 +25,14 @@ dbConfig.connect(err => {
     console.log("Connection réussie");
 });
 
-dbConfig.query("query")
+db.query("SELECT 2", (error, rows, fields) => {
+    if(error) throw error;
 
-app.listen(port, () => {
-    console.log("Serveur en ligne");
+    data = rows.json();
 });
+
+db.end();
+
+// app.listen(port, () => {
+//     console.log("Serveur en ligne");
+// });

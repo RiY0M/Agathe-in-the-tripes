@@ -79,15 +79,6 @@ body {
 }
 
 
-#trou-accueil-img {
-    position: absolute;
-    left: 15%;
-    bottom: -10%;
-    height: 90%;
-    z-index: -1;
-}
-
-
 header {
     /* border: 1px dashed green; */
 
@@ -95,41 +86,56 @@ header {
     left: 0;
     top: 0;
     width: 100%;
+    padding: 1rem;
     
-    text-align: right;
     vertical-align: baseline;
 
     background-color:  #282b30;   
-    border-bottom: 2px solid #1e2124;   
+    border-bottom: 2px solid #1e2124;
+
+    display: grid;
+    grid-template-columns: 10fr 10fr 60fr 20fr;
 }
 
-header img {
+#header-accueil-button {
+    /* border: 1px dashed yellow; */
+
+    width: 50%;
+}
+
+#header-dashboard-button {
+    /* border: 1px dashed pink; */
+
+    margin-left: -3rem;
+    width: 50%;
+}
+
+#header-player-name {
+    /* border: 1px dashed cyan; */
+
+    text-align: right;
+    margin-right: 5rem;
+}
+
+#header-agathe-img {
+    /* border: 1px dashed greenyellow; */
 
     height: 50px;
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-}
-
-.header-text {
-    /* border: 1px dashed cyan; */
 
     position: absolute;
-    bottom: 25%;
-    right: 4rem;
+    top: 0.25rem;
+    right: 3rem;
 }
 
-header img:hover, .header-text:hover {
+header > a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
 
-    cursor: pointer;
+header > a:hover, #header-player-name:hover {
     color: rgb(149, 2, 2);
-}
-
-.header-text {
-    /* border: 1px dashed cyan; */
-
-    position: absolute;
-    bottom: 25%;
-    right: 4rem;
+    cursor: pointer;
 }
 
 

@@ -1,13 +1,32 @@
 let header = document.querySelector("header");
 
-// ajout du text du footer
-let headerText = document.createElement("span");
-headerText.classList.add("header-text");
-headerText.textContent = "Invité";
+// bouton retour accueil
+let headerAccueil = document.createElement("a");
+headerAccueil.id = "header-accueil-button"
+headerAccueil.href = "../html/index.html";
+headerAccueil.textContent = "Accueil";
+
+// dashboard scores
+let dashboardScores = document.createElement("a");
+dashboardScores.id = "header-dashboard-button"
+dashboardScores.href = "";
+dashboardScores.textContent = "Scores";
+
+// span vide de délimitation
+let emptySpan = document.createElement("span");
+
+// nom du joueur
+let nomJoueur = document.createElement("span");
+nomJoueur.id = "header-player-name";
+nomJoueur.textContent = "Invité";
 
 // création de la pp
 let profilePicture = new Image();
+profilePicture.id = "header-agathe-img"
 profilePicture.src = "../img/agathe.png";
 
-header.appendChild(headerText);
+header.appendChild(headerAccueil);
+header.appendChild(dashboardScores);
+header.appendChild(emptySpan);
+header.appendChild(nomJoueur);
 header.appendChild(profilePicture);

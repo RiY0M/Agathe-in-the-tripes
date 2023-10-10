@@ -1,13 +1,16 @@
 // VARIABLES TEST
-let isConnected = false;
+let isConnected = true;
 let pseudo = "LLazry";
 let alreadyAGame = true;
 
 
 // FORMULAIRE CONNEXION / INSCRIPTION
 let loginRegisterForm = document.querySelector(".loginRegisterPopUp");
-// par défaut, on cache ce formulaire
+let deconnexionForm = document.querySelector("#deconnexion-player");
+
+// par défaut, on cache ces formulaires
 loginRegisterForm.style.visibility = "hidden";
+deconnexionForm.style.visibility = "hidden";
 
 
 // BOUTONS PRINCIPAUX
@@ -33,21 +36,42 @@ if (isConnected) {
 
     // on change le bouton pour "déconnexion"
     loginRegisterButton.value = "Déconnexion";
+
+    // on permet à l'utilisateur de voir le formulaire de deconnexion
+
+    // DEPUIS LE BOUTON DECONNEXION
+    loginRegisterButton.addEventListener("click", () => {
+
+        // vidage body
+        ereaseBody();
+        
+        // affichage du formulaire connexion / inscription
+        deconnexionForm.style.visibility = "visible";
+    })
+
+    // DEPUIS LE PSEUDO DU JOUEUR
+    headerPseudo.addEventListener("click", () => {
+
+        // vidage body
+        ereaseBody();
+        
+        // affichage du formulaire connexion / inscription
+        deconnexionForm.style.visibility = "visible";
+    })
 }
 
 // si le joueur n'est pas connecté :
 else {
     // on affiche le nom "Invité"
-    headerPseudo.textContent = pseudo;
+    headerPseudo.textContent = "Invité";
 
     // on permet à l'utilisateur de voir le formulaire d'inscription et de connexion
 
     // DEPUIS LE BOUTON CONNEXION / INSCRIPTION
     loginRegisterButton.addEventListener("click", () => {
 
-        // on masque tout ce qui se trouve dans le body pour ne laisser que le formulaire
-        let divInBody = document.querySelectorAll("body>div");
-        divInBody.forEach((div) => div.style.visibility = "hidden");
+        // vidage body
+        ereaseBody();
         
         // affichage du formulaire connexion / inscription
         loginRegisterForm.style.visibility = "visible";
@@ -56,11 +80,19 @@ else {
     // DEPUIS LE PSEUDO DU JOUEUR
     headerPseudo.addEventListener("click", () => {
 
-        // on masque tout ce qui se trouve dans le body pour ne laisser que le formulaire
-        let divInBody = document.querySelectorAll("body>div");
-        divInBody.forEach((div) => div.style.visibility = "hidden");
+        // vidage body
+        ereaseBody();
         
         // affichage du formulaire connexion / inscription
         loginRegisterForm.style.visibility = "visible";
     })
+}
+
+
+// VIDAGE BODY
+function ereaseBody() {
+
+    // on masque tout ce qui se trouve dans le body pour ne laisser que le formulaire
+    let divInBody = document.querySelectorAll("body>div");
+    divInBody.forEach((div) => div.style.visibility = "hidden");
 }

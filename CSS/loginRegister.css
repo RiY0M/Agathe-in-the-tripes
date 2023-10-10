@@ -68,7 +68,7 @@
     color: rgb(149, 2, 2);
 }
 
-.croix {
+#croix-log-regis {
     position: absolute;
     left: 95%;
     top: 2%;
@@ -81,7 +81,7 @@
     
 }
 
-.croix::before, .croix::after {
+#croix-log-regis::before, #croix-log-regis::after {
     content: '';
     position: absolute;
     background-color: black;
@@ -91,10 +91,10 @@
     left: 0;
 }
 
-.croix::after {
+#croix-log-regis::after {
     transform: rotate(90deg);
 }
 
-.croix:hover::before, .croix:hover::after {
+#croix-log-regis:hover::before, #croix-log-regis:hover::after {
     background-color: rgb(149, 2, 2);
 }

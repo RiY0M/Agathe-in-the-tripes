@@ -1,5 +1,5 @@
 // VARIABLES TEST
-let isConnected = true;
+let isConnected = false;
 let pseudo = "LLazry";
 let alreadyAGame = true;
 

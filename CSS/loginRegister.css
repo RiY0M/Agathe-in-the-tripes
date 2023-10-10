@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
+
+
 .loginRegisterPopUp {   /*Page de connexion et d'inscription */
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 1px solid #ccc;
     border-radius: 5px;
     flex : 1;
-    margin: 10%;
+
+    position: absolute;
+    top: 25%;
+    left: 30%;
+
+    width: 40%;
+
+    background-color: #282b30;
+    box-shadow: 10px 10px 10px #1e2124;
+
+    padding: 1rem;
 }
 
 #login {
@@ -26,24 +38,41 @@
 
 #loginFormulaire input[type=text], #registerFormulaire input[type=text], #loginFormulaire input[type=password], #registerFormulaire input[type=password]{
     margin-bottom: 10px;
-    width: 45%;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+
+    background-color: #36393e;
+    color: white;
 }
 
 #loginFormulaire input[type=submit], #registerFormulaire input[type=submit] {
     margin-bottom: 10px;
-    width: 48%;
+    margin-top: 1rem;
+    width: 110%;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+
+    cursor: pointer;
+    background-color: #1e2124;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #282b30;
+}
+
+#loginFormulaire input[type=submit]:hover, #registerFormulaire input[type=submit]:hover {
+
+    color: rgb(149, 2, 2);
 }
 
 .croix {
     position: absolute;
-    right: 10.2%;
-    width: 2%;
+    left: 95%;
+    top: 2%;
+    width: 5%;
     height: 3%;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -51,6 +80,7 @@
     font-weight: bold;
     
 }
+
 .croix::before, .croix::after {
     content: '';
     position: absolute;
@@ -64,6 +94,7 @@
 .croix::after {
     transform: rotate(90deg);
 }
+
 .croix:hover::before, .croix:hover::after {
-    background-color: red;
-}    /*Page de connexion et d'inscription */
+    background-color: rgb(149, 2, 2);
+}

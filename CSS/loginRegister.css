@@ -1,0 +1,69 @@
+.loginRegisterPopUp {   /*Page de connexion et d'inscription */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex : 1;
+    margin: 10%;
+}
+
+#login {
+    flex: 1;
+    padding: 20px;
+}
+
+#register {
+    flex: 1;
+    padding: 20px;
+}
+
+#loginFormulaire, #registerFormulaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginFormulaire input[type=text], #registerFormulaire input[type=text], #loginFormulaire input[type=password], #registerFormulaire input[type=password]{
+    margin-bottom: 10px;
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#loginFormulaire input[type=submit], #registerFormulaire input[type=submit] {
+    margin-bottom: 10px;
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.croix {
+    position: absolute;
+    right: 10.2%;
+    width: 2%;
+    height: 3%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transform: rotate(45deg);
+    font-weight: bold;
+    
+}
+.croix::before, .croix::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 5px;
+    top: 50%;
+    left: 0;
+}
+
+.croix::after {
+    transform: rotate(90deg);
+}
+.croix:hover::before, .croix:hover::after {
+    background-color: red;
+}    /*Page de connexion et d'inscription */

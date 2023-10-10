@@ -7,7 +7,8 @@
 // console.log("test");
 // console.log(dbConfig);
 
-fetch("/JS/database.js")
+// https://devweb.iutmetz.univ-lorraine.fr
+fetch("localhost:5000/api/leaderboard")
 .then(reponse => {
     console.log(reponse);
     reponse.json();

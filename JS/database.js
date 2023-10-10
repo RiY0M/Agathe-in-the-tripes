@@ -25,6 +25,8 @@ const dbConfig = {
         }
         console.log("Connection réussie");
     });
+
+    
 app.get("/api/leaderboard", (req, res) => {
 
 

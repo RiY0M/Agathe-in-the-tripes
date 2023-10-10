@@ -39,3 +39,32 @@ form input[type=submit]{
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.croix {
+    position: absolute;
+    right: 9.5%;
+    width: 2%;
+    height: 0%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transform: rotate(45deg);
+    font-weight: bold;
+    /* border-radius: 200px; */
+    
+}
+.croix::before, .croix::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 5px;
+    top: 50%;
+    left: 0;
+}
+
+.croix::after {
+    transform: rotate(90deg);
+}
+.croix:hover::before, .croix:hover::after {
+    background-color: red;
+}

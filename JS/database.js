@@ -1,3 +1,5 @@
+"use strict";
+
 export const dbConfig = {
     user: 'ponzo1u_appli',
     password: '72622503',

@@ -1,4 +1,4 @@
-.loginRegisterPopUp {
+.loginRegisterPopUp {   /*Page de connexion et d'inscription */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -66,4 +66,4 @@
 }
 .croix:hover::before, .croix:hover::after {
     background-color: red;
-}
+}    /*Page de connexion et d'inscription */

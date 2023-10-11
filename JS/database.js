@@ -1,41 +1,15 @@
-"use strict";
+// "use strict";
 
-// const express = require("express");
+const express = require("express");
+const cors = require('cors');
 const mysql = require("mysql2");
-// const port = process.env.PORT || 5000;
+const app = express();
 
-// https://www.youtube.com/watch?v=RBcA6MKqrvo
-
-// const app = express();
-
-// app.get("/api/leaderboard", (req, res) => {
-    
-//     const db = mysql.createConnection(dbConfig);
-    
-//     db.connect(err => {
-//         if(err) {
-//             console.error("Erreur : "+err.stack);
-//             return;
-//         }
-//         console.log("Connection réussie");
-//     });
-
-//     let data = {};
-
-//     db.query("SELECT 2", (error, rows, fields) => {
-//         if(error) throw error;
-        
-//         data = rows.json();
-//     });
-
-//     res.json(data)
-
-//     db.end();
-// });
-
-// app.listen(port, () => {
-//     console.log("Serveur en ligne sur le port "+port);
-// });
+const port = process.env.PORT || 5500; // port identique à celui utilisé par live server
+const apiUrl = "/api/leaderboard";
+// const corsOptions = {
+//     origin: `http://localhost:${port}`, // Replace with your frontend URL
+// };
 
 const dbConfig = {
     host: 'devbdd.iutmetz.univ-lorraine.fr',
@@ -45,7 +19,42 @@ const dbConfig = {
     // socketPath: "/tmp/mysql/mysql.sock"
 }
 
-var db;
+https://www.youtube.com/watch?v=RBcA6MKqrvo
+
+app.use(cors());
+// app.use(cors(corsOptions));
+app.get(apiUrl, (req, res) => {
+    
+    // const db = mysql.createConnection(dbConfig);
+    
+    // db.connect(err => {
+    //     if(err) {
+    //         console.error("Erreur : "+err.stack);
+    //         return;
+    //     }
+    //     console.log("Connection réussie");
+    // });
+
+    // let data = {};
+
+    // db.query("SELECT 2 as test", (error, rows, fields) => {
+    //     if(error) throw error;
+        
+    //     console.log(`rows ${rows}`);
+    //     data = JSON.parse(rows); // rows.json();
+    // });
+
+    const data = { data: 'Hello from the API!' }; // message test
+    res.json(data)
+
+    // db.end();
+});
+
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}${apiUrl}`);
+});
+
+// var db;
 
 function handleDisconnect() {
   db = mysql.createConnection(dbConfig); // Recreate the db, since
@@ -72,64 +81,82 @@ function handleDisconnect() {
   });
 }
 
-handleDisconnect();
+// handleDisconnect();
 
-let recordsTotal;
-let recordsNiv0;
+// let recordsTotal;
+// let recordsNiv0;
 
-function queryTotal(callback = (recordsTotal) => {}) {
-    db.query(
-        "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE G.level_id = 7 ORDER BY complete_time DESC",
-        function (err, result) {
-            if (err) { console.error(err); return; }
-            recordsTotal = [];
+// // function query(callback, whereClause) {
+// //     db.query(
+// //         "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE "+whereClause+" ORDER BY complete_time DESC",
+// //         (err, result) => {
+// //             if (err) { console.error(err); return; }
+// //             callback = [];
             
-            let i = 1;
-            for (let user of result) {
-                recordsTotal.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
-                i++;
-            }
+// //             let i = 1;
+// //             for (let user of result) {
+// //                 callback.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
+// //                 i++;
+// //             }
 
-            callback(recordsTotal);
-        }
-    );
-}
+// //             callback(callback);
+// //         }
+// //     );
+// // }
 
-function queryNiv0(callback = (recordsNiv0) => {}) {
-    db.query(
-        "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE S.level_id = 0 ORDER BY complete_time DESC",
+// function queryTotal(callback = (recordsTotal) => {}) {
+//     db.query(
+//         "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE G.level_id = 7 ORDER BY complete_time DESC",
+//         (err, result) => {
+//             if (err) { console.error(err); return; }
+//             recordsTotal = [];
+            
+//             let i = 1;
+//             for (let user of result) {
+//                 recordsTotal.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
+//                 i++;
+//             }
 
-        (err, result) => {
-            if (err) {console.error(err); return;}
-            recordsNiv0 = [];
+//             callback(recordsTotal);
+//         }
+//     );
+// }
 
-            let i = 1;
-            for (let user of result) {
-                recordsNiv0.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
-                i++;
-            }
+// function queryNiv0(callback = (recordsNiv0) => {}) {
+//     db.query(
+//         "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE S.level_id = 0 ORDER BY complete_time DESC",
+//         (err, result) => {
+//             if (err) {console.error(err); return;}
+//             recordsNiv0 = [];
 
-            callback(recordsNiv0);
-        }
-    );
-}
+//             let i = 1;
+//             for (let user of result) {
+//                 recordsNiv0.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
+//                 i++;
+//             }
 
-queryTotal();
-queryNiv0();
+//             callback(recordsNiv0);
+//         }
+//     );
+// }
 
-function getTotal() {
-    return recordsTotal;
-}
+// queryTotal();
+// queryNiv0();
 
-function getNiv0() {
-    return recordsNiv0;
-}
+// function getTotal() {
+//     return recordsTotal;
+// }
+
+// function getNiv0() {
+//     return recordsNiv0;
+// }
 
 
-module.exports = {
-    db,
-    getTotal,
-    getNiv0,
-    queryTotal,
-    queryNiv0
-}
+// module.exports = {
+//     db,
+//     getTotal,
+//     getNiv0,
+//     queryTotal,
+//     queryNiv0
+//    "message": "test"
+// }

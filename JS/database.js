@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 const express = require("express");
 const cors = require('cors');
@@ -16,147 +16,177 @@ const dbConfig = {
     user: 'ponzo1u_appli',
     password: '72622503',
     database: 'ponzo1u_sae501',
-    // socketPath: "/tmp/mysql/mysql.sock"
 }
 
-https://www.youtube.com/watch?v=RBcA6MKqrvo
+let db;
+handleDisconnect();
+
+// let callback_var;
+let recordsTotal;
+let recordsNiv0;
+
+queryTotal();
+queryNiv0();
+
 
 app.use(cors());
 // app.use(cors(corsOptions));
 app.get(apiUrl, (req, res) => {
     
-    // const db = mysql.createConnection(dbConfig);
+    db.query("SELECT * FROM LEVELS;", (error, rows) => {
+        if(error) throw error;
+
+        res.json([
+            {levels: rows},
+            {total: recordsTotal},
+            {niv0: recordsNiv0}
+        ]);
+    });
+
     
-    // db.connect(err => {
-    //     if(err) {
-    //         console.error("Erreur : "+err.stack);
-    //         return;
-    //     }
-    //     console.log("Connection réussie");
-    // });
-
-    // let data = {};
-
-    // db.query("SELECT 2 as test", (error, rows, fields) => {
-    //     if(error) throw error;
-        
-    //     console.log(`rows ${rows}`);
-    //     data = JSON.parse(rows); // rows.json();
-    // });
-
-    const data = { data: 'Hello from the API!' }; // message test
-    res.json(data)
-
-    // db.end();
+    closeConnect();
 });
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}${apiUrl}`);
 });
 
-// var db;
 
+//!! FUNCTIONS
+
+/**
+ * Open db connection and handle errors
+ * NEED GLOBAL VAR db and dbConfig
+ */
 function handleDisconnect() {
-  db = mysql.createConnection(dbConfig); // Recreate the db, since
-                                                  // the old one cannot be reused.
 
-  db.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    } else {
-        console.log("Connected to database");
-    }
-  });                                     // process asynchronous requests in the meantime.
-                                          // If you're also serving http, display a 503 error.
-  db.on('error', function(err) {
-    
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-	console.log("SQL Disconnect");
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else { 
-	console.log('db error', err);              // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
-  });
+    // Recreate the db, since the old one cannot be reused.
+    db = mysql.createConnection(dbConfig);
+
+    db.connect((err) => { // The server is either down
+        if(err) {         // or restarting (takes a while sometimes).
+            console.log('error when connecting to db:', err);
+            setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+        } else {
+            console.log("Connected to database");
+        }
+    }); // process asynchronous requests in the meantime.
+        // If you're also serving http, display a 503 error.
+    db.on('error', (err) => {
+        
+        if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+            console.log("SQL Disconnect");
+            handleDisconnect();                       // lost due to either server restart, or a
+        } else { 
+            console.log('db error', err);             // connnection idle timeout (the wait_timeout
+            throw err;                                // server variable configures this)
+        }
+    });
 }
 
-// handleDisconnect();
+/**
+ * Close db connection and handle errors
+ * NEED GLOBAL VAR db
+ */
+function closeConnect() {
+    process.on('SIGINT', () => {
+        db.end(err => {
+            if (err) console.error('Error closing database connection:', err);
+            process.exit();
+        });
+    });
+}
 
-// let recordsTotal;
-// let recordsNiv0;
-
-// // function query(callback, whereClause) {
-// //     db.query(
-// //         "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE "+whereClause+" ORDER BY complete_time DESC",
-// //         (err, result) => {
-// //             if (err) { console.error(err); return; }
-// //             callback = [];
-            
-// //             let i = 1;
-// //             for (let user of result) {
-// //                 callback.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
-// //                 i++;
-// //             }
-
-// //             callback(callback);
-// //         }
-// //     );
-// // }
-
-// function queryTotal(callback = (recordsTotal) => {}) {
+// function query(whereClause, callback = (callback_var) => {}) {
 //     db.query(
-//         "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE G.level_id = 7 ORDER BY complete_time DESC",
+//     `SET @row_number = 0;
+
+//     CREATE TEMPORARY TABLE T1
+    
+//     SELECT (@row_number:=@row_number + 1) AS num,
+//     login,
+//     LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), "%i:%s:%f"), 9) AS complete_time
+//     FROM SCORES S
+//     INNER JOIN GAMES G ON S.game_id = G.id
+//     INNER JOIN USERS U ON G.user_id = U.id
+//     WHERE ${whereClause}
+//     ORDER BY complete_time ASC;
+    
+//     SELECT * FROM (SELECT * FROM T1 LIMIT 0,5) AS TAB
+//     UNION ALL
+//     SELECT * FROM (SELECT * FROM T1 WHERE login = '${user.login !== undefined ? user.login : ""}' LIMIT 0,1) AS TAB;
+    
+//     DROP TEMPORARY TABLE T1;`,
 //         (err, result) => {
 //             if (err) { console.error(err); return; }
-//             recordsTotal = [];
-            
-//             let i = 1;
+//             callback_var = [];
+
 //             for (let user of result) {
-//                 recordsTotal.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
-//                 i++;
+//                 callback_var.push({num: user["num"], name: user["login"], complete_time: user["complete_time"]});
 //             }
 
-//             callback(recordsTotal);
+//             callback(callback_var);
 //         }
 //     );
 // }
 
-// function queryNiv0(callback = (recordsNiv0) => {}) {
-//     db.query(
-//         "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE S.level_id = 0 ORDER BY complete_time DESC",
-//         (err, result) => {
-//             if (err) {console.error(err); return;}
-//             recordsNiv0 = [];
+function queryTotal(callback = (recordsTotal) => {}) {
+    // query("S.level_id = 7", callback(recordsTotal))
+    db.query(
+        `SET @row_number = 0;
 
-//             let i = 1;
-//             for (let user of result) {
-//                 recordsNiv0.push({num: i, nom: user["login"], complete_time: user["complete_time"]});
-//                 i++;
-//             }
+        CREATE TEMPORARY TABLE T1
 
-//             callback(recordsNiv0);
-//         }
-//     );
-// }
+        SELECT (@row_number := @row_number + 1) AS num,
+        login,
+        LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), "%i:%s:%f"), 9) AS complete_time
+        FROM SCORES S
+        INNER JOIN GAMES G ON S.game_id = G.id
+        INNER JOIN USERS U ON G.user_id = U.id
+        WHERE S.level_id = 7
+        ORDER BY complete_time ASC;
 
-// queryTotal();
-// queryNiv0();
+        SELECT * FROM (SELECT * FROM T1 LIMIT 0,5) AS TAB
+        UNION ALL
+        SELECT * FROM (SELECT * FROM T1 WHERE login = '' LIMIT 0,1) AS TAB;
+
+        DROP TEMPORARY TABLE T1;`,
+        // getCookies("login") !== undefined ? getCookies("login") : ""
+        (err, result) => {
+            if (err) { console.error(err); return; }
+            recordsTotal = [];
+
+            for (let user of result) {
+                recordsTotal.push({num: user["num"], name: user["login"], complete_time: user["complete_time"]});
+            }
+
+            callback(recordsTotal);
+        }
+    );
+}
+
+function queryNiv0(callback = (recordsNiv0) => {}) {
+    db.query(
+        "SELECT login, complete_time FROM SCORES S INNER JOIN GAMES G ON S.game_id = G.id INNER JOIN USERS U ON G.user_id = U.id WHERE S.level_id = 0 ORDER BY complete_time ASC",
+        (err, result) => {
+            if (err) {console.error(err); return;}
+            recordsNiv0 = [];
+
+            for (let user of result) {
+                recordsNiv0.push({num: user["num"], name: user["login"], complete_time: user["complete_time"]});
+            }
+
+            callback(recordsNiv0);
+        }
+    );
+}
 
 // function getTotal() {
+//     queryTotal();
 //     return recordsTotal;
 // }
 
 // function getNiv0() {
+//     queryNiv0();
 //     return recordsNiv0;
-// }
-
-
-// module.exports = {
-//     db,
-//     getTotal,
-//     getNiv0,
-//     queryTotal,
-//     queryNiv0
-//    "message": "test"
 // }

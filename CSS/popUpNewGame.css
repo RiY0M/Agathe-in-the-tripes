@@ -4,34 +4,10 @@
 
 
 #croix-pop-up-new-game {
-    position: absolute;
-    width: 10%;
-    top: 6%;
-    left: 91%;
+    width: 7%;
+    top: 4%;
+    left: 94%;
     height: 3%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    transform: rotate(45deg);
-    font-weight: bold;
-    
-}
-
-#croix-pop-up-new-game::before, #croix-pop-up-new-game::after {
-    content: '';
-    position: absolute;
-    background-color: black;
-    width: 100%;
-    height: 5px;
-    top: 50%;
-    left: 0;
-}
-
-#croix-pop-up-new-game::after {
-    transform: rotate(90deg);
-}
-
-#croix-pop-up-new-game:hover::before, #croix-pop-up-new-game:hover::after {
-    background-color: rgb(149, 2, 2);
 }
 
 

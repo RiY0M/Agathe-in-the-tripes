@@ -137,7 +137,7 @@ function queryTotal(callback = (recordsTotal) => {}) {
 
         CREATE TEMPORARY TABLE T1
 
-        SELECT (@row_number := @row_number + 1) AS num,
+        SELECT @row_number:=@row_number + 1 AS num,
         login,
         LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), "%i:%s:%f"), 9) AS complete_time
         FROM SCORES S
@@ -148,10 +148,10 @@ function queryTotal(callback = (recordsTotal) => {}) {
 
         SELECT * FROM (SELECT * FROM T1 LIMIT 0,5) AS TAB
         UNION ALL
-        SELECT * FROM (SELECT * FROM T1 WHERE login = '' LIMIT 0,1) AS TAB;
+        SELECT * FROM (SELECT * FROM T1 WHERE login = '${typeof login !== "undefined" ? login : ""}' LIMIT 0,1) AS TAB;
 
         DROP TEMPORARY TABLE T1;`,
-        // getCookies("login") !== undefined ? getCookies("login") : ""
+        // remplacer login par l'accès au login
         (err, result) => {
             if (err) { console.error(err); return; }
             recordsTotal = [];

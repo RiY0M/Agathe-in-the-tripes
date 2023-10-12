@@ -3,30 +3,39 @@
 }
 
 
-#croix-deco {
-    width: 10%;
-    top: 6%;
-    left: 91%;
-    height: 3%;    
+#croix-pop-up-new-game {
+    width: 7%;
+    top: 4%;
+    left: 94%;
+    height: 3%;
 }
 
 
-#deconnexion-player {
+#pop-up-new-game {
     /* border: 1px dashed crimson; */
 
     background-color: #282b30;
     box-shadow: 10px 10px 10px #1e2124;
 
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: 35%;
+    left: 35%;
 
     padding: 1rem;
     border-radius: 5px;
 }
 
 
-#deconnexion-player input {
+#pop-up-new-game-subtitle {
+    margin-bottom: 2rem;
+}
+
+#pop-up-new-game-title, #pop-up-new-game-subtitle {
+    text-align: center;
+}
+
+
+#pop-up-new-game input {
     background-color: #1e2124;
     color: white;
 
@@ -42,12 +51,12 @@
     text-shadow: 2px 2px #282b30;
 }
 
-#deconnexion-player input:hover {
+#pop-up-new-game input:hover {
     color: rgb(149, 2, 2);
 }
 
 
-#deconnexion-buttons {
+#pop-up-new-game-buttons {
     
     display: grid;
     grid-template-columns: 50fr 50fr;

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../CSS/index.css">
     <link rel="stylesheet" href="../CSS/loginRegister.css">
     <link rel="stylesheet" href="../CSS/deconnexion.css">
+    <link rel="stylesheet" href="../CSS/popUpNewGame.css">
     <title>Agathe in the tripes</title>
 </head>
 
@@ -37,7 +38,7 @@
 
     <!-- FORMULAIRE CONNEXION / INSCRIPTION -->
     <div class="loginRegisterPopUp">
-        <div id="croix-log-regis"></div>
+        <div id="croix-log-regis" class="cancel-croix-pop-up"></div>
         <div id="login">
             <form id="loginFormulaire">
                 <h1>Se connecter</h1>
@@ -66,7 +67,7 @@
     <!-- FORMULAIRE DECONNEXION -->
     <div id="deconnexion-player">
 
-        <div id="croix-deco"></div>
+        <div id="croix-deco" class="cancel-croix-pop-up"></div>
 
         <div id="deconnexion-title">
             <h1>Se déconnecter</h1>
@@ -74,11 +75,33 @@
 
         <div id="deconnexion-buttons">
             <input id="deconnexion-agree-button" type="submit" value="Déconnexion">
-            <input id="deconnexion-cancel-button" type="submit" value="Annuler">
+            <input id="deconnexion-cancel-button" class="cancel-annuler-pop-up" type="submit" value="Annuler">
         </div>
 
     </div>
     <!-- FORMULAIRE DECONNEXION -->
+
+
+    <!-- POP-UP NOUVELLE PARTIE -->
+    <div id="pop-up-new-game">
+
+        <div id="croix-pop-up-new-game" class="cancel-croix-pop-up"></div>
+
+        <div id="pop-up-new-game-title">
+            <h1>Nouvelle partie</h1>
+        </div>
+
+        <div id="pop-up-new-game-subtitle">
+
+        </div>
+
+        <div id="pop-up-new-game-buttons">
+            <input id="pop-up-new-game-agree-button" type="submit" value="Continuer">
+            <input id="pop-up-new-game-cancel-button" class="cancel-annuler-pop-up" type="submit" value="Annuler">
+        </div>
+
+    </div>
+    <!-- POP-UP NOUVELLE PARTIE -->
 
 </body>
 
@@ -88,6 +111,6 @@
 <script src="../JS/header.js"></script>
 <script src="../JS/index.js"></script>
 <script src="../JS/loginRegister.js"></script>
-<script src="../JS/deconnexion.js"></script>
+<script src="../JS/cancelActions.js"></script>
 
 </html>

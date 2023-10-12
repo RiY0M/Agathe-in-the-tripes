@@ -68,20 +68,22 @@
     color: rgb(149, 2, 2);
 }
 
-#croix-log-regis {
+.cancel-croix-pop-up {
     position: absolute;
-    left: 95%;
-    top: 2%;
-    width: 5%;
-    height: 3%;
     cursor: pointer;
     transition: background-color 0.3s ease;
     transform: rotate(45deg);
     font-weight: bold;
-    
 }
 
-#croix-log-regis::before, #croix-log-regis::after {
+#croix-log-regis {
+    left: 95%;
+    top: 2%;
+    width: 5%;
+    height: 3%;    
+}
+
+.cancel-croix-pop-up::before, .cancel-croix-pop-up::after {
     content: '';
     position: absolute;
     background-color: black;
@@ -91,10 +93,10 @@
     left: 0;
 }
 
-#croix-log-regis::after {
+.cancel-croix-pop-up::after {
     transform: rotate(90deg);
 }
 
-#croix-log-regis:hover::before, #croix-log-regis:hover::after {
+.cancel-croix-pop-up:hover::before, .cancel-croix-pop-up:hover::after {
     background-color: rgb(149, 2, 2);
 }

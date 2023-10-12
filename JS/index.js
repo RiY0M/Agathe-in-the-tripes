@@ -97,23 +97,32 @@ else {
 // affichage pop-up
 nouvellePartyButton.addEventListener("click", () => {
 
+    // suppression body
     ereaseBody();
+    // affichage pop-up
     popUpNewGame.style.visibility = "visible";
 
-    // CAS POUR CONNECTE
+    // boîte sous-titre
     let span = document.createElement("span");
+
+    // CAS POUR CONNECTE
     if (isConnected) {
+        // texte sous-titre
         span.textContent = "Attention, votre partie actuelle sera supprimée !";
 
         popUpNewGameSubtitle.appendChild(span);
     }
     // CAS POUR INVITE
     else {
+        // texte sous-titre
         span.textContent = "Attention, vous vous apprêtez à jouer en tant qu'invité !";
+        // création élément retour à la ligne pour conserver taille pop-up raisonnable
         let br = document.createElement("br");
+        // suite du texte sous-titre
         let spanBracket = document.createElement("span");
         spanBracket.textContent = "(votre progression ne sera pas sauvegardée)";
 
+        // ajout des éléments
         popUpNewGameSubtitle.appendChild(span);
         popUpNewGameSubtitle.appendChild(br);
         popUpNewGameSubtitle.appendChild(spanBracket);

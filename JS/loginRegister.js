@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+//const bcrypt = require('bcryptjs');
 
 var loginForm = document.getElementById('loginFormulaire');
 var registerForm = document.getElementById('registerFormulaire');
@@ -23,9 +23,9 @@ registerForm.addEventListener('submit', function (event) { //faire code
     let login = document.getElementById('loginLog');
     let password = document.getElementById('loginMdp');
 
-    const salt = bcrypt.genSaltSync(10);
+    //const salt = bcrypt.genSaltSync(10);
 
-    const mdpCrypte = bcrypt.hashSync(password, salt);  
+    //const mdpCrypte = bcrypt.hashSync(password, salt);  
 
     //Appelle fct 
 });

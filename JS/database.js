@@ -16,6 +16,7 @@ const dbConfig = {
     user: 'ponzo1u_appli',
     password: '72622503',
     database: 'ponzo1u_sae501',
+    multipleStatements: true //! Pas sécurisé
 }
 
 let db;
@@ -51,8 +52,7 @@ app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}${apiUrl}`);
 });
 
-
-//!! FUNCTIONS
+// ! FUNCTIONS
 
 /**
  * Open db connection and handle errors
@@ -135,9 +135,10 @@ function queryTotal(callback = (recordsTotal) => {}) {
     db.query(
         `SET @row_number = 0;
 
-        CREATE TEMPORARY TABLE T1
+        DROP TABLE IF EXISTS TAB;
+        CREATE TEMPORARY TABLE TAB AS
 
-        SELECT @row_number:=@row_number + 1 AS num,
+        SELECT @row_number:=(@row_number + 1) AS num,
         login,
         LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), "%i:%s:%f"), 9) AS complete_time
         FROM SCORES S
@@ -146,17 +147,18 @@ function queryTotal(callback = (recordsTotal) => {}) {
         WHERE S.level_id = 7
         ORDER BY complete_time ASC;
 
-        SELECT * FROM (SELECT * FROM T1 LIMIT 0,5) AS TAB
+        SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
         UNION ALL
-        SELECT * FROM (SELECT * FROM T1 WHERE login = '${typeof login !== "undefined" ? login : ""}' LIMIT 0,1) AS TAB;
-
-        DROP TEMPORARY TABLE T1;`,
+        SELECT * FROM (SELECT * FROM TAB WHERE login = "${typeof login !== "undefined" ? login : ""}" LIMIT 0,1) AS TAB2;`,
         // remplacer login par l'accès au login
-        (err, result) => {
+        (err, result, fields) => {
             if (err) { console.error(err); return; }
             recordsTotal = [];
 
-            for (let user of result) {
+
+            // recordsTotal = result;
+
+            for (let user of result[3]) {
                 recordsTotal.push({num: user["num"], name: user["login"], complete_time: user["complete_time"]});
             }
 

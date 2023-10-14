@@ -47,25 +47,25 @@ app.get(apiUrl, (req, res) => {
     db.query("SELECT * FROM LEVELS;", (error, rows) => {
         if(error) throw error;
 
-        res.json([
-            {levels: rows},
-            {total: recordsTotal},
-            {niv0: recordsNiv0},
-            {niv1: recordsNiv1},
-            {niv2: recordsNiv2},
-            {niv3: recordsNiv3},
-            {niv4: recordsNiv4},
-            {niv5: recordsNiv5},
+        res.json({
+            levels: rows,
+            niv7: recordsTotal,
+            niv0: recordsNiv0,
+            niv1: recordsNiv1,
+            niv2: recordsNiv2,
+            niv3: recordsNiv3,
+            niv4: recordsNiv4,
+            niv5: recordsNiv5,
 
             //^^ si les fonctions retournent des valeurs
-            // {total: queryTotal()},
-            // {niv0: queryNiv0()},
-            // {niv1: queryNiv1()},
-            // {niv2: queryNiv2()},
-            // {niv3: queryNiv3()},
-            // {niv4: queryNiv4()},
-            // {niv5: queryNiv5()},
-        ]);
+            // niv7: queryTotal(),
+            // niv0: queryNiv0(),
+            // niv1: queryNiv1(),
+            // niv2: queryNiv2(),
+            // niv3: queryNiv3(),
+            // niv4: queryNiv4(),
+            // niv5: queryNiv5(),
+        });
     });
 
     

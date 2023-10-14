@@ -5,9 +5,14 @@ body, input {
     font-family: 'Rubik', sans-serif;
 }
 
+#titre-niv {
+    margin: auto;
+}
+
 .number {
     text-align: center;
 }
+
 table, tr, td {
     border-collapse: collapse;
     padding: 0.1rem 0.25rem;
@@ -46,11 +51,11 @@ table, tr, td {
     max-height: 100%;
 }
 
-nav {
+#game-buttons {
     margin: auto auto 2rem auto
 }
 
-nav>* {
+#game-buttons>* {
     padding: 0.25rem;
     margin: 0.5rem;
     border: 2px solid #282b30;
@@ -71,7 +76,7 @@ nav>* {
     border-bottom: transparent;
 }
 
-nav>*:hover {
+#game-buttons>*:hover {
     color: #950202;
 }
 

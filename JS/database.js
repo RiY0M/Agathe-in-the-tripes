@@ -1,4 +1,4 @@
-const dbConfig = {
+export const dbConfig = {
     host: 'devbdd.iutmetz.univ-lorraine.fr',
     user: 'ponzo1u_appli',
     password: '72622503',

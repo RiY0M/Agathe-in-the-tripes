@@ -7,6 +7,8 @@ body, input {
 
 #titre-niv {
     margin: auto;
+    text-shadow: 4px 4px #1e2124;
+    font-size: 2.5rem;
 }
 
 .number {

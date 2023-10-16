@@ -13,6 +13,7 @@ let config = {
 
 let agathe;         // agathe personnage
 let cursors;        // détection clavier
+let lastFrame = 0;  // last frame facing afk
 
 
 // création fenêtre phaser
@@ -37,7 +38,9 @@ function create()
     cursors = this.input.keyboard.createCursorKeys();
 
 
-    // ^ ANIMATIONS AGATHE (SPRITES)
+    //^ ANIMATIONS AGATHE (SPRITES) ^//
+
+    //? MOVING ?//
 
     this.anims.create({
         key: "left",
@@ -67,8 +70,32 @@ function create()
         repeat: -1
     });
 
+    //? AFK ?//
+    
+    // gauche
     this.anims.create({
-        key: "afk",
+        key: "afk-4",
+        frames: [ { key: "agathe", frame: 4 } ],
+        frameRate: 20
+    });
+
+    // droite
+    this.anims.create({
+        key: "afk-8",
+        frames: [ { key: "agathe", frame: 8 } ],
+        frameRate: 20
+    });
+
+    // haut
+    this.anims.create({
+        key: "afk-12",
+        frames: [ { key: "agathe", frame: 12 } ],
+        frameRate: 20
+    });
+
+    // bas
+    this.anims.create({
+        key: "afk-0",
         frames: [ { key: "agathe", frame: 0 } ],
         frameRate: 20
     });
@@ -76,7 +103,7 @@ function create()
 
 function update()
 {
-    // ^ ANIMATIONS AGATHE (CLAVIER)
+    //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     if (cursors.left.isDown)
     {
@@ -84,6 +111,8 @@ function update()
         agathe.setVelocityX(-160);
         // animation sprite
         agathe.anims.play("left", true);
+        // last frame facing afk
+        lastFrame = 4;
     }
 
     else if (cursors.right.isDown)
@@ -92,6 +121,8 @@ function update()
         agathe.setVelocityX(160);
         // animation sprite
         agathe.anims.play("right", true);
+        // last frame facing afk
+        lastFrame = 8;
     }
 
     else if (cursors.up.isDown)
@@ -100,6 +131,8 @@ function update()
         agathe.setVelocityY(-160);
         // animation sprite
         agathe.anims.play("up", true);
+        // last frame facing afk
+        lastFrame = 12;
     }
 
     else if (cursors.down.isDown)
@@ -108,6 +141,8 @@ function update()
         agathe.setVelocityY(160);
         // animation sprite
         agathe.anims.play("down", true);
+        // last frame facing afk
+        lastFrame = 0;
     }
 
     else
@@ -115,6 +150,7 @@ function update()
         // si aucune touche du clavier n'est appuyée : on arrête agathe
         agathe.setVelocityX(0);
         agathe.setVelocityY(0);
-        agathe.anims.play("afk");
+        // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
+        agathe.anims.play("afk-" + lastFrame);
     }
 }

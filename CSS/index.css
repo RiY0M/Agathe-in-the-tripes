@@ -10,6 +10,16 @@ body {
 }
 
 
+#game-canvas {
+    /* border: 1px dashed red; */
+
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    margin-top: 7%;
+}
+
+
 #main-grid-column {
     /* border: dotted red 2px; */
 

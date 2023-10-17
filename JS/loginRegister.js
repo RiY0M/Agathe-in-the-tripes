@@ -93,7 +93,7 @@ loginForm.addEventListener('submit', async function (event) {
 
 });
 
-///////////////////////// REGISTER /////////////////////////
+///////////////////////// REGISTER ////////////////////////
 
 registerForm.addEventListener('submit', async function (event) {
     event.preventDefault();

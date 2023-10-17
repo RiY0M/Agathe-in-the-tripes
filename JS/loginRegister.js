@@ -31,6 +31,35 @@ async function recupUserFromApi() { //Pour le login
     }
 }
 
+function register(login, password) {
+    Headers('Access-Control-Allow-Origin: *');
+    //const salt = bcrypt.genSaltSync(10);
+    console.log('BTN APPUYE');
+    let salt = null;
+    
+
+    const user = { login: login, mdp: password, salt: salt }
+    console.log(user);
+    fetch('https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/JS/api_LoginRegister.js', {
+            method: 'POST',
+            body: new URLSearchParams({
+                login: user.login,
+                mdp: user.password,
+                salt: user.salt,
+            }),
+    });
+}
+
+
+
+
+
+
+//const mdpCrypte = bcrypt.hashSync(password, salt);  
+
+
+
+
 
 
 
@@ -44,8 +73,9 @@ loginForm.addEventListener('submit', async function (event) {
     let login = document.querySelector('#loginLog').value;
     let password = document.querySelector('#loginMdp').value;
 
-    // let passwordMatch = bcrypt.compareSync(password, MdpInBDD); //Fct avec une req BDD pour savoir si User OK
     await recupUserFromApi();
+
+    // let passwordMatch = bcrypt.compareSync(password, MdpInBDD); //Fct avec une req BDD pour savoir si User OK
 
     for (let i = 0; i < apiDataUsers.length; i++) {
         if (login == apiDataUsers[i].login && password == apiDataUsers[i].mdp) {
@@ -62,19 +92,25 @@ loginForm.addEventListener('submit', async function (event) {
 
 ///////////////////////// REGISTER /////////////////////////
 
-registerForm.addEventListener('submit', function (event) {
+registerForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-    //console.log("TTTTTTTTEST");
 
     let login = document.querySelector('#registerLog').value;
     let password = document.querySelector('#registerMdp').value;
     let passwordConfirm = document.querySelector('#registerMdpVerif').value;
 
-    //const salt = bcrypt.genSaltSync(10);
+    let mdpCorrecte = false;
+    let loginExiste = false;
 
-    //const mdpCrypte = bcrypt.hashSync(password, salt);  
+    if (password === passwordConfirm) mdpCorrecte = true;
 
-    //Appelle fct 
+    await recupUserFromApi();
+
+    for (let i = 0; i < apiDataUsers.length; i++) {
+        if (login == apiDataUsers[i].login) loginExiste = true;
+    }
+    if (mdpCorrecte && !loginExiste) register(login, password);
+    
 });
 
 

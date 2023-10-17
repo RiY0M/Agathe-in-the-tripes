@@ -1,0 +1,1 @@
+Headers('Access-Control-Allow-Origin: *');

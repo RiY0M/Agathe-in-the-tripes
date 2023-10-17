@@ -105,3 +105,4 @@ registerForm.addEventListener('submit', async function (event) {
     if (mdpCorrecte) register(login, password);
     
 });
+//

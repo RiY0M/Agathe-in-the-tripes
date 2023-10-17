@@ -53,9 +53,6 @@ function supprCompteAvantDeReco(){
     }
 }
 
-
-
-
 ///////////////////////// LOGIN /////////////////////////
 
 loginForm.addEventListener('submit', async function (event) {
@@ -105,17 +102,6 @@ registerForm.addEventListener('submit', async function (event) {
     let mdpCorrecte = false;
 
     if (password === passwordConfirm) mdpCorrecte = true;
-
     if (mdpCorrecte) register(login, password);
     
-});
-
-///////////////////////// POP UP /////////////////////////
-let btnEnCroix = document.querySelector("#croix-log-regis");
-btnEnCroix.addEventListener("click", function () {
-    let divInBody = document.querySelectorAll("body>div");
-    divInBody.forEach((div) => div.style.visibility = "visible");
-
-    document.querySelector(".loginRegisterPopUp").style.visibility = "hidden";
-    document.querySelector("#deconnexion-player").style.visibility = "hidden";
 });

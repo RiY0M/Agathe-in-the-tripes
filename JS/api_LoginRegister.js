@@ -124,4 +124,3 @@ function queryAjoutUser(leLogin, leMdp, leSalt) {
         console.log(result);
     });
 }
-

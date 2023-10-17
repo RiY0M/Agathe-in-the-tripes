@@ -3,6 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
+    backgroundColor: "#FFFFFF",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -14,6 +15,7 @@ let config = {
 let agathe;         // agathe personnage
 let cursors;        // détection clavier
 let lastFrame = 0;  // last frame facing afk
+let trees;          // sprites arbres
 
 
 // création fenêtre phaser
@@ -24,14 +26,36 @@ function preload()
 {
     // chargement sprites agathe
     this.load.spritesheet("agathe", "../../img/assets/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
+
+    // chargement sprites arbres
+    this.load.image("tree-0", "../../img/assets/tree-0.png");
+    this.load.image("tree-1", "../../img/assets/tree-1.png");
+    this.load.image("tree-2", "../../img/assets/tree-2.png");
+    this.load.image("tree-3", "../../img/assets/tree-3.png");
 }
 
 function create()
 {
+    //~ AGATHE ~//
+
     // ajout d'agathe à la fenêtre
     agathe = this.physics.add.sprite(400, 300, "agathe");
     // on définit les collisions avec la bordure
     agathe.setCollideWorldBounds(true);
+
+
+    //* SPRITES ARBRES *//
+
+    // groupement d'arbres
+    trees = this.physics.add.group();
+
+	for (var i = 0; i < 800; i += 50)
+    {
+		var x = Phaser.Math.RND.between(0, 50);
+        var y = Phaser.Math.RND.between(0, 10);
+
+		trees.create(i + x, 550 + y, "tree-" + Phaser.Math.RND.between(0, 3));
+	}
 
     
     // détection du clavier

@@ -51,7 +51,7 @@ function create()
 
     // affichage bordure depuis (0;0)
     topBorder = this.physics.add.staticGroup();
-    topBorder.create(400, 35, "top-border");
+    topBorder.create(400, 70, "top-border");
 
 
     //* SPRITES ARBRES *//

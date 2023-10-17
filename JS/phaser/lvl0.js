@@ -87,20 +87,6 @@ function create()
     trees.create(675, 55, "tree-3");
 
 
-    //* SPRITES ARBRES BAS *//
-
-    // groupement d'arbres
-    trees = this.physics.add.group();
-
-	for (let i = 0; i < 800; i += 50)
-    {
-		let x = Phaser.Math.RND.between(0, 50);
-        let y = Phaser.Math.RND.between(0, 10);
-
-		trees.create(i + x, 550 + y, "tree-" + Phaser.Math.RND.between(0, 3));
-	}
-
-
     //* SPRITES CAILLOUX *//
 
     // groupement de cailloux
@@ -123,6 +109,20 @@ function create()
         .setOffset(5, 40);
     // on définit les collisions avec la bordure
     agathe.setCollideWorldBounds(true);
+
+
+    //* SPRITES ARBRES BAS *//
+
+    // groupement d'arbres
+    trees = this.physics.add.group();
+
+	for (let i = 0; i < 800; i += 50)
+    {
+		let x = Phaser.Math.RND.between(0, 50);
+        let y = Phaser.Math.RND.between(0, 10);
+
+		trees.create(i + x, 550 + y, "tree-" + Phaser.Math.RND.between(0, 3));
+	}
 
 
     // collisions
@@ -200,7 +200,7 @@ function update()
 {
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
-    if (cursors.left.isDown)
+    if (cursors.left.isDown && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-160);
@@ -210,7 +210,7 @@ function update()
         lastFrame = 4;
     }
 
-    else if (cursors.right.isDown)
+    else if (cursors.right.isDown && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(160);
@@ -220,7 +220,7 @@ function update()
         lastFrame = 8;
     }
 
-    else if (cursors.up.isDown)
+    else if (cursors.up.isDown && cursors.left.isUp && cursors.right.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-160);
@@ -228,9 +228,15 @@ function update()
         agathe.anims.play("up", true);
         // last frame facing afk
         lastFrame = 12;
+        
+        // si agathe rentre dans la grotte (y = coordonnées du point d'entrée)
+        if (agathe.y == 64) {
+            // changement map
+            window.alert("Dans la grotte !");
+        }
     }
 
-    else if (cursors.down.isDown)
+    else if (cursors.down.isDown && cursors.left.isUp && cursors.right.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(160);

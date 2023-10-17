@@ -200,7 +200,7 @@ function update()
 {
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
-    if (cursors.left.isDown && cursors.up.isUp && cursors.down.isUp)
+    if (cursors.left.isDown && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-160);
@@ -210,7 +210,7 @@ function update()
         lastFrame = 4;
     }
 
-    else if (cursors.right.isDown && cursors.up.isUp && cursors.down.isUp)
+    else if (cursors.right.isDown && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(160);
@@ -220,7 +220,7 @@ function update()
         lastFrame = 8;
     }
 
-    else if (cursors.up.isDown && cursors.left.isUp && cursors.right.isUp)
+    else if (cursors.up.isDown && cursors.down.isUp && cursors.left.isUp && cursors.right.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-160);
@@ -236,7 +236,7 @@ function update()
         }
     }
 
-    else if (cursors.down.isDown && cursors.left.isUp && cursors.right.isUp)
+    else if (cursors.down.isDown && cursors.up.isUp && cursors.left.isUp && cursors.right.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(160);

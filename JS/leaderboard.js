@@ -3,7 +3,8 @@
 //^ Data from the api
 let apiData;
 
-await fetch("http://localhost:5500/api/leaderboard")
+// http://localhost:5500/api/leaderboard
+await fetch("https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/getLeaderboard.php")
 .then(reponse => reponse.json())
 .then(realData => apiData = realData)
 .catch(error => console.error("Error : " + error));

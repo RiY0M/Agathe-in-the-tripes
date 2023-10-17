@@ -16,6 +16,8 @@ let agathe;         // agathe personnage
 let cursors;        // détection clavier
 let lastFrame = 0;  // last frame facing afk
 let trees;          // sprites arbres
+let rocks;          // sprites cailloux
+let topBorder;      // bordure du haut
 
 
 // création fenêtre phaser
@@ -32,11 +34,41 @@ function preload()
     this.load.image("tree-1", "../../img/assets/tree-1.png");
     this.load.image("tree-2", "../../img/assets/tree-2.png");
     this.load.image("tree-3", "../../img/assets/tree-3.png");
+
+    // chargement sprites cailloux
+    this.load.image("rock-0", "../../img/assets/rock-0.png");
+    this.load.image("rock-1", "../../img/assets/rock-1.png");
+    this.load.image("rock-2", "../../img/assets/rock-2.png");
+    this.load.image("rock-3", "../../img/assets/rock-3.png");
+
+    // chargement bordure du haut
+    this.load.image("top-border", "../../img/assets/top-border.png");
 }
 
 function create()
 {
-    //~ AGATHE ~//
+    //* SPRITE BORDURE DU HAUT *//
+
+    // affichage bordure depuis (0;0)
+    topBorder = this.physics.add.staticGroup();
+    topBorder.create(400, 35, "top-border");
+
+
+    //* SPRITES ARBRES *//
+
+    // groupement d'arbres
+    trees = this.physics.add.group();
+
+	for (let i = 0; i < 800; i += 50)
+    {
+		let x = Phaser.Math.RND.between(0, 50);
+        let y = Phaser.Math.RND.between(0, 10);
+
+		trees.create(i + x, 50 + y, "tree-" + Phaser.Math.RND.between(0, 3));
+	}
+
+
+    //~ SPRITE AGATHE ~//
 
     // ajout d'agathe à la fenêtre
     agathe = this.physics.add.sprite(400, 300, "agathe");
@@ -49,14 +81,32 @@ function create()
     // groupement d'arbres
     trees = this.physics.add.group();
 
-	for (var i = 0; i < 800; i += 50)
+	for (let i = 0; i < 800; i += 50)
     {
-		var x = Phaser.Math.RND.between(0, 50);
-        var y = Phaser.Math.RND.between(0, 10);
+		let x = Phaser.Math.RND.between(0, 50);
+        let y = Phaser.Math.RND.between(0, 10);
 
 		trees.create(i + x, 550 + y, "tree-" + Phaser.Math.RND.between(0, 3));
 	}
 
+
+    //* SPRITES CAILLOUX *//
+
+    // groupement de cailloux
+    rocks = this.physics.add.staticGroup();
+
+	for (let i = 0; i < 20; i++)
+    {
+		let x = Phaser.Math.RND.between(50, 750);
+        let y = Phaser.Math.RND.between(100, 500);
+
+		rocks.create(x, y, "rock-" + Phaser.Math.RND.between(0, 3));
+	}
+
+
+    // collisions
+    this.physics.add.collider(agathe, rocks);
+    this.physics.add.collider(agathe, topBorder);
     
     // détection du clavier
     cursors = this.input.keyboard.createCursorKeys();

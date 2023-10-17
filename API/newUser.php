@@ -1,7 +1,6 @@
 <?php declare(strict_types=1);
 
-require_once '../API/connexionBDD.php';
-require_once 'header.php';
+require_once "./connexionBDD.php";
 
 
 function get_random_chaine(): string {

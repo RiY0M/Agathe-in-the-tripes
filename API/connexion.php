@@ -1,6 +1,5 @@
 <?php
-    require_once '../API/connexionBDD.php';
-    require_once 'header.php';
+    require_once "./connexionBDD.php";
 
 $json = [];
 $query = "

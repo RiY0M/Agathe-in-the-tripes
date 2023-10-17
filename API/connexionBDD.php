@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+header('Access-Control-Allow-Origin: *'); // évite les erreurs cors en désactivant toutes les sécurités
+
 $db_config['SGBD'] = 'mysql';
 $db_config['HOST'] = 'devbdd.iutmetz.univ-lorraine.fr';
 $db_config['DB_NAME'] = 'ponzo1u_sae501';

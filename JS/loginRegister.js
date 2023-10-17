@@ -60,35 +60,34 @@ function supprCompteAvantDeReco(){
 
 loginForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-    console.log("jirejguirjgiotfjgbiotfjg");
+    //console.log("LOGIN FORM");
 
-    let login = document.querySelector('#loginLog').value;
-    let password = document.querySelector('#loginMdp').value;
+    let loginLog = document.querySelector('#loginLog').value;
+    let passwordLog = document.querySelector('#loginMdp').value;
 
     const reponse = await fetch(
         "https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/connexion.php", {
             method: "POST",
             body: new URLSearchParams({
-                login: login,
-                mdp: password,
+                login: loginLog,
+                mdp: passwordLog,
             }),
         }
     );
 
     const data = await reponse.json();
-    console.log("M : ", data.message);
-    console.log("Data : ", data);
+    // console.log("M : ", data.message);
+    // console.log("Data : ", data);
+    // console.log("Succes : ", data.status);
 
-    if (data.status === "success") {
+    if (data.status === "success" || data.message ==="Connexion réussie") {
         supprCompteAvantDeReco();
-        let date_expiration = new Date();
+
+        let date_expiration = new Date();   //Créer un cookie avec le login de l'utilisateur en parametre. Celui ci expire au bout de 1h
         date_expiration.setTime(date_expiration.getTime() + (1 * 60 * 60 * 1000));
+        document.cookie = "login=" + loginLog + ";expires=" + date_expiration.toUTCString() + ";path=/";
 
-        // console.log("User :",data.login);
-
-        document.cookie = "login=" + login + ";expires=" + date_expiration.toUTCString() + ";path=/";
-
-        // console.log("Cookie : ", document.cookie);
+        //console.log("Cookie : ", document.cookie);
         return;
     }
 

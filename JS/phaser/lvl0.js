@@ -18,6 +18,7 @@ let lastFrame = 0;  // last frame facing afk
 let trees;          // sprites arbres
 let rocks;          // sprites cailloux
 let topBorder;      // bordure du haut
+let cave;           // sprite grotte
 
 
 // création fenêtre phaser
@@ -43,6 +44,9 @@ function preload()
 
     // chargement bordure du haut
     this.load.image("top-border", "../../img/assets/top-border.png");
+
+    // chargement de la grotte
+    this.load.image("cave", "../../img/assets/cave.png");
 }
 
 function create()
@@ -51,15 +55,22 @@ function create()
 
     // affichage bordure depuis (0;0)
     topBorder = this.physics.add.staticGroup();
-    topBorder.create(400, 70, "top-border");
+    topBorder.create(350, 70, "top-border");
 
 
-    //* SPRITES ARBRES *//
+    //* SPRITE GROTTE *//
+
+    // affichage grotte en haut à droite
+    cave = this.physics.add.staticGroup();
+    cave.create(728, 50, "cave");
+
+
+    //* SPRITES ARBRES HAUT *//
 
     // groupement d'arbres
     trees = this.physics.add.group();
 
-	for (let i = 0; i < 800; i += 50)
+	for (let i = 0; i < 650; i += 50)
     {
 		let x = Phaser.Math.RND.between(0, 50);
         let y = Phaser.Math.RND.between(0, 10);
@@ -67,8 +78,11 @@ function create()
 		trees.create(i + x, 50 + y, "tree-" + Phaser.Math.RND.between(0, 3));
 	}
 
+    // arbre cacher gauche grotte
+    trees.create(675, 55, "tree-3");
 
-    //* SPRITES ARBRES *//
+
+    //* SPRITES ARBRES BAS *//
 
     // groupement d'arbres
     trees = this.physics.add.group();
@@ -99,8 +113,8 @@ function create()
     //~ SPRITE AGATHE ~//
 
     // ajout d'agathe à la fenêtre
-    agathe = this.physics.add.sprite(400, 300, "agathe")
-        .setSize(21, 20)
+    agathe = this.physics.add.sprite(10, 300, "agathe")
+        .setSize(21, 8)
         .setOffset(5, 40);
     // on définit les collisions avec la bordure
     agathe.setCollideWorldBounds(true);

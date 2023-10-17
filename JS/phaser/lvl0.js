@@ -68,14 +68,6 @@ function create()
 	}
 
 
-    //~ SPRITE AGATHE ~//
-
-    // ajout d'agathe à la fenêtre
-    agathe = this.physics.add.sprite(400, 300, "agathe");
-    // on définit les collisions avec la bordure
-    agathe.setCollideWorldBounds(true);
-
-
     //* SPRITES ARBRES *//
 
     // groupement d'arbres
@@ -102,6 +94,16 @@ function create()
 
 		rocks.create(x, y, "rock-" + Phaser.Math.RND.between(0, 3));
 	}
+
+
+    //~ SPRITE AGATHE ~//
+
+    // ajout d'agathe à la fenêtre
+    agathe = this.physics.add.sprite(400, 300, "agathe")
+        .setSize(21, 20)
+        .setOffset(5, 40);
+    // on définit les collisions avec la bordure
+    agathe.setCollideWorldBounds(true);
 
 
     // collisions

@@ -43,7 +43,9 @@ function preload()
     this.load.image("rock-3", "../../img/assets/rock-3.png");
 
     // chargement bordure du haut
-    this.load.image("top-border", "../../img/assets/top-border.png");
+    this.load.image("border-0", "../../img/assets/border-0.png");
+    this.load.image("border-1", "../../img/assets/border-1.png");
+    this.load.image("border-2", "../../img/assets/border-2.png");
 
     // chargement de la grotte
     this.load.image("cave", "../../img/assets/cave.png");
@@ -55,7 +57,10 @@ function create()
 
     // affichage bordure depuis (0;0)
     topBorder = this.physics.add.staticGroup();
-    topBorder.create(350, 70, "top-border");
+    // bordures permettant d'accéder uniquement à la grotte
+    topBorder.create(325, 70, "border-0");
+    topBorder.create(800, 70, "border-1");
+    topBorder.create(750, 45, "border-2");
 
 
     //* SPRITE GROTTE *//

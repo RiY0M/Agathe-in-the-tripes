@@ -14,7 +14,7 @@ let config = {
 
 let agathe;         // agathe personnage
 let cursors;        // détection clavier
-let lastFrame = 0;  // last frame facing afk
+let lastFrame = 8;  // last frame facing afk
 let trees;          // sprites arbres
 let rocks;          // sprites cailloux
 let topBorder;      // bordure du haut
@@ -92,13 +92,20 @@ function create()
     // groupement de cailloux
     rocks = this.physics.add.staticGroup();
 
-	for (let i = 0; i < 20; i++)
-    {
-		let x = Phaser.Math.RND.between(50, 750);
-        let y = Phaser.Math.RND.between(100, 500);
-
-		rocks.create(x, y, "rock-" + Phaser.Math.RND.between(0, 3));
-	}
+    // grossses pierres
+    rocks.create(50, 150, "rock-3");
+    rocks.create(75, 350, "rock-3");
+    rocks.create(100, 200, "rock-3");
+    rocks.create(30, 500, "rock-3");
+    rocks.create(270, 500, "rock-3");
+    rocks.create(320, 425, "rock-3");
+    rocks.create(270, 125, "rock-3");
+    rocks.create(430, 290, "rock-3");
+    rocks.create(465, 215, "rock-3");
+    rocks.create(600, 455, "rock-3");
+    rocks.create(740, 400, "rock-3");
+    rocks.create(695, 335, "rock-3");
+    rocks.create(650, 145, "rock-3");
 
 
     //~ SPRITE AGATHE ~//
@@ -198,8 +205,10 @@ function create()
 
 function update()
 {
+    console.log(agathe.x, agathe.y);
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
+    /* GAUCHE */
     if (cursors.left.isDown && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
@@ -210,6 +219,7 @@ function update()
         lastFrame = 4;
     }
 
+    /* DROITE */
     else if (cursors.right.isDown && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
@@ -220,6 +230,7 @@ function update()
         lastFrame = 8;
     }
 
+    /* HAUT */
     else if (cursors.up.isDown && cursors.down.isUp && cursors.left.isUp && cursors.right.isUp)
     {
         // vitesse et direction du déplacement
@@ -236,6 +247,7 @@ function update()
         }
     }
 
+    /* BAS */
     else if (cursors.down.isDown && cursors.up.isUp && cursors.left.isUp && cursors.right.isUp)
     {
         // vitesse et direction du déplacement
@@ -246,6 +258,7 @@ function update()
         lastFrame = 0;
     }
 
+    /* AFK */
     else
     {
         // si aucune touche du clavier n'est appuyée : on arrête agathe

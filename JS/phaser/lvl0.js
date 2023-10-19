@@ -107,6 +107,34 @@ function create()
     rocks.create(695, 335, "rock-3");
     rocks.create(650, 145, "rock-3");
 
+    // double-pierre
+    rocks.create(65, 190, "rock-2");
+    rocks.create(115, 370, "rock-2");
+    rocks.create(670, 300, "rock-2");
+    rocks.create(690, 150, "rock-2");
+
+    // cailloux pointu neige
+    rocks.create(230, 110, "rock-0");
+    rocks.create(115, 440, "rock-0");
+    rocks.create(430, 195, "rock-0");
+    rocks.create(285, 235, "rock-0");
+    rocks.create(310, 255, "rock-0");
+    rocks.create(315, 500, "rock-0");
+    rocks.create(785, 95, "rock-0");
+    rocks.create(550, 425, "rock-0");
+
+    // petit cailloux
+    rocks.create(115, 345, "rock-1");
+    rocks.create(285, 275, "rock-1");
+    rocks.create(230, 135, "rock-1");
+    rocks.create(160, 310, "rock-1");
+    rocks.create(400, 415, "rock-1");
+    rocks.create(565, 445, "rock-1");
+    rocks.create(535, 460, "rock-1");
+    rocks.create(775, 115, "rock-1");
+    rocks.create(660, 325, "rock-1");
+    rocks.create(350, 445, "rock-1");
+
 
     //~ SPRITE AGATHE ~//
 
@@ -116,6 +144,15 @@ function create()
         .setOffset(5, 40);
     // on définit les collisions avec la bordure
     agathe.setCollideWorldBounds(true);
+
+
+    //* SPRITES ARBRES MIDDLE *//
+
+    trees.create(310, 190, "tree-" + Phaser.Math.RND.between(0, 3));
+    trees.create(105, 290, "tree-" + Phaser.Math.RND.between(0, 3));
+    trees.create(575, 390, "tree-" + Phaser.Math.RND.between(0, 3));
+    trees.create(725, 320, "tree-" + Phaser.Math.RND.between(0, 3));
+    trees.create(350, 385, "tree-" + Phaser.Math.RND.between(0, 3));
 
 
     //* SPRITES ARBRES BAS *//

@@ -19,6 +19,7 @@ let trees;          // sprites arbres
 let rocks;          // sprites cailloux
 let topBorder;      // bordure du haut
 let cave;           // sprite grotte
+let background;     // darkness bg
 
 
 // création fenêtre phaser
@@ -49,6 +50,9 @@ function preload()
 
     // chargement de la grotte
     this.load.image("cave", "../../img/assets/cave.png");
+
+    // chargement fond noir
+    this.load.image("darkness", "../../img/assets/darkness.png");
 }
 
 function create()
@@ -177,6 +181,13 @@ function create()
     cursors = this.input.keyboard.createCursorKeys();
 
 
+
+    //^ HALO LUMIERE AGATHE ^//
+
+    background = this.add.sprite(400, 300, "darkness").setAlpha(0.9);
+    background.setAlpha(0.3, 0.9, 0.3, 0.9)
+
+
     //^ ANIMATIONS AGATHE (SPRITES) ^//
 
     //? MOVING ?//
@@ -242,7 +253,6 @@ function create()
 
 function update()
 {
-    console.log(agathe.x, agathe.y);
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     /* GAUCHE */

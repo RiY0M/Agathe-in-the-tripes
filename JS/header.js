@@ -9,7 +9,7 @@ headerAccueil.textContent = "Accueil";
 // dashboard scores
 let dashboardScores = document.createElement("a");
 dashboardScores.id = "header-dashboard-button"
-dashboardScores.href = "";
+dashboardScores.href = "../HTML/leaderboard.html";
 dashboardScores.textContent = "Scores";
 
 // span vide de délimitation

@@ -32,7 +32,7 @@ function register(login, password) {
                     let date_expiration = new Date();
                     date_expiration.setTime(date_expiration.getTime() + (1 * 60 * 60 * 1000));
                     document.cookie = "login=" + login + ";expires=" + date_expiration.toUTCString() + ";path=/";
-
+                    window.location.href = "index.html";
                     return;
                 }));
             }
@@ -88,6 +88,7 @@ loginForm.addEventListener('submit', async function (event) {
         document.cookie = "login=" + loginLog + ";expires=" + date_expiration.toUTCString() + ";path=/";
 
         //console.log("Cookie : ", document.cookie);
+        window.location.href = "index.html";
         return;
     }
     messageErreur(data.message, msgErreurLog);

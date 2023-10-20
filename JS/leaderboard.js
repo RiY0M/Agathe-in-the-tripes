@@ -6,8 +6,10 @@ let apiData;
 // http://localhost:5500/api/leaderboard
 await fetch("https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/getLeaderboard.php")
 .then(reponse => reponse.json())
-.then(realData => apiData = realData)
+.then(realData => apiData = realData.data)
 .catch(error => console.error("Error : " + error));
+
+console.log(apiData)
 
 //^ Tag to modify with the data
 const titreNiv = document.getElementById("titre-niv");
@@ -70,7 +72,7 @@ function changeAffichage(valueToChange) {
         const name = tr.getElementsByClassName("name")[0];
         const time = tr.getElementsByClassName("time")[0];
 
-        number.innerHTML = value["num"];
+        number.innerHTML = value["num"] + ":";
         name.innerHTML = value["name"];
         time.innerHTML = value["complete_time"];
     }

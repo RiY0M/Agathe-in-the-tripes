@@ -4,13 +4,14 @@ require_once "./connexionBDD.php";
 
 function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
 
-    $query = "SET @row_number = 0;
+    $query =
+    "SET @row_number = 0;
 
     DROP TABLE IF EXISTS TAB;
     CREATE TEMPORARY TABLE TAB AS
 
     SELECT @row_number:=@row_number+1 AS num,
-    login,
+    login AS name,
     LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), '%i:%s:%f'), 9) AS complete_time
     FROM SCORES S
     INNER JOIN GAMES G ON S.game_id = G.id
@@ -20,37 +21,49 @@ function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
 
     $res = $db->query($query);
 
-    $query = "SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
+    $query =
+    "SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
     UNION ALL
-    SELECT * FROM (SELECT * FROM TAB WHERE login = :login LIMIT 0,1) AS TAB2";
+    SELECT * FROM (SELECT * FROM TAB WHERE name = :login LIMIT 0,1) AS TAB2";
 
     $res = $db->prepare($query);
     $res->bindParam(":login", $login, PDO::PARAM_STR);
     $res->execute();
 
-    print_r($res);
+    // print_r($res);
     // print_r($res->errorInfo());
-    $r = [];
-    $i = 0;
+    // $r = [];
+    // $i = 0;
     
-    while($data = $res->fetch(PDO::FETCH_ASSOC)) {
-        $i++;
-        $r[] = $data;
-    }
-    echo "<br>$i<br>";
+    // while($data = $res->fetch(PDO::FETCH_ASSOC)) {
+    //     $i++;
+    //     $r[] = $data;
+    // }
+    // echo "<br>$i<br>";
 
-    return $r;
+    // return $r;
 
-    // $data = $res->fetchAll(PDO::FETCH_ASSOC);
+    $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
-    // return $data;
+    return $data;
 }
+
+function queryLevels(PDO $db): array {
+
+    $query = "SELECT * FROM LEVELS";
+
+    $res = $db->prepare($query);
+    $res->execute();
+
+    return $res->fetchAll(PDO::FETCH_ASSOC);
+} 
 
 $login = $_SESSION["login"] ?? "";
 
 $json = [];
 try {
     $json["data"] = [
+        "levels" => queryLevels($db),
         "niv7" => queryBasic($db, "S.level_id = 7", $login),
         "niv0" => queryBasic($db, "S.level_id = 0", $login),
         "niv1" => queryBasic($db, "S.level_id = 1", $login),

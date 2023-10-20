@@ -4,7 +4,7 @@ require_once "./connexionBDD.php";
 
 function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
 
-    $query = "SELECT 1; SET @row_number = 0;
+    $query = "SET @row_number = 0;
 
     DROP TABLE IF EXISTS TAB;
     CREATE TEMPORARY TABLE TAB AS
@@ -16,9 +16,11 @@ function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
     INNER JOIN GAMES G ON S.game_id = G.id
     INNER JOIN USERS U ON G.user_id = U.id
     WHERE $whereClause
-    ORDER BY complete_time ASC;
+    ORDER BY complete_time ASC;";
 
-    SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
+    $res = $db->query($query);
+
+    $query = "SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
     UNION ALL
     SELECT * FROM (SELECT * FROM TAB WHERE login = :login LIMIT 0,1) AS TAB2";
 

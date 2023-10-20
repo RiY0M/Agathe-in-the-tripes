@@ -20,7 +20,7 @@ try{
     }
     else{
         $json["status"] = "failed";
-        $json["message"] = "Mauvais mot de passe";
+        $json["message"] = "Pseudo ou mot de passe incorrect";
     }
 }
 catch(Exception $exception){

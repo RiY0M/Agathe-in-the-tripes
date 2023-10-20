@@ -1,5 +1,7 @@
 var loginForm = document.getElementById('loginFormulaire');
 var registerForm = document.getElementById('registerFormulaire');
+let msgErreurLog = document.querySelector("#loginSpanErreur");
+let msgErreurReg = document.querySelector("#RegisterSpanErreur");
 
 //fonction register
 function register(login, password) {
@@ -34,6 +36,7 @@ function register(login, password) {
                     return;
                 }));
             }
+            messageErreur(data.message, msgErreurReg);
         })
 };
 
@@ -87,6 +90,7 @@ loginForm.addEventListener('submit', async function (event) {
         //console.log("Cookie : ", document.cookie);
         return;
     }
+    messageErreur(data.message, msgErreurLog);
 
 });
 
@@ -99,10 +103,15 @@ registerForm.addEventListener('submit', async function (event) {
     let password = document.querySelector('#registerMdp').value;
     let passwordConfirm = document.querySelector('#registerMdpVerif').value;
 
-    let mdpCorrecte = false;
-
-    if (password === passwordConfirm) mdpCorrecte = true;
-    if (mdpCorrecte) register(login, password);
+    if (password === passwordConfirm) register(login, password);
+    else messageErreur("Les mots de passes ne correspondent pas", msgErreurReg);
     
 });
-//
+
+function messageErreur(msg, msgErreur) {
+    msgErreur.style.color = "red";
+    msgErreur.innerHTML = msg;
+    setTimeout(() => {
+        msgErreur.innerHTML = "";
+    }, 7000);
+}

@@ -40,7 +40,7 @@ try {
     $json["message"] = "Insertion réussie";
 
 } catch(Exception $exception) {
-    $json["status"] = "error";
+    $json["status"] = "Choisissez un autre pseudo";
     $json["message"] = $exception->getMessage();
 }
 

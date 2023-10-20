@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
+
+
+body {
+    background-color: #36393e;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+#game-canvas {
+    /* border: 1px dashed red; */
+
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    margin-top: 4rem;
+}
+
+
+#main-grid-column {
+    /* border: dotted red 2px; */
+
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+}
+
+
+#game-name {
+    /* border: 2px dotted yellow; */
+
+    font-size: 3rem;
+    text-align: left;
+}
+
+
+#game-name h1 {
+    margin-left: 5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    text-shadow: 5px 5px #1e2124;
+}
+
+
+#game-buttons {
+    /* border: 2px dotted blue; */
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#game-buttons input {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 35rem;
+
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 2px 2px #1e2124;
+
+    background-color: #282b30;
+
+    border-left: 7px solid #36393e;
+    border-top: 7px solid #36393e;
+    box-shadow: 7px 7px #1e2124;
+
+    border-right: transparent;
+    border-bottom: transparent;
+}
+
+#game-buttons input:hover {
+    
+    color: rgb(149, 2, 2);
+}
+
+#game-buttons input:active {
+    
+    border-left: 9px solid #36393e;
+    border-top: 9px solid #36393e;
+    box-shadow: 5px 5px #1e2124;
+}
+
+
+header {
+    /* border: 1px dashed green; */
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    
+    vertical-align: baseline;
+
+    background-color:  #282b30;   
+    border-bottom: 2px solid #1e2124;
+
+    display: grid;
+    grid-template-columns: 10fr 10fr 60fr 20fr;
+}
+
+#header-accueil-button {
+    /* border: 1px dashed yellow; */
+
+    width: 50%;
+}
+
+#header-dashboard-button {
+    /* border: 1px dashed pink; */
+
+    margin-left: -3rem;
+    width: 50%;
+}
+
+#header-player-name {
+    /* border: 1px dashed cyan; */
+
+    text-align: right;
+    margin-right: 5rem;
+}
+
+#header-agathe-img {
+    /* border: 1px dashed greenyellow; */
+
+    height: 50px;
+
+    position: absolute;
+    top: 0.25rem;
+    right: 3rem;
+}
+
+header > a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+header > a:hover, #header-player-name:hover {
+    color: rgb(149, 2, 2);
+    cursor: pointer;
+}
+
+
+footer {
+    /* border: 1px dashed green; */
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+    
+    text-align: center;
+    font-family: monospace;
+
+    border-top: 2px solid #282b30;    
+    background-color: #36393e;
+}
+
+.bahaha-studio {
+    font-family: 'Rubik', sans-serif;
+}

@@ -21,6 +21,8 @@ let topBorder;      // bordure du haut
 let cave;           // sprite grotte
 let background;     // darkness bg
 
+let hole = document.querySelector(".hole");
+
 
 // création fenêtre phaser
 let game = new Phaser.Game(config);
@@ -181,13 +183,6 @@ function create()
     cursors = this.input.keyboard.createCursorKeys();
 
 
-
-    //^ HALO LUMIERE AGATHE ^//
-
-    background = this.add.sprite(400, 300, "darkness").setAlpha(0.9);
-    background.setAlpha(0.3, 0.9, 0.3, 0.9)
-
-
     //^ ANIMATIONS AGATHE (SPRITES) ^//
 
     //? MOVING ?//
@@ -314,4 +309,12 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
+
+    // innerWidth = taille écran disponible
+    // on divise par 2 pour avoir le milieu
+    // on retire 60 pour être au centre du cercle de 120px
+    // on ajoute les coordonnées de agathe qui varient de 0 à 800
+    // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
+    hole.style.left = window.innerWidth/2 - 60 + (agathe.x - 400) + "px";
+    hole.style.top = agathe.y + "px";
 }

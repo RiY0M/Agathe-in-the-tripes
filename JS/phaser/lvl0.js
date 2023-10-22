@@ -19,7 +19,6 @@ let trees;          // sprites arbres
 let rocks;          // sprites cailloux
 let topBorder;      // bordure du haut
 let cave;           // sprite grotte
-let background;     // darkness bg
 
 let hole = document.querySelector(".hole");
 
@@ -52,9 +51,6 @@ function preload()
 
     // chargement de la grotte
     this.load.image("cave", "../../img/assets/cave.png");
-
-    // chargement fond noir
-    this.load.image("darkness", "../../img/assets/darkness.png");
 }
 
 function create()

@@ -32,6 +32,10 @@ function preload()
     // chargement sprites agathe
     this.load.spritesheet("agathe", "../../img/assets/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
+    // chargement particules neige
+    this.load.image("white-snowflake", "../../img/assets/white-snowflake.png");
+    this.load.image("blue-snowflake", "../../img/assets/blue-snowflake.png");
+
     // chargement sprites arbres
     this.load.image("tree-0", "../../img/assets/tree-0.png");
     this.load.image("tree-1", "../../img/assets/tree-1.png");
@@ -171,11 +175,66 @@ function create()
 	}
 
 
-    // collisions
+    //* PARTICULES DE NEIGE *//
+
+    // BLANCHES
+    const whiteParticles = this.add.particles("white-snowflake");
+    whiteParticles.createEmitter({
+
+        // zone émission
+        emitZone: {
+            source: new Phaser.Geom.Line(0, 0, 800, 0),
+            type: "random",
+            quantity: 150
+        },
+
+        // vitesse
+        speedX: {min: -20, max: 20},
+        speedY: {min: 40, max: 70},
+        accelerationY: {random: [10, 15]},
+
+        // durée de vie
+        lifespan: {min: 8000, max: 10000},
+
+        // taille
+        scale: {random: [0.1, 0.5]},
+
+        gravityY: 10,
+        frequency: 30,
+    });
+
+    // BLEUES
+    const blueParticles = this.add.particles("blue-snowflake");
+    blueParticles.createEmitter({
+
+        // zone émission
+        emitZone: {
+            source: new Phaser.Geom.Line(0, 0, 800, 0),
+            type: "random",
+            quantity: 50
+        },
+
+        // vitesse
+        speedX: {min: -20, max: 20},
+        speedY: {min: 40, max: 60},
+        accelerationY: {random: [10, 15]},
+
+        // durée de vie
+        lifespan: {min: 8000, max: 10000},
+
+        // taille
+        scale: {random: [0.1, 0.5]},
+
+        gravityY: 10,
+        frequency: 10,
+    });
+
+
+    //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks);
     this.physics.add.collider(agathe, topBorder);
     
-    // détection du clavier
+    //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
 
 

@@ -32,7 +32,7 @@ const btnLabels = {
     7: "Total"
 };
 
-const gameButtons = document.getElementById("game-buttons");
+const gameButtons = document.getElementById("leaderboard-buttons");
 let buttons = [];
 
 for(let key in btnLabels) {

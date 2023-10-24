@@ -12,13 +12,17 @@ let config = {
     }
 };
 
-let agathe;         // agathe personnage
-let cursors;        // détection clavier
-let lastFrame = 8;  // last frame facing afk
-let trees;          // sprites arbres
-let rocks;          // sprites cailloux
-let topBorder;      // bordure du haut
-let cave;           // sprite grotte
+let agathe;                 // agathe personnage
+let cursors;                // détection clavier
+let lastFrame = 8;          // last frame facing afk
+let trees;                  // sprites arbres
+let rocks;                  // sprites cailloux
+let topBorder;              // bordure du haut
+let cave;                   // sprite grotte
+let hasLight = false;       // taille halo en fonction lampe ou pas
+let lamp;                   // lampe
+let holeRadius = 60;        // rayon du halo de lumière
+let holeDiffHeight = 0;     // décalage du halo si lampe
 
 let hole = document.querySelector(".hole");
 
@@ -55,6 +59,9 @@ function preload()
 
     // chargement de la grotte
     this.load.image("cave", "../../img/assets/cave.png");
+
+    // chargement de la lampe
+    this.load.image("lampe", "../../img/assets/lamp.png");
 }
 
 function create()
@@ -91,6 +98,15 @@ function create()
 
     // arbre cacher gauche grotte
     trees.create(675, 55, "tree-3");
+
+
+    //* SPRITE LAMPE *//
+
+    lamp = this.physics.add.group({
+        key: "lampe",
+        repeat: 0,
+        setXY: {x: 90, y: 155}
+    })
 
 
     //* SPRITES CAILLOUX *//
@@ -233,6 +249,10 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks);
     this.physics.add.collider(agathe, topBorder);
+
+    //! ACTION RECUP LAMPE !//
+    this.physics.add.overlap(agathe, lamp, collectLamp, null, this);
+
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -367,9 +387,23 @@ function update()
 
     // innerWidth = taille écran disponible
     // on divise par 2 pour avoir le milieu
-    // on retire 60 pour être au centre du cercle de 120px
+    // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
     // on ajoute les coordonnées de agathe qui varient de 0 à 800
     // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-    hole.style.left = window.innerWidth/2 - 60 + (agathe.x - 400) + "px";
-    hole.style.top = agathe.y + "px";
+    hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
+    hole.style.top = agathe.y - holeDiffHeight + "px";
+}
+
+
+
+function collectLamp(agathe, lamp) {
+
+    // suppression de la lampe
+    lamp.disableBody(true, true);
+
+    // changement taille cercle de lampe
+    holeRadius = 100;
+    holeDiffHeight = 25;
+    hole.style.width = "200px";
+    hole.style.height = "200px";
 }

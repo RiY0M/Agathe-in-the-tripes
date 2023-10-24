@@ -1,0 +1,64 @@
+#deconnexion-title {
+    text-align: center;
+}
+
+
+#croix-pop-up-new-game {
+    width: 7%;
+    top: 4%;
+    left: 94%;
+    height: 3%;
+}
+
+
+#pop-up-new-game {
+    /* border: 1px dashed crimson; */
+
+    background-color: #282b30;
+    box-shadow: 10px 10px 10px #1e2124;
+
+    position: absolute;
+    top: 35%;
+    left: 35%;
+
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+
+#pop-up-new-game-subtitle {
+    margin-bottom: 2rem;
+}
+
+#pop-up-new-game-title, #pop-up-new-game-subtitle {
+    text-align: center;
+}
+
+
+#pop-up-new-game input {
+    background-color: #1e2124;
+    color: white;
+
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #282b30;
+}
+
+#pop-up-new-game input:hover {
+    color: rgb(149, 2, 2);
+}
+
+
+#pop-up-new-game-buttons {
+    
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    grid-gap: 1rem;
+}

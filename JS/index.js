@@ -1,6 +1,8 @@
+const cookieValue = document.cookie.split("; ").find((row) => row.startsWith("login="))?.split("=")[1]; // récupération de la valeur du cookie "login"
+
 // VARIABLES TEST
-let isConnected = false;
-let pseudo = "LLazry";
+let isConnected = cookieValue ? true : false;
+let pseudo = cookieValue ? cookieValue : "Invité";
 let alreadyAGame = true;
 
 
@@ -138,4 +140,19 @@ function ereaseBody() {
     // on masque tout ce qui se trouve dans le body pour ne laisser que le formulaire
     let divInBody = document.querySelectorAll("body>div");
     divInBody.forEach((div) => div.style.visibility = "hidden");
+}
+
+let btnDecoAgree = document.querySelector("#deconnexion-agree-button"); // bouton de confirmation de déconnexion
+
+btnDecoAgree.addEventListener("click", () => {
+    supprimeTousLesCookies();
+    window.location.href = "index.html";
+});
+
+//Fonction qui supprime tous les cookies existants
+function supprimeTousLesCookies() {
+    document.cookie.split(";").forEach(cookie => {
+        const [name] = cookie.split("=");
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    });
 }

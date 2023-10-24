@@ -20,11 +20,48 @@ body {
 }
 
 
+.tuto {
+    /* border: 1px dashed rgb(205, 14, 205) ; */
+    
+    position: absolute;
+    z-index: 1;
+
+    top: 45%;
+    left: 0;
+    text-align: center;
+    width: 100%;
+
+    font-size: 1.5rem;
+    
+    display: grid;
+    grid-template-columns: 40fr 1fr 40fr;
+    align-items: center;
+}
+
+.tuto #tuto-deplacement-left {
+    /* border: 1px dashed greenyellow; */
+    
+    text-align: right;
+}
+
+.tuto img {
+    /* border: 1px dashed white; */
+
+    margin: 1rem;
+}
+
+.tuto #tuto-deplacement-right {
+    /* border: 1px dashed orange; */
+
+    text-align: left;
+}
+
+
 .hole {
     position: absolute;
     width: 120px;
     height: 120px;
-    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .95);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, .95);
     border-radius: 100%;
   }
 

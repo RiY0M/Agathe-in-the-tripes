@@ -21,18 +21,24 @@ let topBorder;              // bordure du haut
 let cave;                   // sprite grotte
 let hasLight = false;       // taille halo en fonction lampe ou pas
 let lamp;                   // lampe
+let hole;                   // halo lumineux
 let holeRadius = 60;        // rayon du halo de lumière
 let holeDiffHeight = 0;     // décalage du halo si lampe
+let hasMoved = false;       // booleen verif si affi ou non tuto                  
+let tutoDeplacement;        // 
 
-let hole = document.querySelector(".hole");
 
-
-// création fenêtre phaser
+//$ CREATION FENETRE PHASER $//
 let game = new Phaser.Game(config);
 
 
 function preload()
 {
+    //$ ELEMENTS HTML $//
+    hole = document.querySelector(".hole");
+    tutoDeplacement = document.querySelector("#tuto-deplacement");
+
+
     // chargement sprites agathe
     this.load.spritesheet("agathe", "../../img/assets/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
@@ -334,6 +340,9 @@ function update()
         agathe.anims.play("left", true);
         // last frame facing afk
         lastFrame = 4;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
     }
 
     /* DROITE */
@@ -345,6 +354,9 @@ function update()
         agathe.anims.play("right", true);
         // last frame facing afk
         lastFrame = 8;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
     }
 
     /* HAUT */
@@ -362,6 +374,9 @@ function update()
             // changement map
             window.alert("Dans la grotte !");
         }
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
     }
 
     /* BAS */
@@ -373,6 +388,9 @@ function update()
         agathe.anims.play("down", true);
         // last frame facing afk
         lastFrame = 0;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
     }
 
     /* AFK */
@@ -392,6 +410,10 @@ function update()
     // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
     hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
     hole.style.top = agathe.y - holeDiffHeight + "px";
+
+
+    // on masque le message de tuto si on bouge
+    if (hasMoved) tutoDeplacement.style.visibility = "hidden";
 }
 
 

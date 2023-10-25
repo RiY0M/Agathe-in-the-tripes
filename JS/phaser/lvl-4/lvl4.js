@@ -15,3 +15,5 @@ let config = {
 let agathe;         // agathe personnage
 let cursors;        // détection clavier
 let lastFrame = 0;  // last frame facing afk
+
+let game = new Phaser.Game(config);

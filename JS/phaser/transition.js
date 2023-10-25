@@ -2,6 +2,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
+    backgroundColor: "#241F21",
     scene: {
         preload: preload,
         create: create,
@@ -10,19 +11,22 @@ let config = {
 };
 let agathe;
 let music;
+let img_fond;
 let size_chargement = 672;
 let Vitesse_de_Chargement = 0.002; 
 let game = new Phaser.Game(config);
 
 function preload() {
     this.load.spritesheet("agathe", "../../img/assets/TransitionAgathe.png", { frameWidth: 32, frameHeight: 48 });
-    this.load.image("Fond", "../../img/assets/TransitionBouche.png");
+    this.load.image("fond-img", "../../img/assets/TransitionBouche.png");
 
     this.load.audio('theme', ['../../sound/Lipps Inc - Funkytown.mp3','../../sound/Lipps-Inc-Funkytown.wav']);
 
 }
 
 function create() {
+    this.add.image(410, 295, 'fond-img').setScale(1.8);
+
     agathe = this.add.sprite(400, 300, "agathe"); //Sprite d'Agathe
     agathe.setScale(3);
     

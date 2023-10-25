@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#94251e",
+    backgroundColor: "#d64e45",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -25,9 +25,20 @@ function preload()
 
 function create()
 {
+    //* SPRITE LANGUE *//
+    createTongue(this);
+
+
     //~ SPRITE AGATHE ~//
     createAgathe(this);
 
+
+    //* SPRITE BORDURE DU HAUT *//
+    createTopBorder(this);
+
+
+    //! COLLISIONS !//
+    this.physics.add.collider(agathe, topBorder);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();

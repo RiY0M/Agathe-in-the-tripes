@@ -20,6 +20,13 @@ body {
     margin-top: 4rem;
 }
 
+.game-canvas-inside {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    margin-top: 4rem;
+}
+
 
 .tuto {
     /* border: 1px dashed rgb(205, 14, 205) ; */

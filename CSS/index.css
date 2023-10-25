@@ -2,7 +2,7 @@
 
 
 body {
-    background-color: black;
+    background-color: #36393e;
     color: white;
     font-family: 'Rubik', sans-serif;
     font-size: 1rem;
@@ -13,6 +13,7 @@ body {
 #game-canvas {
     /* border: 1px dashed red; */
 
+    background-color: black;
     width: 800px;
     height: 600px;
     margin: auto;

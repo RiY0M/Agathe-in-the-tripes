@@ -8,25 +8,29 @@ let config = {
         update: update
     }
 };
-
+let agathe;
+let music;
 let size_chargement = 672;
-let Vitesse_de_Chargement = 0.01; 
+let Vitesse_de_Chargement = 0.002; 
 let game = new Phaser.Game(config);
 
 function preload() {
-    this.load.spritesheet("agathe", "../../img/assets/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet("agathe", "../../img/assets/TransitionAgathe.png", { frameWidth: 32, frameHeight: 48 });
+    this.load.image("Fond", "../../img/assets/TransitionBouche.png");
+
+    this.load.audio('theme', ['../../sound/Lipps Inc - Funkytown.mp3','../../sound/Lipps-Inc-Funkytown.wav']);
+
 }
 
-let agathe;
 function create() {
     agathe = this.add.sprite(400, 300, "agathe"); //Sprite d'Agathe
-    agathe.setScale(5);
+    agathe.setScale(3);
     
     this.anims.create({ 
         key: "rotate",
         frames: this.anims.generateFrameNumbers("agathe", { start: 0, end: 15 }),
         frameRate: 14, // Ajustez la vitesse de rotation selon vos besoins
-        repeat: 3, //Repeter 3 fois
+        repeat: -1, //Repeter 3 fois
     });
 
     agathe.anims.play("rotate"); //Lancer l'animation
@@ -40,6 +44,8 @@ function create() {
         frames: [ { key: "agathe", frame: 0 } ],
         frameRate: 20
     });
+    music = this.sound.add("theme");
+    music.play();
 }
 
 function update (){
@@ -52,10 +58,11 @@ function update (){
 
 
     if (Vitesse_de_Chargement < 1) {
-        Vitesse_de_Chargement += 0.01; //Vitesse de chargement
+        Vitesse_de_Chargement += 0.002; //Vitesse de chargement
     }
     else{
         agathe.anims.play("afk-" + 0);
+        music.stop();
     }
     this.chargement.fillRect(64, 64, size_chargement * Vitesse_de_Chargement, 48); //Chargement de la barre
 }

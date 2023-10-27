@@ -25,6 +25,10 @@ function preload()
 
 function create()
 {
+    //* SPRITE MURE DE SANG *//
+    createFleshWall(this);
+
+    
     //* SPRITE LANGUE *//
     createTongue(this);
 
@@ -35,6 +39,10 @@ function create()
 
     //* SPRITE BORDURE DU HAUT *//
     createTopBorder(this);
+
+
+    //* SPRITES DENTS LANGUE *//
+    createTeethTongue(this);
 
 
     //! COLLISIONS !//

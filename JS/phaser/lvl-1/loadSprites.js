@@ -8,4 +8,10 @@ function loadImages(scene)
 
     // chargement bordure du haut
     scene.load.image("border", "../../../img/assets/border-0.png");
+
+    // chargement mur de sang
+    scene.load.image("flesh-wall", "../../../img/assets/flesh-wall.png");
+
+    // chargement dent
+    scene.load.image("tooth", "../../../img/assets/tooth.png");
 }

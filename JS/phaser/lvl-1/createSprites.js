@@ -26,3 +26,31 @@ function createTopBorder(scene)
     topBorder = scene.physics.add.staticGroup();
     topBorder.create(400, 0, "border").setAlpha(0);
 }
+
+
+//* SPRITE MURE DE SANG *//
+function createFleshWall(scene)
+{
+    // bordures permettant de ne pas sortir de la map (en haut)
+    fleshWall = scene.physics.add.staticGroup();
+
+    // gauche
+    fleshWall.create(215, 50, "flesh-wall").setScale(1.5).angle -= 90;
+    fleshWall.create(300, 360, "flesh-wall").setScale(1.5).angle -= 180;
+    fleshWall.create(215, 250, "flesh-wall").setScale(1.5).angle -= 90;
+
+    // droite
+    fleshWall.create(575, 50, "flesh-wall").setScale(1.5).angle += 90;
+    fleshWall.create(480, 300, "flesh-wall").setScale(1.5).angle += 180;
+    fleshWall.create(480, 360, "flesh-wall").setScale(1.5).angle += 180;
+    fleshWall.create(575, 250, "flesh-wall").setScale(1.5).angle += 90;
+}
+
+
+//* SPRITES DENTS LANGUE *//
+function createTeethTongue(scene)
+{
+    // dents autour de la langue
+    staticTeeth = scene.physics.add.staticGroup();
+    staticTeeth.create(550, 350, "tooth");
+}

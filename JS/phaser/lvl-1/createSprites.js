@@ -10,47 +10,61 @@ function createAgathe(scene)
 }
 
 
-//* SPRITE LANGUE *//
-function createTongue(scene)
-{
-    // affichage grotte en haut à droite
-    tongue = scene.physics.add.staticGroup();
-    tongue.create(396, 198, "tongue").setScale(2);
-}
-
-
-//* SPRITE BORDURE DU HAUT *//
-function createTopBorder(scene)
-{
-    // bordures permettant de ne pas sortir de la map (en haut)
-    topBorder = scene.physics.add.staticGroup();
-    topBorder.create(400, 0, "border").setAlpha(0);
-}
-
-
 //* SPRITE MURE DE SANG *//
 function createFleshWall(scene)
 {
-    // bordures permettant de ne pas sortir de la map (en haut)
+    // définition groupe mur de sang
     fleshWall = scene.physics.add.staticGroup();
 
     // gauche
-    fleshWall.create(215, 50, "flesh-wall").setScale(1.5).angle -= 90;
-    fleshWall.create(300, 360, "flesh-wall").setScale(1.5).angle -= 180;
-    fleshWall.create(215, 250, "flesh-wall").setScale(1.5).angle -= 90;
+    for (let i = 0; i < 800; i += 100) fleshWall.create(20, i, "flesh-wall").angle += 90;
 
     // droite
-    fleshWall.create(575, 50, "flesh-wall").setScale(1.5).angle += 90;
-    fleshWall.create(480, 300, "flesh-wall").setScale(1.5).angle += 180;
-    fleshWall.create(480, 360, "flesh-wall").setScale(1.5).angle += 180;
-    fleshWall.create(575, 250, "flesh-wall").setScale(1.5).angle += 90;
+    for (let i = 0; i < 800; i += 100) fleshWall.create(780, i, "flesh-wall").angle += 90;
+
+    // bas (gauche)
+    fleshWall.create(80, 580, "flesh-wall");
+    fleshWall.create(220, 580, "flesh-wall");
+    fleshWall.create(273, 580, "flesh-wall").flipX = true;
+
+    // bas (droite)
+    fleshWall.create(508, 580, "flesh-wall");
+    fleshWall.create(650, 580, "flesh-wall").flipX = true;
+    fleshWall.create(750, 580, "flesh-wall");
+
+    // haut (gauche)
+    fleshWall.create(80, 20, "flesh-wall");
+    fleshWall.create(220, 20, "flesh-wall");
+    fleshWall.create(263, 20, "flesh-wall").flipX = true;
+
+    // haut (droite)
+    fleshWall.create(508, 20, "flesh-wall");
+    fleshWall.create(650, 20, "flesh-wall").flipX = true;
+    fleshWall.create(750, 20, "flesh-wall");
 }
 
 
-//* SPRITES DENTS LANGUE *//
-function createTeethTongue(scene)
+//* SPRITES BORDURE DENTS *//
+function createBorderTeeth(scene)
 {
-    // dents autour de la langue
+    // définition groupe dents
     staticTeeth = scene.physics.add.staticGroup();
-    staticTeeth.create(550, 350, "tooth");
+
+    // ligne du haut (gauche)
+    for (let i = 75; i < 350; i+=35) staticTeeth.create(i, 25, "tooth").flipY = true;
+
+    // ligne du haut (droite)
+    for (let i = 450; i < 750; i+=35) staticTeeth.create(i, 25, "tooth").flipY = true;
+
+    // ligne du bas (gauche)
+    for (let i = 50; i < 350; i+=35) staticTeeth.create(i, 575, "tooth");
+
+    // ligne du bas (droite)
+    for (let i = 450; i < 750; i+=35) staticTeeth.create(i, 575, "tooth");
+
+    // ligne gauche
+    for (let i = 25; i < 575; i+=35) staticTeeth.create(25, i, "tooth").angle += 90;
+
+    // ligne droite
+    for (let i = 25; i < 575; i+=35) staticTeeth.create(775, i, "tooth").angle -= 90;
 }

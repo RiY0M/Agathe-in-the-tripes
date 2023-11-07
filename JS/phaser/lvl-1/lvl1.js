@@ -26,27 +26,19 @@ function preload()
 function create()
 {
     //* SPRITE MURE DE SANG *//
-    createFleshWall(this);
+    createFleshWall(this)
 
-    
-    //* SPRITE LANGUE *//
-    createTongue(this);
+    //* SPRITES BORDURE DENTS *//
+    createBorderTeeth(this);
 
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);
 
 
-    //* SPRITE BORDURE DU HAUT *//
-    createTopBorder(this);
-
-
-    //* SPRITES DENTS LANGUE *//
-    createTeethTongue(this);
-
-
     //! COLLISIONS !//
     this.physics.add.collider(agathe, topBorder);
+    this.physics.add.collider(agathe, staticTeeth);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();

@@ -25,7 +25,9 @@ function preload()
 
 function create()
 {
-    createMap(this);
+    this.scrollSpeed = 7;
+    // background = this.add.image(432, 300, "map1");
+    backgrounds = createMap(this);
 
     //* SPRITE BORDURES *//
     createBorders(this);
@@ -65,6 +67,11 @@ function update()
         // window.alert("Dans la grotte !");
         window.location.replace("./lvl3.html");
     }
+
+    backgrounds.forEach(background => background.x -= this.scrollSpeed);
+    // this.background.tilePositionX += this.scrollSpeed;
+
+    // this.anims.setVelocityX()
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 

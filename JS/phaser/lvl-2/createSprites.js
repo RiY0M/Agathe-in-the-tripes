@@ -13,12 +13,16 @@ function createAgathe(scene)
 //* SPRITE MAP *//
 function createMap(scene)
 {
+    let backgrounds = [];
+
     for(let i = 1; i <= loopLvl2; i++) {
-        scene.add.image(i*432, 300, "map"+i);
+        backgrounds.push(scene.add.image(i*432, 300, "map"+i));
     }
+
+    return backgrounds;
 }
 
-//* SPRITE BORDURE DU HAUT *//
+//* SPRITE BORDURE DU HAUT ET DU BAS *//
 function createBorders(scene)
 {
     // affichage bordure depuis (0;0)

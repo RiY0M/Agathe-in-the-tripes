@@ -22,8 +22,6 @@ function loadImages(scene)
 
     // chargement bordure du haut
     scene.load.image("border-0", "../../../img/assets/border-0.png");
-    scene.load.image("border-1", "../../../img/assets/border-1.png");
-    scene.load.image("border-2", "../../../img/assets/border-2.png");
 
     // chargement de la grotte
     scene.load.image("cave", "../../../img/assets/cave.png");

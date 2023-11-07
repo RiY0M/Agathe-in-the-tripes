@@ -10,8 +10,33 @@
 
 
 <body id="game-canvas">
-    <script id="game-canvas-script" src="../../JS/phaser/lvl2.js"></script>
+    <!-- halo de lumière -->
+    <div class="hole"></div>
+
+    <!-- chargement des variables -->
+    <script src="../../JS/phaser/lvl-2/variables.js"></script>
+
+    <!-- chargement des images (chargement) -->
+    <script src="../../JS/phaser/lvl-2/loadSprites.js"></script>
+
+    <!-- chargement des images (création) -->
+    <script src="../../JS/phaser/lvl-2/createSprites.js"></script>
+
+    <!-- chargement des animations -->
+    <script src="../../JS/phaser/lvl-2/createAnims.js"></script>
+
+    <!-- chargement des poses AFK -->
+    <script src="../../JS/phaser/lvl-2/createAFK.js"></script>
+
+    <!-- chargement du jeu -->
+    <script id="game-canvas-script" src="../../JS/phaser/lvl-2/lvl2.js"></script>
 </body>
+
+<div class="tuto" id="tuto-deplacement">
+    <span id="tuto-deplacement-left">Utilisez</span>
+    <img src="../../img/fleches_clavier.png" width="75px">
+    <span id="tuto-deplacement-right">pour vous déplacer.</span>
+</div>
 
 <header></header>
 <footer></footer>

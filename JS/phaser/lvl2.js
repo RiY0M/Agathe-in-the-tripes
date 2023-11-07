@@ -20,8 +20,6 @@ let rocks;          // sprites cailloux
 let topBorder;      // bordure du haut
 let cave;           // sprite grotte
 
-let hole = document.querySelector(".hole");
-
 
 // création fenêtre phaser
 let game = new Phaser.Game(config);
@@ -98,48 +96,48 @@ function create()
     // groupement de cailloux
     rocks = this.physics.add.staticGroup();
 
-    // grossses pierres
-    rocks.create(50, 150, "rock-3");
-    rocks.create(75, 350, "rock-3");
-    rocks.create(100, 200, "rock-3");
-    rocks.create(30, 500, "rock-3");
-    rocks.create(270, 500, "rock-3");
-    rocks.create(320, 425, "rock-3");
-    rocks.create(270, 125, "rock-3");
-    rocks.create(430, 290, "rock-3");
-    rocks.create(465, 215, "rock-3");
-    rocks.create(600, 455, "rock-3");
-    rocks.create(740, 400, "rock-3");
-    rocks.create(695, 335, "rock-3");
-    rocks.create(650, 145, "rock-3");
+    // // grossses pierres
+    // rocks.create(50, 150, "rock-3");
+    // rocks.create(75, 350, "rock-3");
+    // rocks.create(100, 200, "rock-3");
+    // rocks.create(30, 500, "rock-3");
+    // rocks.create(270, 500, "rock-3");
+    // rocks.create(320, 425, "rock-3");
+    // rocks.create(270, 125, "rock-3");
+    // rocks.create(430, 290, "rock-3");
+    // rocks.create(465, 215, "rock-3");
+    // rocks.create(600, 455, "rock-3");
+    // rocks.create(740, 400, "rock-3");
+    // rocks.create(695, 335, "rock-3");
+    // rocks.create(650, 145, "rock-3");
 
-    // double-pierre
-    rocks.create(65, 190, "rock-2");
-    rocks.create(115, 370, "rock-2");
-    rocks.create(670, 300, "rock-2");
-    rocks.create(690, 150, "rock-2");
+    // // double-pierre
+    // rocks.create(65, 190, "rock-2");
+    // rocks.create(115, 370, "rock-2");
+    // rocks.create(670, 300, "rock-2");
+    // rocks.create(690, 150, "rock-2");
 
-    // cailloux pointu neige
-    rocks.create(230, 110, "rock-0");
-    rocks.create(115, 440, "rock-0");
-    rocks.create(430, 195, "rock-0");
-    rocks.create(285, 235, "rock-0");
-    rocks.create(310, 255, "rock-0");
-    rocks.create(315, 500, "rock-0");
-    rocks.create(785, 95, "rock-0");
-    rocks.create(550, 425, "rock-0");
+    // // cailloux pointu neige
+    // rocks.create(230, 110, "rock-0");
+    // rocks.create(115, 440, "rock-0");
+    // rocks.create(430, 195, "rock-0");
+    // rocks.create(285, 235, "rock-0");
+    // rocks.create(310, 255, "rock-0");
+    // rocks.create(315, 500, "rock-0");
+    // rocks.create(785, 95, "rock-0");
+    // rocks.create(550, 425, "rock-0");
 
-    // petit cailloux
-    rocks.create(115, 345, "rock-1");
-    rocks.create(285, 275, "rock-1");
-    rocks.create(230, 135, "rock-1");
-    rocks.create(160, 310, "rock-1");
-    rocks.create(400, 415, "rock-1");
-    rocks.create(565, 445, "rock-1");
-    rocks.create(535, 460, "rock-1");
-    rocks.create(775, 115, "rock-1");
-    rocks.create(660, 325, "rock-1");
-    rocks.create(350, 445, "rock-1");
+    // // petit cailloux
+    // rocks.create(115, 345, "rock-1");
+    // rocks.create(285, 275, "rock-1");
+    // rocks.create(230, 135, "rock-1");
+    // rocks.create(160, 310, "rock-1");
+    // rocks.create(400, 415, "rock-1");
+    // rocks.create(565, 445, "rock-1");
+    // rocks.create(535, 460, "rock-1");
+    // rocks.create(775, 115, "rock-1");
+    // rocks.create(660, 325, "rock-1");
+    // rocks.create(350, 445, "rock-1");
 
 
     //~ SPRITE AGATHE ~//
@@ -175,60 +173,9 @@ function create()
 	}
 
 
-    //* PARTICULES DE NEIGE *//
-
-    // BLANCHES
-    const whiteParticles = this.add.particles("white-snowflake");
-    whiteParticles.createEmitter({
-
-        // zone émission
-        emitZone: {
-            source: new Phaser.Geom.Line(0, 0, 800, 0),
-            type: "random",
-            quantity: 150
-        },
-
-        // vitesse
-        speedX: {min: -20, max: 20},
-        speedY: {min: 40, max: 70},
-        accelerationY: {random: [10, 15]},
-
-        // durée de vie
-        lifespan: {min: 8000, max: 10000},
-
-        // taille
-        scale: {random: [0.1, 0.5]},
-
-        gravityY: 10,
-        frequency: 30,
-    });
-
-    // BLEUES
-    const blueParticles = this.add.particles("blue-snowflake");
-    blueParticles.createEmitter({
-
-        // zone émission
-        emitZone: {
-            source: new Phaser.Geom.Line(0, 0, 800, 0),
-            type: "random",
-            quantity: 50
-        },
-
-        // vitesse
-        speedX: {min: -20, max: 20},
-        speedY: {min: 40, max: 60},
-        accelerationY: {random: [10, 15]},
-
-        // durée de vie
-        lifespan: {min: 8000, max: 10000},
-
-        // taille
-        scale: {random: [0.1, 0.5]},
-
-        gravityY: 10,
-        frequency: 10,
-    });
-
+    //! CAMERA !//
+    this.cameras.main.setBounds(0, 0, 400, 400);
+    this.cameras.main.startFollow(agathe);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks);
@@ -364,12 +311,4 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
-
-    // innerWidth = taille écran disponible
-    // on divise par 2 pour avoir le milieu
-    // on retire 60 pour être au centre du cercle de 120px
-    // on ajoute les coordonnées de agathe qui varient de 0 à 800
-    // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-    hole.style.left = window.innerWidth/2 - 60 + (agathe.x - 400) + "px";
-    hole.style.top = agathe.y + "px";
 }

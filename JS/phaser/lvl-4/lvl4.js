@@ -20,25 +20,25 @@ let game = new Phaser.Game(config);
 function preload()
 {
     //$ ELEMENTS HTML $//
-    hole = document.querySelector(".hole");
-    tutoDeplacement = document.querySelector("#tuto-deplacement");
+    // hole = document.querySelector(".hole");
 
     // chargement de tous les sprites
     loadImages(this);
 }
 
-function create()
-{
+function create(){
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
 
-    //! COLLISIONS !//
-    this.physics.add.collider(agathe, rocks);
-    this.physics.add.collider(agathe, topBorder);
+    //* MAP *//
 
-    //! ACTION RECUP LAMPE !//
-    this.physics.add.overlap(agathe, lamp, collectLamp, null, this);
+    // Configurez les collisions avec les murs
+    setupCollisions(this);
+
+
+    //! COLLISIONS !//
+
 
     
     //! DETECTION DU CLAVIER !//
@@ -54,8 +54,7 @@ function create()
     createAFK(this);    
 }
 
-function update()
-{
+function update(){
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     /* GAUCHE */
@@ -68,8 +67,6 @@ function update()
         // last frame facing afk
         lastFrame = 4;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
     }
 
     /* DROITE */
@@ -97,11 +94,11 @@ function update()
         lastFrame = 12;
         
         // si agathe rentre dans la grotte (y = coordonnées du point d'entrée)
-        if (agathe.y == 64) {
-            // changement map
-            // window.alert("Dans la grotte !");
-            window.location.replace("./lvl1.html");
-        }
+        // if (agathe.y == 64) {
+        //     // changement map
+        //     // window.alert("Dans la grotte !");
+        //     window.location.replace("./lvl1.html");
+        // }
 
         // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
         hasMoved = true;
@@ -136,11 +133,8 @@ function update()
     // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
     // on ajoute les coordonnées de agathe qui varient de 0 à 800
     // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-    hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
-    hole.style.top = agathe.y - holeDiffHeight + "px";
+    // hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
+    // hole.style.top = agathe.y - holeDiffHeight + "px";
 
-
-    // on masque le message de tuto si on bouge
-    if (hasMoved) tutoDeplacement.style.visibility = "hidden";
 }
 

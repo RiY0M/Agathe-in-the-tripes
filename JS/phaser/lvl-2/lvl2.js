@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#000",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -19,60 +19,29 @@ let game = new Phaser.Game(config);
 
 function preload()
 {
-    //$ ELEMENTS HTML $//
-    hole = document.querySelector(".hole");
-    tutoDeplacement = document.querySelector("#tuto-deplacement");
-
     // chargement de tous les sprites
     loadImages(this);
 }
 
 function create()
 {
-    //* SPRITE BORDURE DU HAUT *//
+    createMap(this);
+
+    //* SPRITE BORDURES *//
     createBorders(this);
 
-
-    //* SPRITE GROTTE *//
-    createCave(this);
-
-
-    //* SPRITES ARBRES HAUT *//
-    createTopTrees(this);
-
-
-    //* SPRITE LAMPE *//
-    createLamp(this);
-
-
     //* SPRITES CAILLOUX *//
-    createRocks(this);    
+    // createRocks(this);
 
 
     //~ SPRITE AGATHE ~//
-    createAgathe(this);    
+    createAgathe(this);
 
-
-    //* SPRITES ARBRES MIDDLE *//
-    createMiddleTrees();    
-
-
-    //* SPRITES ARBRES BAS *//
-    createBottomTrees();    
-
-
-    //* PARTICULES DE NEIGE *//
-    createWhiteParticles(this); // BLANCHES
-    createBlueParticles(this);  // BLEUES
-    
 
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks);
     this.physics.add.collider(agathe, borders);
-
-    //! ACTION RECUP LAMPE !//
-    this.physics.add.overlap(agathe, lamp, collectLamp, null, this);
 
     
     //! DETECTION DU CLAVIER !//
@@ -85,11 +54,18 @@ function create()
     createAnims(this);
     
     //? AFK ANIMS ?//
-    createAFK(this);    
+    createAFK(this);
 }
 
 function update()
 {
+    //^ Si Agathe termine le niveau ^//
+    if (agathe.y == 64) {
+        // changement map
+        // window.alert("Dans la grotte !");
+        window.location.replace("./lvl3.html");
+    }
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     /* GAUCHE */
@@ -129,13 +105,6 @@ function update()
         agathe.anims.play("up", true);
         // last frame facing afk
         lastFrame = 12;
-        
-        // si agathe rentre dans la grotte (y = coordonnées du point d'entrée)
-        if (agathe.y == 64) {
-            // changement map
-            // window.alert("Dans la grotte !");
-            window.location.replace("./lvl1.html");
-        }
 
         // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
         hasMoved = true;
@@ -164,30 +133,4 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
-
-    // innerWidth = taille écran disponible
-    // on divise par 2 pour avoir le milieu
-    // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
-    // on ajoute les coordonnées de agathe qui varient de 0 à 800
-    // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-    hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
-    hole.style.top = agathe.y - holeDiffHeight + "px";
-
-
-    // on masque le message de tuto si on bouge
-    if (hasMoved) tutoDeplacement.style.visibility = "hidden";
-}
-
-
-
-function collectLamp(agathe, lamp) {
-
-    // suppression de la lampe
-    lamp.disableBody(true, true);
-
-    // changement taille cercle de lampe
-    holeRadius = 100;
-    holeDiffHeight = 25;
-    hole.style.width = "200px";
-    hole.style.height = "200px";
 }

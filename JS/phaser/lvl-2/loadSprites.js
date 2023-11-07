@@ -3,9 +3,10 @@ function loadImages(scene)
     // chargement sprites agathe
     scene.load.spritesheet("agathe", "../../../img/assets/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
-    // chargement particules neige
-    scene.load.image("white-snowflake", "../../../img/assets/white-snowflake.png");
-    scene.load.image("blue-snowflake", "../../../img/assets/blue-snowflake.png");
+    // chargement de la map
+    for(let i = 1; i <= loopLvl2; i++) {
+        scene.load.image("map"+i, "../../../img/assets/tilemap-lvl-2-wide.png");
+    }
 
     // chargement sprites arbres
     scene.load.image("tree-0", "../../../img/assets/tree-0.png");

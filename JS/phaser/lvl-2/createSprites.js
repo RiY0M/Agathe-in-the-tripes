@@ -10,6 +10,13 @@ function createAgathe(scene)
     agathe.setCollideWorldBounds(true);
 }
 
+//* SPRITE MAP *//
+function createMap(scene)
+{
+    for(let i = 1; i <= loopLvl2; i++) {
+        scene.add.image(i*432, 300, "map"+i);
+    }
+}
 
 //* SPRITE BORDURE DU HAUT *//
 function createBorders(scene)
@@ -17,8 +24,10 @@ function createBorders(scene)
     // affichage bordure depuis (0;0)
     borders = scene.physics.add.staticGroup();
     // bordures permettant d'accéder uniquement à la grotte
-    borders.create(325, 70, "border-0");
-    borders.create(325, 210, "border-0");
+    // borders.create(400, 200, "border-0");
+    borders.create(400, 200, "border-0").setAlpha(0);
+    // borders.create(400, 410, "border-0");
+    borders.create(400, 410, "border-0").setAlpha(0);
 }
 
 

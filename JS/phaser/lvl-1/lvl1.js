@@ -25,11 +25,18 @@ function preload()
 
 function create()
 {
-    //* SPRITE MURE DE SANG *//
+    //* SPRITE MUR DE SANG *//
     createFleshWall(this)
 
     //* SPRITES BORDURE DENTS *//
     createBorderTeeth(this);
+
+    //* SPRITES CHEMIN DENTS *//
+    createTeethPath()
+
+
+    //~ SPRITES ELTS BOUCHE ~//
+    createMouseElts(this)
 
 
     //~ SPRITE AGATHE ~//
@@ -38,7 +45,8 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, topBorder);
-    this.physics.add.collider(agathe, staticTeeth);
+    this.physics.add.collider(agathe, staticTeeth, collideTeeth);
+    this.physics.add.collider(agathe, deadSqueletton);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -110,4 +118,10 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
+}
+
+
+function collideTeeth()
+{
+
 }

@@ -5,3 +5,5 @@ let tongue;                 // langue map
 let topBorder;              // bordure du haut
 let fleshWall;              // mur de sang
 let staticTeeth;            // dents fixes
+let deadSqueletton;         // squelette mort
+let blood;                  // sang par terre

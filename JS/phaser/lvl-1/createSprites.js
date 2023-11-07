@@ -68,3 +68,27 @@ function createBorderTeeth(scene)
     // ligne droite
     for (let i = 25; i < 575; i+=35) staticTeeth.create(775, i, "tooth").angle -= 90;
 }
+
+
+//* SPRITES CHEMIN DENTS *//
+function createTeethPath()
+{
+    for (let i = 150; i < 725; i+=35) fleshWall.create(i, 475, "gencive");
+    for (let i = 150; i < 725; i += 35) staticTeeth.create(i, 475, "tooth");
+
+    for (let i = 150; i < 450; i+=35) fleshWall.create(150, i, "gencive").angle += 90;
+    for (let i = 150; i < 450; i+=35) staticTeeth.create(150, i, "tooth").angle += 90;
+}
+
+
+//* SPRITES ELTS BOUCHE *//
+function createMouseElts(scene)
+{
+    // sang squelette
+    blood = scene.physics.add.staticGroup();
+    blood.create(450, 530, "blood-0");
+
+    // squelette mort
+    deadSqueletton = scene.physics.add.staticGroup();
+    deadSqueletton.create(465, 535, "squeletton");
+}

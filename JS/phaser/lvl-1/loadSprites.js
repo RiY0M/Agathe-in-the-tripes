@@ -6,9 +6,18 @@ function loadImages(scene)
     // chargement squelette mort
     scene.load.image("squeletton", "../../../img/assets/dead-squeletton.png");
 
+    // chargement rat mort
+    scene.load.image("rat", "../../../img/assets/dead-rat.png");
+
     // chargement sang
     scene.load.image("blood-0", "../../../img/assets/blood-0.png");
     scene.load.image("blood-1", "../../../img/assets/blood-1.png");
+
+    // bouclier cassé
+    scene.load.image("shield", "../../../img/assets/broken-shield.png");
+
+    // épée cassé
+    scene.load.image("sword", "../../../img/assets/broken-sword.png");
 
     // chargement mur de sang
     scene.load.image("flesh-wall", "../../../img/assets/flesh-wall.png");

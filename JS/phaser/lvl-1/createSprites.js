@@ -78,6 +78,18 @@ function createTeethPath()
 
     for (let i = 150; i < 450; i+=35) fleshWall.create(150, i, "gencive").angle += 90;
     for (let i = 150; i < 450; i+=35) staticTeeth.create(150, i, "tooth").angle += 90;
+
+    for (let i = 150; i < 350; i+=35) fleshWall.create(300, i, "gencive").angle += 90;
+    for (let i = 150; i < 350; i+=35) staticTeeth.create(300, i, "tooth").angle += 90;
+
+    for (let i = 300; i < 550; i+=35) fleshWall.create(i, 370, "gencive");
+    for (let i = 300; i < 550; i += 35) staticTeeth.create(i, 370, "tooth");
+
+    for (let i = 150; i < 375; i+=35) fleshWall.create(650, i, "gencive").angle -= 90;
+    for (let i = 150; i < 375; i+=35) staticTeeth.create(650, i, "tooth").angle -= 90;
+
+    for (let i = 70; i < 275; i+=35) fleshWall.create(447, i, "gencive").angle -= 90;
+    for (let i = 70; i < 275; i+=35) staticTeeth.create(447, i, "tooth").angle -= 90;
 }
 
 
@@ -89,6 +101,20 @@ function createMouseElts(scene)
     blood.create(450, 530, "blood-0");
 
     // squelette mort
-    deadSqueletton = scene.physics.add.staticGroup();
-    deadSqueletton.create(465, 535, "squeletton");
+    deadThings = scene.physics.add.staticGroup();
+    deadThings.create(465, 535, "squeletton");
+
+    // sang rat
+    blood.create(600, 385, "blood-1").setScale(0.5).angle += 15;
+
+    // rat mort
+    deadThings.create(600, 380, "rat").setScale(0.8).angle -= 20;
+
+    // bouclier cassé
+    deadThings.create(290, 70, "shield").setScale(0.9).angle -= 15;
+    // 2e invisible pour hitbox épée
+    deadThings.create(300, 100, "shield").setAlpha(0);
+
+    // épée cassé
+    deadThings.create(305, 85, "sword").setScale(1.2).angle += 25;
 }

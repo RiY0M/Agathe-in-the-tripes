@@ -46,7 +46,7 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, topBorder);
     this.physics.add.collider(agathe, staticTeeth, collideTeeth);
-    this.physics.add.collider(agathe, deadSqueletton);
+    this.physics.add.collider(agathe, deadThings);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();

@@ -54,13 +54,13 @@ function create()
 
     //? MOVING ANIMS ?//
     createAnims(this);
-    
-    //? AFK ANIMS ?//
-    createAFK(this);
 }
 
 function update()
 {
+    // animation sprite
+    agathe.anims.play("right", true);
+
     //^ Si Agathe termine le niveau ^//
     if (agathe.y == 64) {
         // changement map
@@ -69,29 +69,18 @@ function update()
     }
 
     backgrounds.forEach(background => background.x -= this.scrollSpeed);
-    rocks.getChildren().forEach(rock => {
-        rock.x -= this.scrollSpeed;
-        // Update the hitbox position
-        rock.refreshBody();
-    });
-    // this.background.tilePositionX += this.scrollSpeed;
-
-    // this.anims.setVelocityX()
+    // rocks.getChildren().forEach(rock => {
+    //     rock.x -= this.scrollSpeed;
+    //     // Update the hitbox position
+    //     rock.refreshBody();
+    // });
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
-
     /* GAUCHE */
     if (cursors.left.isDown && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-160);
-        // animation sprite
-        agathe.anims.play("left", true);
-        // last frame facing afk
-        lastFrame = 4;
-
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
     }
 
     /* DROITE */
@@ -99,13 +88,6 @@ function update()
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(160);
-        // animation sprite
-        agathe.anims.play("right", true);
-        // last frame facing afk
-        lastFrame = 8;
-
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
     }
 
     /* HAUT */
@@ -113,13 +95,6 @@ function update()
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-160);
-        // animation sprite
-        agathe.anims.play("up", true);
-        // last frame facing afk
-        lastFrame = 12;
-
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
     }
 
     /* BAS */
@@ -127,13 +102,6 @@ function update()
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(160);
-        // animation sprite
-        agathe.anims.play("down", true);
-        // last frame facing afk
-        lastFrame = 0;
-
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
     }
 
     /* AFK */
@@ -142,8 +110,6 @@ function update()
         // si aucune touche du clavier n'est appuyée : on arrête agathe
         agathe.setVelocityX(0);
         agathe.setVelocityY(0);
-        // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
-        agathe.anims.play("afk-" + lastFrame);
     }
 }
 

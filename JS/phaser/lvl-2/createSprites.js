@@ -104,48 +104,50 @@ function createRocks(scene)
     // groupement de cailloux
     rocks = scene.physics.add.staticGroup();
 
+    
     // grossses pierres
-    rocks.create(50, 150, "rock-3");
-    rocks.create(75, 350, "rock-3");
-    rocks.create(100, 200, "rock-3");
-    rocks.create(30, 500, "rock-3");
-    rocks.create(270, 500, "rock-3");
-    rocks.create(320, 425, "rock-3");
-    rocks.create(270, 125, "rock-3");
-    rocks.create(430, 290, "rock-3");
-    rocks.create(465, 215, "rock-3");
-    rocks.create(600, 455, "rock-3");
-    rocks.create(740, 400, "rock-3");
-    rocks.create(695, 335, "rock-3");
-    rocks.create(650, 145, "rock-3");
+    // rocks.push(scene.physics.add.image(50, 150, "rock-3"));
+    // rocks.push(scene.physics.add.image(75, 350, "rock-3"));
+    // rocks.setGravityY(0);
+    rocks.create(400, 300, "rock-3");
+    rocks.create(350, 350, "rock-3");
+    // rocks.create(270, 500, "rock-3");
+    // rocks.create(320, 425, "rock-3");
+    // rocks.create(270, 125, "rock-3");
+    // rocks.create(430, 290, "rock-3");
+    // rocks.create(465, 215, "rock-3");
+    // rocks.create(600, 455, "rock-3");
+    // rocks.create(740, 400, "rock-3");
+    // rocks.create(695, 335, "rock-3");
+    // rocks.create(650, 145, "rock-3");
 
-    // double-pierre
-    rocks.create(65, 190, "rock-2");
-    rocks.create(115, 370, "rock-2");
-    rocks.create(670, 300, "rock-2");
-    rocks.create(690, 150, "rock-2");
+    // // double-pierre
+    // rocks.create(65, 190, "rock-2");
+    // rocks.create(115, 370, "rock-2");
+    // rocks.create(670, 300, "rock-2");
+    // rocks.create(690, 150, "rock-2");
 
-    // cailloux pointu neige
-    rocks.create(230, 110, "rock-0");
-    rocks.create(115, 440, "rock-0");
-    rocks.create(430, 195, "rock-0");
-    rocks.create(285, 235, "rock-0");
-    rocks.create(310, 255, "rock-0");
-    rocks.create(315, 500, "rock-0");
-    rocks.create(785, 95, "rock-0");
-    rocks.create(550, 425, "rock-0");
+    // // cailloux pointu neige
+    // rocks.create(230, 110, "rock-0");
+    // rocks.create(115, 440, "rock-0");
+    // rocks.create(430, 195, "rock-0");
+    // rocks.create(285, 235, "rock-0");
+    // rocks.create(310, 255, "rock-0");
+    // rocks.create(315, 500, "rock-0");
+    // rocks.create(785, 95, "rock-0");
+    // rocks.create(550, 425, "rock-0");
 
-    // petit cailloux
-    rocks.create(115, 345, "rock-1");
-    rocks.create(285, 275, "rock-1");
-    rocks.create(230, 135, "rock-1");
-    rocks.create(160, 310, "rock-1");
-    rocks.create(400, 415, "rock-1");
-    rocks.create(565, 445, "rock-1");
-    rocks.create(535, 460, "rock-1");
-    rocks.create(775, 115, "rock-1");
-    rocks.create(660, 325, "rock-1");
-    rocks.create(350, 445, "rock-1");
+    // // petit cailloux
+    // rocks.create(115, 345, "rock-1");
+    // rocks.create(285, 275, "rock-1");
+    // rocks.create(230, 135, "rock-1");
+    // rocks.create(160, 310, "rock-1");
+    // rocks.create(400, 415, "rock-1");
+    // rocks.create(565, 445, "rock-1");
+    // rocks.create(535, 460, "rock-1");
+    // rocks.create(775, 115, "rock-1");
+    // rocks.create(660, 325, "rock-1");
+    // rocks.create(350, 445, "rock-1");
 }
 
 

@@ -33,7 +33,7 @@ function create()
     createBorders(this);
 
     //* SPRITES CAILLOUX *//
-    // createRocks(this);
+    createRocks(this);
 
 
     //~ SPRITE AGATHE ~//
@@ -42,7 +42,7 @@ function create()
 
 
     //! COLLISIONS !//
-    this.physics.add.collider(agathe, rocks);
+    this.physics.add.collider(agathe, rocks, hitRock, null, this);
     this.physics.add.collider(agathe, borders);
 
     
@@ -69,6 +69,11 @@ function update()
     }
 
     backgrounds.forEach(background => background.x -= this.scrollSpeed);
+    rocks.getChildren().forEach(rock => {
+        rock.x -= this.scrollSpeed;
+        // Update the hitbox position
+        rock.refreshBody();
+    });
     // this.background.tilePositionX += this.scrollSpeed;
 
     // this.anims.setVelocityX()
@@ -140,4 +145,12 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
+}
+
+function hitRock(character, rock) {
+    // This function will be called when the character collides with a rock
+    // Add your code to handle the collision here
+    console.log('Character hit a rock!');
+    alert('Bahaha T null ! (git gud + cringe + ratio)');
+    // You can also apply actions like damage or game over logic here
 }

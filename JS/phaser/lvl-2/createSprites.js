@@ -12,14 +12,13 @@ function createAgathe(scene)
 
 
 //* SPRITE BORDURE DU HAUT *//
-function createTopBorder(scene)
+function createBorders(scene)
 {
-        // affichage bordure depuis (0;0)
-    topBorder = scene.physics.add.staticGroup();
+    // affichage bordure depuis (0;0)
+    borders = scene.physics.add.staticGroup();
     // bordures permettant d'accéder uniquement à la grotte
-    topBorder.create(325, 70, "border-0");
-    topBorder.create(800, 70, "border-1");
-    topBorder.create(750, 45, "border-2");
+    borders.create(325, 70, "border-0");
+    borders.create(325, 210, "border-0");
 }
 
 

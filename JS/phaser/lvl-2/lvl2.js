@@ -30,7 +30,7 @@ function preload()
 function create()
 {
     //* SPRITE BORDURE DU HAUT *//
-    createTopBorder(this);
+    createBorders(this);
 
 
     //* SPRITE GROTTE *//
@@ -69,7 +69,7 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks);
-    this.physics.add.collider(agathe, topBorder);
+    this.physics.add.collider(agathe, borders);
 
     //! ACTION RECUP LAMPE !//
     this.physics.add.overlap(agathe, lamp, collectLamp, null, this);

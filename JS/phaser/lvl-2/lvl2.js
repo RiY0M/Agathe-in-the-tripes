@@ -25,8 +25,7 @@ function preload()
 
 function create()
 {
-    this.scrollSpeed = 7;
-    // background = this.add.image(432, 300, "map1");
+    this.scrollSpeed = 6;
     backgrounds = createMap(this);
 
     //* SPRITE BORDURES *//
@@ -38,7 +37,6 @@ function create()
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);
-
 
 
     //! COLLISIONS !//
@@ -62,54 +60,64 @@ function update()
     agathe.anims.play("right", true);
 
     //^ Si Agathe termine le niveau ^//
-    if (agathe.y == 64) {
+    console.log(agathe.x);
+    if (agathe.x >= 1600) {
         // changement map
-        // window.alert("Dans la grotte !");
+        // window.alert("Dans l'estomac !");
         window.location.replace("./lvl3.html");
     }
 
     backgrounds.forEach(background => background.x -= this.scrollSpeed);
-    // rocks.getChildren().forEach(rock => {
-    //     rock.x -= this.scrollSpeed;
-    //     // Update the hitbox position
-    //     rock.refreshBody();
-    // });
+    rocks.getChildren().forEach(rock => {
+        rock.x -= this.scrollSpeed;
+        // Update the hitbox position
+        rock.refreshBody();
+    });
 
-    //^ ANIMATIONS AGATHE (CLAVIER) ^//
+    //^ MOUVEMENTS AGATHE (CLAVIER) ^//
     /* GAUCHE */
-    if (cursors.left.isDown && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp)
+    if (cursors.left.isDown)
     {
         // vitesse et direction du déplacement
-        agathe.setVelocityX(-160);
+        // agathe.setVelocityX(-160);
+        this.scrollSpeed = 5;
     }
 
     /* DROITE */
-    else if (cursors.right.isDown && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)
+    if (cursors.right.isDown)
     {
         // vitesse et direction du déplacement
-        agathe.setVelocityX(160);
+        // agathe.setVelocityX(160);
+        this.scrollSpeed = 8;
     }
 
     /* HAUT */
-    else if (cursors.up.isDown && cursors.down.isUp && cursors.left.isUp && cursors.right.isUp)
+    if (cursors.up.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-160);
     }
 
     /* BAS */
-    else if (cursors.down.isDown && cursors.up.isUp && cursors.left.isUp && cursors.right.isUp)
+    if (cursors.down.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(160);
     }
 
     /* AFK */
-    else
+    if (cursors.down.isUp && cursors.up.isUp)
     {
         // si aucune touche du clavier n'est appuyée : on arrête agathe
-        agathe.setVelocityX(0);
         agathe.setVelocityY(0);
+    }
+
+    /* AFK */
+    if (cursors.left.isUp && cursors.right.isUp)
+    {
+        // si aucune touche du clavier n'est appuyée : on arrête agathe
+        // agathe.setVelocityX(0);
+        this.scrollSpeed = 6;
     }
 }
 

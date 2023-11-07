@@ -3,7 +3,7 @@
 function createAgathe(scene)
 {
     // ajout d'agathe à la fenêtre
-    agathe = scene.physics.add.sprite(10, 300, "agathe")
+    agathe = scene.physics.add.sprite(200, 300, "agathe")
         .setSize(21, 8)
         .setOffset(5, 40);
     // on définit les collisions avec la bordure
@@ -27,10 +27,8 @@ function createBorders(scene)
 {
     // affichage bordure depuis (0;0)
     borders = scene.physics.add.staticGroup();
-    // bordures permettant d'accéder uniquement à la grotte
-    // borders.create(400, 200, "border-0");
+    // bordures invisibles pour ne pas dépasser du couloir
     borders.create(400, 200, "border-0").setAlpha(0);
-    // borders.create(400, 410, "border-0");
     borders.create(400, 410, "border-0").setAlpha(0);
 }
 
@@ -104,13 +102,13 @@ function createRocks(scene)
     // groupement de cailloux
     rocks = scene.physics.add.staticGroup();
 
-    
+    // mix x 500
     // grossses pierres
     // rocks.push(scene.physics.add.image(50, 150, "rock-3"));
     // rocks.push(scene.physics.add.image(75, 350, "rock-3"));
     // rocks.setGravityY(0);
-    rocks.create(400, 300, "rock-3");
-    rocks.create(350, 350, "rock-3");
+    rocks.create(900, 300, "rock-3");
+    rocks.create(850, 350, "rock-3");
     // rocks.create(270, 500, "rock-3");
     // rocks.create(320, 425, "rock-3");
     // rocks.create(270, 125, "rock-3");

@@ -8,21 +8,24 @@ function createAgathe(scene)
         .setOffset(5, 40);
 }
 
-// function createMap(scene){
-//     // chargement de la map
-//     map = scene.make.tilemap({ key: 'map', tileWidth: 16, tileHeight: 16 });
-//     tileset = map.addTilesetImage('tiles', null, 16, 16, 1, 2);
-//     scene.layer = map.createLayer(0, tileset, 0, 0);
-// }
 
 function setupCollisions(scene) {
-    const map = scene.make.tilemap({ key: 'map' });
+    const map = scene.make.tilemap({ key: 'map', tileWidth: 16, tileHeight: 16 });
+
+    // Créez des couches pour le sol et les murs
+    const solLayer = map.getLayer('Sol');
     const mursLayer = map.getLayer('Murs');
-    
-    // Activer les collisions pour la couche des murs
-    map.setCollisionBetween(1, 338, true, 'Murs');
+
+    // Activer les collisions pour la couche des murs en utilisant l'intervalle correct
+    map.setCollisionBetween(1, 337, true, 'Murs');
 
     // Configurer les collisions avec le joueur (agathe)
     scene.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    scene.physics.add.collider(agathe, mursLayer);
+    
+    // Activer les collisions avec la couche du sol (pour éviter les passages à travers le sol)
+    scene.physics.add.collider(agathe, solLayer);
+
+    // Désactiver la collision entre le sol et les murs (pour permettre à l'utilisateur de se déplacer librement sur le sol)
+    map.setCollisionBetween(1, 337, false, 'Sol');
 }
+

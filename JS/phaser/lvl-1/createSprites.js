@@ -11,11 +11,8 @@ function createAgathe(scene)
 
 
 //* SPRITE MURE DE SANG *//
-function createFleshWall(scene)
+function createFleshWall()
 {
-    // définition groupe mur de sang
-    fleshWall = scene.physics.add.staticGroup();
-
     // gauche
     for (let i = 0; i < 800; i += 100) fleshWall.create(20, i, "flesh-wall").angle += 90;
 
@@ -45,11 +42,8 @@ function createFleshWall(scene)
 
 
 //* SPRITES BORDURE DENTS *//
-function createBorderTeeth(scene)
+function createBorderTeeth()
 {
-    // définition groupe dents
-    staticTeeth = scene.physics.add.staticGroup();
-
     // ligne du haut (gauche)
     for (let i = 75; i < 350; i+=35) staticTeeth.create(i, 25, "tooth").flipY = true;
 
@@ -73,35 +67,33 @@ function createBorderTeeth(scene)
 //* SPRITES CHEMIN DENTS *//
 function createTeethPath()
 {
-    for (let i = 150; i < 725; i+=35) fleshWall.create(i, 475, "gencive");
-    for (let i = 150; i < 725; i += 35) staticTeeth.create(i, 475, "tooth");
-
-    for (let i = 150; i < 450; i+=35) fleshWall.create(150, i, "gencive").angle += 90;
+    for (let i = 145; i < 475; i+=35) fleshWall.create(140, i, "gencive").angle += 90;
     for (let i = 150; i < 450; i+=35) staticTeeth.create(150, i, "tooth").angle += 90;
 
-    for (let i = 150; i < 350; i+=35) fleshWall.create(300, i, "gencive").angle += 90;
+    for (let i = 144; i < 700; i+=35) fleshWall.create(i, 485, "gencive");
+    for (let i = 150; i < 700; i += 35) staticTeeth.create(i, 475, "tooth");
+
+    for (let i = 145; i < 375; i+=35) fleshWall.create(290, i, "gencive").angle += 90;
     for (let i = 150; i < 350; i+=35) staticTeeth.create(300, i, "tooth").angle += 90;
 
-    for (let i = 300; i < 550; i+=35) fleshWall.create(i, 370, "gencive");
+    for (let i = 294; i < 550; i+=35) fleshWall.create(i, 380, "gencive");
     for (let i = 300; i < 550; i += 35) staticTeeth.create(i, 370, "tooth");
 
-    for (let i = 150; i < 375; i+=35) fleshWall.create(650, i, "gencive").angle -= 90;
+    for (let i = 145; i < 375; i+=35) fleshWall.create(660, i, "gencive").angle -= 90;
     for (let i = 150; i < 375; i+=35) staticTeeth.create(650, i, "tooth").angle -= 90;
 
     for (let i = 70; i < 275; i+=35) fleshWall.create(447, i, "gencive").angle -= 90;
-    for (let i = 70; i < 275; i+=35) staticTeeth.create(447, i, "tooth").angle -= 90;
+    for (let i = 70; i < 275; i+=35) staticTeeth.create(437, i, "tooth").angle -= 90;
 }
 
 
 //* SPRITES ELTS BOUCHE *//
-function createMouseElts(scene)
+function createMouseElts()
 {
     // sang squelette
-    blood = scene.physics.add.staticGroup();
     blood.create(450, 530, "blood-0");
 
     // squelette mort
-    deadThings = scene.physics.add.staticGroup();
     deadThings.create(465, 535, "squeletton");
 
     // sang rat
@@ -117,4 +109,23 @@ function createMouseElts(scene)
 
     // épée cassé
     deadThings.create(305, 85, "sword").setScale(1.2).angle += 25;
+
+
+    // fin de gencives
+    fleshWall.create(680, 485, "gencive");
+    fleshWall.create(550, 380, "gencive");
+    fleshWall.create(660, 365, "gencive").angle -= 90;
+    fleshWall.create(447, 250, "gencive").angle -= 90;
+}
+
+
+//* SPRITE COEUR DU SQUELETTE *//
+function createSquelettonHeart(scene)
+{
+    // coeur du squelette
+    squelettonHeart = scene.physics.add.group({
+        key: "squeletton-heart",
+        repeat: 0,
+        setXY: {x: 535, y: 535}
+    });
 }

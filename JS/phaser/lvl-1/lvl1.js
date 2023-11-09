@@ -25,18 +25,24 @@ function preload()
 
 function create()
 {
-    //* SPRITE MUR DE SANG *//
-    createFleshWall(this)
-
-    //* SPRITES BORDURE DENTS *//
-    createBorderTeeth(this);
-
-    //* SPRITES CHEMIN DENTS *//
-    createTeethPath()
-
+    //$ CHARGEMENT VARIABLES DE SPRITES $//
+    loadSpriteVariables(this);
 
     //~ SPRITES ELTS BOUCHE ~//
-    createMouseElts(this)
+    createMouseElts();
+
+
+    //* SPRITE COEUR DU SQUELETTE *//
+    createSquelettonHeart(this);
+
+    //* SPRITES CHEMIN DENTS *//
+    createTeethPath();
+
+    //* SPRITE MUR DE SANG *//
+    createFleshWall();
+
+    //* SPRITES BORDURE DENTS *//
+    createBorderTeeth();
 
 
     //~ SPRITE AGATHE ~//
@@ -47,6 +53,9 @@ function create()
     this.physics.add.collider(agathe, topBorder);
     this.physics.add.collider(agathe, staticTeeth, collideTeeth);
     this.physics.add.collider(agathe, deadThings);
+
+    //! ACTION RECUP LAMPE !//
+    this.physics.add.overlap(agathe, squelettonHeart, collectSquelettonHeart, null, this);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -66,7 +75,7 @@ function update()
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     /* GAUCHE */
-    if (cursors.left.isDown && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp)
+    if (cursors.left.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-160);
@@ -77,7 +86,7 @@ function update()
     }
 
     /* DROITE */
-    else if (cursors.right.isDown && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)
+    else if (cursors.right.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(160);
@@ -88,7 +97,7 @@ function update()
     }
 
     /* HAUT */
-    else if (cursors.up.isDown && cursors.down.isUp && cursors.left.isUp && cursors.right.isUp)
+    else if (cursors.up.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-160);
@@ -99,7 +108,7 @@ function update()
     }
 
     /* BAS */
-    else if (cursors.down.isDown && cursors.up.isUp && cursors.left.isUp && cursors.right.isUp)
+    else if (cursors.down.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(160);
@@ -124,4 +133,11 @@ function update()
 function collideTeeth()
 {
 
+}
+
+
+function collectSquelettonHeart(agathe, squelettonHeart) {
+
+    // suppression du coeur du squelette
+    squelettonHeart.disableBody(true, true);
 }

@@ -6,6 +6,9 @@ function loadImages(scene)
     // chargement squelette mort
     scene.load.image("squeletton", "../../../img/assets/dead-squeletton.png");
 
+    // chargement coeur mort
+    scene.load.image("squeletton-heart", "../../../img/assets/squeletton-heart.png");
+
     // chargement rat mort
     scene.load.image("rat", "../../../img/assets/dead-rat.png");
 

@@ -102,6 +102,9 @@ function createMouseElts()
     // rat mort
     deadThings.create(600, 380, "rat").setScale(0.8).angle -= 20;
 
+    // sang bouclier/épée
+    blood.create(290, 80, "blood-1").setScale(0.9).angle += 15;
+
     // bouclier cassé
     deadThings.create(290, 70, "shield").setScale(0.9).angle -= 15;
     // 2e invisible pour hitbox épée
@@ -122,10 +125,10 @@ function createMouseElts()
 //* SPRITE COEUR DU SQUELETTE *//
 function createSquelettonHeart(scene)
 {
+    // sang du coeur
+    blood.create(530, 535, "blood-1").setScale(0.5);
+
     // coeur du squelette
-    squelettonHeart = scene.physics.add.group({
-        key: "squeletton-heart",
-        repeat: 0,
-        setXY: {x: 535, y: 535}
-    });
+    squelettonHeart = scene.physics.add.group()
+    squelettonHeart.create(530, 535, "squeletton-heart").setScale(0.7).angle += 25;
 }

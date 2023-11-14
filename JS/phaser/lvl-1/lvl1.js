@@ -72,6 +72,14 @@ function create()
 
 function update()
 {
+    // boucle en fonction du timer de l'invincibilité allant de 0.0 à 4.9
+    let timer = invicibility / 10 % 5;
+
+    // la moitié du temps on passe en rouge
+    if ((timer >= 0 && timer <= 1.25) || (timer >= 2.5 && timer <= 3.75)) agathe.setTint(0xFFFFFF);
+    else agathe.setTint(0xFF0000);
+
+
     // si le lancement de l'invincibilité est lancé
     if (start3sCoolDown) {
         // on lance la décrémentation des 300 frames (300 frames = 3s)

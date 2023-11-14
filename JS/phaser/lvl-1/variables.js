@@ -10,6 +10,7 @@ let blood;                      // sang par terre
 let squelettonHeart;            // coeur du squelette
 let invicibility = 300;         // temps d'immortalité
 let start3sCoolDown = false;    // lancement de l'invincibilité
+let hurting = false;            // clignottement agathe dégât
 
 
 

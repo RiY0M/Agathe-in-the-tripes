@@ -109,18 +109,23 @@ function createRocks(scene)
         [500, 230],
         [500, 360],
         [513, 260],
+        [718, 263],
+        [1020, 250],
     ];
 
     rocks0.forEach(rock0 => rocks.create(rock0[0], rock0[1], "rock-0"));
 
-    const rocks1 = [
-        [540, 270],
-    ];
+    // const rocks1 = [
+    //     [540, 270],
+    // ];
 
-    rocks1.forEach(rock1 => rocks.create(rock1[0], rock1[1], "rock-1"));
+    // rocks1.forEach(rock1 => rocks.create(rock1[0], rock1[1], "rock-1"));
 
     const rocks2 = [
         [540, 270],
+        [600, 300],
+        [680, 357],
+        [1007, 233],
     ];
 
     rocks2.forEach(rock2 => rocks.create(rock2[0], rock2[1], "rock-2"));
@@ -128,6 +133,9 @@ function createRocks(scene)
     const rocks3 = [
         [850, 350],
         [900, 300],
+        [1200, 270],
+        
+        [8000, 270],
     ];
 
     rocks3.forEach(rock3 => rocks.create(rock3[0], rock3[1], "rock-3"));

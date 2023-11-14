@@ -42,6 +42,7 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks, hitRock, null, this);
     this.physics.add.collider(agathe, borders);
+    this.physics.add.collider(agathe, finNiv, reachEnd, null, this);
 
     
     //! DETECTION DU CLAVIER !//
@@ -58,14 +59,6 @@ function update()
 {
     // animation sprite
     agathe.anims.play("right", true);
-
-    //^ Si Agathe termine le niveau ^//
-    console.log(agathe.x);
-    if (agathe.x >= 1600) {
-        // changement map
-        // window.alert("Dans l'estomac !");
-        window.location.replace("./lvl3.html");
-    }
 
     backgrounds.forEach(background => background.x -= this.scrollSpeed);
     rocks.getChildren().forEach(rock => {
@@ -127,4 +120,11 @@ function hitRock(character, rock) {
     console.log('Character hit a rock!');
     alert('Bahaha T null ! (git gud + cringe + ratio)');
     // You can also apply actions like damage or game over logic here
+}
+
+function reachEnd(character, end) {
+    //^ Si Agathe termine le niveau ^//
+    // changement map
+    // window.alert("Dans l'estomac !");
+    window.location.replace("./lvl3.html");
 }

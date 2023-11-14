@@ -11,16 +11,14 @@ body {
 
 
 #game-canvas {
-    /* border: 1px dashed red; */
+    /* border: 1px dashed red;  */
 
     background-color: black;
-    width: 800px;
-    height: 600px;
-    margin: auto;
-    margin-top: 4rem;
 }
 
 .game-canvas-inside {
+    /* border: 1px dashed blue;  */
+
     width: 800px;
     height: 600px;
     margin: auto;

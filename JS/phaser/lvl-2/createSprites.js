@@ -32,70 +32,6 @@ function createBorders(scene)
     borders.create(400, 410, "border-0").setAlpha(0);
 }
 
-
-//* SPRITE GROTTE *//
-function createCave(scene)
-{
-    // affichage grotte en haut à droite
-    cave = scene.physics.add.staticGroup();
-    cave.create(728, 50, "cave");
-}
-
-
-//* SPRITES ARBRES HAUT *//
-function createTopTrees(scene)
-{
-    // groupement d'arbres
-    trees = scene.physics.add.group();
-
-	for (let i = 0; i < 650; i += 50)
-    {
-		let x = Phaser.Math.RND.between(0, 50);
-        let y = Phaser.Math.RND.between(0, 10);
-
-		trees.create(i + x, 50 + y, "tree-" + Phaser.Math.RND.between(0, 3));
-	}
-
-    // arbre cacher gauche grotte
-    trees.create(675, 55, "tree-3");
-}
-
-
-//* SPRITES ARBRES MIDDLE *//
-function createMiddleTrees()
-{
-    trees.create(310, 190, "tree-" + Phaser.Math.RND.between(0, 3));
-    trees.create(105, 290, "tree-" + Phaser.Math.RND.between(0, 3));
-    trees.create(575, 390, "tree-" + Phaser.Math.RND.between(0, 3));
-    trees.create(725, 320, "tree-" + Phaser.Math.RND.between(0, 3));
-    trees.create(350, 385, "tree-" + Phaser.Math.RND.between(0, 3));
-}
-
-
-//* SPRITES ARBRES BAS *//
-function createBottomTrees()
-{
-    for (let i = 0; i < 800; i += 50)
-    {
-		let x = Phaser.Math.RND.between(0, 50);
-        let y = Phaser.Math.RND.between(0, 10);
-
-		trees.create(i + x, 550 + y, "tree-" + Phaser.Math.RND.between(0, 3));
-	}
-}
-
-
-//* SPRITE LAMPE *//
-function createLamp(scene)
-{
-    lamp = scene.physics.add.group({
-        key: "lampe",
-        repeat: 0,
-        setXY: {x: 90, y: 155}
-    });
-}
-
-
 //* SPRITES CAILLOUX *//
 function createRocks(scene)
 {
@@ -134,69 +70,19 @@ function createRocks(scene)
         [850, 350],
         [900, 300],
         [1200, 270],
-        
+
         [8000, 270],
     ];
 
     rocks3.forEach(rock3 => rocks.create(rock3[0], rock3[1], "rock-3"));
 }
 
+//* Création de la fin du niveau *//
+function createEnd(scene) {
 
-//* PARTICULES DE NEIGE BLANCHE *//
-function createWhiteParticles(scene)
-{
-    const whiteParticles = scene.add.particles("white-snowflake");
-    whiteParticles.createEmitter({
+    finNiv = scene.physics.add.staticGroup();
 
-        // zone émission
-        emitZone: {
-            source: new Phaser.Geom.Line(0, 0, 800, 0),
-            type: "random",
-            quantity: 150
-        },
-
-        // vitesse
-        speedX: {min: -20, max: 20},
-        speedY: {min: 40, max: 70},
-        accelerationY: {random: [10, 15]},
-
-        // durée de vie
-        lifespan: {min: 8000, max: 10000},
-
-        // taille
-        scale: {random: [0.1, 0.5]},
-
-        gravityY: 10,
-        frequency: 30,
-    });
-}
-
-
-//* PARTICULES DE NEIGE BLEUE *//
-function createBlueParticles(scene)
-{
-    const blueParticles = scene.add.particles("blue-snowflake");
-    blueParticles.createEmitter({
-
-        // zone émission
-        emitZone: {
-            source: new Phaser.Geom.Line(0, 0, 800, 0),
-            type: "random",
-            quantity: 50
-        },
-
-        // vitesse
-        speedX: {min: -20, max: 20},
-        speedY: {min: 40, max: 60},
-        accelerationY: {random: [10, 15]},
-
-        // durée de vie
-        lifespan: {min: 8000, max: 10000},
-
-        // taille
-        scale: {random: [0.1, 0.5]},
-
-        gravityY: 10,
-        frequency: 10,
-    });
+    finNiv.create(8200, 250, "border-1").setAlpha(0);
+    finNiv.create(8200, 300, "border-1").setAlpha(0);
+    finNiv.create(8200, 350, "border-1").setAlpha(0);
 }

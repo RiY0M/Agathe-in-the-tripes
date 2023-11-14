@@ -26,6 +26,7 @@ function preload()
 function create()
 {
     this.scrollSpeed = 6;
+
     backgrounds = createMap(this);
 
     //* SPRITE BORDURES *//
@@ -33,6 +34,9 @@ function create()
 
     //* SPRITES CAILLOUX *//
     createRocks(this);
+
+    //* SPRITES FIN *//
+    createEnd(this);
 
 
     //~ SPRITE AGATHE ~//
@@ -61,11 +65,16 @@ function update()
     agathe.anims.play("right", true);
 
     backgrounds.forEach(background => background.x -= this.scrollSpeed);
+
     rocks.getChildren().forEach(rock => {
         rock.x -= this.scrollSpeed;
         // Update the hitbox position
         rock.refreshBody();
     });
+
+    finNiv.x -= this.scrollSpeed;
+    // // console.log(finNiv);
+    // finNiv.refreshBody();
 
     //^ MOUVEMENTS AGATHE (CLAVIER) ^//
     /* GAUCHE */
@@ -125,6 +134,6 @@ function hitRock(character, rock) {
 function reachEnd(character, end) {
     //^ Si Agathe termine le niveau ^//
     // changement map
-    // window.alert("Dans l'estomac !");
-    window.location.replace("./lvl3.html");
+    window.alert("Dans l'estomac !");
+    // window.location.replace("./lvl3.html");
 }

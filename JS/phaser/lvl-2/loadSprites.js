@@ -8,12 +8,6 @@ function loadImages(scene)
         scene.load.image("map"+i, "../../../img/assets/tilemap-lvl-2-wide.png");
     }
 
-    // chargement sprites arbres
-    scene.load.image("tree-0", "../../../img/assets/tree-0.png");
-    scene.load.image("tree-1", "../../../img/assets/tree-1.png");
-    scene.load.image("tree-2", "../../../img/assets/tree-2.png");
-    scene.load.image("tree-3", "../../../img/assets/tree-3.png");
-
     // chargement sprites cailloux
     scene.load.image("rock-0", "../../../img/assets/rock-0.png");
     scene.load.image("rock-1", "../../../img/assets/rock-1.png");
@@ -23,9 +17,6 @@ function loadImages(scene)
     // chargement bordure du haut
     scene.load.image("border-0", "../../../img/assets/border-0.png");
 
-    // chargement de la grotte
-    scene.load.image("cave", "../../../img/assets/cave.png");
-
-    // chargement de la lampe
-    scene.load.image("lampe", "../../../img/assets/lamp.png");
+    // chargement bordure de fin de niveau
+    scene.load.image("border-1", "../../../img/assets/border-1.png");
 }

@@ -72,6 +72,17 @@ function create()
 
 function update()
 {
+    if (start3sCoolDown) {
+        invicibility--;
+        isInvicible = true;
+    }
+
+    if (invicibility == 0) {
+        isInvicible = false;
+        start3sCoolDown = false;
+        invicibility = 300;
+    }
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     /* GAUCHE */
@@ -132,7 +143,18 @@ function update()
 
 function collideTeeth()
 {
+    // si agathe n'est pas invincible
+    if (!isInvicible)
+    {
+        // si elle a encore au moins une vie
+        if (nbHearts > 0) {
+            // on lui en retire une
+            nbHearts--;
+            reloadNbHearts();
+        }
 
+        start3sCoolDown = true;
+    }
 }
 
 
@@ -140,4 +162,11 @@ function collectSquelettonHeart(agathe, squelettonHeart) {
 
     // suppression du coeur du squelette
     squelettonHeart.disableBody(true, true);
+
+    // si agathe n'a pas toutes ses vies
+    if (nbHearts < 3) {
+        // on lui en rajoute une
+        nbHearts++;
+        reloadNbHearts();
+    }
 }

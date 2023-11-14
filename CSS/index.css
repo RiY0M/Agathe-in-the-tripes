@@ -26,6 +26,15 @@ body {
 }
 
 
+.heart-image {
+    /* border: 1px dashed pink; */
+
+    height: 2rem;
+    position: absolute;
+    right: 1rem;
+}
+
+
 .tuto {
     /* border: 1px dashed rgb(205, 14, 205) ; */
     

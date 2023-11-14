@@ -9,6 +9,13 @@ function createAgathe(scene)
 }
 
 
-function setupCollisions(scene) {
-    
+function createGround(scene){
+    sol = scene.physics.add.staticGroup();
+    sol.create(400, 300, "ground");
+}
+
+function createBorderTopBottom(scene){
+    borderTopBottom = scene.physics.add.staticGroup();
+    borderTopBottom.create(400, 10, "borderTopBottm");
+    borderTopBottom.create(400, 590, "borderTopBottm");
 }

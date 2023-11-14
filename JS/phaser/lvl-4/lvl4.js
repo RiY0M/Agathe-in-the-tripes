@@ -3,6 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
+    backgroundColor: "#FFFFFF",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -12,7 +13,7 @@ let config = {
 };
 
 
-//$ CREATION FENETRE PHASER $//
+// $ CREATION FENETRE PHASER $//
 let game = new Phaser.Game(config);
 
 
@@ -20,43 +21,20 @@ function preload()
 {
     //$ ELEMENTS HTML $//
     // hole = document.querySelector(".hole");
-    console.log("before preload");
-    // chargement de tous les sprites
     loadImages(this);
-    this.load.tilemapTiledJSON("map", "../../img/TileMaps/map.json");
-    this.load.image("cave", "../../img/TileMaps/cave.png");
-    this.load.image("flesh-floor", "../../img/TileMaps/flesh-floor.png");
-
-    console.log("after preload");
 }
 
 function create(){
+    //* SOl *//
+    createGround(this);
+    createBorderTopBottom(this);
+
+
+
+
+
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
-
-    //* MAP *//
-
-    // Configurez les collisions avec les murs
-    // setupCollisions(this);
-
-    console.log("in setup collisions");
-    const map = this.make.tilemap({ key: "map" });
-
-    console.log("tile map construite");
-
-    const tileset1 = map.addTilesetImage("cave", "../../img/TileMaps/cave.png");
-    console.log("ajout tileset 1");
-
-    const tileset2 = map.addTilesetImage("flesh-floor", "../../img/TileMaps/flesh-floor.png");
-    console.log("ajout tileset 2");
-
-    const walls = map.createStaticLayer("Murs", tileset1);
-    console.log("creation walls");
-
-    const ground = map.createStaticLayer("Sol", tileset2);
-    console.log("creation ground");
-
-
     //! COLLISIONS !//
 
 

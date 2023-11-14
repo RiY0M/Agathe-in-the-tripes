@@ -27,16 +27,21 @@ function preload()
 function create(){
     //* SOl *//
     createGround(this);
+
+    //* BORDURES *//
     createBorderTopBottom(this);
+    createBorderLeftRight(this);
 
-
-
-
+    //* TACHES DE SANG *//
+    tacheDeSang(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
-    //! COLLISIONS !//
 
+    //! COLLISIONS !//
+    this.physics.add.collider(agathe, borderTopBottom);
+    this.physics.add.collider(agathe, murVerticale);
+    this.physics.add.collider(agathe, murHorizontale);
 
     
     //! DETECTION DU CLAVIER !//

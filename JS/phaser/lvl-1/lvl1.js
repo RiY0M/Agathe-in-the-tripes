@@ -72,14 +72,21 @@ function create()
 
 function update()
 {
+    // si le lancement de l'invincibilité est lancé
     if (start3sCoolDown) {
+        // on lance la décrémentation des 300 frames (300 frames = 3s)
         invicibility--;
+        // on rend agathe invincible
         isInvicible = true;
     }
 
+    // si les 3s d'invincibilité sont écoulées
     if (invicibility == 0) {
+        // on enlève l'effet d'immortalité à agathe
         isInvicible = false;
+        // on arrête le chorno
         start3sCoolDown = false;
+        // on réinitialise le compteur de frames
         invicibility = 300;
     }
 
@@ -153,6 +160,7 @@ function collideTeeth()
             reloadNbHearts();
         }
 
+        // lancement des 3s d'invincibilité
         start3sCoolDown = true;
     }
 }

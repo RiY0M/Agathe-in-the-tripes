@@ -27,7 +27,11 @@ function loadImages(scene)
 
     // chargement gencive
     scene.load.image("gencive", "../../../img/assets/gum.png");
+    scene.load.image("moving-gum", "../../../img/assets/moving-gum.png");
 
     // chargement dent
     scene.load.image("tooth", "../../../img/assets/tooth.png");
+    scene.load.image("moving-teeth-up", "../../../img/assets/moving-teeth-up.png");
+    scene.load.image("moving-teeth-mid", "../../../img/assets/moving-teeth-mid.png");
+    scene.load.image("moving-teeth-down", "../../../img/assets/moving-teeth-down.png");
 }

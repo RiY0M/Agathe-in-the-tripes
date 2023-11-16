@@ -64,7 +64,7 @@ function createBorderTeeth()
 }
 
 
-//* SPRITES CHEMIN DENTS *//
+//* SPRITES CHEMIN DENTS FIXES *//
 function createTeethPath()
 {
     for (let i = 145; i < 475; i+=35) fleshWall.create(140, i, "gencive").angle += 90;
@@ -84,6 +84,16 @@ function createTeethPath()
 
     for (let i = 70; i < 275; i+=35) fleshWall.create(447, i, "gencive").angle -= 90;
     for (let i = 70; i < 275; i+=35) staticTeeth.create(437, i, "tooth").angle -= 90;
+}
+
+
+//* SPRITES CHEMIN DENTS MOBILES *//
+function createMobileTeethPath()
+{
+    for (let i = 150; i <= 450; i+=150) {
+        fleshWall.create(86, i+7, "moving-gum");
+        movingTeeth1.create(85, i, "moving-teeth-up").setScale(0.7);
+    }
 }
 
 

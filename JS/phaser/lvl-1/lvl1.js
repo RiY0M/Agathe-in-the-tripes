@@ -35,8 +35,11 @@ function create()
     //* SPRITE COEUR DU SQUELETTE *//
     createSquelettonHeart(this);
 
-    //* SPRITES CHEMIN DENTS *//
+    //* SPRITES CHEMIN DENTS FIXES *//
     createTeethPath();
+
+    //* SPRITES CHEMIN DENTS MOBILES *//
+    createMobileTeethPath();
 
     //* SPRITE MUR DE SANG *//
     createFleshWall();
@@ -72,6 +75,27 @@ function create()
 
 function update()
 {
+    // console.log(retractingTeethLoop);
+
+    // on limite la boucle à 1000 frames pour éviter qu'elle surcharge
+    if (retractingTeethLoop == 1000) retractingTeethLoop = 0;
+    // incrémentation de la boucle
+    retractingTeethLoop++;
+
+    // toutes les 100 frames (2s)
+    if (retractingTeethLoop % 100 == 0) {
+        // on check les 3 premières dents du chemin
+        movingTeeth1.children.entries.forEach((teeth) => {
+            // si elles sont hautes on les descend
+            if (isMovingTeeth1Up) teeth.setTexture("moving-teeth-down");
+            // si elles sont basses on les monte
+            else teeth.setTexture("moving-teeth-up");
+        });
+        // on inverse le statut haut-bas
+        isMovingTeeth1Up = !isMovingTeeth1Up;
+    }
+
+
     // boucle en fonction du timer de l'invincibilité allant de 0.0 à 4.9
     let timer = invicibility / 10 % 5;
 
@@ -82,7 +106,7 @@ function update()
 
     // si le lancement de l'invincibilité est lancé
     if (start3sCoolDown) {
-        // on lance la décrémentation des 300 frames (300 frames = 3s)
+        // on lance la décrémentation des 150 frames (150 frames = 3s)
         invicibility--;
         // on rend agathe invincible
         isInvicible = true;
@@ -95,7 +119,7 @@ function update()
         // on arrête le chorno
         start3sCoolDown = false;
         // on réinitialise le compteur de frames
-        invicibility = 300;
+        invicibility = 150;
     }
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//

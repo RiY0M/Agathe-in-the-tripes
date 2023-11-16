@@ -90,7 +90,7 @@ function update()
     {
         // vitesse et direction du déplacement
         // agathe.setVelocityX(-160);
-        this.scrollSpeed = 5;
+        this.scrollSpeed = 0; // 5
     }
 
     /* DROITE */
@@ -98,7 +98,7 @@ function update()
     {
         // vitesse et direction du déplacement
         // agathe.setVelocityX(160);
-        this.scrollSpeed = 0; // 8
+        this.scrollSpeed = 8;
     }
 
     /* HAUT */
@@ -118,15 +118,14 @@ function update()
     /* AFK */
     if (cursors.down.isUp && cursors.up.isUp)
     {
-        // si aucune touche du clavier n'est appuyée : on arrête agathe
+        // si ni haut ni bas n'est appuyé : on arrête agathe
         agathe.setVelocityY(0);
     }
 
     /* AFK */
     if (cursors.left.isUp && cursors.right.isUp)
     {
-        // si aucune touche du clavier n'est appuyée : on arrête agathe
-        // agathe.setVelocityX(0);
+        // si ni droite ni guache n'est appuyée : on réinitialise le scroll
         this.scrollSpeed = 6;
     }
 }

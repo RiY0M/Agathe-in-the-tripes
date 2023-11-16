@@ -45,8 +45,8 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, rocks, hitRock, null, this);
-    this.physics.add.collider(agathe, borders);
     this.physics.add.collider(agathe, finNiv, reachEnd, null, this);
+    this.physics.add.collider(agathe, borders);
 
     
     //! DETECTION DU CLAVIER !//
@@ -57,6 +57,10 @@ function create()
 
     //? MOVING ANIMS ?//
     createAnims(this);
+
+    console.log(borders);
+    console.log(rocks);
+    console.log(finNiv);
 }
 
 function update()
@@ -72,8 +76,12 @@ function update()
         rock.refreshBody();
     });
 
-    finNiv.x -= this.scrollSpeed;
-    // // console.log(finNiv);
+    finNiv.getChildren().forEach(fin => {
+        fin.x -= this.scrollSpeed;
+        // Update the hitbox position
+        fin.refreshBody();
+    })
+    // finNiv.x -= this.scrollSpeed;
     // finNiv.refreshBody();
 
     //^ MOUVEMENTS AGATHE (CLAVIER) ^//
@@ -90,7 +98,7 @@ function update()
     {
         // vitesse et direction du déplacement
         // agathe.setVelocityX(160);
-        this.scrollSpeed = 8;
+        this.scrollSpeed = 0; // 8
     }
 
     /* HAUT */
@@ -121,13 +129,15 @@ function update()
         // agathe.setVelocityX(0);
         this.scrollSpeed = 6;
     }
+
+    // if(cursors.)
 }
 
 function hitRock(character, rock) {
     // This function will be called when the character collides with a rock
     // Add your code to handle the collision here
     console.log('Character hit a rock!');
-    alert('Bahaha T null ! (git gud + cringe + ratio)');
+    // alert('Bahaha T null ! (git gud + cringe + ratio)');
     // You can also apply actions like damage or game over logic here
 }
 

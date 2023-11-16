@@ -44,9 +44,22 @@ function createRocks(scene)
     const rocks0 = [
         [500, 230],
         [500, 360],
-        [513, 260],
-        [718, 263],
-        [1020, 250],
+        [526, 260],
+        [760, 263],
+        [1220, 250],
+        [1410, 239],
+        // Ligne de sécurité pour la passage dangereux
+        [1700, 340],
+        [1740, 340],
+        [1780, 340],
+        [1820, 340],
+        [1860, 340],
+        [1900, 340],
+        // fin de la ligne de sécurité
+        // alternance des cailloux
+        [2700, 295],
+        [3200, 295],
+        // fin de l'alternance des cailloux
     ];
 
     rocks0.forEach(rock0 => rocks.create(rock0[0], rock0[1], "rock-0"));
@@ -59,9 +72,22 @@ function createRocks(scene)
 
     const rocks2 = [
         [540, 270],
-        [600, 300],
-        [680, 357],
-        [1007, 233],
+        [610, 300],
+        [703, 357],
+        [1207, 233],
+        [1400, 255],
+        [1500, 340],
+        [1898, 233],
+        [1925, 297],
+        // alternance des cailloux
+        [2700, 230],
+        [2700, 365],
+        [3200, 230],
+        [3200, 365],
+        [3500, 230],
+        [3500, 295],
+        [3500, 365],
+        // fin de l'alternance des cailloux
     ];
 
     rocks2.forEach(rock2 => rocks.create(rock2[0], rock2[1], "rock-2"));
@@ -70,8 +96,19 @@ function createRocks(scene)
         [850, 350],
         [900, 300],
         [1200, 270],
-
-        [8000, 270],
+        [1390, 340],
+        [1645, 300],
+        [1985, 297],
+        // alternance des cailloux
+        [2400, 235],
+        [2400, 345],
+        [2950, 235],
+        [2950, 345],
+        [2950, 235],
+        [3350, 235],
+        [3350, 345],
+        // fin de l'alternance des cailloux
+        [8000, 280],
     ];
 
     rocks3.forEach(rock3 => rocks.create(rock3[0], rock3[1], "rock-3"));
@@ -82,7 +119,10 @@ function createEnd(scene) {
 
     finNiv = scene.physics.add.staticGroup();
 
-    finNiv.create(8200, 250, "border-1").setAlpha(0);
-    finNiv.create(8200, 300, "border-1").setAlpha(0);
-    finNiv.create(8200, 350, "border-1").setAlpha(0);
+    // finNiv.create(200, 250, "border-1");
+    // finNiv.create(8200, 300, "border-1");
+    // finNiv.create(8200, 350, "border-1");
+    finNiv.create(8300, 250, "border-1").setAlpha(0);
+    finNiv.create(8300, 300, "border-1").setAlpha(0);
+    finNiv.create(8300, 350, "border-1").setAlpha(0);
 }

@@ -129,8 +129,6 @@ function update()
         // agathe.setVelocityX(0);
         this.scrollSpeed = 6;
     }
-
-    // if(cursors.)
 }
 
 function hitRock(character, rock) {

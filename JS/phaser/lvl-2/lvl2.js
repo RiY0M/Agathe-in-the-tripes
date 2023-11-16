@@ -58,9 +58,9 @@ function create()
     //? MOVING ANIMS ?//
     createAnims(this);
 
-    console.log(borders);
-    console.log(rocks);
-    console.log(finNiv);
+    // console.log(borders);
+    // console.log(rocks);
+    // console.log(finNiv);
 }
 
 function update()

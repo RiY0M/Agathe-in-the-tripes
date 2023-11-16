@@ -48,6 +48,7 @@ function createRocks(scene)
         [760, 263],
         [1220, 250],
         [1410, 239],
+        [1780, 270],
         // Ligne de sécurité pour la passage dangereux
         [1700, 340],
         [1740, 340],
@@ -57,8 +58,8 @@ function createRocks(scene)
         [1900, 340],
         // fin de la ligne de sécurité
         // alternance des cailloux
-        [2700, 295],
-        [3200, 295],
+        [2600, 295],
+        [3100, 295],
         // fin de l'alternance des cailloux
     ];
 
@@ -80,13 +81,13 @@ function createRocks(scene)
         [1898, 233],
         [1925, 297],
         // alternance des cailloux
-        [2700, 230],
-        [2700, 365],
-        [3200, 230],
-        [3200, 365],
-        [3500, 230],
-        [3500, 295],
-        [3500, 365],
+        [2600, 230],
+        [2600, 365],
+        [3100, 230],
+        [3100, 365],
+        [3400, 230],
+        [3400, 295],
+        [3400, 365],
         // fin de l'alternance des cailloux
     ];
 
@@ -100,14 +101,18 @@ function createRocks(scene)
         [1645, 300],
         [1985, 297],
         // alternance des cailloux
-        [2400, 235],
-        [2400, 345],
-        [2950, 235],
-        [2950, 345],
-        [2950, 235],
-        [3350, 235],
-        [3350, 345],
+        [2300, 235],
+        [2300, 345],
+        [2850, 235],
+        [2850, 345],
+        [2850, 235],
+        [3250, 235],
+        [3250, 345],
         // fin de l'alternance des cailloux
+        // Chemin de cailloux
+        [3600, 235],
+        [3600, 345],
+        // fin du chemin
         [8000, 280],
     ];
 

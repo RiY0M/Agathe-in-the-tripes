@@ -31,7 +31,7 @@ function create()
     //~ SPRITES ELTS BOUCHE ~//
     createMouseElts();
 
-
+    
     //* SPRITE COEUR DU SQUELETTE *//
     createSquelettonHeart(this);
 
@@ -55,6 +55,24 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, topBorder);
     this.physics.add.collider(agathe, staticTeeth, collideTeeth);
+
+    // on ajoute la collision uniquement si la dent est vers le haut
+    this.physics.add.collider(agathe, movingTeeth1, () => {
+        if (isMovingTeeth1Up) collideTeeth();
+    });
+    // on ajoute la collision uniquement si la dent est vers le haut
+    this.physics.add.collider(agathe, movingTeeth2, () => {
+        if (isMovingTeeth2Up) collideTeeth();
+    });
+    // on ajoute la collision uniquement si la dent est vers le haut
+    this.physics.add.collider(agathe, movingTeeth3, () => {
+        if (isMovingTeeth3Up) collideTeeth();
+    });
+    // on ajoute la collision uniquement si la dent est vers le haut
+    this.physics.add.collider(agathe, movingTeeth4, () => {
+        if (isMovingTeeth4Up) collideTeeth();
+    });
+
     this.physics.add.collider(agathe, deadThings);
 
     //! ACTION RECUP LAMPE !//
@@ -70,7 +88,7 @@ function create()
     createAnims(this);
     
     //? AFK ANIMS ?//
-    createAFK(this);    
+    createAFK(this);
 }
 
 function update()
@@ -87,9 +105,19 @@ function update()
         // on check les dents n°1 du chemin
         movingTeeth1.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
-            if (isMovingTeeth1Up) teeth.setTexture("moving-teeth-down");
+            if (isMovingTeeth1Up) {
+                // changement texture
+                teeth.setTexture("moving-teeth-down");
+                // suppression collisions
+                teeth.body.checkCollision = {down: false, left: false, none: false, right: false, up: false};
+            }
             // si elles sont basses on les monte
-            else teeth.setTexture("moving-teeth-up");
+            else {
+                // changement texture
+                teeth.setTexture("moving-teeth-up");
+                // suppression collisions
+                teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+            }
         });
         // on inverse le statut haut-bas
         isMovingTeeth1Up = !isMovingTeeth1Up;
@@ -102,9 +130,19 @@ function update()
         // on check les dents n°2 du chemin
         movingTeeth3.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
-            if (isMovingTeeth3Up) teeth.setTexture("moving-teeth-down");
+            if (isMovingTeeth3Up) {
+                // changement texture
+                teeth.setTexture("moving-teeth-down");
+                // suppression collisions
+                teeth.body.checkCollision = {down: false, left: false, none: false, right: false, up: false};
+            }
             // si elles sont basses on les monte
-            else teeth.setTexture("moving-teeth-up");
+            else {
+                // changement texture
+                teeth.setTexture("moving-teeth-up");
+                // suppression collisions
+                teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+            }
         });
         // on inverse le statut haut-bas
         isMovingTeeth3Up = !isMovingTeeth3Up;
@@ -117,9 +155,19 @@ function update()
         // on check les dents n°3 du chemin
         movingTeeth2.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
-            if (isMovingTeeth2Up) teeth.setTexture("moving-teeth-down");
+            if (isMovingTeeth2Up) {
+                // changement texture
+                teeth.setTexture("moving-teeth-down");
+                // suppression collisions
+                teeth.body.checkCollision = {down: false, left: false, none: false, right: false, up: false};
+            }
             // si elles sont basses on les monte
-            else teeth.setTexture("moving-teeth-up");
+            else {
+                // changement texture
+                teeth.setTexture("moving-teeth-up");
+                // suppression collisions
+                teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+            }
         });
         // on inverse le statut haut-bas
         isMovingTeeth2Up = !isMovingTeeth2Up;
@@ -133,10 +181,21 @@ function update()
         // on check les dents n°4 du chemin
         movingTeeth4.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
-            if (isMovingTeeth4Up) teeth.setTexture("moving-teeth-down");
+            if (isMovingTeeth4Up) {
+                // changement texture
+                teeth.setTexture("moving-teeth-down");
+                // suppression collisions
+                teeth.body.checkCollision = {down: false, left: false, none: false, right: false, up: false};
+            }
             // si elles sont basses on les monte
-            else teeth.setTexture("moving-teeth-up");
+            else {
+                // changement texture
+                teeth.setTexture("moving-teeth-up");
+                // suppression collisions
+                teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+            }
 
+            // changement valeur aléatoire déclenchement dents n°4 
             randomDelay = Math.floor(Math.random() * (250 - 25 + 1) + 25);
         });
         // on inverse le statut haut-bas

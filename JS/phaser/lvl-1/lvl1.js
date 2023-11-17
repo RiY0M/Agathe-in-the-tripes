@@ -75,16 +75,16 @@ function create()
 
 function update()
 {
-    // console.log(retractingTeethLoop);
-
     // on limite la boucle à 1000 frames pour éviter qu'elle surcharge
     if (retractingTeethLoop == 1000) retractingTeethLoop = 0;
     // incrémentation de la boucle
     retractingTeethLoop++;
 
-    // toutes les 100 frames (2s)
+
+    //? DENTS N°1 -> 100 frames ?//
+    // toute les 100 frames (2s)
     if (retractingTeethLoop % 100 == 0) {
-        // on check les 3 premières dents du chemin
+        // on check les dents n°1 du chemin
         movingTeeth1.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
             if (isMovingTeeth1Up) teeth.setTexture("moving-teeth-down");
@@ -93,6 +93,54 @@ function update()
         });
         // on inverse le statut haut-bas
         isMovingTeeth1Up = !isMovingTeeth1Up;
+    }
+
+
+    //? DENTS N°2 -> 100 frames delay ?//
+    // toute les 100 frames (2s)
+    if (retractingTeethLoop % 100 == 50) {
+        // on check les dents n°2 du chemin
+        movingTeeth3.children.entries.forEach((teeth) => {
+            // si elles sont hautes on les descend
+            if (isMovingTeeth3Up) teeth.setTexture("moving-teeth-down");
+            // si elles sont basses on les monte
+            else teeth.setTexture("moving-teeth-up");
+        });
+        // on inverse le statut haut-bas
+        isMovingTeeth3Up = !isMovingTeeth3Up;
+    }
+
+
+    //? DENTS N°3 -> 50 frames ?//
+    // toutes les 50 frames (1s)
+    if (retractingTeethLoop % 50 == 0) {
+        // on check les dents n°3 du chemin
+        movingTeeth2.children.entries.forEach((teeth) => {
+            // si elles sont hautes on les descend
+            if (isMovingTeeth2Up) teeth.setTexture("moving-teeth-down");
+            // si elles sont basses on les monte
+            else teeth.setTexture("moving-teeth-up");
+        });
+        // on inverse le statut haut-bas
+        isMovingTeeth2Up = !isMovingTeeth2Up;
+    }
+
+
+    //? DENTS N°4 -> ?? frames ?//
+    // toutes les ? frames (?s)
+    if (retractingTeethLoop % randomDelay == 0) {
+
+        // on check les dents n°4 du chemin
+        movingTeeth4.children.entries.forEach((teeth) => {
+            // si elles sont hautes on les descend
+            if (isMovingTeeth4Up) teeth.setTexture("moving-teeth-down");
+            // si elles sont basses on les monte
+            else teeth.setTexture("moving-teeth-up");
+
+            randomDelay = Math.floor(Math.random() * (250 - 25 + 1) + 25);
+        });
+        // on inverse le statut haut-bas
+        isMovingTeeth4Up = !isMovingTeeth4Up;
     }
 
 

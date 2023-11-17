@@ -90,10 +90,45 @@ function createTeethPath()
 //* SPRITES CHEMIN DENTS MOBILES *//
 function createMobileTeethPath()
 {
+    // 1 -> 3
     for (let i = 150; i <= 450; i+=150) {
         fleshWall.create(86, i+7, "moving-gum");
         movingTeeth1.create(85, i, "moving-teeth-up").setScale(0.7);
     }
+
+    // 8 -> 12
+    for (let i = 113; i <= 400; i+=125) {
+        fleshWall.create(716, i+7, "moving-gum");
+        movingTeeth1.create(715, i, "moving-teeth-up").setScale(0.7);
+    }
+    for (let i = 175; i <= 400; i+=125) {
+        fleshWall.create(716, i+7, "moving-gum");
+        movingTeeth3.create(715, i, "moving-teeth-up").setScale(0.7);
+    }
+
+    // 4
+    fleshWall.create(149, 87, "moving-gum");
+    movingTeeth2.create(148, 80, "moving-teeth-up").setScale(0.7);
+
+    // 5
+    fleshWall.create(216, 257, "moving-gum");
+    movingTeeth3.create(215, 250, "moving-teeth-up").setScale(0.7);
+
+    // 6
+    fleshWall.create(216, 307, "moving-gum");
+    movingTeeth3.create(215, 300, "moving-teeth-up").setScale(0.7);
+
+    // 7
+    fleshWall.create(216, 357, "moving-gum");
+    movingTeeth1.create(215, 350, "moving-teeth-up").setScale(0.7);
+
+
+    // 19 -> 20
+    for (let i = 150; i <= 300; i+=100) {
+        fleshWall.create(371, i+7, "moving-gum");
+        movingTeeth4.create(370, i, "moving-teeth-up").setScale(0.7);
+    }
+
 }
 
 

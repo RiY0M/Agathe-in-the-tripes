@@ -89,16 +89,16 @@ function update()
     if (cursors.left.isDown)
     {
         // vitesse et direction du déplacement
-        // agathe.setVelocityX(-160);
-        this.scrollSpeed = 0; // 5
+        this.scrollSpeed = 5;
+        // this.scrollSpeed = -3; // debug
     }
 
     /* DROITE */
     if (cursors.right.isDown)
     {
         // vitesse et direction du déplacement
-        // agathe.setVelocityX(160);
         this.scrollSpeed = 8;
+        // this.scrollSpeed = 0; // debug
     }
 
     /* HAUT */

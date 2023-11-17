@@ -13,4 +13,4 @@ let borders;                // bordure du haut et du bas
 // let holeDiffHeight = 0;     // décalage du halo si lampe
 // let hasMoved = false;       // booleen verif si affi ou non tuto                  
 // let tutoDeplacement;        // message tutoriel pour apprendre touches
-const loopLvl2 = 9;           // Nombre de fois qu'on boucle pour créer le niveau 2
+const loopLvl2 = 10;           // Nombre de fois qu'on boucle pour créer le niveau 2

@@ -54,7 +54,10 @@ function create(){
     createAnims(this);
     
     //? AFK ANIMS ?//
-    createAFK(this);    
+    createAFK(this);   
+    
+    //* labyrinthe *//
+    labyrinthe(this);
 }
 
 function update(){
@@ -69,7 +72,7 @@ function update(){
         agathe.anims.play("left", true);
         // last frame facing afk
         lastFrame = 4;
-
+        //console.log("x : ",agathe.x, "y :",agathe.y);
     }
 
     /* DROITE */
@@ -82,8 +85,7 @@ function update(){
         // last frame facing afk
         lastFrame = 8;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        //console.log("x : ",agathe.x, "y :",agathe.y);
     }
 
     /* HAUT */
@@ -103,8 +105,7 @@ function update(){
         //     window.location.replace("./lvl1.html");
         // }
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        //console.log("x : ",agathe.x, "y :",agathe.y);
     }
 
     /* BAS */
@@ -117,8 +118,7 @@ function update(){
         // last frame facing afk
         lastFrame = 0;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        // console.log("x : ",agathe.x, "y :",agathe.y);
     }
 
     /* AFK */

@@ -103,20 +103,7 @@ function createMobileTeethPath()
             .setSize(44, 40)
             .setOffset(18, 20);
     }
-
-    // 8 -> 12
-    for (let i = 113; i <= 400; i+=125) {
-        fleshWall.create(716, i+7, "moving-gum");
-        movingTeeth1.create(715, i, "moving-teeth-up").setScale(0.7)
-            .setSize(44, 40)
-            .setOffset(18, 20);
-    }
-    for (let i = 175; i <= 400; i+=125) {
-        fleshWall.create(716, i+7, "moving-gum");
-        movingTeeth3.create(715, i, "moving-teeth-up").setScale(0.7)
-            .setSize(44, 40)
-            .setOffset(18, 20);
-    }
+    
 
     // 4
     fleshWall.create(149, 87, "moving-gum");
@@ -141,6 +128,29 @@ function createMobileTeethPath()
     movingTeeth1.create(215, 350, "moving-teeth-up").setScale(0.7)
         .setSize(70, 40)
         .setOffset(15, 20);
+
+    
+    // 8 -> 9
+    for (let i = 370; i <= 420; i+=50) {
+        fleshWall.create(716, i, "moving-gum");
+        movingTeeth1.create(715, i-7, "moving-teeth-up").setScale(0.7)
+            .setSize(44, 40)
+            .setOffset(18, 20);
+    }
+
+    // 10
+    fleshWall.create(716, 250, "moving-gum");
+    movingTeeth2.create(715, 243, "moving-teeth-up").setScale(0.7)
+        .setSize(44, 40)
+        .setOffset(18, 20);
+
+    // 11 -> 12
+    for (let i = 90; i <= 140; i+=50) {
+        fleshWall.create(716, i, "moving-gum");
+        movingTeeth3.create(715, i-7, "moving-teeth-up").setScale(0.7)
+            .setSize(44, 40)
+            .setOffset(18, 20);
+    }
 
 
     // 19 -> 20

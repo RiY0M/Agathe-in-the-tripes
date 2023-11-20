@@ -231,6 +231,7 @@ function update()
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
+
     /* GAUCHE */
     if (cursors.left.isDown)
     {

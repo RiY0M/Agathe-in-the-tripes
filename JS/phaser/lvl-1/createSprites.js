@@ -51,10 +51,14 @@ function createBorderTeeth()
     for (let i = 450; i < 750; i+=35) staticTeeth.create(i, 25, "tooth").flipY = true;
 
     // ligne du bas (gauche)
-    for (let i = 50; i < 350; i+=35) staticTeeth.create(i, 575, "tooth");
+    for (let i = 50; i < 350; i+=35) staticTeeth.create(i, 575, "tooth")
+        .setSize(45, 46)
+        .setOffset(-9, 5);
 
     // ligne du bas (droite)
-    for (let i = 450; i < 750; i+=35) staticTeeth.create(i, 575, "tooth");
+    for (let i = 450; i < 750; i+=35) staticTeeth.create(i, 575, "tooth")
+        .setSize(45, 46)
+        .setOffset(9, 5);
 
     // ligne gauche
     for (let i = 25; i < 575; i+=35) staticTeeth.create(25, i, "tooth").angle += 90;
@@ -71,7 +75,9 @@ function createTeethPath()
     for (let i = 150; i < 450; i+=35) staticTeeth.create(150, i, "tooth").angle += 90;
 
     for (let i = 144; i < 700; i+=35) fleshWall.create(i, 485, "gencive");
-    for (let i = 150; i < 700; i += 35) staticTeeth.create(i, 475, "tooth");
+    for (let i = 150; i < 700; i += 35) staticTeeth.create(i, 475, "tooth")
+        .setSize(45, 46)
+        .setOffset(-9, 5);
 
     for (let i = 145; i < 375; i+=35) fleshWall.create(290, i, "gencive").angle += 90;
     for (let i = 150; i < 350; i+=35) staticTeeth.create(300, i, "tooth").angle += 90;

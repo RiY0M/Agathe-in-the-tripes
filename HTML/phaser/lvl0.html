@@ -9,7 +9,7 @@
 </head>
 
 
-<body id="game-canvas">
+<body id="game-canvas" class="game-canvas-inside">
     <!-- halo de lumière -->
     <div class="hole"></div>
 
@@ -23,10 +23,13 @@
     <script src="../../JS/phaser/lvl-0/createSprites.js"></script>
 
     <!-- chargement des animations -->
-    <script src="../../JS/phaser/lvl-0/createAnims.js"></script>
+    <script src="../../JS/phaser/common/createAnims.js"></script>
 
     <!-- chargement des poses AFK -->
-    <script src="../../JS/phaser/lvl-0/createAFK.js"></script>
+    <script src="../../JS/phaser/common/createAFK.js"></script>
+
+    <!-- chargement de la vie restante -->
+    <script src="../../JS/phaser/common/displayHearts.js"></script>
 
     <!-- chargement du jeu -->
     <script id="game-canvas-script" src="../../JS/phaser/lvl-0/lvl0.js"></script>

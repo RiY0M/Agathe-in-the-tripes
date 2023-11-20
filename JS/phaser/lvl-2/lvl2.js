@@ -1,3 +1,5 @@
+"use strict";
+
 // configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
 let config = {
     type: Phaser.AUTO,
@@ -68,79 +70,81 @@ function update()
     // animation sprite
     agathe.anims.play("right", true);
 
-    backgrounds.forEach(background => background.x -= this.scrollSpeed);
-
-    rocks.getChildren().forEach(rock => {
-        rock.x -= this.scrollSpeed;
-        // Update the hitbox position
-        rock.refreshBody();
-    });
-
-    finNiv.getChildren().forEach(fin => {
-        fin.x -= this.scrollSpeed;
-        // Update the hitbox position
-        fin.refreshBody();
-    })
-    // finNiv.x -= this.scrollSpeed;
-    // finNiv.refreshBody();
+    if(hasMoved && !levelStop) {
+        moveLevel(this.scrollSpeed);
+    }
 
     //^ MOUVEMENTS AGATHE (CLAVIER) ^//
     /* GAUCHE */
-    if (cursors.left.isDown)
-    {
+    if (cursors.left.isDown && !levelStop) {
         // vitesse et direction du déplacement
         this.scrollSpeed = 5;
         // this.scrollSpeed = -3; // debug
+        hasMoved = true;
     }
 
     /* DROITE */
-    if (cursors.right.isDown)
-    {
+    if (cursors.right.isDown && !levelStop) {
         // vitesse et direction du déplacement
         this.scrollSpeed = 8;
         // this.scrollSpeed = 0; // debug
+        hasMoved = true;
     }
 
     /* HAUT */
-    if (cursors.up.isDown)
-    {
+    if (cursors.up.isDown && !levelStop) {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-160);
+        hasMoved = true;
     }
 
     /* BAS */
-    if (cursors.down.isDown)
-    {
+    if (cursors.down.isDown && !levelStop) {
         // vitesse et direction du déplacement
         agathe.setVelocityY(160);
+        hasMoved = true;
     }
 
     /* AFK */
-    if (cursors.down.isUp && cursors.up.isUp)
-    {
+    if (cursors.down.isUp && cursors.up.isUp && !levelStop) {
         // si ni haut ni bas n'est appuyé : on arrête agathe
         agathe.setVelocityY(0);
     }
 
     /* AFK */
-    if (cursors.left.isUp && cursors.right.isUp)
-    {
+    if (cursors.left.isUp && cursors.right.isUp && !levelStop) {
         // si ni droite ni guache n'est appuyée : on réinitialise le scroll
         this.scrollSpeed = 6;
     }
 }
 
 function hitRock(character, rock) {
-    // This function will be called when the character collides with a rock
-    // Add your code to handle the collision here
-    console.log('Character hit a rock!');
-    // alert('Bahaha T null ! (git gud + cringe + ratio)');
-    // You can also apply actions like damage or game over logic here
+
+    // Stoppe le niveau pendant 1 seconde
+    levelStop = true;
+    this.scrollSpeed = 0;
+    agathe.setVelocityY(0);
+    
+    // sleep(1000); + Reset lvl without reloading it
+    setTimeout(() => {
+
+        // Réinitialise le niveau
+        agathe.y = initialY;
+        moveLevel(-xScroll);
+        hasMoved = false;
+        levelStop = false;
+    }, 1000);
+    
 }
 
 function reachEnd(character, end) {
     //^ Si Agathe termine le niveau ^//
     // changement map
-    window.alert("Dans l'estomac !");
     // window.location.replace("./lvl3.html");
+
+    // Enregistrement du temps + passage au niveau 3 dans la bdd
+    // Appel API
+
+
+    window.alert("Dans l'estomac !"); // debug
 }

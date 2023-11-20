@@ -1,3 +1,5 @@
+"use strict";
+
 //? MOVING ANIMS ?//
 function createAnims(scene)
 {

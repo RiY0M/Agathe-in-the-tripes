@@ -1,3 +1,5 @@
+"use strict";
+
 //? AFK ANIMS ?//
 function createAFK(scene)
 {

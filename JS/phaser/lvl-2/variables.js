@@ -15,6 +15,7 @@ let borders;                // bordure du haut et du bas
 // let holeDiffHeight = 0;     // décalage du halo si lampe
 let hasMoved = false;       // booleen verif si affi ou non tuto                  
 // let tutoDeplacement;        // message tutoriel pour apprendre touches
+let startTime = new Date().getTime(); // Starting time fot the chronometer
 let xScroll = 0;             // Compteur pour combien on a scroll dans le niveau
 let levelStop = false;        // Indicate if the level is stopped or not
 const initialY = 270;        // Initial Y position of agathe

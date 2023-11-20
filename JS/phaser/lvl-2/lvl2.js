@@ -56,6 +56,7 @@ function create()
 
 
     //^ ANIMATIONS AGATHE (SPRITES) ^//
+    createAFK(this);
 
     //? MOVING ANIMS ?//
     createAnims(this);
@@ -67,11 +68,13 @@ function create()
 
 function update()
 {
-    // animation sprite
-    agathe.anims.play("right", true);
-
+    
     if(hasMoved && !levelStop) {
+        // animation sprite
+        agathe.anims.play("right", true);
         moveLevel(this.scrollSpeed);
+    } else {
+        agathe.anims.play("afk-8", true);
     }
 
     //^ MOUVEMENTS AGATHE (CLAVIER) ^//
@@ -118,6 +121,7 @@ function update()
     }
 }
 
+//^ Si agathe rencontre un obstacle ^//
 function hitRock(character, rock) {
 
     // Stoppe le niveau pendant 1 seconde
@@ -130,6 +134,7 @@ function hitRock(character, rock) {
 
         // Réinitialise le niveau
         agathe.y = initialY;
+        startTime = new Date().getTime();
         moveLevel(-xScroll);
         hasMoved = false;
         levelStop = false;
@@ -137,14 +142,15 @@ function hitRock(character, rock) {
     
 }
 
+//^ Si Agathe termine le niveau ^//
 function reachEnd(character, end) {
-    //^ Si Agathe termine le niveau ^//
-    // changement map
-    // window.location.replace("./lvl3.html");
-
+    
     // Enregistrement du temps + passage au niveau 3 dans la bdd
     // Appel API
-
+    const time = (new Date().getTime() - startTime) / 1000;
+    console.log(time);
 
     window.alert("Dans l'estomac !"); // debug
+    // Changement map
+    // window.location.replace("./lvl3.html");
 }

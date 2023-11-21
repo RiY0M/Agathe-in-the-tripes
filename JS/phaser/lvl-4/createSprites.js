@@ -51,5 +51,5 @@ function labyrinthe(scene) {
         }
     });
 
-    wallLayer.setVisible(false); // Masque la couche "Wall" de la tilemap
+    //wallLayer.setVisible(false); // Masque la couche "Wall" de la tilemap
 }

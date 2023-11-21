@@ -36,14 +36,7 @@ function create(){
     createAgathe(this);    
 
     //! COLLISIONS !//
-    
-    // let wallLayer = map.getLayer("Wall");
-    // console.log("wallLayer : ", wallLayer);
 
-    // this.physics.add.collider(agathe, wallLayer);
-
-
-    // this.physics.add.collider(agathe, map.getLayer("Wall"));
     this.physics.add.collider(agathe, walls);
 
     // Permet à Agathe de marcher sur le sol sans collision

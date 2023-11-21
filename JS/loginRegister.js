@@ -29,6 +29,7 @@ function register(login, password) {
                 }),
             }).then(response => response.json().then(data => {
                 supprCompteAvantDeReco();
+                console.log(data);
                 let date_expiration = new Date();
                 date_expiration.setTime(date_expiration.getTime() + (1 * 60 * 60 * 1000));
                 document.cookie = "login=" + login + ";expires=" + date_expiration.toUTCString() + ";path=/";
@@ -66,7 +67,7 @@ loginForm.addEventListener('submit', async function (event) {
     let passwordLog = document.querySelector('#loginMdp').value;
 
     const reponse = await fetch(
-        "https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/connexion.php", {
+        "https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/connexion.php", {
             method: "POST",
             body: new URLSearchParams({
                 login: loginLog,
@@ -78,8 +79,9 @@ loginForm.addEventListener('submit', async function (event) {
     const data = await reponse.json();
     // console.log("M : ", data.message);
     // console.log("Data : ", data);
-    // console.log("Succes : ", data.status);
+    // console.log("Success : ", data.status);
 
+    console.log(data);
     if (data.status === "success" || data.message ==="Connexion réussie") {
         supprCompteAvantDeReco();
 
@@ -88,7 +90,7 @@ loginForm.addEventListener('submit', async function (event) {
         document.cookie = "login=" + loginLog + ";expires=" + date_expiration.toUTCString() + ";path=/";
 
         //console.log("Cookie : ", document.cookie);
-        window.location.href = "index.html";
+        // window.location.href = "index.html";
         return;
     }
     messageErreur(data.message, msgErreurLog);

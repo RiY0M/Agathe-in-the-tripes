@@ -5,7 +5,7 @@ require_once "./connexionBDD.php";
 
 $json = [];
 $query = "
-SELECT user_id, mdp, salt
+SELECT id, mdp, salt
 FROM USERS
 WHERE login = :login";
 
@@ -16,10 +16,14 @@ try{
     $res->execute();
     $res = $res->fetch();
     $mdp = crypt($_POST['mdp'], $res['salt']);
+    $id = intval($res["id"]);
 
     if($mdp == $res['mdp']){
+        $json["status"] = "success";
         $json["message"] = "Connexion réussie";
-        $_SESSION["user_id"] = intval($res["user_id"]);
+        $_SESSION["user_id"] = $id;
+        // $json["session"] = $id;
+        // $json["session"] = $_SESSION;
     }
     else{
         $json["status"] = "failed";

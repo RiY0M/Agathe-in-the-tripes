@@ -18,15 +18,16 @@ popUpNewGame.style.visibility = "hidden";
 
 
 // BOUTONS PRINCIPAUX
-let loginRegisterButton = document.querySelector("#login-register-button");
-let nouvellePartyButton = document.querySelector("#restart-game-button");
-let continuePartyButton = document.querySelector("#start-game-button");
+const loginRegisterButton = document.querySelector("#login-register-button");
+const nouvellePartyButton = document.querySelector("#restart-game-button");
+const continuePartyButton = document.querySelector("#start-game-button");
+const confirmerNouvellePartyButton = document.querySelector("#pop-up-new-game-agree-button");
 
 // récupération pop-up subtitle
-let popUpNewGameSubtitle = document.querySelector("#pop-up-new-game-subtitle");
+const popUpNewGameSubtitle = document.querySelector("#pop-up-new-game-subtitle");
 
 // PSEUDO DU JOUEUR
-let headerPseudo = document.querySelector("#header-player-name");
+const headerPseudo = document.querySelector("#header-player-name");
 
 
 // si le joueur n'a pas de partie en cours on cache le bouton "nouvelle partie"
@@ -103,6 +104,20 @@ nouvellePartyButton.addEventListener("click", () => {
     ereaseBody();
     // affichage pop-up
     popUpNewGame.style.visibility = "visible";
+});
+
+confirmerNouvellePartyButton.addEventListener("click", () => {
+
+    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/creerGame.php')
+    .then(response => response.json())
+    .then(json => {
+        console.log(json)
+        if (json.status == 'error') {
+            console.log(json.message);
+        }
+    });
+
+    // window.location.replace("../HTML/phaser/lvl0.html");
 });
 
 // remplissage pop-up

@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+session_start();
 require_once "./connexionBDD.php";
 
 function queryBasic(PDO $db, string $whereClause, int $user_id = 0): array {

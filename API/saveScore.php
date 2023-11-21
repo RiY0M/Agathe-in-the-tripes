@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-require_once "./connexionBDD.php";
 session_start();
+require_once "./connexionBDD.php";
 
 $json = [];
 $json["data"] = [];

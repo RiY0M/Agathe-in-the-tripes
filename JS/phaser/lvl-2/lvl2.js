@@ -56,7 +56,7 @@ function create()
 
 
     //^ ANIMATIONS AGATHE (SPRITES) ^//
-    createAFK(this);
+    // createAFK(this);
 
     //? MOVING ANIMS ?//
     createAnims(this);
@@ -74,7 +74,7 @@ function update()
         agathe.anims.play("right", true);
         moveLevel(this.scrollSpeed);
     } else {
-        agathe.anims.play("afk-8", true);
+        // agathe.anims.play("afk-8", true);
     }
 
     //^ MOUVEMENTS AGATHE (CLAVIER) ^//

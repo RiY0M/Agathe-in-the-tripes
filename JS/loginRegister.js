@@ -10,34 +10,34 @@ function register(login, password) {
     console.log(user);
 
     fetch('https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/newUser.php', {
-            method: 'POST',
-            body: new URLSearchParams({
-                login: user.login,
-                mdp: user.mdp,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (data.status == 'success') {
-                // L'Authentification a réussi
-                fetch('https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/connexion.php', {
-                    method: 'POST',
-                    body: new URLSearchParams({
-                        login: user.login,
-                        mdp: user.mdp,
-                    }),
-                }).then(response => response.json().then(data => {
-                    supprCompteAvantDeReco();
-                    let date_expiration = new Date();
-                    date_expiration.setTime(date_expiration.getTime() + (1 * 60 * 60 * 1000));
-                    document.cookie = "login=" + login + ";expires=" + date_expiration.toUTCString() + ";path=/";
-                    window.location.href = "index.html";
-                    return;
-                }));
-            }
-            messageErreur(data.message, msgErreurReg);
-        })
+        method: 'POST',
+        body: new URLSearchParams({
+            login: user.login,
+            mdp: user.mdp,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.status == 'success') {
+            // L'Authentification a réussi
+            fetch('https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/connexion.php', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    login: user.login,
+                    mdp: user.mdp,
+                }),
+            }).then(response => response.json().then(data => {
+                supprCompteAvantDeReco();
+                let date_expiration = new Date();
+                date_expiration.setTime(date_expiration.getTime() + (1 * 60 * 60 * 1000));
+                document.cookie = "login=" + login + ";expires=" + date_expiration.toUTCString() + ";path=/";
+                window.location.href = "index.html";
+                return;
+            }));
+        }
+        messageErreur(data.message, msgErreurReg);
+    })
 };
 
 

@@ -2,7 +2,7 @@
 
 require_once "./connexionBDD.php";
 
-function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
+function queryBasic(PDO $db, string $whereClause, int $user_id = 0): array {
 
     $query =
     "SET @row_number = 0;
@@ -12,6 +12,7 @@ function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
 
     SELECT @row_number:=@row_number+1 AS num,
     login AS name,
+    G.user_id
     LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), '%i:%s:%f'), 9) AS complete_time
     FROM SCORES S
     INNER JOIN GAMES G ON S.game_id = G.id
@@ -24,24 +25,11 @@ function queryBasic(PDO $db, string $whereClause, string $login = ""): array {
     $query =
     "SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
     UNION ALL
-    SELECT * FROM (SELECT * FROM TAB WHERE name = :login LIMIT 0,1) AS TAB2";
+    SELECT * FROM (SELECT * FROM TAB WHERE user_id = :user_id LIMIT 0,1) AS TAB2";
 
     $res = $db->prepare($query);
-    $res->bindParam(":login", $login, PDO::PARAM_STR);
+    $res->bindParam(":user_id", $user_id, PDO::PARAM_INT);
     $res->execute();
-
-    // print_r($res);
-    // print_r($res->errorInfo());
-    // $r = [];
-    // $i = 0;
-    
-    // while($data = $res->fetch(PDO::FETCH_ASSOC)) {
-    //     $i++;
-    //     $r[] = $data;
-    // }
-    // echo "<br>$i<br>";
-
-    // return $r;
 
     $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -58,7 +46,7 @@ function queryLevels(PDO $db): array {
     return $res->fetchAll(PDO::FETCH_ASSOC);
 } 
 
-$login = $_SESSION["login"] ?? "";
+$login = $_SESSION["user_id"] ?? 0;
 
 $json = [];
 try {

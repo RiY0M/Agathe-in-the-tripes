@@ -2,7 +2,7 @@
 
 function sendData(idLevel, idNextLevel, time) {
 
-    fetch('https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/saveScore.php', {
+    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/saveScore.php', {
         method: 'POST',
         body: new URLSearchParams({
             level_id: idLevel,

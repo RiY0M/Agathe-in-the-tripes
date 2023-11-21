@@ -9,7 +9,8 @@ $json["data"] = [];
 try {
 
     if(!$_SESSION["game_id"]) {
-        throw new Error("utilisateur non connecté");
+        throw new ErrorException("utilisateur non connecté, résultat non enregistré");
+        return;
     }
 
     $query =

@@ -263,6 +263,13 @@ function update()
         agathe.anims.play("up", true);
         // last frame facing afk
         lastFrame = 12;
+
+        // si agathe rentre dans l'oesophage (y = coordonnées du point d'entrée)
+        if (agathe.y <= 15) {
+            // changement map
+            // window.alert("Dans la grotte !");
+            window.location.replace("./lvl2.html");
+        }
     }
 
     /* BAS */

@@ -25,23 +25,29 @@ function preload()
 }
 
 function create(){
-    //* SOl *//
+    //* MAP *//
     createGround(this);
-
-    //* BORDURES *//
-    createBorderTopBottom(this);
-    createBorderLeftRight(this);
+    labyrinthe(this);
 
     //* TACHES DE SANG *//
-    tacheDeSang(this);
+    //tacheDeSang(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
 
     //! COLLISIONS !//
-    this.physics.add.collider(agathe, borderTopBottom);
-    this.physics.add.collider(agathe, murVerticale);
-    this.physics.add.collider(agathe, murHorizontale);
+    
+    // let wallLayer = map.getLayer("Wall");
+    // console.log("wallLayer : ", wallLayer);
+
+    // this.physics.add.collider(agathe, wallLayer);
+
+
+    // this.physics.add.collider(agathe, map.getLayer("Wall"));
+    this.physics.add.collider(agathe, walls);
+
+    // Permet à Agathe de marcher sur le sol sans collision
+    this.physics.add.collider(agathe, sol, null, null, this);
 
     
     //! DETECTION DU CLAVIER !//
@@ -56,8 +62,6 @@ function create(){
     //? AFK ANIMS ?//
     createAFK(this);   
     
-    //* labyrinthe *//
-    labyrinthe(this);
 }
 
 function update(){

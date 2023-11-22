@@ -36,7 +36,6 @@ function create(){
     createAgathe(this);    
 
     //! COLLISIONS !//
-
     this.physics.add.collider(agathe, walls);
 
     // Permet à Agathe de marcher sur le sol sans collision
@@ -55,6 +54,7 @@ function create(){
     //? AFK ANIMS ?//
     createAFK(this);   
     
+    this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 }
 
 function update(){

@@ -24,6 +24,7 @@ function tacheDeSang(scene){    //Rajoute des taches de sang
 function createGround(scene){   //Créer le sol
     sol = scene.physics.add.staticGroup();
     sol.create(400, 300, "ground");
+    sol.setscale = 10;
 }
 
 function labyrinthe(scene) {    
@@ -43,7 +44,7 @@ function labyrinthe(scene) {
         if (tile.index === 1) {
             const x = tile.getCenterX();
             const y = tile.getCenterY();
-            const wall = walls.create(x, y, 'tiles', tile.index - 1); // tile.index - 1 pour ajuster la clé de tuile
+            const wall = walls.create(x, y, 'tiles', tile.index - 30); // tile.index - 1 pour ajuster la clé de tuile
             wall.setOrigin(0.5, 0.5);
             wall.body.width = tile.width;
             wall.body.height = tile.height;

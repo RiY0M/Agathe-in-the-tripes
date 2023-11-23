@@ -28,13 +28,16 @@ function create()
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 
+    //* BORDURE DU CANVAS *//
+    displayCanvasBorder();
+
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);
 
 
     //! COLLISIONS !//
-    // ...
+    this.physics.add.collider(agathe, canvasBorder);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();

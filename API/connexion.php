@@ -24,6 +24,7 @@ try{
         $json["message"] = "Connexion réussie";
         $json["data"]["token"] = $res["token"];
         setcookie("token", $res["token"], time() + 86400 * 365);
+        setcookie("login", $_POST["login"], time() + 86400 * 365);
         // $_SESSION["user_id"] = $id;
         // $json["session_id"] = session_id();
         // // $json["session"] = $id;

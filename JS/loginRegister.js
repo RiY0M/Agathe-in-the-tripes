@@ -22,7 +22,7 @@ function register(login, mdp) {
             // L'Authentification a réussi
             const msgErreur = connectUser(login, mdp);
 
-            messageErreur(msgErreur, msgErreurReg);
+            if(msgErreur) messageErreur(msgErreur, msgErreurReg);
         }
         messageErreur(data.message, msgErreurReg);
     })
@@ -34,39 +34,17 @@ function connectUser(login, mdp) {
         body: new URLSearchParams({
             login: login,
             mdp: mdp,
-        }),
+        })
     }).then(response => response.json()).then(json => {
 
-        console.log(json);
         if(json.status != "success") {
             return json.message;
         }
-        // const token = json.data.token;
-        // Cookies gérés en php
-        // // supprCookies();
-        // let date_expiration = new Date();
-        // date_expiration.setTime(date_expiration.getTime() + (86400 * 365));
-        // document.cookie = `token=${token};expires=${date_expiration};path=/`;
-        // window.location.href = "index.html";
-        return;
+
+        window.location.replace("index.html");
+        return "";
     });
 }
-
-
-// function supprCookies(){
-//     let cookieString = document.cookie;
-//     let cookies = cookieString.split("; ");
-    
-//     for (let i = 0; i < cookies.length; i++) {
-//         const parts = cookies[i].split("=");
-//         const name = decodeURIComponent(parts[0]);
-    
-//         const expires = new Date();
-//         expires.setTime(expires.getTime() - 1);
-    
-//         document.cookie = `${name}=;expires=${expires.toUTCString()};path=/`;
-//     }
-// }
 
 ///////////////////////// LOGIN /////////////////////////
 
@@ -79,34 +57,7 @@ loginForm.addEventListener('submit', async function (event) {
 
     const msgErreur = connectUser(loginLog, passwordLog);
 
-    // const reponse = await fetch(
-    //     "https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/connexion.php", {
-    //         method: "POST",
-    //         body: new URLSearchParams({
-    //             login: loginLog,
-    //             mdp: passwordLog,
-    //         }),
-    //     }
-    // );
-
-    // const data = await reponse.json();
-    // // console.log("M : ", data.message);
-    // // console.log("Data : ", data);
-    // // console.log("Success : ", data.status);
-
-    // console.log(data);
-    // if (data.status === "success") {
-    //     // supprCookies();
-
-    //     // let date_expiration = new Date();   //Créer un cookie avec le login de l'utilisateur en parametre. Celui ci expire au bout de 1h
-    //     // date_expiration.setTime(date_expiration.getTime() + (1 * 60 * 60 * 1000));
-    //     // document.cookie = "login=" + loginLog + ";expires=" + date_expiration.toUTCString() + ";path=/";
-
-    //     //console.log("Cookie : ", document.cookie);
-    //     // window.location.href = "index.html";
-    //     return;
-    // }
-    messageErreur(msgErreur, msgErreurLog);
+    if(msgErreur) messageErreur(msgErreur, msgErreurLog);
 });
 
 ///////////////////////// REGISTER ////////////////////////

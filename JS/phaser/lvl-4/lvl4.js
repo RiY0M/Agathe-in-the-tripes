@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#ff5733",
+    backgroundColor: "#d57e5b",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -25,8 +25,23 @@ function preload()
 }
 
 function create(){
+    this.light.enable().setAmbientColor(0x555555);
+    const radius = 96;
+    const intensity = 1;
+
+    // Créez une lumière de type point aux coordonnées (0, 0) avec le rayon et l'intensité spécifiés
+    const light = this.lights.addLight(0, 0, radius, 0xffffff, intensity);
+
+    // Assurez-vous que les lumières sont activées dans la scène
+    this.lights.enable();
+
+    this.input.on('pointermove', (pointer) => {
+        // Déplacez la lumière vers la position du curseur
+        light.x = pointer.x;
+        light.y = pointer.y;
+    }); 
+
     //* MAP *//
-    //createGround(this);
     labyrinthe(this);
 
     //* TACHES DE SANG *//
@@ -40,8 +55,6 @@ function create(){
 
     // Permet à Agathe de marcher sur le sol sans collision
     this.physics.add.collider(agathe, sol, null, null, this);
-    //this.physics.add.collider(agathe, tiles);
-
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -55,6 +68,8 @@ function create(){
     //? AFK ANIMS ?//
     createAFK(this);   
     
+    //? Caméra ?//
+    this.cameras.main.setBounds(0, 0, 1600, 1600);
     this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 }
 
@@ -83,7 +98,9 @@ function update(){
         // last frame facing afk
         lastFrame = 8;
 
-        //console.log("x : ",agathe.x, "y :",agathe.y);
+        if (agathe.x >= 1580) {
+            window.location.replace("./lvl5.html");
+        }
     }
 
     /* HAUT */
@@ -94,16 +111,7 @@ function update(){
         // animation sprite
         agathe.anims.play("up", true);
         // last frame facing afk
-        lastFrame = 12;
-        
-        // si agathe rentre dans la grotte (y = coordonnées du point d'entrée)
-        // if (agathe.y == 64) {
-        //     // changement map
-        //     // window.alert("Dans la grotte !");
-        //     window.location.replace("./lvl1.html");
-        // }
-
-        //console.log("x : ",agathe.x, "y :",agathe.y);
+        lastFrame = 12;    
     }
 
     /* BAS */
@@ -115,8 +123,6 @@ function update(){
         agathe.anims.play("down", true);
         // last frame facing afk
         lastFrame = 0;
-
-        // console.log("x : ",agathe.x, "y :",agathe.y);
     }
 
     /* AFK */
@@ -136,6 +142,5 @@ function update(){
     // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
     // hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
     // hole.style.top = agathe.y - holeDiffHeight + "px";
-
 }
 

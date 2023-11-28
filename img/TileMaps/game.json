@@ -55,7 +55,7 @@
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
          "height":50,
          "id":1,
-         "name":"Calque de Tuiles 1",
+         "name":"Calque de Tuile 1",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,

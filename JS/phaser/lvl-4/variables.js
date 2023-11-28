@@ -10,3 +10,4 @@ let blood0;
 let map;
 let tileset;
 let sol;
+let light;

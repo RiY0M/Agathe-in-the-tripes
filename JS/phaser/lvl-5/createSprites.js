@@ -17,11 +17,13 @@ function displayCanvasBorder()
     canvasBorder.create(400, 10, "horizontalBorder");
     canvasBorder.create(400, 590, "horizontalBorder");
 
-    // bordures verticales
-    canvasBorder.create(10, 140, "verticalBorder");
-    canvasBorder.create(10, 460, "verticalBorder");
-    canvasBorder.create(790, 140, "verticalBorder");
-    canvasBorder.create(790, 460, "verticalBorder");
+    // bordures verticales gauche
+    canvasBorder.create(10, 140, "verticalBorderLeft");
+    canvasBorder.create(10, 460, "verticalBorderLeft");
+
+    // bordures verticales droite
+    canvasBorder.create(790, 140, "verticalBorderRight");
+    canvasBorder.create(790, 460, "verticalBorderRight");
 }
 
 
@@ -38,5 +40,6 @@ function displayFlatThings()
 {
     // caca
     flatThings.create(750, 255, "flat-poop-0").setScale(0.5);
-    flatThings.create(35, 305, "blood-1").setScale(1.3).angle -= 90;
+    flatThings.create(-15, 315, "blood-1").setScale(1.3).angle += 90;
+    flatThings.create(35, 295, "blood-1").setScale(1.3).angle -= 90;
 }

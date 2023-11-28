@@ -5,7 +5,8 @@ function loadImages(scene)
 
     // bordures du canvas
     scene.load.image("horizontalBorder", "../../../img/assets/horizontal-border.png");
-    scene.load.image("verticalBorder", "../../../img/assets/vertical-border.png");
+    scene.load.image("verticalBorderLeft", "../../../img/assets/vertical-border-left.png");
+    scene.load.image("verticalBorderRight", "../../../img/assets/vertical-border-right.png");
 
     // background
     scene.load.image("lvl5-bg", "../../../img/assets/lvl5-bg.png");

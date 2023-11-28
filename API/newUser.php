@@ -8,19 +8,24 @@ $json = [];
 do{
     $salt = getRandomSalt();
     $password = crypt($_POST["mdp"], $salt);
-}while($password == "*0");
+} while($password == "*0");
+
+do {
+    $token = getRandomToken();
+} while (tokenExists($db, $token));
 
 $query =
 "INSERT INTO USERS
 (`id`, `login`, `mdp`, `salt`, `token`)
 VALUES
-(NULL, :login, :mdp, :salt, NULL)";
+(NULL, :login, :mdp, :salt, :token)";
 
 $res = $db->prepare($query);
 
-$res->bindParam(':login', $_POST['login']);
-$res->bindParam(':mdp', $password);
-$res->bindParam(':salt', $salt);
+$res->bindParam(':login', $_POST['login'], PDO::PARAM_STR);
+$res->bindParam(':mdp', $password, PDO::PARAM_STR);
+$res->bindParam(':salt', $salt, PDO::PARAM_STR);
+$res->bindParam(':token', $token, PDO::PARAM_STR);
 
 try {
     $res->execute();

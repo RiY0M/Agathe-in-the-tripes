@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-session_start();
 require_once "./connexionBDD.php";
 
 function queryBasic(PDO $db, string $whereClause): array {
@@ -48,7 +47,7 @@ function queryLevels(PDO $db): array {
     return $res->fetchAll(PDO::FETCH_ASSOC);
 } 
 
-$login = $_SESSION["user_id"] ?? 0;
+// $login = $_SESSION["user_id"] ?? 0;
 
 $json = [];
 try {

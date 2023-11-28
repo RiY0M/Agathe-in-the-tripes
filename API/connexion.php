@@ -4,10 +4,6 @@ require_once "./connexionBDD.php";
 require_once "functions.php";
 
 $json = [];
-$token;
-do {
-    $token = getRandomToken();
-} while (tokenExists($db, $token));
 
 $query = "
 SELECT id, mdp, salt, token
@@ -26,7 +22,8 @@ try{
     if($mdp == $res['mdp']){
         $json["status"] = "success";
         $json["message"] = "Connexion réussie";
-        setcookie("token", $res["token"]);
+        $json["data"]["token"] = $res["token"];
+        setcookie("token", $res["token"], time() + 86400 * 365);
         // $_SESSION["user_id"] = $id;
         // $json["session_id"] = session_id();
         // // $json["session"] = $id;
@@ -37,7 +34,7 @@ try{
         $json["message"] = "Pseudo ou mot de passe incorrect";
     }
 }
-catch(Exception $exception){
+catch(Exception $exception) {
     $json["status"] = "error";
     $json["message"] = $exception->getMessage();
 }

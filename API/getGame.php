@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-session_start();
 require_once "./connexionBDD.php";
 
 $json = [];
@@ -25,7 +24,7 @@ try {
 
     $data = $res->fetch();
     $data["id"] = intval($data["id"]);
-    $_SESSION["game_id"] = $nextId;
+    // $_SESSION["game_id"] = $nextId;
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";

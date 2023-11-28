@@ -157,7 +157,7 @@ function ereaseBody() {
     divInBody.forEach((div) => div.style.visibility = "hidden");
 }
 
-let btnDecoAgree = document.querySelector("#deconnexion-agree-button"); // bouton de confirmation de déconnexion
+const btnDecoAgree = document.querySelector("#deconnexion-agree-button"); // bouton de confirmation de déconnexion
 
 btnDecoAgree.addEventListener("click", () => {
     supprimeTousLesCookies();

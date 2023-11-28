@@ -3,7 +3,6 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#a36440",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -25,11 +24,20 @@ function preload()
 
 function create()
 {
+    let bg = this.physics.add.staticGroup()
+    bg.create(400, 300, "lvl5-bg");
+
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 
+    //* AFFICHAGE IMAGES PLATES *//
+    displayFlatThings();
+
     //* BORDURE DU CANVAS *//
     displayCanvasBorder();
+
+    //* AFFICHAGE DES PNJs *//
+    displayPNJs();
 
 
     //~ SPRITE AGATHE ~//

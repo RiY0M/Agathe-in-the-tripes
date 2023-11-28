@@ -24,11 +24,16 @@ function preload()
 
 function create()
 {
+    //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup()
     bg.create(400, 300, "lvl5-bg");
 
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
+
+    //$ ZONE DE DIALOGUE $//
+    dialogueArea = document.querySelector("#dialogue-area");
+
 
     //* AFFICHAGE IMAGES PLATES *//
     displayFlatThings();
@@ -46,6 +51,7 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, canvasBorder);
+    this.physics.add.collider(agathe, oldOnPoop);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -62,6 +68,12 @@ function create()
 
 function update()
 {
+    // console.log("Mouse : (", game.input.mousePointer.x, " ; ", game.input.mousePointer.y, ")");
+
+    //% FONCTION DIALOGUE VIEUX %//
+    dialogueWithOld(this, agathe);
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
 

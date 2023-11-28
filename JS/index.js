@@ -117,7 +117,7 @@ confirmerNouvellePartyButton.addEventListener("click", () => {
         }
     });
 
-    // window.location.replace("../HTML/phaser/lvl0.html");
+    window.location.replace("../HTML/phaser/lvl0.html");
 });
 
 // remplissage pop-up

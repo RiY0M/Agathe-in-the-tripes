@@ -24,6 +24,10 @@ try {
     "SELECT id
     FROM USERS
     WHERE token = :token";
+
+    $res = $db->prepare($query);
+    $res->bindParam(":token", $_COOKIE["token"]);
+    $res->execute();
     $idUser = intval($res->fetch()["id"]);
 
     $query =

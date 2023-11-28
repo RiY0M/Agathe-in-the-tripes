@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#ff5733",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -26,7 +26,7 @@ function preload()
 
 function create(){
     //* MAP *//
-    createGround(this);
+    //createGround(this);
     labyrinthe(this);
 
     //* TACHES DE SANG *//
@@ -40,6 +40,7 @@ function create(){
 
     // Permet à Agathe de marcher sur le sol sans collision
     this.physics.add.collider(agathe, sol, null, null, this);
+    //this.physics.add.collider(agathe, tiles);
 
     
     //! DETECTION DU CLAVIER !//

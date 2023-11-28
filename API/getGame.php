@@ -14,7 +14,7 @@ try {
     $query =
     "SELECT G.id, level_id
     FROM GAMES G
-    INNER JOIN USERS U ON U.user_id = G.id
+    INNER JOIN USERS U ON U.id = G.user_id
     WHERE token = :token
     ORDER BY G.id DESC;";
 
@@ -23,8 +23,7 @@ try {
     $res->execute();
 
     $data = $res->fetch();
-    $data["id"] = intval($data["id"]);
-    // $_SESSION["game_id"] = $nextId;
+    $data["level_id"] = intval($data["level_id"]);
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";

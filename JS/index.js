@@ -120,6 +120,21 @@ confirmerNouvellePartyButton.addEventListener("click", () => {
     window.location.replace("../HTML/phaser/lvl0.html");
 });
 
+continuePartyButton.addEventListener("click", () => {
+
+    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/getGame.php')
+    .then(response => response.json())
+    .then(json => {
+        console.log(json)
+        if (json.status == 'error') {
+            console.log(json.message);
+        }
+
+        const id = json.data.level_id;
+        window.location.replace(`../HTML/phaser/lvl${id}.html`);
+    });
+});
+
 // remplissage pop-up
 
 // boîte sous-titre

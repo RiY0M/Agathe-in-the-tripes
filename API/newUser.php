@@ -1,32 +1,20 @@
 <?php declare(strict_types=1);
 
 require_once "./connexionBDD.php";
-
-
-function get_random_chaine(): string {
-
-    $salt = "";
-    $chars_possibles = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
-
-    for($i = 0; $i < 20; $i++) {
-        $salt .= $chars_possibles[rand(0, strlen($chars_possibles)-1)];
-    }
-
-    return $salt;
-}
+require_once "functions.php";
 
 $json = [];
 
 do{
-    $salt = get_random_chaine();
+    $salt = getRandomSalt();
     $password = crypt($_POST["mdp"], $salt);
 }while($password == "*0");
 
 $query =
 "INSERT INTO USERS
-(`id`, `login`, `mdp`, `salt`)
+(`id`, `login`, `mdp`, `salt`, `token`)
 VALUES
-(NULL, :login, :mdp, :salt)";
+(NULL, :login, :mdp, :salt, NULL)";
 
 $res = $db->prepare($query);
 

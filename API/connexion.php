@@ -1,11 +1,16 @@
 <?php
 
-session_start();
 require_once "./connexionBDD.php";
+require_once "functions.php";
 
 $json = [];
+$token;
+do {
+    $token = getRandomToken();
+} while (tokenExists($db, $token));
+
 $query = "
-SELECT id, mdp, salt
+SELECT id, mdp, salt, token
 FROM USERS
 WHERE login = :login";
 
@@ -21,9 +26,11 @@ try{
     if($mdp == $res['mdp']){
         $json["status"] = "success";
         $json["message"] = "Connexion réussie";
-        $_SESSION["user_id"] = $id;
-        // $json["session"] = $id;
-        // $json["session"] = $_SESSION;
+        setcookie("token", $res["token"]);
+        // $_SESSION["user_id"] = $id;
+        // $json["session_id"] = session_id();
+        // // $json["session"] = $id;
+        // // $json["session"] = $_SESSION;
     }
     else{
         $json["status"] = "failed";

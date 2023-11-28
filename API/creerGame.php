@@ -5,11 +5,10 @@ require_once "./connexionBDD.php";
 
 $json = [];
 $json["data"] = [];
-$json["session"] = $_SESSION;
 
 try {
 
-    if(!isset($_SESSION["user_id"])) {
+    if(!isset($_COOKIE["token"])) {
         throw new ErrorException("utilisateur non connecté, résultat non enregistré");
         return;
     }
@@ -21,7 +20,12 @@ try {
     $res->execute();
 
     $nextId = intval($res->fetch()["next_id"]);
-    $_SESSION["game_id"] = $nextId;
+
+    $query =
+    "SELECT id
+    FROM USERS
+    WHERE token = :token";
+    $idUser = intval($res->fetch()["id"]);
 
     $query =
     "INSERT INTO GAMES (id, user_id, level_id)
@@ -29,7 +33,7 @@ try {
 
     $res = $db->prepare($query);
     $res->bindParam(":game_id", $nextId, PDO::PARAM_INT);
-    $res->bindParam(":level_id", $_SESSION["user_id"], PDO::PARAM_INT);
+    $res->bindParam(":user_id", $idUser, PDO::PARAM_INT);
     $res->execute();
 
     $json["status"] = "success";

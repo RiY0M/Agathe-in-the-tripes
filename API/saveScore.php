@@ -8,18 +8,29 @@ $json["data"] = [];
 
 try {
 
-    if(!$_SESSION["game_id"]) {
-        throw new ErrorException("utilisateur non connecté, résultat non enregistré");
-        return;
+    if(!$_COOKIE["token"]) {
+        throw new ErrorException("Utilisateur non connecté, résultat non enregistré");
     }
+
+    $query =
+    "SELECT MAX(G.id) AS game_id, U.id AS user_id
+    FROM GAMES G
+    INNER JOIN USERS U ON U.id = G.user_id
+    WHERE token = :token";
+
+    $res = $db->prepare($query);
+    $res->bindParam(":token", $_COOKIE["token"], PDO::PARAM_STR);
+    $data = $res->fetch(PDO::FETCH_ASSOC);
+    $idGame = $data->game_id;
+    $idUser = $data->user_id;
 
     $query =
     "REPLACE INTO GAMES (id, user_id, level_id)
     VALUES (:id, :user_id, :level_id);";
 
     $res = $db->prepare($query);
-    $res->bindParam(":id", $_SESSION["game_id"], PDO::PARAM_INT);
-    $res->bindParam(":user_id", $_SESSION["user_id"], PDO::PARAM_INT);
+    $res->bindParam(":id", $idGame, PDO::PARAM_INT);
+    $res->bindParam(":user_id", $idUser, PDO::PARAM_INT);
     $res->bindParam(":level_id", $_POST["next_level_id"], PDO::PARAM_INT);
     $res->execute();
 
@@ -28,7 +39,7 @@ try {
     VALUES (:game_id, :level_id, :complete_time);";
 
     $res = $db->prepare($query);
-    $res->bindParam(":game_id", $_SESSION["game_id"], PDO::PARAM_INT);
+    $res->bindParam(":game_id", $idGame, PDO::PARAM_INT);
     $res->bindParam(":level_id", $_POST["level_id"], PDO::PARAM_INT);
     $res->bindParam(":complete_time", $_POST["complete_time"]);
     $res->execute();

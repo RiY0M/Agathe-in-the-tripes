@@ -17,30 +17,13 @@ let config = {
 let game = new Phaser.Game(config);
 
 
-function preload()
-{
+function preload(){
     //$ ELEMENTS HTML $//
-    // hole = document.querySelector(".hole");
+    hole = document.querySelector(".hole");
     loadImages(this);
 }
 
 function create(){
-    this.light.enable().setAmbientColor(0x555555);
-    const radius = 96;
-    const intensity = 1;
-
-    // Créez une lumière de type point aux coordonnées (0, 0) avec le rayon et l'intensité spécifiés
-    const light = this.lights.addLight(0, 0, radius, 0xffffff, intensity);
-
-    // Assurez-vous que les lumières sont activées dans la scène
-    this.lights.enable();
-
-    this.input.on('pointermove', (pointer) => {
-        // Déplacez la lumière vers la position du curseur
-        light.x = pointer.x;
-        light.y = pointer.y;
-    }); 
-
     //* MAP *//
     labyrinthe(this);
 
@@ -140,7 +123,11 @@ function update(){
     // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
     // on ajoute les coordonnées de agathe qui varient de 0 à 800
     // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-    // hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
-    // hole.style.top = agathe.y - holeDiffHeight + "px";
+    holeRadius = 100;
+    holeDiffHeight = 25;
+    hole.style.width = "300px";
+    hole.style.height = "300px";
+    hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
+    hole.style.top = agathe.y - holeDiffHeight + "px";
 }
 

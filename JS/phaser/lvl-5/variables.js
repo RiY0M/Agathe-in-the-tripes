@@ -15,6 +15,12 @@ let oldDialogueList = [                 // dialogues du vieux au caca
     "T'en penses quoi gamine ?"
 ]
 
+// variables des objets à récupérer
+let sticksGathered = 0;
+let hasPowder = false;
+let hasString = false;
+let hasLighter = false;
+
 
 function loadSpriteVariables(scene)
 {

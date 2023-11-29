@@ -52,6 +52,12 @@ document.addEventListener('keypress', (event) => {
             dialogueArea.style.visibility = "hidden";
             isDialogueAreaDisplayed = false;
 
+            // mise à jour des objets en notre possession
+            updateStickNumber();
+
+            // vérification des objets en notre possession
+            updateObjectifs();
+
             // on affiche les objetcifs
             displayObjectifs();
         }
@@ -67,4 +73,35 @@ document.addEventListener('keypress', (event) => {
 function displayObjectifs()
 {
     document.querySelector("#lvl5-objectifs").style.visibility = "visible";
+}
+
+
+//$ MISE A JOUR DU NOMBRE DE STICKS $//
+function updateStickNumber()
+{
+    // stockage du nombre
+    let stickNumber = document.querySelector("#lvl5-objectifs-sticks").innerHTML;
+
+    // modification de la valeur
+    stickNumber = (stickNumber.substring(0, stickNumber.length - 4)) + sticksGathered + (stickNumber.substring(stickNumber.length - 3, stickNumber.length));
+    
+    // attribution de la valeur
+    document.querySelector("#lvl5-objectifs-sticks").innerHTML = stickNumber;
+}
+
+
+//$ VERIF SI OBJECTIFS ATTEINTS $//
+function updateObjectifs()
+{
+    // si on a le bon nombre de sticks
+    if (sticksGathered === 5) document.querySelector("#lvl5-objectifs-sticks").style.textDecorationLine = "line-through";
+
+    // si on a la poudre
+    if (hasPowder) document.querySelector("#lvl5-objectifs-powder").style.textDecorationLine = "line-through";
+
+    // si on a le fil
+    if (hasString) document.querySelector("#lvl5-objectifs-string").style.textDecorationLine = "line-through";
+
+    // si on a le briquet
+    if (hasLighter) document.querySelector("#lvl5-objectifs-lighter").style.textDecorationLine = "line-through";
 }

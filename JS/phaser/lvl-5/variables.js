@@ -10,7 +10,7 @@ let isDialogueAreaDisplayed = false;    // on vérifie si la zone est affichée 
 
 let oldDialogueList = [                 // dialogues du vieux au caca
     "Salut la jeunesse !<br>Alors comme ça toi aussi tu es coincée dans ce monstre gamine ?",
-    "La sortie ? Ça fait logntemps que j'ai abandonné l'idée de l'atteindre...\nElle semble bloquée par cet amas de ... je préfère pas trop savoir en fait.",
+    "La sortie ?<br>Ça fait logntemps que j'ai abandonné l'idée de l'atteindre. Elle semble bloquée par cet amas de... je préfère pas trop savoir en fait.",
     "Si seulement j'avais un moyen de tout faire sauter... Un bon coup de dynamite règlerai notre problème !",
     "T'en penses quoi gamine ?"
 ]

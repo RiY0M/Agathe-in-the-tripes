@@ -51,6 +51,9 @@ document.addEventListener('keypress', (event) => {
 
             dialogueArea.style.visibility = "hidden";
             isDialogueAreaDisplayed = false;
+
+            // on affiche les objetcifs
+            displayObjectifs();
         }
 
         // on passe au dialogue suivant
@@ -58,3 +61,10 @@ document.addEventListener('keypress', (event) => {
         dialogueOldPoop++;
     }
 });
+
+
+//$ AFFICHAGE DEs OBJETCFIS $//
+function displayObjectifs()
+{
+    document.querySelector("#lvl5-objectifs").style.visibility = "visible";
+}

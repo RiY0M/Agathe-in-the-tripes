@@ -72,6 +72,21 @@ body {
 }
 
 
+#lvl5-objectifs {
+    visibility: hidden;
+
+    position: absolute;
+    left: 1rem;
+    top: 5rem;
+}
+
+#lvl5-objectifs ul {
+    font-family: monospace;
+    margin-left: -1.5rem;
+    font-size: 0.9rem;
+}
+
+
 .tuto {
     /* border: 1px dashed rgb(205, 14, 205) ; */
     

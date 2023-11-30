@@ -10,7 +10,7 @@ function moveLevel(value) {
 
     backgrounds.forEach(background => background.x -= value);
 
-    rocks.getChildren().forEach(rock => {
+    obstacles.getChildren().forEach(rock => {
         rock.x -= value;
         // Update the hitbox position
         rock.refreshBody();

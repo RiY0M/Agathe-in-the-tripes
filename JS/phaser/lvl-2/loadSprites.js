@@ -11,10 +11,11 @@ function loadImages(scene)
     }
 
     // chargement sprites cailloux
-    scene.load.image("rock-0", "../../../img/assets/rock-0.png");
-    scene.load.image("rock-1", "../../../img/assets/rock-1.png");
-    scene.load.image("rock-2", "../../../img/assets/rock-2.png");
-    scene.load.image("rock-3", "../../../img/assets/rock-3.png");
+    scene.load.image("log", "../../../img/assets/log.png");
+    scene.load.image("meatball", "../../../img/assets/meatball.png");
+    scene.load.image("vomit", "../../../img/assets/vomit.png");
+    scene.load.image("blob", "../../../img/assets/blob.png");
+    scene.load.image("house", "../../../img/assets/house.png");
 
     // chargement bordure du haut
     scene.load.image("border-0", "../../../img/assets/border-0.png");

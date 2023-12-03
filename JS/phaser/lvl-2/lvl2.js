@@ -141,13 +141,5 @@ function hitObstacle(character, rock) {
 
 //^ Si Agathe termine le niveau ^//
 function reachEnd(character, end) {
-    
-    // Enregistrement du temps + passage au niveau 3 dans la bdd
-    // Appel API
-    const time = (new Date().getTime() - startTime) / 1000;
-    console.log(time);
-
-    window.alert("Dans l'estomac !"); // debug
-    // Changement map
-    // window.location.replace("./lvl3.html");
+    changeLvl();
 }

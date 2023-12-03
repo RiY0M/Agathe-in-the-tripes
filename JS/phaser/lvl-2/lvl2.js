@@ -121,21 +121,21 @@ function update()
 //^ Si agathe rencontre un obstacle ^//
 function hitObstacle(character, rock) {
 
-    // Stoppe le niveau pendant 1 seconde
-    levelStop = true;
-    this.scrollSpeed = 0;
-    agathe.setVelocityY(0);
+    // // Stoppe le niveau pendant 1 seconde
+    // levelStop = true;
+    // this.scrollSpeed = 0;
+    // agathe.setVelocityY(0);
     
-    // sleep(1000); + Reset lvl without reloading it
-    setTimeout(() => {
+    // // sleep(1000); + Reset lvl without reloading it
+    // setTimeout(() => {
 
-        // Réinitialise le niveau
-        agathe.y = initialY;
-        startTime = new Date().getTime();
-        moveLevel(-xScroll);
-        hasMoved = false;
-        levelStop = false;
-    }, 1000);
+    //     // Réinitialise le niveau
+    //     agathe.y = initialY;
+    //     startTime = new Date().getTime();
+    //     moveLevel(-xScroll);
+    //     hasMoved = false;
+    //     levelStop = false;
+    // }, 1000);
     
 }
 

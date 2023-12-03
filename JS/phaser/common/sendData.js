@@ -35,6 +35,6 @@ function changeLvl() {
     sendData(idCurrentLvl, idNextLvl, time);
 
     // Changement map
-    window.alert("Changement de niveau !"); // debug
-    // window.location.replace(`./lvl${idNextLvl}.html`);
+    // window.alert("Changement de niveau !"); // debug
+    window.location.replace(`./lvl${idNextLvl}.html`);
 }

@@ -3,17 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
     <link rel="stylesheet" href="../../CSS/index.css">
     <title>LVL-4</title>
 </head>
 
-<header></header>
 
 <body id="game-canvas">
-    <script src="../../JS/phaser/lvl-4//lvl4.js"></script>
+    <!-- halo de lumière -->
+    <div class="hole"></div>
+
+    <!-- chargement des variables -->
+    <script src="../../JS/phaser/lvl-4/variables.js"></script>
+
+    <!-- chargement des images (chargement) -->
+    <script src="../../JS/phaser/lvl-4/loadSprites.js"></script>
+
+    <!-- chargement des images (création) -->
+    <script src="../../JS/phaser/lvl-4/createSprites.js"></script>
+
+    <!-- chargement des animations -->
+    <script src="../../JS/phaser/common/createAFK.js"></script>
+
+    <!-- chargement des poses AFK -->
+    <script src="../../JS/phaser/common/createAnims.js"></script>
+
+    <!-- chargement du jeu -->
+    <script id="game-canvas-script" src="../../JS/phaser/lvl-4/lvl4.js"></script>
 </body>
 
+<header></header>
 <footer></footer>
 
 <script src="../../JS/footer.js"></script>

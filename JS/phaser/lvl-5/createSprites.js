@@ -40,5 +40,32 @@ function displayFlatThings()
 {
     // caca
     flatThings.create(750, 255, "flat-poop-0").setScale(0.5);
+
+    // sang
     flatThings.create(35, 305, "blood-1").setScale(1.3).angle -= 90;
+}
+
+
+//* AFFICHAGE CAILLOUX DE SANG *//
+function displayBloodyRocks()
+{
+    // sang
+    flatThings.create(40, 435, "blood-0").setScale(1.1);
+    flatThings.create(120, 560, "blood-1").setScale(1.1);  
+    flatThings.create(100, 490, "blood-0").setScale(0.9);
+
+    // porte entrée
+    bloodyRocks.create(15, 335, "blood-rock-0").setScale(1.4);
+    bloodyRocks.create(20, 265, "blood-rock-1").setScale(0.7);
+
+    // encerclement coin bas gauche
+    bloodyRocks.create(110, 475, "blood-rock-0");
+    fakeBloodyRocks.create(100, 490, "blood-rock-2");
+    bloodyRocks.create(120, 515, "blood-rock-0");
+    bloodyRocks.create(110, 530, "blood-rock-0").setScale(1.3);
+    bloodyRocks.create(10, 425, "blood-rock-1");
+    bloodyRocks.create(40, 445, "blood-rock-0").setScale(1.4);
+    bloodyRocks.create(55, 435, "blood-rock-0");
+    bloodyRocks.create(80, 450, "blood-rock-1");
+    bloodyRocks.create(120, 560, "blood-rock-1");
 }

@@ -21,4 +21,9 @@ function loadImages(scene)
     // sang
     scene.load.image("blood-0", "../../../img/assets/blood-0.png");
     scene.load.image("blood-1", "../../../img/assets/blood-1.png");
+
+    // cailloux de sang
+    scene.load.image("blood-rock-0", "../../../img/assets/blood-rock-0.png");
+    scene.load.image("blood-rock-1", "../../../img/assets/blood-rock-1.png");
+    scene.load.image("blood-rock-2", "../../../img/assets/blood-rock-2.png");
 }

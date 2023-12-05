@@ -41,6 +41,9 @@ function create()
     //* BORDURE DU CANVAS *//
     displayCanvasBorder();
 
+    //* AFFICHAGE CAILLOUX DE SANG *//
+    displayBloodyRocks();
+
     //* AFFICHAGE DES PNJs *//
     displayPNJs();
 
@@ -52,6 +55,8 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, canvasBorder);
     this.physics.add.collider(agathe, oldOnPoop);
+    this.physics.add.collider(agathe, bloodyRocks);
+    this.physics.add.collider(agathe, fakeBloodyRocks);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();

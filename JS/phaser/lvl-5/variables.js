@@ -4,6 +4,8 @@ let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
 let oldOnPoop;                          // image pnj sur caca
 let flatThings;                         // images plates (sang, caca, ...)
+let bloodyRocks;                        // images cailloux de sang
+let fakeBloodyRocks;                    // cailloux pouvant bouger
 let dialogueOldPoop = 0;                // check si on a déjà parlé au vieux
 let dialogueArea;                       // zone de dialogue
 let isDialogueAreaDisplayed = false;    // on vérifie si la zone est affichée ou non
@@ -32,4 +34,8 @@ function loadSpriteVariables(scene)
 
     // images plates
     flatThings = scene.physics.add.staticGroup();
+
+    // cailloux de sang
+    bloodyRocks = scene.physics.add.staticGroup();
+    fakeBloodyRocks = scene.physics.add.group();
 }

@@ -6,7 +6,7 @@ require_once "functions.php";
 $json = [];
 
 $query = "
-SELECT id, mdp, salt, token
+SELECT mdp, salt, token
 FROM USERS
 WHERE login = :login";
 
@@ -17,18 +17,14 @@ try{
     $res->execute();
     $res = $res->fetch();
     $mdp = crypt($_POST['mdp'], $res['salt']);
-    $id = intval($res["id"]);
 
     if($mdp == $res['mdp']){
         $json["status"] = "success";
         $json["message"] = "Connexion réussie";
         $json["data"]["token"] = $res["token"];
+
         setcookie("token", $res["token"], time() + 86400 * 365, "/");
         setcookie("login", $_POST["login"], time() + 86400 * 365, "/");
-        // $_SESSION["user_id"] = $id;
-        // $json["session_id"] = session_id();
-        // // $json["session"] = $id;
-        // // $json["session"] = $_SESSION;
     }
     else{
         $json["status"] = "failed";

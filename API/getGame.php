@@ -12,7 +12,7 @@ try {
     }
     
     $query =
-    "SELECT G.id, level_id
+    "SELECT level_id, hp_remain
     FROM GAMES G
     INNER JOIN USERS U ON U.id = G.user_id
     WHERE token = :token
@@ -24,6 +24,7 @@ try {
 
     $data = $res->fetch();
     $data["level_id"] = intval($data["level_id"]);
+    $data["hp_remain"] = intval($data["hp_remain"]);
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";

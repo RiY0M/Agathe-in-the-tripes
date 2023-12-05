@@ -9,7 +9,6 @@ try {
 
     if(!isset($_COOKIE["token"])) {
         throw new ErrorException("utilisateur non connecté, résultat non enregistré");
-        return;
     }
 
     $query =
@@ -31,8 +30,8 @@ try {
     $idUser = intval($res->fetch()["id"]);
 
     $query =
-    "INSERT INTO GAMES (id, user_id, level_id)
-    VALUES (:game_id, :user_id, 0);";
+    "INSERT INTO GAMES (id, user_id, level_id, hp_remain)
+    VALUES (:game_id, :user_id, 0, 3);";
 
     $res = $db->prepare($query);
     $res->bindParam(":game_id", $nextId, PDO::PARAM_INT);

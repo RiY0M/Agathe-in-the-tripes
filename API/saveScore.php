@@ -12,7 +12,7 @@ try {
     }
 
     $query =
-    "SELECT MAX(G.id) AS game_id, U.id AS user_id
+    "SELECT MAX(G.id) AS game_id, U.id AS user_id, hp_remain
     FROM GAMES G
     INNER JOIN USERS U ON U.id = G.user_id
     WHERE token = :token";
@@ -20,17 +20,19 @@ try {
     $res = $db->prepare($query);
     $res->bindParam(":token", $_COOKIE["token"], PDO::PARAM_STR);
     $data = $res->fetch(PDO::FETCH_ASSOC);
-    $idGame = $data->game_id;
-    $idUser = $data->user_id;
+    $idGame = intval($data->game_id);
+    $idUser = intval($data->user_id);
+    $hpRemain = $data->hpRemain;
 
     $query =
-    "REPLACE INTO GAMES (id, user_id, level_id)
-    VALUES (:id, :user_id, :level_id);";
+    "REPLACE INTO GAMES (id, user_id, level_id, hp_remain)
+    VALUES (:id, :user_id, :level_id, hp_remain);";
 
     $res = $db->prepare($query);
     $res->bindParam(":id", $idGame, PDO::PARAM_INT);
     $res->bindParam(":user_id", $idUser, PDO::PARAM_INT);
     $res->bindParam(":level_id", $_POST["next_level_id"], PDO::PARAM_INT);
+    $res->bindParam(":hp_remain", $_POST["hp_remain"] ?? $hpRemain, PDO::PARAM_INT);
     $res->execute();
 
     $query =

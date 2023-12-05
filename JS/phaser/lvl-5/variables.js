@@ -7,6 +7,7 @@ let flatThings;                         // images plates (sang, caca, ...)
 let bloodyRocks;                        // images cailloux de sang
 let fakeBloodyRocks;                    // cailloux pouvant bouger
 let deadThings;                         // sprites trucs morts
+let sticks;                             // bâtons de dynamite à ramasser
 let dialogueOldPoop = 0;                // check si on a déjà parlé au vieux
 let dialogueArea;                       // zone de dialogue
 let isDialogueAreaDisplayed = false;    // on vérifie si la zone est affichée ou non
@@ -42,4 +43,7 @@ function loadSpriteVariables(scene)
 
     // trucs morts
     deadThings = scene.physics.add.staticGroup();
+
+    // bâtons dyna
+    sticks = scene.physics.add.staticGroup();
 }

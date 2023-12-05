@@ -14,16 +14,16 @@ function createAgathe(scene)
 function displayCanvasBorder()
 {
     // bordures horizontales
-    canvasBorder.create(400, 10, "horizontalBorder");
-    canvasBorder.create(400, 590, "horizontalBorder");
+    canvasBorder.create(400, 5, "horizontalBorder");
+    canvasBorder.create(400, 595, "horizontalBorder");
 
     // bordures verticales gauche
-    canvasBorder.create(10, 140, "verticalBorderLeft");
-    canvasBorder.create(10, 460, "verticalBorderLeft");
+    canvasBorder.create(5, 140, "verticalBorderLeft");
+    canvasBorder.create(5, 460, "verticalBorderLeft");
 
     // bordures verticales droite
-    canvasBorder.create(790, 140, "verticalBorderRight");
-    canvasBorder.create(790, 460, "verticalBorderRight");
+    canvasBorder.create(795, 140, "verticalBorderRight");
+    canvasBorder.create(795, 460, "verticalBorderRight");
 }
 
 
@@ -69,6 +69,9 @@ function displayBloodyRocks()
     bloodyRocks.create(80, 450, "blood-rock-1");
     bloodyRocks.create(120, 560, "blood-rock-1");
 
+    // bâton dynamite
+    sticks.create(70, 575, "stick").angle -= 90;
+
     // squelet assis
-    deadThings.create(85, 565, "squeleton-sit").setScale(0.8).angle += 10;
+    deadThings.create(85, 565, "squeleton-sit").setTint(0xebebeb).setScale(0.8).angle += 10;
 }

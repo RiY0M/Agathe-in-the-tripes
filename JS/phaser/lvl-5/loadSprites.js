@@ -29,4 +29,7 @@ function loadImages(scene)
 
     // squelette mort
     scene.load.image("squeleton-sit", "../../../img/assets/dead-squeleton-sit.png");
+
+    // bâton dynamite
+    scene.load.image("stick", "../../../img/assets/stick.png");
 }

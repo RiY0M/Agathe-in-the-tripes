@@ -57,6 +57,9 @@ function create()
     this.physics.add.collider(agathe, oldOnPoop);
     this.physics.add.collider(agathe, bloodyRocks);
     this.physics.add.collider(agathe, fakeBloodyRocks);
+
+    //! DETECTION RECUP DYNAMITE !//
+    this.physics.add.overlap(agathe, sticks, collectStick, null, this);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -148,4 +151,15 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
+}
+
+
+function collectStick(player, stick)
+{
+    // destruction stick
+    stick.disableBody(true, true);
+
+    // indication qu'on en a récupéré un
+    sticksGathered++;
+    updateStickNumber();
 }

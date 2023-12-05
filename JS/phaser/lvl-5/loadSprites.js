@@ -26,4 +26,7 @@ function loadImages(scene)
     scene.load.image("blood-rock-0", "../../../img/assets/blood-rock-0.png");
     scene.load.image("blood-rock-1", "../../../img/assets/blood-rock-1.png");
     scene.load.image("blood-rock-2", "../../../img/assets/blood-rock-2.png");
+
+    // squelette mort
+    scene.load.image("squeleton-sit", "../../../img/assets/dead-squeleton-sit.png");
 }

@@ -68,4 +68,7 @@ function displayBloodyRocks()
     bloodyRocks.create(55, 435, "blood-rock-0");
     bloodyRocks.create(80, 450, "blood-rock-1");
     bloodyRocks.create(120, 560, "blood-rock-1");
+
+    // squelet assis
+    deadThings.create(85, 565, "squeleton-sit").setScale(0.8).angle += 10;
 }

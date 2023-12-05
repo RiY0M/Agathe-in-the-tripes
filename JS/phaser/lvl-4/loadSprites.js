@@ -10,4 +10,6 @@ function loadImages(scene)
     scene.load.tilemapTiledJSON('tilemap', '../../img/TileMaps/game.json')
 
     scene.load.image("ground", "../../img/TileMaps/ground.png");
+
+    scene.load.image("fond", "../../img/TileMaps/FondImgNoir.jpg");
 }

@@ -20,6 +20,8 @@ let game = new Phaser.Game(config);
 function preload(){
     //$ ELEMENTS HTML $//
     hole = document.querySelector(".hole");
+    hole.style.width = 400 + "px";
+    hole.style.height = 400 + "px";
     loadImages(this);
 }
 
@@ -54,11 +56,20 @@ function create(){
     //? Caméra ?//
     this.cameras.main.setBounds(0, 0, 1600, 1600);
     this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
+
+    // //? Lumiere ?//
+    // lightGraphic = this.add.graphics();
+    // lightGraphic.fillStyle(0xffffff, 0.3); // Couleur & opacite lumiere
+    // lightGraphic.fillCircle(agathe.x, agathe.y, 200); // rayon lumiere
+
+
+
 }
 
 function update(){
-    //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
+
+    //^ ANIMATIONS AGATHE (CLAVIER) ^//
     /* GAUCHE */
     if (cursors.left.isDown && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp)
     {
@@ -69,6 +80,8 @@ function update(){
         // last frame facing afk
         lastFrame = 4;
         //console.log("x : ",agathe.x, "y :",agathe.y);
+
+        console.log(agathe);
     }
 
     /* DROITE */
@@ -81,9 +94,9 @@ function update(){
         // last frame facing afk
         lastFrame = 8;
 
-        if (agathe.x >= 1580) {
-            window.location.replace("./lvl5.html");
-        }
+        // if (agathe.x >= 1580) {
+        //     window.location.replace("./lvl5.html");
+        // }
     }
 
     /* HAUT */
@@ -94,7 +107,7 @@ function update(){
         // animation sprite
         agathe.anims.play("up", true);
         // last frame facing afk
-        lastFrame = 12;    
+        lastFrame = 12;
     }
 
     /* BAS */
@@ -118,16 +131,25 @@ function update(){
         agathe.anims.play("afk-" + lastFrame);
     }
 
+    // // Actualise position du graphique de lumière pour qu'il suive Agathe        LUMINOS MAXIMOS
+    // lightGraphic.clear(); // Efface le graphique précédent
+    // lightGraphic.fillStyle(0xffffff, 0.3); // Couleur & opacité 
+    // lightGraphic.fillCircle(agathe.x, agathe.y, 200); // Rayon cercle
+
+
     // innerWidth = taille écran disponible
     // on divise par 2 pour avoir le milieu
     // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
     // on ajoute les coordonnées de agathe qui varient de 0 à 800
     // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-    holeRadius = 100;
-    holeDiffHeight = 25;
-    hole.style.width = "300px";
-    hole.style.height = "300px";
-    hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
-    hole.style.top = agathe.y - holeDiffHeight + "px";
-}
 
+    if (agathe.x > 400 && agathe.x < 1200) hole.style.left = window.innerWidth/2 - holeRadius + "px";
+    else if (agathe.x <= 400) hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
+    else if (agathe.x  >= 1200) hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 1200) + "px";
+
+    if (agathe.y > 300 && agathe.y < 1300) hole.style.top = 300 - holeRadius/2 - 48 + "px";
+    else if (agathe.y <= 300) hole.style.top = agathe.y - holeRadius/2 - 48 + "px";
+    else if (agathe.y >= 1300) hole.style.top = agathe.y - 1000 - holeRadius/2 - 48 + "px";
+    
+    
+}

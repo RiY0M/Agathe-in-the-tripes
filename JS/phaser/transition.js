@@ -18,9 +18,9 @@ let game = new Phaser.Game(config);
 
 function preload() {
     this.load.spritesheet("agathe", "../../img/assets/TransitionAgathe.png", { frameWidth: 32, frameHeight: 48 });
-    this.load.image("fond-img", "../../img/assets/TransitionBouche.png");
+    this.load.image("fond-img", "../../img/TransitionBouche.png");
 
-    this.load.audio('theme', ['../../sound/Lipps Inc - Funkytown.mp3','../../sound/Lipps-Inc-Funkytown.wav']);
+    this.load.audio('theme', '../../sound/LippsInc.mp3');
 
 }
 
@@ -62,7 +62,7 @@ function update (){
 
 
     if (Vitesse_de_Chargement < 1) {
-        Vitesse_de_Chargement += 0.002; //Vitesse de chargement
+        Vitesse_de_Chargement += 0.004; //Vitesse de chargement
     }
     else{
         agathe.anims.play("afk-" + 0);

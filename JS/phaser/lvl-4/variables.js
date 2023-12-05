@@ -2,14 +2,11 @@ let agathe;                 // agathe personnage
 let cursors;                // détection clavier
 let lastFrame = 8;          // last frame facing afk
 let hole;                   // halo lumineux
-let holeRadius = 200;             // rayon du halo
+let holeRadius = 200;       // rayon du halo
 
 let blood1;
 let blood0;
 
-let map;
-let tileset;
-let sol;
-
-let lightGraphic; // Déclaration du graphique de lumière
-
+let map;                    // tilemap
+let tileset;                // tileset
+let sol;                    // sol

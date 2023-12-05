@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#d57e5b",
+    backgroundColor: "#a6160f",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,
@@ -26,24 +26,20 @@ function preload(){
 }
 
 function create(){
+    //* TACHES DE SANG *//
+    tacheDeSang(this);
+
     //* MAP *//
     labyrinthe(this);
-
-    //* TACHES DE SANG *//
-    //tacheDeSang(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, walls);
-
-    // Permet à Agathe de marcher sur le sol sans collision
-    this.physics.add.collider(agathe, sol, null, null, this);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
-
 
     //^ ANIMATIONS AGATHE (SPRITES) ^//
 
@@ -56,13 +52,6 @@ function create(){
     //? Caméra ?//
     this.cameras.main.setBounds(0, 0, 1600, 1600);
     this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
-
-    // //? Lumiere ?//
-    // lightGraphic = this.add.graphics();
-    // lightGraphic.fillStyle(0xffffff, 0.3); // Couleur & opacite lumiere
-    // lightGraphic.fillCircle(agathe.x, agathe.y, 200); // rayon lumiere
-
-
 
 }
 
@@ -79,9 +68,6 @@ function update(){
         agathe.anims.play("left", true);
         // last frame facing afk
         lastFrame = 4;
-        //console.log("x : ",agathe.x, "y :",agathe.y);
-
-        console.log(agathe);
     }
 
     /* DROITE */
@@ -94,9 +80,9 @@ function update(){
         // last frame facing afk
         lastFrame = 8;
 
-        // if (agathe.x >= 1580) {
-        //     window.location.replace("./lvl5.html");
-        // }
+        if (agathe.x >= 1580) {
+            window.location.replace("./lvl5.html");
+        }
     }
 
     /* HAUT */
@@ -130,12 +116,6 @@ function update(){
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
-
-    // // Actualise position du graphique de lumière pour qu'il suive Agathe        LUMINOS MAXIMOS
-    // lightGraphic.clear(); // Efface le graphique précédent
-    // lightGraphic.fillStyle(0xffffff, 0.3); // Couleur & opacité 
-    // lightGraphic.fillCircle(agathe.x, agathe.y, 200); // Rayon cercle
-
 
     // innerWidth = taille écran disponible
     // on divise par 2 pour avoir le milieu

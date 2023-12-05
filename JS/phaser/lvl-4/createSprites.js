@@ -1,7 +1,6 @@
 
 //~ SPRITE AGATHE ~//
-function createAgathe(scene)
-{
+function createAgathe(scene){
     // ajout d'agathe à la fenêtre
     agathe = scene.physics.add.sprite(10, 300, "agathe")
         .setSize(21, 8)
@@ -21,15 +20,10 @@ function tacheDeSang(scene){    //Rajoute des taches de sang
     }
 }
 
-function createGround(scene){   //Créer le sol
-    sol = scene.physics.add.staticGroup();
-    sol.create(400, 300, "ground");
-    sol.setscale = 10;
-}
-
-function labyrinthe(scene) {    
+function labyrinthe(scene) {   
+    // Création de la tilemap 
     map = scene.make.tilemap({ key: 'tilemap' });
-    tileset = map.addTilesetImage('world', 'tiles');
+    tileset = map.addTilesetImage('world', 'tiles'); // Ajout du tileset à la tilemap
 
     // Création de la couche "Wall" de la tilemap
     const wallLayer = map.createStaticLayer("Wall", tileset);

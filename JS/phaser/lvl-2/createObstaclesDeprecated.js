@@ -1,15 +1,15 @@
 //! Fichiher déprécié mais pour un niveau plus difficile
 
 //* SPRITES CAILLOUX *//
-function createRocks(scene)
+function createObstacles(scene)
 {
     // groupement de cailloux
-    rocks = scene.physics.add.staticGroup();
+    obstacles = scene.physics.add.staticGroup();
 
     // Xmin 500
     // grossses pierres
 
-    const rocks0 = [
+    const blobs = [
         [500, 230],
         [500, 360],
         [526, 260],
@@ -36,15 +36,9 @@ function createRocks(scene)
         [getRandomIntInclusive(6450, 6600), getRandomIntInclusive(230, 360)],
     ];
 
-    rocks0.forEach(rock0 => rocks.create(rock0[0], rock0[1], "rock-0"));
+    blobs.forEach(blob => obstacles.create(blob[0], blob[1], "blob"));
 
-    // const rocks1 = [
-    //     [540, 270],
-    // ];
-
-    // rocks1.forEach(rock1 => rocks.create(rock1[0], rock1[1], "rock-1"));
-
-    const rocks2 = [
+    const meatballs = [
         [540, 270],
         [610, 300],
         [703, 357],
@@ -154,60 +148,16 @@ function createRocks(scene)
         [5850, 265],
         [5850, 310],
         // fin du chemin
-        // [5900, 260],
-        // [5900, 305],
-        // [5950, 260],
-        // [5950, 305],
         [getRandomIntInclusive(6000, 6200), 349],
         [getRandomIntInclusive(6100, 6300), 231],
         [getRandomIntInclusive(6100, 6300), 244],
         [getRandomIntInclusive(6600, 6800), 272],
         [getRandomIntInclusive(6800, 6900), 326],
-        // [6000, 265],
-        // [6000, 330],
-        // [6050, 265],
-        // [6050, 330],
-        // [6150, 260],
-        // [6150, 325],
-        // [6200, 260],
-        // [6200, 325],
-        // [6250, 260],
-        // [6250, 325],
-        // [6300, 260],
-        // [6300, 325],
-        // [6350, 260],
-        // [6350, 325],
-        // [6400, 260],
-        // [6400, 325],
-        // [6450, 260],
-        // [6450, 325],
-        // [6500, 260],
-        // [6500, 325],
-        // [6550, 260],
-        // [6550, 325],
-        // [6600, 260],
-        // [6600, 325],
-        // [6650, 260],
-        // [6650, 325],
-        // [6700, 260],
-        // [6700, 325],
-        // [6750, 260],
-        // [6750, 325],
-        // [6800, 260],
-        // [6800, 325],
-        // [6850, 260],
-        // [6850, 325],
-        // [6900, 260],
-        // [6900, 325],
-        // [6950, 260],
-        // [6950, 325],
-        // [7000, 260],
-        // [7000, 325],
     ];
 
-    rocks2.forEach(rock2 => rocks.create(rock2[0], rock2[1], "rock-2"));
+    meatballs.forEach(meatball => obstacles.create(meatball[0], meatball[1], "meatball"));
 
-    const rocks3 = [
+    const logs = [
         [850, 350],
         [900, 300],
         [1200, 270],
@@ -232,5 +182,5 @@ function createRocks(scene)
         [7000, getRandomIntInclusive(235, 345)],
     ];
 
-    rocks3.forEach(rock3 => rocks.create(rock3[0], rock3[1], "rock-3"));
+    logs.forEach(log => obstacles.create(log[0], log[1], "log"));
 }

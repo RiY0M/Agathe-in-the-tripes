@@ -35,7 +35,7 @@ function create()
     createBorders(this);
 
     //* SPRITES CAILLOUX *//
-    createRocks(this);
+    createObstacles(this);
 
     //* SPRITES FIN *//
     createEnd(this);
@@ -46,7 +46,7 @@ function create()
 
 
     //! COLLISIONS !//
-    this.physics.add.collider(agathe, rocks, hitRock, null, this);
+    this.physics.add.collider(agathe, obstacles, hitObstacle, null, this);
     this.physics.add.collider(agathe, finNiv, reachEnd, null, this);
     this.physics.add.collider(agathe, borders);
 
@@ -60,10 +60,6 @@ function create()
 
     //? MOVING ANIMS ?//
     createAnims(this);
-
-    // console.log(borders);
-    // console.log(rocks);
-    // console.log(finNiv);
 }
 
 function update()
@@ -123,7 +119,7 @@ function update()
 }
 
 //^ Si agathe rencontre un obstacle ^//
-function hitRock(character, rock) {
+function hitObstacle(character, rock) {
 
     // Stoppe le niveau pendant 1 seconde
     levelStop = true;
@@ -145,13 +141,5 @@ function hitRock(character, rock) {
 
 //^ Si Agathe termine le niveau ^//
 function reachEnd(character, end) {
-    
-    // Enregistrement du temps + passage au niveau 3 dans la bdd
-    // Appel API
-    const time = (new Date().getTime() - startTime) / 1000;
-    console.log(time);
-
-    window.alert("Dans l'estomac !"); // debug
-    // Changement map
-    // window.location.replace("./lvl3.html");
+    changeLvl();
 }

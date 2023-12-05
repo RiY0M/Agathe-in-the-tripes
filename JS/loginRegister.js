@@ -8,7 +8,7 @@ const msgErreurReg = document.querySelector("#RegisterSpanErreur");
 //fonction register
 function register(login, mdp) {
 
-    fetch('https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/newUser.php', {
+    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/newUser.php', {
         method: 'POST',
         body: new URLSearchParams({
             login: login,

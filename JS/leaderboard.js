@@ -4,7 +4,7 @@
 let apiData;
 
 // http://localhost:5500/api/leaderboard
-await fetch("https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/API/getLeaderboard.php")
+await fetch("https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/getLeaderboard.php")
 .then(reponse => reponse.json())
 .then(realData => apiData = realData.data)
 .catch(error => console.error("Error : " + error));

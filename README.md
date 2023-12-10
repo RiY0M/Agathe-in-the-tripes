@@ -1,4 +1,4 @@
-#Comment jouer au jeu :
+# Comment jouer au jeu :
 
 __Méthode 1 : Jouer en ligne__
 

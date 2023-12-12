@@ -7,7 +7,7 @@ function loadImages(scene)
 
     // chargement de la map
     for(let i = 1; i <= loopLvl2; i++) {
-        scene.load.image("map"+i, "../../../img/assets/tilemap-lvl-2-wide.png");
+        scene.load.image("map"+i, "../../../img/assets/tilemap-lvl2.png");
     }
 
     // chargement sprites cailloux

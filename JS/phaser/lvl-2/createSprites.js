@@ -175,10 +175,10 @@ function createEnd(scene) {
 
     finNiv = scene.physics.add.staticGroup();
 
-    // finNiv.create(200, 250, "border-1");
-    // finNiv.create(8200, 300, "border-1");
-    // finNiv.create(8200, 350, "border-1");
     finNiv.create(7300, 250, "border-1").setAlpha(0);
     finNiv.create(7300, 300, "border-1").setAlpha(0);
     finNiv.create(7300, 350, "border-1").setAlpha(0);
+    finNiv.create(7400, 250, "border-1").setAlpha(0);
+    finNiv.create(7400, 300, "border-1").setAlpha(0);
+    finNiv.create(7400, 350, "border-1").setAlpha(0);
 }

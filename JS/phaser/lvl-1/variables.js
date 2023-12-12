@@ -24,4 +24,4 @@ let isMovingTeeth4Up = true;    // booleen check si up ou down
 let randomDelay = 250;          // valeur aléatoire déclenchemnt
 const idCurrentLvl = 1;      // Id du niveau courant
 const idNextLvl = 2;         // Id du prochain niveau
-let startTime = new Date().getTime(); // Starting time fot the chronometer
+let startTime = new Date().getTime(); // Starting time for the chronometer

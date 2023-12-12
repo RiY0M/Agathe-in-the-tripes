@@ -21,4 +21,4 @@ const initialY = 270;        // Initial Y position of agathe
 const loopLvl2 = 10;         // Nombre de fois qu'on boucle pour créer le niveau 2
 const idCurrentLvl = 2;      // Id du niveau courant
 const idNextLvl = 3;         // Id du prochain niveau
-let startTime = new Date().getTime(); // Starting time fot the chronometer
+let startTime = new Date().getTime(); // Starting time for the chronometer

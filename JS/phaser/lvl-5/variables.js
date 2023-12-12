@@ -35,7 +35,7 @@ let sticksGathered = 0;
 let hasPowder = false;
 let hasString = false;
 let hasLighter = false;
-let hasPickaxe = true;
+let hasPickaxe = false;
 
 
 function loadSpriteVariables(scene)

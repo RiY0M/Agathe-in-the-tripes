@@ -66,7 +66,7 @@ function displayBloodyRocks()
 
     // encerclement coin bas gauche
     bloodyRocks.create(110, 475, "blood-rock-0");
-    fakeBloodyRocks.create(100, 490, "blood-rock-2");
+    fakeBloodyRocks.create(100, 490, "blood-rock-2").setDepth(0.9);
     bloodyRocks.create(120, 515, "blood-rock-0");
     bloodyRocks.create(110, 530, "blood-rock-0").setScale(1.3);
     bloodyRocks.create(10, 425, "blood-rock-1");
@@ -93,6 +93,9 @@ function displayBloodyRocks()
 
     // squelet assis
     deadThings.create(85, 565, "squeleton-sit").setTint(0xebebeb).setScale(0.8).angle += 10;
+    deadThings.create(40, 480, "bones-pile").setTint(0xFFFFFF).setScale(0.7);
+
+    sticks.create(20, 480, "stick").angle -= 100;
 }
 
 

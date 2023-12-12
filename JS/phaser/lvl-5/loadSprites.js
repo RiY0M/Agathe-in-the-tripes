@@ -38,6 +38,7 @@ function loadImages(scene)
 
     // squelette mort
     scene.load.image("squeleton-sit", "../../../img/assets/dead-squeleton-sit.png");
+    scene.load.image("bones-pile", "../../../img/assets/bones-pile.png");
 
     // bâton dynamite
     scene.load.image("stick", "../../../img/assets/stick.png");

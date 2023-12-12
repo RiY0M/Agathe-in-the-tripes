@@ -84,6 +84,9 @@ function update()
     //% FONCTION DIALOGUE VIEUX %//
     dialogueWithOld(this, agathe);
 
+    //% FONCTION DIALOGUE MINEUR %//
+    dialogueWithMinor(this, agathe);
+
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 

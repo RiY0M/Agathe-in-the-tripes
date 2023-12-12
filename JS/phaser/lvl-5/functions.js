@@ -44,6 +44,31 @@ function dialogueWithStrangeRock()
 }
 
 
+//% FONCTION DIALOGUE VIEUX %//
+function dialogueWithMinor(scene, agathe)
+{
+    // vérification des coordonnées
+    if ((agathe.x >= 0 && agathe.x <= 75) && (agathe.y >= 150 && agathe.y <= 200))
+    {
+        // on regarde si on a déjà parlé au vieux pour lancer le premier dialogue
+        if (dialogueMinor == 0)
+        {
+            // on indique à qui on parle
+            talkingTo = "minor";
+
+            // changement de l'image et du texte
+            changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[0]);
+
+            // affichage de la zone de dialogue
+            displayTextArea(dialogueArea);
+
+            // on passe au dialogue suivant
+            dialogueMinor++;
+        }
+    }
+}
+
+
 //$ AFFICHAGE ZONE TEXTE $//
 function displayTextArea()
 {
@@ -93,6 +118,21 @@ document.addEventListener('keypress', (event) => {
                 // on passe au dialogue suivant
                 changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
                 dialogueOldPoop++;
+                break;
+
+
+            //% DIALOGUE MINEUR %//
+            case "minor":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (dialogueMinor === dialogueMinorList.length) {
+
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                dialogueMinor++;
                 break;
 
             

@@ -54,6 +54,9 @@ function displayBloodyRocks()
     flatThings.create(120, 560, "blood-1").setScale(1.1);  
     flatThings.create(100, 490, "blood-0").setScale(0.9);
 
+    flatThings.create(50, 50, "blood-1").setScale(1.3).angle -= 45;
+    flatThings.create(15, 125, "blood-0").setScale(1.3).angle -= 45;
+
     // porte entrée
     bloodyRocks.create(15, 335, "blood-rock-0").setScale(1.4);
     bloodyRocks.create(20, 265, "blood-rock-1").setScale(0.7);
@@ -68,6 +71,15 @@ function displayBloodyRocks()
     bloodyRocks.create(55, 435, "blood-rock-0");
     bloodyRocks.create(80, 450, "blood-rock-1");
     bloodyRocks.create(120, 560, "blood-rock-1");
+
+    // top gauche
+    bloodyRocks.create(15, 15, "blood-rock-1");
+    bloodyRocks.create(120, 15, "blood-rock-1");
+    bloodyRocks.create(60, 5, "blood-rock-1");
+    bloodyRocks.create(5, 70, "blood-rock-1");
+    bloodyRocks.create(90, 35, "blood-rock-0").setScale(1.5);
+    bloodyRocks.create(20, 115, "blood-rock-0").setScale(1.3);
+    bloodyRocks.create(15, 150, "blood-rock-1");
 
     // bâton dynamite
     sticks.create(70, 575, "stick").angle -= 90;

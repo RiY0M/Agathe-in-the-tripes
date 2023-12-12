@@ -26,7 +26,7 @@ function sendData(idLevel, idNextLevel, time, hp_remain = null) {
  * int idCurrentLvl : id du niveau actuel
  * int idNextLvl : id du niveau suivant
  */
-function changeLvl() {
+function changeLvl(idCurrentLvl, idNextLvl, startTime) {
 
     // Calcul du temps
     const time = (new Date().getTime() - startTime) / 1000;

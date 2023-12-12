@@ -132,9 +132,7 @@ function update()
         
         // si agathe rentre dans la grotte (y = coordonnées du point d'entrée)
         if (agathe.y == 64) {
-            // changement map
-            // window.alert("Dans la grotte !");
-            window.location.replace("./lvl1.html");
+            changeLvl(idCurrentLvl, idNextLvl, startTime);
         }
 
         // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto

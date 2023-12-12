@@ -9,6 +9,26 @@ function createAgathe(scene)
     agathe.setCollideWorldBounds(true);
 }
 
+//* SPRITE DENTS *//
+function loadSpriteVariables(scene)
+{
+    // définition groupe dents
+    staticTeeth = scene.physics.add.staticGroup();
+    movingTeeth1 = scene.physics.add.staticGroup();
+    movingTeeth2 = scene.physics.add.staticGroup();
+    movingTeeth3 = scene.physics.add.staticGroup();
+    movingTeeth4 = scene.physics.add.staticGroup();
+
+    // définition groupe mur de sang
+    fleshWall = scene.physics.add.staticGroup();
+
+    // sang squelette et rat
+    blood = scene.physics.add.staticGroup();
+
+    // chose morte
+    deadThings = scene.physics.add.staticGroup();
+}
+
 
 //* SPRITE MURE DE SANG *//
 function createFleshWall()

@@ -141,5 +141,5 @@ function hitObstacle(character, rock) {
 
 //^ Si Agathe termine le niveau ^//
 function reachEnd(character, end) {
-    changeLvl();
+    changeLvl(idCurrentLvl, idNextLvl, startTime);
 }

@@ -267,8 +267,7 @@ function update()
         // si agathe rentre dans l'oesophage (y = coordonnées du point d'entrée)
         if (agathe.y <= 15) {
             // changement map
-            // window.alert("Dans la grotte !");
-            window.location.replace("./lvl2.html");
+            changeLvl(idCurrentLvl, idNextLvl, startTime);
         }
     }
 

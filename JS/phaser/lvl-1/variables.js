@@ -22,24 +22,6 @@ let isMovingTeeth3Up = true;    // booleen check si up ou down
 let movingTeeth4;               // dents bougent (vitesse aléatoire)
 let isMovingTeeth4Up = true;    // booleen check si up ou down
 let randomDelay = 250;          // valeur aléatoire déclenchemnt
-
-
-
-function loadSpriteVariables(scene)
-{
-    // définition groupe dents
-    staticTeeth = scene.physics.add.staticGroup();
-    movingTeeth1 = scene.physics.add.staticGroup();
-    movingTeeth2 = scene.physics.add.staticGroup();
-    movingTeeth3 = scene.physics.add.staticGroup();
-    movingTeeth4 = scene.physics.add.staticGroup();
-
-    // définition groupe mur de sang
-    fleshWall = scene.physics.add.staticGroup();
-
-    // sang squelette et rat
-    blood = scene.physics.add.staticGroup();
-
-    // chose morte
-    deadThings = scene.physics.add.staticGroup();
-}
+const idCurrentLvl = 1;      // Id du niveau courant
+const idNextLvl = 2;         // Id du prochain niveau
+let startTime = new Date().getTime(); // Starting time fot the chronometer

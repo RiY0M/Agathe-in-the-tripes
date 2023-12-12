@@ -30,6 +30,14 @@ let strangeRockDialogueList = [         // pensées devant le cailloux chelou
     "*Peut-être pourriez-vous la briser avec un outil adapté ?*"
 ];
 
+let dialogueMinor = 0;                  // check si on a déjà parlé au mineur
+let dialogueMinorList = [               // dialogues du mineur
+    "Quoi ?<br>Qu'est-ce que tu m'veux gamine ?",
+    "Ma pioche ? Laisse tomber j'ai déjà essayer, ce truc est incassable...",
+    "Quoi ? Tu veux quand même essayer ? T'es têtue ma parole...",
+    "Bon ok, je te la laisse à condition que tu me prouves que tu la mérites d'accord ?"
+];
+
 // variables des objets à récupérer
 let sticksGathered = 0;
 let hasPowder = false;

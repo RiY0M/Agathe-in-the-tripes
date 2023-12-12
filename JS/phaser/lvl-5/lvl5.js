@@ -55,7 +55,9 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, canvasBorder);
     this.physics.add.collider(agathe, oldOnPoop);
+    this.physics.add.collider(agathe, angryMinor);
     this.physics.add.collider(agathe, bloodyRocks);
+    this.physics.add.collider(agathe, strangeRock, collidePowderRock, null, this);
     this.physics.add.collider(agathe, fakeBloodyRocks);
 
     //! DETECTION RECUP DYNAMITE !//
@@ -162,4 +164,19 @@ function collectStick(player, stick)
     // indication qu'on en a récupéré un
     sticksGathered++;
     updateStickNumber();
+}
+
+
+function collidePowderRock(player, rock)
+{
+    // lacement dialogue si on a pas la pioche
+    if (!hasPickaxe) dialogueWithStrangeRock();
+
+    // transformation pierre en poudre si on a la pioche
+    else {
+        // destruction pierre
+        rock.disableBody(true, true);
+
+        // affichage poudre
+    }
 }

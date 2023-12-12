@@ -7,6 +7,9 @@ function dialogueWithOld(scene, agathe)
         // on regarde si on a déjà parlé au vieux pour lancer le premier dialogue
         if (dialogueOldPoop == 0)
         {
+            // on indique à qui on parle
+            talkingTo = "oldOnPoop";
+
             // changement de l'image et du texte
             changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[0]);
 
@@ -16,6 +19,27 @@ function dialogueWithOld(scene, agathe)
             // on passe au dialogue suivant
             dialogueOldPoop++;
         }
+    }
+}
+
+
+//% FONCTION DIALOGUE PIERRE POUDREUSE %//
+function dialogueWithStrangeRock()
+{
+    // on regarde si on a déjà parlé à la pierre pour lancer le premier dialogue
+    if (strangeRockDialogue == 0)
+    {
+        // on indique à qui on parle
+        talkingTo = "strangeRock";
+
+        // changement de l'image et du texte
+        changeImgTextDialogue("../../../img/assets/powder-rock.png", strangeRockDialogueList[0]);
+
+        // affichage de la zone de dialogue
+        displayTextArea(dialogueArea);
+
+        // on passe au dialogue suivant
+        strangeRockDialogue++;
     }
 }
 
@@ -46,30 +70,55 @@ document.addEventListener('keypress', (event) => {
     // on regarde si on a appuyé sur la touche entrée et si un dialogue est lancé
     if (event.key === 'Enter' && isDialogueAreaDisplayed === true) {
 
-        // si on arrive au dernier dialogue on ferme la zone d'affichage
-        if (dialogueOldPoop === oldDialogueList.length) {
+        switch (talkingTo) {
 
-            dialogueArea.style.visibility = "hidden";
-            isDialogueAreaDisplayed = false;
+            //% DIALOGUE VIEUX %//
+            case "oldOnPoop":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (dialogueOldPoop === oldDialogueList.length) {
 
-            // mise à jour des objets en notre possession
-            updateStickNumber();
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
 
-            // vérification des objets en notre possession
-            updateObjectifs();
+                    // mise à jour des objets en notre possession
+                    updateStickNumber();
 
-            // on affiche les objetcifs
-            displayObjectifs();
+                    // vérification des objets en notre possession
+                    updateObjectifs();
+
+                    // on affiche les objetcifs
+                    displayObjectifs();
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
+                dialogueOldPoop++;
+                break;
+
+            
+            //% DIALOGUE PIERRE %//
+            case "strangeRock":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (strangeRockDialogue === strangeRockDialogueList.length) {
+
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
+                strangeRockDialogue++;
+                break;
+
+
+            default:
+                break;
         }
-
-        // on passe au dialogue suivant
-        changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
-        dialogueOldPoop++;
     }
 });
 
 
-//$ AFFICHAGE DEs OBJETCFIS $//
+//$ AFFICHAGE DES OBJETCFIS $//
 function displayObjectifs()
 {
     document.querySelector("#lvl5-objectifs").style.visibility = "visible";

@@ -14,6 +14,12 @@ function loadImages(scene)
     // vieux sur le caca
     scene.load.image("old-on-poop", "../../../img/assets/old-on-poop.png");
 
+    // mineur fou
+    scene.load.image("angry-minor-pickaxe", "../../../img/assets/angry-minor-pickaxe.png");
+
+    // pierre étrange
+    scene.load.image("powder-rock", "../../../img/assets/powder-rock.png");
+
     // caca
     scene.load.image("flat-poop-0", "../../../img/assets/flat-poop-0.png");
     scene.load.image("flat-poop-1", "../../../img/assets/flat-poop-1.png");

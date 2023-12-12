@@ -32,6 +32,9 @@ function displayPNJs()
 {
     // vieux sur le caca
     oldOnPoop.create(750, 225, "old-on-poop");
+
+    // mineur
+    angryMinor.create(30, 160, "angry-minor-pickaxe");
 }
 
 
@@ -80,6 +83,10 @@ function displayBloodyRocks()
     bloodyRocks.create(90, 35, "blood-rock-0").setScale(1.5);
     bloodyRocks.create(20, 115, "blood-rock-0").setScale(1.3);
     bloodyRocks.create(15, 150, "blood-rock-1");
+
+    // pierre chelou pudreuse
+    strangeRock.create(55, 40, "powder-rock");
+    bloodyRocks.create(40, 65, "blood-rock-0").setScale(1.1);
 
     // bâton dynamite
     sticks.create(70, 575, "stick").angle -= 90;

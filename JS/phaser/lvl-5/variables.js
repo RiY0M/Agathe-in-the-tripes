@@ -8,22 +8,33 @@ let bloodyRocks;                        // images cailloux de sang
 let fakeBloodyRocks;                    // cailloux pouvant bouger
 let deadThings;                         // sprites trucs morts
 let sticks;                             // bâtons de dynamite à ramasser
-let dialogueOldPoop = 0;                // check si on a déjà parlé au vieux
+let angryMinor;                         // sprite mineur
+
+let talkingTo = "";                     // variable pour savoir à qui on parle
 let dialogueArea;                       // zone de dialogue
 let isDialogueAreaDisplayed = false;    // on vérifie si la zone est affichée ou non
 
+let dialogueOldPoop = 0;                // check si on a déjà parlé au vieux
 let oldDialogueList = [                 // dialogues du vieux au caca
     "Salut la jeunesse !<br>Alors comme ça toi aussi tu es coincée dans ce monstre gamine ?",
     "La sortie ?<br>Ça fait logntemps que j'ai abandonné l'idée de l'atteindre. Elle semble bloquée par cet amas de... je préfère pas trop savoir en fait.",
     "Si seulement j'avais un moyen de tout faire sauter... Un bon coup de dynamite règlerai notre problème !",
     "T'en penses quoi gamine ?"
-]
+];
+
+let strangeRock;                        // pierre bizarre
+let strangeRockDialogue = 0;            // check si on a déjà pensé devant le cailloux
+let strangeRockDialogueList = [         // pensées devant le cailloux chelou
+    "*Cette pierre semble étrange...*",
+    "*Peut-être pourriez-vous la briser avec un outil adapté ?*"
+];
 
 // variables des objets à récupérer
 let sticksGathered = 0;
 let hasPowder = false;
 let hasString = false;
 let hasLighter = false;
+let hasPickaxe = false;
 
 
 function loadSpriteVariables(scene)
@@ -33,6 +44,7 @@ function loadSpriteVariables(scene)
 
     // PNJs
     oldOnPoop = scene.physics.add.staticGroup();
+    angryMinor = scene.physics.add.staticGroup();
 
     // images plates
     flatThings = scene.physics.add.staticGroup();
@@ -40,6 +52,9 @@ function loadSpriteVariables(scene)
     // cailloux de sang
     bloodyRocks = scene.physics.add.staticGroup();
     fakeBloodyRocks = scene.physics.add.group();
+
+    // cailloux bizarre
+    strangeRock = scene.physics.add.staticGroup();
 
     // trucs morts
     deadThings = scene.physics.add.staticGroup();

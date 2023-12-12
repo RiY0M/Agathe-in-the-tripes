@@ -23,17 +23,15 @@ function preload(){
 }
 
 function create(){
-    //* TACHES DE SANG *//
-    tacheDeSang(this);
 
     //* MAP *//
-    labyrinthe(this);
+    //labyrinthe(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
 
     //! COLLISIONS !//
-    this.physics.add.collider(agathe, walls);
+    //this.physics.add.collider(agathe, walls);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -47,8 +45,8 @@ function create(){
     createAFK(this);   
     
     //? Caméra ?//
-    this.cameras.main.setBounds(0, 0, 1600, 1600);
-    this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
+    // this.cameras.main.setBounds(0, 0, 1600, 1600);
+    // this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 
 }
 

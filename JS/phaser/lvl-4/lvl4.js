@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#b33015",
+    backgroundColor: "#e78c93",
     physics: { default: 'arcade' },
     scene: {
         preload: preload,

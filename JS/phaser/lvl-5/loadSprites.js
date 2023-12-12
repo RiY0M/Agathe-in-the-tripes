@@ -20,6 +20,9 @@ function loadImages(scene)
     // pierre étrange
     scene.load.image("powder-rock", "../../../img/assets/powder-rock.png");
 
+    // poudre à canon
+    scene.load.image("powder", "../../../img/assets/gunpowder.png");
+
     // caca
     scene.load.image("flat-poop-0", "../../../img/assets/flat-poop-0.png");
     scene.load.image("flat-poop-1", "../../../img/assets/flat-poop-1.png");

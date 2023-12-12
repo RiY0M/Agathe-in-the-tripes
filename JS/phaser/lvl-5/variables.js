@@ -22,6 +22,7 @@ let oldDialogueList = [                 // dialogues du vieux au caca
     "T'en penses quoi gamine ?"
 ];
 
+let powder;                             // poudre à canon
 let strangeRock;                        // pierre bizarre
 let strangeRockDialogue = 0;            // check si on a déjà pensé devant le cailloux
 let strangeRockDialogueList = [         // pensées devant le cailloux chelou
@@ -34,7 +35,7 @@ let sticksGathered = 0;
 let hasPowder = false;
 let hasString = false;
 let hasLighter = false;
-let hasPickaxe = false;
+let hasPickaxe = true;
 
 
 function loadSpriteVariables(scene)
@@ -61,4 +62,7 @@ function loadSpriteVariables(scene)
 
     // bâtons dyna
     sticks = scene.physics.add.staticGroup();
+
+    // poudre à canon
+    powder = scene.physics.add.staticGroup();
 }

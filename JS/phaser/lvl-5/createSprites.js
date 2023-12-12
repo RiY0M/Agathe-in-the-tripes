@@ -94,3 +94,10 @@ function displayBloodyRocks()
     // squelet assis
     deadThings.create(85, 565, "squeleton-sit").setTint(0xebebeb).setScale(0.8).angle += 10;
 }
+
+
+//* AFFICHAGE POUDRE A CANON *//
+function displayPowder(scene)
+{
+    powder.create(50, 40, "powder");
+}

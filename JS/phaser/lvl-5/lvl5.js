@@ -58,6 +58,7 @@ function create()
     this.physics.add.collider(agathe, angryMinor);
     this.physics.add.collider(agathe, bloodyRocks);
     this.physics.add.collider(agathe, strangeRock, collidePowderRock, null, this);
+    this.physics.add.collider(agathe, powder, collectPowder, null, this);
     this.physics.add.collider(agathe, fakeBloodyRocks);
 
     //! DETECTION RECUP DYNAMITE !//
@@ -164,6 +165,9 @@ function collectStick(player, stick)
     // indication qu'on en a récupéré un
     sticksGathered++;
     updateStickNumber();
+
+    // vérification des objets en notre possession
+    updateObjectifs();
 }
 
 
@@ -178,5 +182,19 @@ function collidePowderRock(player, rock)
         rock.disableBody(true, true);
 
         // affichage poudre
+        displayPowder(this);
     }
+}
+
+
+function collectPowder(player, powder)
+{
+    // destruction poudre
+    powder.disableBody(true, true);
+
+    // indication qu'on a récupéré la poudre
+    hasPowder = true;
+    
+    // vérification des objets en notre possession
+    updateObjectifs();
 }

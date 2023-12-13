@@ -93,7 +93,7 @@ function changeImgTextDialogue(imagePath, text)
 //$ CHECK SI CHANGEMENT DIALOGUE $//
 document.addEventListener('keypress', (event) => {
     // on regarde si on a appuyé sur la touche entrée et si un dialogue est lancé
-    if (event.key === 'Enter' && isDialogueAreaDisplayed === true) {
+    if (event.key === 'Enter' && isDialogueAreaDisplayed === true && dialogueMinor !== 5) {
 
         switch (talkingTo) {
 
@@ -125,7 +125,7 @@ document.addEventListener('keypress', (event) => {
             case "minor":
                 
                 // si on arrive au dernier dialogue on ferme la zone d'affichage
-                if (dialogueMinor === dialogueMinorList.length) {
+                if (dialogueMinor === dialogueMinorList.length && hasPickaxe === true) {
 
                     dialogueArea.style.visibility = "hidden";
                     isDialogueAreaDisplayed = false;
@@ -139,18 +139,30 @@ document.addEventListener('keypress', (event) => {
                 // on ajoute un eventListener au moment ou le choix de dialogue est affiché
                 if (dialogueMinor == 5) {
 
+                    //$ CHANGEMENT IMG SKIP $//
+                    document.querySelector("#enter-key").src = "../../../img/mouse.png";
+
                     //$ CHECK SI ON CLIQUE SUR UNE DES PROPOSITIONS DU MINEUR $//
                     let answer1 = document.querySelector(".minor-answer-1");        // réponse 1
                     let answer2 = document.querySelector(".minor-answer-2");        // réponse 2
 
                     // action click réponse 1 (mauvaise réponse)
                     answer1.addEventListener("click", () => {
+                        // on perd une vie
+                        nbHearts--;
+                        reloadNbHearts();
+
                         // changement du texte
                         dialogueMinorList[5] = "Hein ? Tu te fiches de moi ?<br>T'as pas du bien comprendre la question, je vais te la reposer...";
                         
                         // changement visuel de texte
                         changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
-                        dialogueMinor++;
+
+                        // on repose la question
+                        dialogueMinor = 4;
+
+                        // changement image skip
+                        displayEnterKey();
                     });
 
                     // action click réponse 2 (bonne réponse)
@@ -161,6 +173,12 @@ document.addEventListener('keypress', (event) => {
                         // changement visuel de texte
                         changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                         dialogueMinor++;
+
+                        // changement image skip
+                        displayEnterKey();
+
+                        // on donne la pioche au joueur
+                        hasPickaxe = true;
                     });
                 }
                 break;
@@ -223,4 +241,11 @@ function updateObjectifs()
 
     // si on a le briquet
     if (hasLighter) document.querySelector("#lvl5-objectifs-lighter").style.textDecorationLine = "line-through";
+}
+
+
+//$ CHANGEMENT IMG SKIP VERSION CLASSIQUE $//
+function displayEnterKey()
+{
+    document.querySelector("#enter-key").src = "../../../img/enter-key.png";
 }

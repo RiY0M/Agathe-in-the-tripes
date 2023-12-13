@@ -35,7 +35,9 @@ let dialogueMinorList = [               // dialogues du mineur
     "Quoi ?<br>Qu'est-ce que tu m'veux gamine ?",
     "Ma pioche ?<br>Laisse tomber j'ai déjà essayé, ce truc est incassable...",
     "Quoi ?<br>Tu veux quand même essayer ? T'es têtue ma parole...",
-    "Bon ok, je te la laisse à condition que tu me prouves que tu la mérites d'accord ?"
+    "Bon ok, je te la laisse à condition que tu me prouves que tu la mérites d'accord ?",
+    "À ton avis, le comble pour un mineur c'est quoi ?<br><br><span class='minor-answer-1'>- C'est feur !</span><br><span class='minor-answer-2'>- Être une tête de pioche ?</span>",
+    ""
 ];
 
 // variables des objets à récupérer

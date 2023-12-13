@@ -71,6 +71,11 @@ body {
     height: 20px;
 }
 
+.minor-answer-1:hover, .minor-answer-2:hover {
+    color: rgb(149, 2, 2);
+    cursor: pointer;
+}
+
 
 #lvl5-objectifs {
     visibility: hidden;

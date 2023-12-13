@@ -44,11 +44,11 @@ function dialogueWithStrangeRock()
 }
 
 
-//% FONCTION DIALOGUE VIEUX %//
+//% FONCTION DIALOGUE MINEUR %//
 function dialogueWithMinor(scene, agathe)
 {
     // vérification des coordonnées
-    if ((agathe.x >= 0 && agathe.x <= 75) && (agathe.y >= 150 && agathe.y <= 200))
+    if ((agathe.x >= 0 && agathe.x <= 65) && (agathe.y >= 150 && agathe.y <= 200))
     {
         // on regarde si on a déjà parlé au vieux pour lancer le premier dialogue
         if (dialogueMinor == 0)
@@ -123,6 +123,7 @@ document.addEventListener('keypress', (event) => {
 
             //% DIALOGUE MINEUR %//
             case "minor":
+                
                 // si on arrive au dernier dialogue on ferme la zone d'affichage
                 if (dialogueMinor === dialogueMinorList.length) {
 
@@ -133,6 +134,35 @@ document.addEventListener('keypress', (event) => {
                 // on passe au dialogue suivant
                 changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                 dialogueMinor++;
+
+
+                // on ajoute un eventListener au moment ou le choix de dialogue est affiché
+                if (dialogueMinor == 5) {
+
+                    //$ CHECK SI ON CLIQUE SUR UNE DES PROPOSITIONS DU MINEUR $//
+                    let answer1 = document.querySelector(".minor-answer-1");        // réponse 1
+                    let answer2 = document.querySelector(".minor-answer-2");        // réponse 2
+
+                    // action click réponse 1 (mauvaise réponse)
+                    answer1.addEventListener("click", () => {
+                        // changement du texte
+                        dialogueMinorList[5] = "Hein ? Tu te fiches de moi ?<br>T'as pas du bien comprendre la question, je vais te la reposer...";
+                        
+                        // changement visuel de texte
+                        changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        dialogueMinor++;
+                    });
+
+                    // action click réponse 2 (bonne réponse)
+                    answer2.addEventListener("click", () => {
+                        // changement du texte
+                        dialogueMinorList[5] = "Ah oui oui oui oui oui !<br>Bien trouvé gamine !<br>Tiens, tu as mérité ma pioche !";
+
+                        // changement visuel de texte
+                        changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        dialogueMinor++;
+                    });
+                }
                 break;
 
             

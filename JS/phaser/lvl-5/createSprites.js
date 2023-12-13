@@ -34,6 +34,8 @@ function displayPNJs()
     oldOnPoop.create(750, 225, "old-on-poop");
 
     // mineur
+    
+    flatThings.create(40, 190, "flat-poop-1").setScale(0.4);
     angryMinor.create(30, 160, "angry-minor-pickaxe");
 }
 
@@ -93,8 +95,11 @@ function displayBloodyRocks()
 
     // squelet assis
     deadThings.create(85, 565, "squeleton-sit").setTint(0xebebeb).setScale(0.8).angle += 10;
+
+    flatThings.create(40, 490, "flat-poop-0").setScale(0.4);
     deadThings.create(40, 480, "bones-pile").setTint(0xFFFFFF).setScale(0.7);
 
+    // bâton dynamite
     sticks.create(20, 480, "stick").angle -= 100;
 }
 

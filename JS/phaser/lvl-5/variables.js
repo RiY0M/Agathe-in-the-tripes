@@ -2,6 +2,9 @@ let agathe;                             // agathe personnage
 let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
+let blackBorders;                       // bordures noires limiter déplacement
+let hole;                               // halo lumineux
+let holeRadius = 60;                    // rayon du halo de lumière
 let oldOnPoop;                          // image pnj sur caca
 let flatThings;                         // images plates (sang, caca, ...)
 let bloodyRocks;                        // images cailloux de sang
@@ -19,6 +22,7 @@ let oldDialogueList = [                 // dialogues du vieux au caca
     "Salut la jeunesse !<br>Alors comme ça toi aussi tu es coincée dans ce monstre gamine ?",
     "La sortie ?<br>Ça fait logntemps que j'ai abandonné l'idée de l'atteindre. Elle semble bloquée par cet amas de... je préfère pas trop savoir en fait.",
     "Si seulement j'avais un moyen de tout faire sauter... Un bon coup de dynamite règlerai notre problème !",
+    "Mais avant tout ça, réglons déjà ce problème de lumière, on y voit rien ici...",
     "T'en penses quoi gamine ?"
 ];
 
@@ -52,6 +56,7 @@ function loadSpriteVariables(scene)
 {
     // bordure
     canvasBorder = scene.physics.add.staticGroup();
+    blackBorders = scene.physics.add.staticGroup();
 
     // PNJs
     oldOnPoop = scene.physics.add.staticGroup();

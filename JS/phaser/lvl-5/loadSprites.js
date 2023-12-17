@@ -7,6 +7,7 @@ function loadImages(scene)
     scene.load.image("horizontalBorder", "../../../img/assets/horizontal-border.png");
     scene.load.image("verticalBorderLeft", "../../../img/assets/vertical-border-left.png");
     scene.load.image("verticalBorderRight", "../../../img/assets/vertical-border-right.png");
+    scene.load.image("blackBorders", "../../../img/assets/border-0.png");
 
     // background
     scene.load.image("lvl5-bg", "../../../img/assets/lvl5-bg.png");

@@ -24,6 +24,12 @@ function displayCanvasBorder()
     // bordures verticales droite
     canvasBorder.create(795, 140, "verticalBorderRight");
     canvasBorder.create(795, 460, "verticalBorderRight");
+
+    // bordures noires
+    blackBorders.create(400, 75, "blackBorders").setScale(3).setTint(0x000000).setDepth(10);
+    blackBorders.create(275, 200, "blackBorders").setScale(1).setTint(0x000000).setDepth(10);
+    blackBorders.create(400, 510, "blackBorders").setScale(4).setTint(0x000000).setDepth(10);
+    blackBorders.create(400, 400, "blackBorders").setScale(1).setTint(0x000000).setDepth(10);
 }
 
 

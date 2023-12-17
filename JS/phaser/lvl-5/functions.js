@@ -105,6 +105,13 @@ document.addEventListener('keypress', (event) => {
                     dialogueArea.style.visibility = "hidden";
                     isDialogueAreaDisplayed = false;
 
+                    // on enlève les bordures noires
+                    blackBorders.children.entries.forEach(border => {
+                        border.disableBody(true, true);
+                    });
+                    hole.classList.remove("hole");
+                    document.querySelector("#game-canvas").style.backgroundColor = "#36393e";
+
                     // mise à jour des objets en notre possession
                     updateStickNumber();
 

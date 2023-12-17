@@ -18,6 +18,9 @@ let game = new Phaser.Game(config);
 
 function preload()
 {
+    //$ ELEMENTS HTML $//
+    hole = document.querySelector(".hole");
+
     // chargement de tous les sprites
     loadImages(this);
 }
@@ -54,6 +57,7 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, canvasBorder);
+    this.physics.add.collider(agathe, blackBorders);
     this.physics.add.collider(agathe, oldOnPoop);
     this.physics.add.collider(agathe, angryMinor);
     this.physics.add.collider(agathe, bloodyRocks);
@@ -157,6 +161,14 @@ function update()
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
+
+    // innerWidth = taille écran disponible
+    // on divise par 2 pour avoir le milieu
+    // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
+    // on ajoute les coordonnées de agathe qui varient de 0 à 800
+    // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
+    hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
+    hole.style.top = agathe.y  + "px";
 }
 
 

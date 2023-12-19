@@ -28,10 +28,12 @@ function loadImages(scene)
     // caca
     scene.load.image("flat-poop-0", "../../../img/assets/lvl5/flat-poop-0.png");
     scene.load.image("flat-poop-1", "../../../img/assets/lvl5/flat-poop-1.png");
-    
+
     scene.load.image("poop-0", "../../../img/assets/lvl5/poop-0.png");
     scene.load.image("poop-1", "../../../img/assets/lvl5/poop-1.png");
     scene.load.image("poop-2", "../../../img/assets/lvl5/poop-2.png");
+
+    scene.load.image("poop-door", "../../../img/assets/lvl5/poop-door.png");
 
     // sang
     scene.load.image("blood-0", "../../../img/assets/common/blood-0.png");

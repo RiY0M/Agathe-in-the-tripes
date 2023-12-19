@@ -55,6 +55,7 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, canvasBorder);
     this.physics.add.collider(agathe, blackBorders);
+    this.physics.add.collider(agathe, poopDoor);
     this.physics.add.collider(agathe, oldOnPoop);
     this.physics.add.collider(agathe, angryMinor);
     this.physics.add.collider(agathe, bloodyRocks);
@@ -116,6 +117,10 @@ function update()
             agathe.anims.play("right", true);
             // last frame facing afk
             lastFrame = 8;
+
+            if (agathe.x >= 790) {
+                window.alert("fin du jeu");
+            }
         }
 
         /* HAUT */

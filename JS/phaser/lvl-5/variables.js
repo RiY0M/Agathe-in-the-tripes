@@ -3,6 +3,7 @@ let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
 let blackBorders;                       // bordures noires limiter déplacement
+let poopDoor;                           // porte caca
 let oldOnPoop;                          // image pnj sur caca
 let flatThings;                         // images plates (sang, caca, ...)
 let bloodyRocks;                        // images cailloux de sang + caca
@@ -55,6 +56,7 @@ function loadSpriteVariables(scene)
     // bordure
     canvasBorder = scene.physics.add.staticGroup();
     blackBorders = scene.physics.add.staticGroup();
+    poopDoor = scene.physics.add.staticGroup();
 
     // PNJs
     oldOnPoop = scene.physics.add.staticGroup();

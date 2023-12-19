@@ -10,3 +10,5 @@ let blood0;
 let map;                    // tilemap
 let tileset;                // tileset
 let sol;                    // sol
+
+let platforms;

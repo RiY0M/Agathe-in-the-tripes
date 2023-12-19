@@ -4,7 +4,13 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: "#b33015",
-    physics: { default: 'arcade' },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 600 },
+            debug: false
+        }
+    },
     scene: {
         preload: preload,
         create: create,
@@ -23,16 +29,19 @@ function preload(){
 }
 
 function create(){
+    platforms = this.physics.add.staticGroup();
+    platforms.create(400, 568, 'platforms').setScale(5);
 
     //* MAP *//
     //labyrinthe(this);
 
     //~ SPRITE AGATHE ~//
-    createAgathe(this);    
+    createAgathe(this);
+    agathe.setBounce(0.2);
 
     //! COLLISIONS !//
-    //this.physics.add.collider(agathe, walls);
-    
+    this.physics.add.collider(agathe, platforms);
+
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
 

@@ -90,7 +90,7 @@ function create()
 
 function update()
 {
-    hasMoved = createMove(agathe, cursors, lastFrame);
+    hasMoved, lastFrame = createMove(agathe, cursors, lastFrame);
 
     // innerWidth = taille écran disponible
     // on divise par 2 pour avoir le milieu

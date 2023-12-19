@@ -1,22 +1,26 @@
 //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
 function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
-    const speed = !diagonal ? 160 : 135.8;
+    const speed = diagonal ? 160 : 135.8;
 
+    console.log(`moveX ${diagonal}`)
     /* GAUCHE */
     if (cursors.left.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-speed);
-        // animation sprite
-        if(diagonal) agathe.anims.play("left", true);
-        // last frame facing afk
-        lastFrame = 4;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        if(diagonal) {
+            // animation sprite
+            agathe.anims.play("left", true);
+            // last frame facing afk
+            lastFrame = 4;
 
-        if(diagonal) createMoveY(agathe, cursors, lastFrame);
+            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+            hasMoved = true;
+
+            createMoveY(agathe, cursors, lastFrame);
+        }
     }
 
     /* DROITE */
@@ -24,42 +28,49 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(speed);
-        // animation sprite
-        if(diagonal) agathe.anims.play("right", true);
-        // last frame facing afk
-        lastFrame = 8;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        if(diagonal) {
+            // animation sprite
+            agathe.anims.play("right", true);
+            // last frame facing afk
+            lastFrame = 8;
 
-        if(diagonal) createMoveY(agathe, cursors, lastFrame);
+            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+            hasMoved = true;
+
+            createMoveY(agathe, cursors, lastFrame);
+        }
     }
 
     else
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(0);
+        hasMoved = false;
     }
     return hasMoved, lastFrame;
 }
 
 function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
-    const speed = !diagonal ? 160 : 135.8;
+    const speed = diagonal ? 160 : 135.8;
 
     /* HAUT */
     if (cursors.up.isDown)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-speed);
-        // animation sprite
-        if(diagonal) agathe.anims.play("up", true);
-        // last frame facing afk
-        lastFrame = 4;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        if(diagonal) {
+            // animation sprite
+            agathe.anims.play("up", true);
+            // last frame facing afk
+            lastFrame = 12;
 
-        if(diagonal) createMoveX(agathe, cursors, lastFrame);
+            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+            hasMoved = true;
+
+            createMoveX(agathe, cursors, lastFrame);
+        }
     }
 
     /* BAS */
@@ -67,21 +78,25 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(speed);
-        // animation sprite
-        if(diagonal) agathe.anims.play("down", true);
-        // last frame facing afk
-        lastFrame = 8;
 
-        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-        hasMoved = true;
+        if(diagonal) {
+            // animation sprite
+            agathe.anims.play("down", true);
+            // last frame facing afk
+            lastFrame = 0;
 
-        if(diagonal) createMoveX(agathe, cursors, lastFrame);
+            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+            hasMoved = true;
+
+            createMoveX(agathe, cursors, lastFrame);
+        }
     }
 
     else
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(0);
+        hasMoved = false;
     }
 
     return hasMoved, lastFrame;
@@ -90,7 +105,7 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
 function createMove(agathe, cursors, lastFrame) {
 
     hasMoved, lastFrame = createMoveX(agathe, cursors, lastFrame, true);
-    hasMoved, lastFrame = createMoveY(agathe, cursors, lastFrame, true);
+    if(!hasMoved) hasMoved, lastFrame = createMoveY(agathe, cursors, lastFrame, true);
 
     /* AFK */
     if(cursors.right.isUp && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)
@@ -101,5 +116,5 @@ function createMove(agathe, cursors, lastFrame) {
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play(`afk-${lastFrame}`);
     }
-    return hasMoved;
+    return hasMoved, lastFrame;
 }

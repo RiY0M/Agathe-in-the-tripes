@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <title>LVL-5</title>
+</head>
+
+
+<body id="game-canvas" class="game-canvas-inside">
+
+    <!-- chargement des variables -->
+    <script src="../../JS/phaser/lvl-5/variables.js"></script>
+
+    <!-- chargement des images (chargement) -->
+    <script src="../../JS/phaser/lvl-5/loadSprites.js"></script>
+
+    <!-- chargement des images (création) -->
+    <script src="../../JS/phaser/lvl-5/createSprites.js"></script>
+
+    <!-- chargement des animations -->
+    <script src="../../JS/phaser/common/createAnims.js"></script>
+
+    <!-- chargement des poses AFK -->
+    <script src="../../JS/phaser/common/createAFK.js"></script>
+
+    <!-- chargement de la vie restante -->
+    <script src="../../JS/phaser/common/displayHearts.js"></script>
+
+    <!-- chargement des fonctions annexes -->
+    <script src="../../JS/phaser/lvl-5/functions.js"></script>
+
+    <!-- chargement du jeu -->
+    <script id="game-canvas-script" src="../../JS/phaser/lvl-5/lvl5.js"></script>
+</body>
+
+
+<div id="dialogue-area">
+    <img id="dialogue-area-pp" src="../../img/agathe.png">
+
+    <div class="right-dialogue-area">
+
+        <span id="dialogue-text">Salut la jeunesse !</span>
+        
+        <div class="right-bottom-dialogue-area">
+            <img id="enter-key" src="../../img/enter-key.png">
+            <span>skip</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="lvl5-objectifs">
+    Objectifs :
+    <ul>
+        <li id="lvl5-objectifs-sticks">Trouver 5 bâtons de dynamite (0/5)</li>
+        <li id="lvl5-objectifs-powder">Trouver de la poudre à canon</li>
+        <li id="lvl5-objectifs-string">Trouver du fil</li>
+        <li id="lvl5-objectifs-lighter">Trouver de quoi déclencher la dynamite</li>
+    </ul>
+</div>
+
+
+<header></header>
+<footer></footer>
+
+<script src="../../JS/footer.js"></script>
+<script src="../../JS/header.js"></script>
+<script src="../../JS/headerLevels.js"></script>
+
+</html>

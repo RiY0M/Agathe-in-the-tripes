@@ -35,6 +35,63 @@ body {
 }
 
 
+#dialogue-area {
+    visibility: hidden;
+
+    background-color: black;
+    border: 3px solid white;
+    height: 150px;
+    width: 500px;
+    
+    position: absolute;
+    top: 575px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: grid;
+    grid-template-columns: 10fr 90fr;
+    align-items: center;
+}
+
+#dialogue-area-pp {
+    padding: 1rem;
+    height: 50px;
+}
+
+.right-dialogue-area {
+    padding: 1rem;
+    display: grid;
+}
+
+.right-bottom-dialogue-area {
+    text-align: right;
+}
+
+#enter-key {
+    height: 20px;
+}
+
+.minor-answer-1:hover, .minor-answer-2:hover {
+    color: rgb(149, 2, 2);
+    cursor: pointer;
+}
+
+
+#lvl5-objectifs {
+    visibility: hidden;
+
+    position: absolute;
+    left: 1rem;
+    top: 5rem;
+}
+
+#lvl5-objectifs ul {
+    font-family: monospace;
+    margin-left: -1.5rem;
+    font-size: 0.9rem;
+}
+
+
 .tuto {
     /* border: 1px dashed rgb(205, 14, 205) ; */
     

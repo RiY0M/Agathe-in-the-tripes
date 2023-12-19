@@ -40,7 +40,6 @@ function displayPNJs()
     oldOnPoop.create(750, 225, "old-on-poop");
 
     // mineur
-    
     flatThings.create(40, 190, "flat-poop-1").setScale(0.4);
     angryMinor.create(30, 160, "angry-minor-pickaxe");
 }
@@ -54,6 +53,13 @@ function displayFlatThings()
 
     flatThings.create(430, 330, "flat-poop-0").setScale(0.7);
     flatThings.create(600, 290, "flat-poop-1").setScale(0.7);
+
+    bloodyRocks.create(400, 320, "poop-0");
+    bloodyRocks.create(615, 305, "poop-0");
+
+    bloodyRocks.create(460, 305, "poop-1");
+
+    bloodyRocks.create(600, 280, "poop-2");
 
     // sang
     flatThings.create(35, 305, "blood-1").setScale(1.3).angle -= 90;

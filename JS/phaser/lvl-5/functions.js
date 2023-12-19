@@ -11,7 +11,7 @@ function dialogueWithOld(scene, agathe)
             talkingTo = "oldOnPoop";
 
             // changement de l'image et du texte
-            changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[0]);
+            changeImgTextDialogue("../../../img/assets/lvl5/old-on-poop.png", oldDialogueList[0]);
 
             // affichage de la zone de dialogue
             displayTextArea(dialogueArea);
@@ -33,7 +33,7 @@ function dialogueWithStrangeRock()
         talkingTo = "strangeRock";
 
         // changement de l'image et du texte
-        changeImgTextDialogue("../../../img/assets/powder-rock.png", strangeRockDialogueList[0]);
+        changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[0]);
 
         // affichage de la zone de dialogue
         displayTextArea(dialogueArea);
@@ -57,7 +57,7 @@ function dialogueWithMinor(scene, agathe)
             talkingTo = "minor";
 
             // changement de l'image et du texte
-            changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[0]);
+            changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[0]);
 
             // affichage de la zone de dialogue
             displayTextArea(dialogueArea);
@@ -122,7 +122,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
+                changeImgTextDialogue("../../../img/assets/lvl5/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
                 dialogueOldPoop++;
                 break;
 
@@ -135,10 +135,14 @@ document.addEventListener('keypress', (event) => {
 
                     dialogueArea.style.visibility = "hidden";
                     isDialogueAreaDisplayed = false;
+
+                    // on lui enlève sa pioche
+                    angryMinor.children.entries[0].disableBody(true, true);
+                    angryMinor.create(30, 160, "angry-minor");
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                 dialogueMinor++;
 
 
@@ -162,7 +166,7 @@ document.addEventListener('keypress', (event) => {
                         dialogueMinorList[5] = "Hein ? Tu te fiches de moi ?<br>T'as pas du bien comprendre la question, je vais te la reposer...";
                         
                         // changement visuel de texte
-                        changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
 
                         // on repose la question
                         dialogueMinor = 4;
@@ -177,7 +181,7 @@ document.addEventListener('keypress', (event) => {
                         dialogueMinorList[5] = "Ah oui oui oui oui oui !<br>Bien trouvé gamine !<br>Tiens, tu as mérité ma pioche !";
 
                         // changement visuel de texte
-                        changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                         dialogueMinor++;
 
                         // changement image skip
@@ -200,7 +204,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
+                changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
                 strangeRockDialogue++;
                 break;
 

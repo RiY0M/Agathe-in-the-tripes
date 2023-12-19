@@ -5,7 +5,7 @@ let canvasBorder;                       // bordure du canvas
 let blackBorders;                       // bordures noires limiter déplacement
 let oldOnPoop;                          // image pnj sur caca
 let flatThings;                         // images plates (sang, caca, ...)
-let bloodyRocks;                        // images cailloux de sang
+let bloodyRocks;                        // images cailloux de sang + caca
 let fakeBloodyRocks;                    // cailloux pouvant bouger
 let deadThings;                         // sprites trucs morts
 let sticks;                             // bâtons de dynamite à ramasser

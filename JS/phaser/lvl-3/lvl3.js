@@ -3,8 +3,14 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#e78c93",
-    physics: { default: 'arcade' },
+    backgroundColor: "#b33015",
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 600 },
+            debug: false
+        }
+    },
     scene: {
         preload: preload,
         create: create,
@@ -19,25 +25,23 @@ let game = new Phaser.Game(config);
 
 function preload(){
     //$ ELEMENTS HTML $//
-    hole = document.querySelector(".hole");
-    hole.style.width = 400 + "px";
-    hole.style.height = 400 + "px";
     loadImages(this);
 }
 
 function create(){
-    //* TACHES DE SANG *//
-    tacheDeSang(this);
+    platforms = this.physics.add.staticGroup();
+    platforms.create(400, 568, 'platforms').setScale(5);
 
     //* MAP *//
-    labyrinthe(this);
+    //labyrinthe(this);
 
     //~ SPRITE AGATHE ~//
-    createAgathe(this);    
+    createAgathe(this);
+    agathe.setBounce(0.2);
 
     //! COLLISIONS !//
-    this.physics.add.collider(agathe, walls);
-    
+    this.physics.add.collider(agathe, platforms);
+
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -50,8 +54,8 @@ function create(){
     createAFK(this);   
     
     //? Caméra ?//
-    this.cameras.main.setBounds(0, 0, 1600, 1600);
-    this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
+    // this.cameras.main.setBounds(0, 0, 1600, 1600);
+    // this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 
 }
 
@@ -116,20 +120,4 @@ function update(){
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
-
-    // innerWidth = taille écran disponible
-    // on divise par 2 pour avoir le milieu
-    // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
-    // on ajoute les coordonnées de agathe qui varient de 0 à 800
-    // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-
-    if (agathe.x > 400 && agathe.x < 1200) hole.style.left = window.innerWidth/2 - holeRadius + "px";
-    else if (agathe.x <= 400) hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 400) + "px";
-    else if (agathe.x  >= 1200) hole.style.left = window.innerWidth/2 - holeRadius + (agathe.x - 1200) + "px";
-
-    if (agathe.y > 300 && agathe.y < 1300) hole.style.top = 300 - holeRadius/2 - 48 + "px";
-    else if (agathe.y <= 300) hole.style.top = agathe.y - holeRadius/2 - 48 + "px";
-    else if (agathe.y >= 1300) hole.style.top = agathe.y - 1000 - holeRadius/2 - 48 + "px";
-    
-    
 }

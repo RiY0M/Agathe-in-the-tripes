@@ -3,8 +3,6 @@ let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
 let blackBorders;                       // bordures noires limiter déplacement
-let hole;                               // halo lumineux
-let holeRadius = 60;                    // rayon du halo de lumière
 let oldOnPoop;                          // image pnj sur caca
 let flatThings;                         // images plates (sang, caca, ...)
 let bloodyRocks;                        // images cailloux de sang

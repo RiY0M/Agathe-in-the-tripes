@@ -109,7 +109,6 @@ document.addEventListener('keypress', (event) => {
                     blackBorders.children.entries.forEach(border => {
                         border.disableBody(true, true);
                     });
-                    hole.classList.remove("hole");
                     document.querySelector("#game-canvas").style.backgroundColor = "#36393e";
 
                     // mise à jour des objets en notre possession

@@ -8,15 +8,16 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-speed);
+        
+        // last frame facing afk
+        lastFrame = 4;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
 
         if(diagonal) {
             // animation sprite
             agathe.anims.play("left", true);
-            // last frame facing afk
-            lastFrame = 4;
-
-            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-            hasMoved = true;
 
             createMoveY(agathe, cursors, lastFrame);
         }
@@ -27,15 +28,16 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(speed);
+        
+        // last frame facing afk
+        lastFrame = 8;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
 
         if(diagonal) {
             // animation sprite
             agathe.anims.play("right", true);
-            // last frame facing afk
-            lastFrame = 8;
-
-            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-            hasMoved = true;
 
             createMoveY(agathe, cursors, lastFrame);
         }
@@ -58,15 +60,16 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-speed);
+        
+        // last frame facing afk
+        lastFrame = 12;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
 
         if(diagonal) {
             // animation sprite
             agathe.anims.play("up", true);
-            // last frame facing afk
-            lastFrame = 12;
-
-            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-            hasMoved = true;
 
             createMoveX(agathe, cursors, lastFrame);
         }
@@ -77,15 +80,16 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(speed);
+        
+        // last frame facing afk
+        lastFrame = 0;
+
+        // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
+        hasMoved = true;
 
         if(diagonal) {
             // animation sprite
             agathe.anims.play("down", true);
-            // last frame facing afk
-            lastFrame = 0;
-
-            // on indique qu'on a appuyé sur une touche pour supprimer le message de tuto
-            hasMoved = true;
 
             createMoveX(agathe, cursors, lastFrame);
         }
@@ -103,9 +107,9 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
 
 function createMove(agathe, cursors, lastFrame) {
 
-    console.log(lastFrame);
     lastFrame, hasMoved = createMoveX(agathe, cursors, lastFrame, true);
     if(!hasMoved) lastFrame, hasMoved = createMoveY(agathe, cursors, lastFrame, true);
+    // console.log(lastFrame);
 
     /* AFK */
     if(cursors.right.isUp && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)

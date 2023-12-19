@@ -52,6 +52,9 @@ function displayFlatThings()
     // caca
     flatThings.create(750, 255, "flat-poop-0").setScale(0.5);
 
+    flatThings.create(430, 330, "flat-poop-0").setScale(0.7);
+    flatThings.create(600, 290, "flat-poop-1").setScale(0.7);
+
     // sang
     flatThings.create(35, 305, "blood-1").setScale(1.3).angle -= 90;
 }

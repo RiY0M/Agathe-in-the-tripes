@@ -97,58 +97,7 @@ function update()
     // on empêche de se déplacer si on est au milieu d'un dialogue
     if (!isDialogueAreaDisplayed)
     {
-        if (cursors.left.isDown)
-        {
-            // vitesse et direction du déplacement
-            agathe.setVelocityX(-160);
-            // animation sprite
-            agathe.anims.play("left", true);
-            // last frame facing afk
-            lastFrame = 4;
-        }
-
-        /* DROITE */
-        else if (cursors.right.isDown)
-        {
-            // vitesse et direction du déplacement
-            agathe.setVelocityX(160);
-            // animation sprite
-            agathe.anims.play("right", true);
-            // last frame facing afk
-            lastFrame = 8;
-        }
-
-        /* HAUT */
-        else if (cursors.up.isDown)
-        {
-            // vitesse et direction du déplacement
-            agathe.setVelocityY(-160);
-            // animation sprite
-            agathe.anims.play("up", true);
-            // last frame facing afk
-            lastFrame = 12;
-        }
-
-        /* BAS */
-        else if (cursors.down.isDown)
-        {
-            // vitesse et direction du déplacement
-            agathe.setVelocityY(160);
-            // animation sprite
-            agathe.anims.play("down", true);
-            // last frame facing afk
-            lastFrame = 0;
-        }
-
-        /* AFK */
-        else
-        {
-            // si aucune touche du clavier n'est appuyée : on arrête agathe
-            agathe.setVelocityX(0);
-            agathe.setVelocityY(0);
-            // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
-            agathe.anims.play("afk-" + lastFrame);
-        }
+        lastFrame = createMove(agathe, cursors, lastFrame);
     }
     else
     {

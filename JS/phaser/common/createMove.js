@@ -3,7 +3,6 @@
 function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
     const speed = diagonal ? 160 : 135.8;
 
-    console.log(`moveX ${diagonal}`)
     /* GAUCHE */
     if (cursors.left.isDown)
     {
@@ -48,7 +47,7 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
         agathe.setVelocityX(0);
         hasMoved = false;
     }
-    return hasMoved, lastFrame;
+    return lastFrame, hasMoved;
 }
 
 function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
@@ -99,13 +98,14 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
         hasMoved = false;
     }
 
-    return hasMoved, lastFrame;
+    return lastFrame, hasMoved;
 }
 
 function createMove(agathe, cursors, lastFrame) {
 
-    hasMoved, lastFrame = createMoveX(agathe, cursors, lastFrame, true);
-    if(!hasMoved) hasMoved, lastFrame = createMoveY(agathe, cursors, lastFrame, true);
+    console.log(lastFrame);
+    lastFrame, hasMoved = createMoveX(agathe, cursors, lastFrame, true);
+    if(!hasMoved) lastFrame, hasMoved = createMoveY(agathe, cursors, lastFrame, true);
 
     /* AFK */
     if(cursors.right.isUp && cursors.left.isUp && cursors.up.isUp && cursors.down.isUp)
@@ -116,5 +116,5 @@ function createMove(agathe, cursors, lastFrame) {
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play(`afk-${lastFrame}`);
     }
-    return hasMoved, lastFrame;
+    return lastFrame, hasMoved;
 }

@@ -12,3 +12,4 @@ let tileset;                // tileset
 let sol;                    // sol
 
 let platforms;
+let music;                  //Theme (musique de fond) 

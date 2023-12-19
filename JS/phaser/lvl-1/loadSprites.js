@@ -33,4 +33,7 @@ function loadImages(scene)
     scene.load.image("tooth", "../../../img/assets/lvl1/tooth.png");
     scene.load.image("moving-teeth-up", "../../../img/assets/lvl1/moving-teeth-up.png");
     scene.load.image("moving-teeth-down", "../../../img/assets/lvl1/moving-teeth-down.png");
+
+    //chargement du theme
+    scene.load.audio('theme', '../../sound/lvl1.mp3');
 }

@@ -29,4 +29,7 @@ function loadImages(scene)
 
     // chargement de la lampe
     scene.load.image("lampe", "../../../img/assets/lvl0/lamp.png");
+
+    //chargement du theme
+    scene.load.audio('theme', '../../sound/lvl0.mp3');
 }

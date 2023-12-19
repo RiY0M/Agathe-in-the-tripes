@@ -25,6 +25,10 @@ function preload()
 
 function create()
 {
+    //* Theme de fond *//
+    music = this.sound.add("theme");
+    music.play();
+    
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 

@@ -29,6 +29,10 @@ function preload(){
 }
 
 function create(){
+    //* Theme de fond *//
+    music = this.sound.add("theme");
+    music.play();
+
     platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'platforms').setScale(5);
 

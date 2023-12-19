@@ -19,6 +19,7 @@ let game = new Phaser.Game(config);
 
 function preload()
 {
+    // this.load.audio('theme', '../../sound/Undertale.mp3');
     //$ ELEMENTS HTML $//
     hole = document.querySelector(".hole");
     tutoDeplacement = document.querySelector("#tuto-deplacement");
@@ -29,6 +30,9 @@ function preload()
 
 function create()
 {
+    music = this.sound.add("theme");
+    music.play();
+
     //* SPRITE BORDURE DU HAUT *//
     createTopBorder(this);
 

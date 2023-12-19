@@ -15,3 +15,4 @@ let tutoDeplacement;        // message tutoriel pour apprendre touches
 const idCurrentLvl = 0;      // Id du niveau courant
 const idNextLvl = 1;         // Id du prochain niveau
 let startTime = new Date().getTime(); // Starting time for the chronometer
+let music;  

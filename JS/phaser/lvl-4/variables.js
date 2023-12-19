@@ -10,3 +10,4 @@ let blood0;
 let map;                    // tilemap
 let tileset;                // tileset
 let sol;                    // sol
+let music;                  //Theme (musique de fond) 

@@ -8,4 +8,7 @@ function loadImages(scene){
     scene.load.image('tiles', '../../img/TileMapsLv4/Mur32x32.png')
     scene.load.tilemapTiledJSON('tilemap', '../../img/TileMapsLv4/game.json')
 
+    //chargement du theme
+    scene.load.audio('theme', '../../sound/lvl4.mp3');
+
 }

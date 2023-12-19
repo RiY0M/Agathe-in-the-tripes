@@ -9,4 +9,7 @@ function loadImages(scene){
     //scene.load.tilemapTiledJSON('tilemap', '../../img/TileMapsLv4/game.json')
 
     scene.load.image("platforms", "../../img/TileMapsLv3/platforme.png");
+
+    //chargement du theme
+    scene.load.audio('theme', '../../sound/lvl3.mp3');
 }

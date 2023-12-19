@@ -25,3 +25,4 @@ let randomDelay = 250;          // valeur aléatoire déclenchemnt
 const idCurrentLvl = 1;      // Id du niveau courant
 const idNextLvl = 2;         // Id du prochain niveau
 let startTime = new Date().getTime(); // Starting time for the chronometer
+let music;                  //Theme (musique de fond) 

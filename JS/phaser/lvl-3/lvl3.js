@@ -85,7 +85,8 @@ function update(){
     if (cursors.up.isDown && agathe.body.touching.down)
     {
         agathe.setVelocityY(-450);
-
+        
+        if (agathe.y <= 105) console.log("next lv");               //changeLvl(idCurrentLvl, idNextLvl, startTime);
 
     }
 }

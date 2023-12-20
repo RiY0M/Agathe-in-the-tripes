@@ -22,4 +22,6 @@ function loadImages(scene)
 
     // chargement bordure de fin de niveau
     scene.load.image("border-1", "../../../img/assets/common/border-1.png");
+
+    scene.load.audio('theme', '../../sound/lvl2.mp3');
 }

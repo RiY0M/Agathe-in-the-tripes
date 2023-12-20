@@ -37,7 +37,7 @@ function create(){
     createGround(this);
 
     //* MAP *//
-    //tilemap(this);
+    tilemap(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);
@@ -58,8 +58,8 @@ function create(){
     createAFK(this);   
     
     //? Caméra ?//
-    // this.cameras.main.setBounds(0, 0, 1600, 1600);
-    // this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
+    // this.cameras.main.setBounds(0, 0, 800, 2000);
+    this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 
     
 }

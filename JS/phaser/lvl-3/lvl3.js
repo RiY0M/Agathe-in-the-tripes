@@ -7,7 +7,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 550 },
+            gravity: { y: 700 },
             debug: false
         }
     },
@@ -33,17 +33,11 @@ function create(){
     music = this.sound.add("theme");
     music.play();
 
-    //* SOL *//
-    createGround(this);
-
     //* MAP *//
     tilemap(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);
-    agathe.setBounce(0.2);
-    //this.physics.world.enable(agathe);
-    //this.physics.add.collider(agathe, platformsLayer);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, platforms);
@@ -90,6 +84,8 @@ function update(){
 
     if (cursors.up.isDown && agathe.body.touching.down)
     {
-        agathe.setVelocityY(-330);
+        agathe.setVelocityY(-450);
+
+
     }
 }

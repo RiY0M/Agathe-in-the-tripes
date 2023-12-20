@@ -7,46 +7,43 @@ function createAgathe(scene){
         .setOffset(5, 40);
 }
 
-function getRandomNb(min = 10, max = 790) {
-    return Math.random() * (max - min) + min;
-}
+function createGround(scene){
+    platforms = scene.physics.add.staticGroup();
+    platforms.create(400, 568, 'platforms').setScale(5).refreshBody();
 
-function tacheDeSang(scene){    //Rajoute des taches de sang
-    blood0 = scene.physics.add.staticGroup();
-    blood1 = scene.physics.add.staticGroup();
-    
-    for (i = 0; i < 600; i += 40){
-        getRandomNb(1, 1000) > 500 ? blood0.create(getRandomNb(), i, "blood0") : blood1.create(getRandomNb(), i, "blood1");
-    }
-}
+    // platforms.create(400, 350, "platforms");
+    platforms.create(450, 420, "platforms");
+    platforms.create(200, 320, "platforms");
 
-function labyrinthe(scene) {   
-    // Création de la tilemap 
-    map = scene.make.tilemap({ key: 'tilemap' });
-    tileset = map.addTilesetImage('world', 'tiles'); // Ajout du tileset à la tilemap
-
-    // Création de la couche "Wall" de la tilemap
-    const wallLayer = map.createStaticLayer("Wall", tileset);
-    walls = scene.physics.add.staticGroup({ 
-        // Donne aux tuiles de la couche "Wall" un corps physique pour la collision
-        classType: Phaser.GameObjects.Sprite,
-        defaultKey: 1, // Clé de tuile de Wall
-        maxSize: -1,
+    platforms.children.entries.forEach((platf) => {
+        platf.body.checkCollision = {down: false, left: false, none: false, right: false, up: true};
+        
     });
 
-    map.forEachTile(tile => { // Parcours toutes les tuiles de la couche "Wall"
-        if (tile.index === 1) {
-            const x = tile.getCenterX();
-            const y = tile.getCenterY();
-            const wall = walls.create(x, y, 'tiles', tile.index); // Créer un mur à la position de la tuile
-            wall.setOrigin(0.5, 0.5);
-            wall.body.width = tile.width;
-            wall.body.height = tile.height;
-            wall.body.immovable = true; // Bloque Agathe
-        }
+
+
+
+}
+
+//Créer les nouvelles anims spéciale pour ce niveau
+function anims(scene){
+    scene.anims.create({
+        key: 'left',
+        frames: scene.anims.generateFrameNumbers('agathe', { start: 4, end: 7 }),
+        frameRate: 10,
+        repeat: -1
     });
-    walls.create(-15, 270, "tiles");    //Créer des murs invisibles pour bloquer Agathe
-    walls.create(-15, 300, "tiles");
-    walls.create(-15, 330, "tiles");
-    walls.create(-15, 360, "tiles");
+
+    scene.anims.create({
+        key: 'turn',
+        frames: [ { key: 'agathe', frame: 0 } ],
+        frameRate: 20
+    });
+
+    scene.anims.create({
+        key: 'right',
+        frames: scene.anims.generateFrameNumbers('agathe', { start: 9, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
 }

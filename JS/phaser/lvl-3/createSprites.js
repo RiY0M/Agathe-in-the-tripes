@@ -70,5 +70,5 @@ function tilemap(scene){
             wall.body.immovable = true; // Bloque Agathe
         }
     });
-    scene.physics.add.collider(agathe, walls);
+    //scene.physics.add.collider(agathe, walls);
 }

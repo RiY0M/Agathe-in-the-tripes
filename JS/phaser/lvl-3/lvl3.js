@@ -42,6 +42,8 @@ function create(){
     //~ SPRITE AGATHE ~//
     createAgathe(this);
     agathe.setBounce(0.2);
+    //this.physics.world.enable(agathe);
+    //this.physics.add.collider(agathe, platformsLayer);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, platforms);
@@ -58,7 +60,7 @@ function create(){
     createAFK(this);   
     
     //? Caméra ?//
-    // this.cameras.main.setBounds(0, 0, 800, 2000);
+    this.cameras.main.setBounds(0, 0, 800, 3200);
     this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 
     

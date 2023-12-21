@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
     <link rel="stylesheet" href="../../CSS/index.css">
     <title>LVL-3</title>
@@ -11,24 +10,23 @@
 
 
 <body id="game-canvas" class="game-canvas-inside">
+    <!-- chargement des variables -->
+    <script src="../../JS/phaser/lvl-3/variables.js"></script>
 
-<!-- chargement des variables -->
-<script src="../../JS/phaser/lvl-3/variables.js"></script>
+    <!-- chargement des images (chargement) -->
+    <script src="../../JS/phaser/lvl-3/loadSprites.js"></script>
 
-<!-- chargement des images (chargement) -->
-<script src="../../JS/phaser/lvl-3/loadSprites.js"></script>
+    <!-- chargement des images (création) -->
+    <script src="../../JS/phaser/lvl-3/createSprites.js"></script>
 
-<!-- chargement des images (création) -->
-<script src="../../JS/phaser/lvl-3/createSprites.js"></script>
+    <!-- chargement des animations -->
+    <script src="../../JS/phaser/common/createAFK.js"></script>
 
-<!-- chargement des animations -->
-<script src="../../JS/phaser/common/createAFK.js"></script>
+    <!-- chargement du changement de niveau -->
+    <script src="../../JS/phaser/common/sendData.js"></script>
 
-<!-- chargement du changement de niveau -->
-<script src="../../JS/phaser/common/sendData.js"></script>
-
-<!-- chargement du jeu -->
-<script id="game-canvas-script" src="../../JS/phaser/lvl-3/lvl3.js"></script>
+    <!-- chargement du jeu -->
+    <script id="game-canvas-script" src="../../JS/phaser/lvl-3/lvl3.js"></script>
 </body>
 
 <header></header>

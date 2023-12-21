@@ -1,8 +1,8 @@
 "use strict";
 
-function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamite = false) {
+async function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamite = false) {
 
-    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/saveScore.php', {
+    const response = await fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/saveScore.php', {
         method: 'POST',
         body: new URLSearchParams({
             level_id: idLevel,
@@ -11,13 +11,11 @@ function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamite = fa
             hp_remain: hp_remain,
             get_dynamite: getDynamite,
         }),
-    })
-    .then(response => response.json())
-    .then(json => {
-        if (json.status == 'error') {
-            console.log(json.message);
-        }
     });
+    const json = response.json();
+    if (json.status == 'error') {
+        console.log(json.message);
+    }
 }
 
 /**

@@ -6,11 +6,6 @@ $json = [];
 $json["data"] = [];
 
 try {
-
-    if(!$_COOKIE["token"]) {
-        throw new ErrorException("Utilisateur non connecté, résultat non enregistré");
-    }
-
     $query =
     "SELECT MAX(G.id) AS game_id, U.id AS user_id, hp_remain
     FROM GAMES G
@@ -22,8 +17,16 @@ try {
     $data = $res->fetch(PDO::FETCH_ASSOC);
     $idGame = intval($data->game_id);
     $idUser = intval($data->user_id);
-    $hpRemain = $data->hpRemain;
-    $nbDynamite = $data->nbDynamite;
+    $hpRemain = $_POST["hp_remain"] ?? $data->hpRemain ?? $_COOKIE["hpRemain"];
+    $nbDynamite = ($data->nbDynamite ?? $_COOKIE["nbDynamite"]) + intval($_POST["get_dynamite"]);
+
+    setcookie("hpRemain", $hpRemain, time() + 86400 * 365, "/");
+    setcookie("nbDynamite", $nbDynamite, time() + 86400 * 365, "/");
+    setcookie("idLvl", $_POST["next_level_id"], time() + 86400 * 365, "/");
+
+    if(!$_COOKIE["token"]) {
+        throw new ErrorException("Utilisateur non connecté, résultat non enregistré");
+    }
 
     $query =
     "REPLACE INTO GAMES (id, user_id, level_id, hp_remain, nb_dynamite)
@@ -33,8 +36,8 @@ try {
     $res->bindParam(":id", $idGame, PDO::PARAM_INT);
     $res->bindParam(":user_id", $idUser, PDO::PARAM_INT);
     $res->bindParam(":level_id", $_POST["next_level_id"], PDO::PARAM_INT);
-    $res->bindParam(":hp_remain", $_POST["hp_remain"] ?? $hpRemain, PDO::PARAM_INT);
-    $res->bindParam(":nb_dynamite", $_POST["get_dynamite"] ? $nbDynamite++ : $nbDynamite, PDO::PARAM_INT);
+    $res->bindParam(":hp_remain", $hpRemain, PDO::PARAM_INT);
+    $res->bindParam(":nb_dynamite", $nbDynamite, PDO::PARAM_INT);
     $res->execute();
 
     $query =

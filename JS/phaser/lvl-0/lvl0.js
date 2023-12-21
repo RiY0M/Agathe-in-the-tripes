@@ -95,7 +95,9 @@ function create()
 function update()
 {
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
-    lastFrame, hasMoved = createMove(agathe, cursors, lastFrame);
+    tab = createMove(agathe, cursors, lastFrame);
+    lastFrame = tab[0];
+    hasMoved = tab[1];
 
     // innerWidth = taille écran disponible
     // on divise par 2 pour avoir le milieu

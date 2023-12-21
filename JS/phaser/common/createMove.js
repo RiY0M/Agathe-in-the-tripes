@@ -49,7 +49,7 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
         agathe.setVelocityX(0);
         hasMoved = false;
     }
-    return lastFrame, hasMoved;
+    return [lastFrame, hasMoved];
 }
 
 function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
@@ -102,13 +102,17 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
         hasMoved = false;
     }
 
-    return lastFrame, hasMoved;
+    return [lastFrame, hasMoved];
 }
 
 function createMove(agathe, cursors, lastFrame) {
 
-    lastFrame, hasMoved = createMoveX(agathe, cursors, lastFrame, true);
-    if(!hasMoved) lastFrame, hasMoved = createMoveY(agathe, cursors, lastFrame, true);
+    tab = createMoveX(agathe, cursors, lastFrame, true);
+    lastFrame = tab[0];
+    hasMoved = tab[1];
+    if(!hasMoved) tab = createMoveY(agathe, cursors, lastFrame, true);
+    lastFrame = tab[0];
+    hasMoved = tab[1];
     // console.log(lastFrame);
 
     /* AFK */
@@ -120,5 +124,5 @@ function createMove(agathe, cursors, lastFrame) {
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play(`afk-${lastFrame}`);
     }
-    return lastFrame, hasMoved;
+    return [lastFrame, hasMoved];
 }

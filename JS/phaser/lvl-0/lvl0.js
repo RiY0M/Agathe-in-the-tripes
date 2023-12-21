@@ -110,6 +110,11 @@ function update()
 
     // on masque le message de tuto si on bouge
     if (hasMoved) tutoDeplacement.style.visibility = "hidden";
+
+    if (agathe.y <= 64) {
+        // changement map
+        changeLvl(idCurrentLvl, idNextLvl, startTime);
+    }
 }
 
 

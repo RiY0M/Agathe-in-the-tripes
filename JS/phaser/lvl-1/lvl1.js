@@ -234,12 +234,12 @@ function update()
     }
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
-    lastFrame = createMove(agathe, cursors, lastFrame);
+    lastFrame = createMove(agathe, cursors, lastFrame)[0];
 
     // si agathe rentre dans l'oesophage (y = coordonnées du point d'entrée)
     if (agathe.y <= 15) {
         // changement map
-        changeLvl(idCurrentLvl, idNextLvl, startTime);
+        changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts);
     }
 }
 

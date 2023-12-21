@@ -11,7 +11,6 @@ let blood;                      // sang par terre
 let squelettonHeart;            // coeur du squelette
 let invicibility = 150;         // temps d'immortalité
 let start3sCoolDown = false;    // lancement de l'invincibilité
-let hurting = false;            // clignottement agathe dégât
 let retractingTeethLoop = 0;    // boucle rétractation dents
 let movingTeeth1;               // dents bougent (vitesse 1)
 let isMovingTeeth1Up = true;    // booleen check si up ou down

@@ -63,7 +63,7 @@ function update(){
 
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
-    lastFrame = createMove(agathe, cursors, lastFrame);
+    lastFrame = createMove(agathe, cursors, lastFrame)[0];
 
     if (agathe.x >= 1580) {
         window.location.replace("./lvl5.html");

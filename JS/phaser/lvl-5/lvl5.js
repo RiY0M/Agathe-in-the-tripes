@@ -97,7 +97,7 @@ function update()
     // on empêche de se déplacer si on est au milieu d'un dialogue
     if (!isDialogueAreaDisplayed)
     {
-        lastFrame = createMove(agathe, cursors, lastFrame);
+        lastFrame = createMove(agathe, cursors, lastFrame)[0];
     }
     else
     {

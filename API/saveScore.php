@@ -23,16 +23,18 @@ try {
     $idGame = intval($data->game_id);
     $idUser = intval($data->user_id);
     $hpRemain = $data->hpRemain;
+    $nbDynamite = $data->nbDynamite;
 
     $query =
-    "REPLACE INTO GAMES (id, user_id, level_id, hp_remain)
-    VALUES (:id, :user_id, :level_id, hp_remain);";
+    "REPLACE INTO GAMES (id, user_id, level_id, hp_remain, nb_dynamite)
+    VALUES (:id, :user_id, :level_id, :hp_remain, :nb_dynamite);";
 
     $res = $db->prepare($query);
     $res->bindParam(":id", $idGame, PDO::PARAM_INT);
     $res->bindParam(":user_id", $idUser, PDO::PARAM_INT);
     $res->bindParam(":level_id", $_POST["next_level_id"], PDO::PARAM_INT);
     $res->bindParam(":hp_remain", $_POST["hp_remain"] ?? $hpRemain, PDO::PARAM_INT);
+    $res->bindParam(":nb_dynamite", $_POST["get_dynamite"] ? $nbDynamite++ : $nbDynamite, PDO::PARAM_INT);
     $res->execute();
 
     $query =

@@ -1,6 +1,6 @@
 "use strict";
 
-function sendData(idLevel, idNextLevel, time, hp_remain = null) {
+function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamite = false) {
 
     fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/saveScore.php', {
         method: 'POST',
@@ -9,6 +9,7 @@ function sendData(idLevel, idNextLevel, time, hp_remain = null) {
             next_level_id: idNextLevel,
             complete_time: time,
             hp_remain: hp_remain,
+            get_dynamite: getDynamite,
         }),
     })
     .then(response => response.json())
@@ -26,14 +27,14 @@ function sendData(idLevel, idNextLevel, time, hp_remain = null) {
  * int idCurrentLvl : id du niveau actuel
  * int idNextLvl : id du niveau suivant
  */
-function changeLvl(idCurrentLvl, idNextLvl, startTime) {
+function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, getDynamite = false) {
 
     // Calcul du temps
     const time = (new Date().getTime() - startTime) / 1000;
     console.log(time);
     
     // Appel API
-    sendData(idCurrentLvl, idNextLvl, time);
+    sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
 
     // Changement map
     // window.alert("Changement de niveau !"); // debug

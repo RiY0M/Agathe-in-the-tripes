@@ -62,7 +62,6 @@ function create(){
 
 function update(){
 
-
     if (cursors.left.isDown)
     {
         agathe.setVelocityX(-160);
@@ -90,4 +89,46 @@ function update(){
         changeLvl(idCurrentLvl, idNextLvl, startTime);
 
     }
+
+    // boucle en fonction du timer de l'invincibilité allant de 0.0 à 4.9
+    let timer = invicibility / 10 % 5;
+    
+    // la moitié du temps on passe en rouge
+    if ((timer >= 0 && timer <= 1.25) || (timer >= 2.5 && timer <= 3.75)) agathe.setTint(0xFFFFFF);
+    else agathe.setTint(0xFF0000);
+
+    if (start3sCoolDown) {
+        // on lance la décrémentation des 150 frames (150 frames = 3s)
+        invicibility--;
+        // on rend agathe invincible
+        isInvicible = true;
+    }
+
+    // si les 3s d'invincibilité sont écoulées
+    if (invicibility == 0) {
+        // on enlève l'effet d'immortalité à agathe
+        isInvicible = false;
+        // on arrête le chorno
+        start3sCoolDown = false;
+        // on réinitialise le compteur de frames
+        invicibility = 150;
+    }
 }
+
+function collidePoison()
+{
+    // si agathe n'est pas invincible
+    if (!isInvicible)
+    {
+        // si elle a encore au moins une vie
+        if (nbHearts > 0) {
+            // on lui en retire une
+            nbHearts--;
+            reloadNbHearts();
+        }
+
+        // lancement des 3s d'invincibilité
+        start3sCoolDown = true;
+    }
+}
+

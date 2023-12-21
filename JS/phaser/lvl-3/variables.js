@@ -14,6 +14,8 @@ let sol;                    // sol
 let platforms;
 let music;                  //Theme (musique de fond) 
 
+let start3sCoolDown = false;    // lancement de l'invincibilité
+let invicibility = 150;         // temps d'immortalité
 
 const idCurrentLvl = 3;      // Id du niveau courant
 const idNextLvl = 4;         // Id du prochain niveau

@@ -86,7 +86,8 @@ function update(){
     {
         agathe.setVelocityY(-450);
         
-        if (agathe.y <= 105) console.log("next lv");               //changeLvl(idCurrentLvl, idNextLvl, startTime);
+        if (agathe.y <= 105) //console.log("next lv");               
+        changeLvl(idCurrentLvl, idNextLvl, startTime);
 
     }
 }

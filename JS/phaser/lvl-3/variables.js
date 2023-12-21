@@ -13,3 +13,8 @@ let sol;                    // sol
 
 let platforms;
 let music;                  //Theme (musique de fond) 
+
+
+const idCurrentLvl = 3;      // Id du niveau courant
+const idNextLvl = 4;         // Id du prochain niveau
+let startTime = new Date().getTime(); // Starting time for the chronometer

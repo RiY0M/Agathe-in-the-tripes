@@ -10,6 +10,16 @@ function createAgathe(scene)
 }
 
 
+//~ SPRITE RTA ~//
+function createRat(scene)
+{
+    // ajout du rat
+    rat = scene.physics.add.sprite(50, 300, "rat").setDepth(10);
+    // on définit les collisions avec la bordure
+    rat.setCollideWorldBounds(true);
+}
+
+
 //* BORDURE DU CANVAS *//
 function displayCanvasBorder()
 {
@@ -53,12 +63,16 @@ function displayFlatThings()
 {
     // caca
     flatThings.create(750, 255, "flat-poop-0").setScale(0.5);
-
     flatThings.create(430, 330, "flat-poop-0").setScale(0.7);
+
     flatThings.create(600, 290, "flat-poop-1").setScale(0.7);
+
+    flatThings.create(275, 575, "flat-poop-2").setScale(1.3);
 
     bloodyRocks.create(400, 320, "poop-0");
     bloodyRocks.create(615, 305, "poop-0");
+    bloodyRocks.create(250, 572, "poop-0");
+    bloodyRocks.create(300, 568, "poop-0");
 
     bloodyRocks.create(460, 305, "poop-1");
 

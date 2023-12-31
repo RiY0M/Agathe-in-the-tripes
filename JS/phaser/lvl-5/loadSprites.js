@@ -3,6 +3,9 @@ function loadImages(scene)
     // chargement sprites agathe
     scene.load.spritesheet("agathe", "../../../img/assets/common/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
+    // chargement sprites rat
+    scene.load.spritesheet("rat", "../../../img/assets/lvl5/rat_sprite.png", { frameWidth: 32, frameHeight: 32 });
+
     // bordures du canvas
     scene.load.image("horizontalBorder", "../../../img/assets/lvl5/horizontal-border.png");
     scene.load.image("verticalBorderLeft", "../../../img/assets/lvl5/vertical-border-left.png");
@@ -28,6 +31,7 @@ function loadImages(scene)
     // caca
     scene.load.image("flat-poop-0", "../../../img/assets/lvl5/flat-poop-0.png");
     scene.load.image("flat-poop-1", "../../../img/assets/lvl5/flat-poop-1.png");
+    scene.load.image("flat-poop-2", "../../../img/assets/lvl5/flat-poop-2.png");
 
     scene.load.image("poop-0", "../../../img/assets/lvl5/poop-0.png");
     scene.load.image("poop-1", "../../../img/assets/lvl5/poop-1.png");

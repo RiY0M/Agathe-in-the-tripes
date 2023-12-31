@@ -1,4 +1,5 @@
 let agathe;                             // agathe personnage
+let rat;                                // rat pnj
 let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas

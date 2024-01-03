@@ -119,6 +119,9 @@ document.addEventListener('keypress', (event) => {
 
                     // on affiche les objetcifs
                     displayObjectifs();
+
+                    // on autorise le rat à se déplcer
+                    allowRatToMove = true;
                 }
 
                 // on passe au dialogue suivant
@@ -264,39 +267,45 @@ function displayEnterKey()
 //* DEPLACEMENT DU RAT *//
 function moveThisFuckingRat()
 {
-    // si le rat se trouve dans un intervalle suffisament proche des abscisses souhaitées
-    if (rat.x > (ratPath._head.x -1) && rat.x < (ratPath._head.x +1)) {
-        // il arrête de se déplacer en x
-        rat.setVelocityX(0);
-        MOVX = false;
-    }
-    // sinon il se déplace
-    else {
-        rat.setVelocityX(ratPath._head.velX);
-        rat.anims.play(ratPath._head.anim, true);
-    }
+    // si on a retiré la bordure noire
+    if (allowRatToMove) {
 
-    // si le rat se trouve dans un intervalle suffisament proche des ordonnées souhaitées
-    if (rat.y > (ratPath._head.y -1) && rat.y < (ratPath._head.y +1)) {
-        // il arrête de se déplacer en y
-        rat.setVelocityY(0);
-        MOVY = false;
-    }
-    // sinon il se déplace
-    else {
-        rat.setVelocityY(ratPath._head.velY);
-        rat.anims.play(ratPath._head.anim, true);
-    }
+        // on permet au rat de se déplacer
+
+        // si le rat se trouve dans un intervalle suffisament proche des abscisses souhaitées
+        if (rat.x > (ratPath._head.x -1) && rat.x < (ratPath._head.x +1)) {
+            // il arrête de se déplacer en x
+            rat.setVelocityX(0);
+            MOVX = false;
+        }
+        // sinon il se déplace
+        else {
+            rat.setVelocityX(ratPath._head.velX);
+            rat.anims.play(ratPath._head.anim, true);
+        }
+
+        // si le rat se trouve dans un intervalle suffisament proche des ordonnées souhaitées
+        if (rat.y > (ratPath._head.y -1) && rat.y < (ratPath._head.y +1)) {
+            // il arrête de se déplacer en y
+            rat.setVelocityY(0);
+            MOVY = false;
+        }
+        // sinon il se déplace
+        else {
+            rat.setVelocityY(ratPath._head.velY);
+            rat.anims.play(ratPath._head.anim, true);
+        }
 
 
-    // si le rat est arrivé aux coordonnées souhaitées
-    if (!MOVX && !MOVY) {
+        // si le rat est arrivé aux coordonnées souhaitées
+        if (!MOVX && !MOVY) {
 
-        // on décale la tête pour passer à l'étape suivante
-        ratPath.decalage();
-        
-        // on indique qu'il faut à nouveau se déplacer
-        MOVX = true;
-        MOVY = true;
+            // on décale la tête pour passer à l'étape suivante
+            ratPath.decalage();
+            
+            // on indique qu'il faut à nouveau se déplacer
+            MOVX = true;
+            MOVY = true;
+        }
     }
 }

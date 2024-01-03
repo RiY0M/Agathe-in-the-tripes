@@ -48,7 +48,7 @@ function dialogueWithStrangeRock()
 function dialogueWithMinor(scene, agathe)
 {
     // vérification des coordonnées
-    if ((agathe.x >= 0 && agathe.x <= 65) && (agathe.y >= 150 && agathe.y <= 200))
+    if ((agathe.x >= 650 && agathe.x <= 700) && (agathe.y >= 475 && agathe.y <= 550))
     {
         // on regarde si on a déjà parlé au vieux pour lancer le premier dialogue
         if (dialogueMinor == 0)
@@ -138,7 +138,7 @@ document.addEventListener('keypress', (event) => {
 
                     // on lui enlève sa pioche
                     angryMinor.children.entries[0].disableBody(true, true);
-                    angryMinor.create(30, 160, "angry-minor");
+                    angryMinor.create(700, 525, "angry-minor");
                 }
 
                 // on passe au dialogue suivant
@@ -291,7 +291,7 @@ function moveThisFuckingRat()
 
     // si le rat est arrivé aux coordonnées souhaitées
     if (!MOVX && !MOVY) {
-        
+
         // on décale la tête pour passer à l'étape suivante
         ratPath.decalage();
         

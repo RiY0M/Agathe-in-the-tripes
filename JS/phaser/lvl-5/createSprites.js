@@ -14,7 +14,7 @@ function createAgathe(scene)
 function createRat(scene)
 {
     // ajout du rat
-    rat = scene.physics.add.sprite(150, 100, "rat").setDepth(10);
+    rat = scene.physics.add.sprite(150, 100, "rat").setDepth(9);
     // on définit les collisions avec la bordure
     rat.setCollideWorldBounds(true);
 }
@@ -53,8 +53,8 @@ function displayPNJs()
     oldOnPoop.create(750, 225, "old-on-poop");
 
     // mineur
-    flatThings.create(40, 190, "flat-poop-1").setScale(0.4);
-    angryMinor.create(30, 160, "angry-minor-pickaxe");
+    flatThings.create(710, 555, "flat-poop-1").setScale(0.4);
+    angryMinor.create(700, 525, "angry-minor-pickaxe").setDepth(2);
 }
 
 
@@ -77,6 +77,7 @@ function displayFlatThings()
     bloodyRocks.create(460, 305, "poop-1");
 
     bloodyRocks.create(600, 280, "poop-2");
+    bloodyRocks.create(720, 535, "poop-2").setDepth(1);
 
     // sang
     flatThings.create(35, 305, "blood-1").setScale(1.3).angle -= 90;

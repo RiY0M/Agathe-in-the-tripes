@@ -238,36 +238,57 @@ class ListeChainee
         this.ajouterFin(currentHead);
     }
 
-    // inversedDecalage()
-    // {
-    //     // on stock les données de la queue dans une variable temporaire
-    //     let currentTail = new Maillon(this._tail.id, this._tail.x, this._tail.y, this._tail.velX, this._tail.velY, this._tail.anim, null);
+    inversedDecalage()
+    {
+        // on stock les données de la queue dans une variable temporaire
+        let currentTail = new Maillon(this._tail.id, this._tail.x, this._tail.y, this._tail.velX, this._tail.velY, null, this._head);
 
-    //     // on déplace la queue vers la 2e valeur
-    //     this._head = this._tail.next;
+        // on déplace la queue vers la précédente valeur
+        this._tail = this._tail.prev;
+        this._tail.next = null;
 
-    //     // on ajoute notre ancienne queue en tête
-    //     this.ajouter(currentTail);
-    // }
+        // on ajoute notre ancienne queue en tête
+        this.ajouter(currentTail.id, currentTail.x, currentTail.y, currentTail.velX, currentTail.velY);
+    }
 
-    // switchOrder()
-    // {
-    //     // création d'une nouvelle liste chainée
-    //     let inversedRathPath = new ListeChainee();
+    switchOrder()
+    {
+        // création d'une nouvelle liste chainée
+        let inversedRathPath = new ListeChainee();
 
-    //     // on regarde le premier maillon (la tête)
-    //     let current = this._head;
+        // enregistrement de la dernière animation
+        let lastAnim = this._tail.switchAnim();
 
-    //     while (current != null) {
-    //         // ajout du nouveau maillon
-    //         inversedRathPath.ajouter(current.id, this._tail.x, this._tail.y, current.velX * (-1), current.velY * (-1), current.switchAnim());
+        // placement de la queue en tête
+        inversedRathPath.ajouter(this._tail.id, this._tail.x, this._tail.y, this._head.velX * (-1), this._head.velY * (-1), this._head.switchAnim());
 
-    //         // on regarde le maillon d'après
-    //         current = current.next;
-    //     }
+        // décalage inversé
+        this.inversedDecalage();
 
-    //     return inversedRathPath;
-    // }
+        // on regarde l'avant dernier maillon
+        let current = this._tail;
+
+        // tant qu'on est pas sur la tête
+        while (current.id != 0) {
+            
+            // ajout du nouveau maillon
+            inversedRathPath.ajouter(current.id, current.x, current.y, this._head.velX * (-1), this._head.velY * (-1), lastAnim);
+
+            // ré-enregistrement de la dernière animation
+            lastAnim = this._tail.switchAnim();
+
+            // décalage inversé
+            this.inversedDecalage();
+
+            // on regarde le maillon d'après
+            current = current.prev;
+        }
+
+        // placement de l'ancienne tête en queue
+        inversedRathPath.ajouter(this._tail.id, this._tail.x, this._tail.y, this._head.velX * (-1), this._head.velY * (-1), lastAnim);
+
+        return inversedRathPath;
+    }
 }
 
 
@@ -286,5 +307,8 @@ ratPath.ajouter(2, 600, 500, 200, 0, "right-rat");
 ratPath.ajouter(1, 250, 500, 200, 200, "right-rat");
 ratPath.ajouter(0, 150, 400, 0, 200, "down-rat");
 
-ratPath.decalage();
-ratPath.affichageGraph();
+
+ratPath.affichageLog();
+console.log("\nnew path : \n");
+ratPath = ratPath.switchOrder();
+ratPath.affichageLog();

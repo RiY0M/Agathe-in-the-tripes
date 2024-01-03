@@ -44,22 +44,6 @@ let dialogueMinorList = [               // dialogues du mineur
     ""
 ];
 
-let currentRatStep = 0;
-let ratPath = [
-
-    { x: 150, y: 400, velX: 0,    velY: 200  },
-    { x: 250, y: 500, velX: 200,  velY: 200  },
-    { x: 700, y: 500, velX: 200,  velY: 0    },
-    { x: 700, y: 300, velX: 0,    velY: -200 },
-    { x: 650, y: 250, velX: -200, velY: -200 },
-    { x: 500, y: 250, velX: -200, velY: 0    },
-    { x: 500, y: 350, velX: 0,    velY: 200  },
-    { x: 350, y: 350, velX: -200, velY: 0    },
-    { x: 350, y: 300, velX: 0,    velY: -200 },
-    { x: 550, y: 100, velX: 200,  velY: -200 },
-    { x: 150, y: 100, velX: -200, velY: 0    },
-]
-
 // variables des objets à récupérer
 let sticksGathered = 0;
 let hasPowder = false;

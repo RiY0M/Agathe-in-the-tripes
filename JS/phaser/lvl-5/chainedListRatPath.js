@@ -116,6 +116,16 @@ class ListeChainee
         // si le maillon après la tête est nul, la tête devient la queue
         if (this._head.next == null) this._tail = this._head;
     }
+
+    ajouterFin(nouveauMaillon)
+    {
+        // la queue devient le nouveau maillon
+        this._tail.next = nouveauMaillon;
+        this._tail = nouveauMaillon;
+
+        // si la tête est vide, la tête est la queue
+        if (this._head === null) this._head = this._tail;
+    }
   
     affichage()
     {
@@ -129,6 +139,18 @@ class ListeChainee
             // on regarde le maillon d'après
             current = current.next;
         }
+    }
+
+    decalage()
+    {
+        // on stock les données de la tête dans une variable temporaire
+        let currentHead = new Maillon(this._head.id, this._head.x, this._head.y, this._head.velX, this._head.velY, this._head.anim, null);
+
+        // on déplace la tête vers la 2e valeur
+        this._head = this._head.next;
+
+        // on ajoute notre ancienne tête en fin de queue
+        this.ajouterFin(currentHead);
     }
 }
 

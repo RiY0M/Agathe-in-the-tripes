@@ -259,3 +259,18 @@ function displayEnterKey()
 {
     document.querySelector("#enter-key").src = "../../../img/enter-key.png";
 }
+
+
+//* DEPLACEMENT DU RAT *//
+function moveThisFuckingRat()
+{
+    // on regarde toujours le déplacement de la tête
+
+    // si le rat est arrivé aux coordonnées de la tête
+    //      X -> STOP
+    //      Y -> STOP
+
+    // on place la tête à la queue
+
+    // la nouvelle tête deviendra la 2e instruction
+}

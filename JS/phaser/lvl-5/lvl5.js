@@ -98,6 +98,14 @@ function update()
     moveThisFuckingRat();
 
 
+    //? CHECK COLLISION AGATHE - RAT ?//
+    if (agathe.x > rat.x -10 && agathe.x < rat.x +10 && agathe.y +10 > rat.y -15 && agathe.y +10 < rat.y +15 && !switchRatDirection) {
+        
+        ratPath = ratPath.switchOrder();
+        switchRatDirection = true;
+    }
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     // on empêche de se déplacer si on est au milieu d'un dialogue

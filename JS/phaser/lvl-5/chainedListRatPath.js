@@ -253,6 +253,9 @@ class ListeChainee
 
     switchOrder()
     {
+        // numéro de tête actuel
+        let actualhead = this._head.id;
+
         // création d'une nouvelle liste chainée
         let inversedRathPath = new ListeChainee();
 
@@ -260,7 +263,8 @@ class ListeChainee
         let lastAnim = this._tail.switchAnim();
 
         // placement de la queue en tête
-        inversedRathPath.ajouter(this._tail.id, this._tail.x, this._tail.y, this._head.velX * (-1), this._head.velY * (-1), this._head.switchAnim());
+        let nouveauMaillon = new Maillon(this._tail.id, this._tail.x, this._tail.y, this._head.velX * (-1), this._head.velY * (-1), this._head.switchAnim(), this._tail, null);
+        inversedRathPath.ajouterFin(nouveauMaillon);
 
         // décalage inversé
         this.inversedDecalage();
@@ -269,10 +273,11 @@ class ListeChainee
         let current = this._tail;
 
         // tant qu'on est pas sur la tête
-        while (current.id != 0) {
+        while (current.id != actualhead) {
             
             // ajout du nouveau maillon
-            inversedRathPath.ajouter(current.id, current.x, current.y, this._head.velX * (-1), this._head.velY * (-1), lastAnim);
+            let nouveauMaillon = new Maillon(current.id, current.x, current.y, this._head.velX * (-1), this._head.velY * (-1), lastAnim, this._tail, null)
+            inversedRathPath.ajouterFin(nouveauMaillon);
 
             // ré-enregistrement de la dernière animation
             lastAnim = this._tail.switchAnim();
@@ -285,7 +290,8 @@ class ListeChainee
         }
 
         // placement de l'ancienne tête en queue
-        inversedRathPath.ajouter(this._tail.id, this._tail.x, this._tail.y, this._head.velX * (-1), this._head.velY * (-1), lastAnim);
+        nouveauMaillon = new Maillon(this._tail.id, this._tail.x, this._tail.y, this._head.velX * (-1), this._head.velY * (-1), lastAnim, null)
+        inversedRathPath.ajouterFin(nouveauMaillon);
 
         return inversedRathPath;
     }
@@ -306,9 +312,3 @@ ratPath.ajouter(3, 700, 400, 200, -200, "up-rat");
 ratPath.ajouter(2, 600, 500, 200, 0, "right-rat");
 ratPath.ajouter(1, 250, 500, 200, 200, "right-rat");
 ratPath.ajouter(0, 150, 400, 0, 200, "down-rat");
-
-
-ratPath.affichageLog();
-console.log("\nnew path : \n");
-ratPath = ratPath.switchOrder();
-ratPath.affichageLog();

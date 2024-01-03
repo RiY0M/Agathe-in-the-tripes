@@ -264,13 +264,39 @@ function displayEnterKey()
 //* DEPLACEMENT DU RAT *//
 function moveThisFuckingRat()
 {
-    // on regarde toujours le déplacement de la tête
+    // si le rat se trouve dans un intervalle suffisament proche des abscisses souhaitées
+    if (rat.x > (ratPath._head.x -1) && rat.x < (ratPath._head.x +1)) {
+        // il arrête de se déplacer en x
+        rat.setVelocityX(0);
+        MOVX = false;
+    }
+    // sinon il se déplace
+    else {
+        rat.setVelocityX(ratPath._head.velX);
+        rat.anims.play(ratPath._head.anim, true);
+    }
 
-    // si le rat est arrivé aux coordonnées de la tête
-    //      X -> STOP
-    //      Y -> STOP
+    // si le rat se trouve dans un intervalle suffisament proche des ordonnées souhaitées
+    if (rat.y > (ratPath._head.y -1) && rat.y < (ratPath._head.y +1)) {
+        // il arrête de se déplacer en y
+        rat.setVelocityY(0);
+        MOVY = false;
+    }
+    // sinon il se déplace
+    else {
+        rat.setVelocityY(ratPath._head.velY);
+        rat.anims.play(ratPath._head.anim, true);
+    }
 
-    // on place la tête à la queue
 
-    // la nouvelle tête deviendra la 2e instruction
+    // si le rat est arrivé aux coordonnées souhaitées
+    if (!MOVX && !MOVY) {
+        
+        // on décale la tête pour passer à l'étape suivante
+        ratPath.decalage();
+        
+        // on indique qu'il faut à nouveau se déplacer
+        MOVX = true;
+        MOVY = true;
+    }
 }

@@ -158,15 +158,13 @@ class ListeChainee
 let ratPath = new ListeChainee();
 
 ratPath.ajouter(10, 150, 100, -200, 0, "left-rat");
-ratPath.ajouter(9, 550, 100, 200, -200, "top-rat");
-ratPath.ajouter(8, 350, 300, 0, -200, "top-rat");
+ratPath.ajouter(9, 550, 100, 200, -200, "up-rat");
+ratPath.ajouter(8, 350, 300, 0, -200, "up-rat");
 ratPath.ajouter(7, 350, 350, -200, 0, "left-rat");
-ratPath.ajouter(6, 500, 350, 0, 200, "bottom-rat");
+ratPath.ajouter(6, 500, 350, 0, 200, "down-rat");
 ratPath.ajouter(5, 500, 250, -200, 0, "left-rat");
-ratPath.ajouter(4, 650, 250, -200, -200, "top-rat");
-ratPath.ajouter(3, 700, 300, 0, -200, "top-rat");
+ratPath.ajouter(4, 650, 250, -200, -200, "up-rat");
+ratPath.ajouter(3, 700, 300, 0, -200, "up-rat");
 ratPath.ajouter(2, 700, 500, 200, 0, "right-rat");
 ratPath.ajouter(1, 250, 500, 200, 200, "right-rat");
-ratPath.ajouter(0, 150, 400, 0, 200, "bottom-rat");
-
-ratPath.affichage();
+ratPath.ajouter(0, 150, 400, 0, 200, "down-rat");

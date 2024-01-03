@@ -1,5 +1,7 @@
 let agathe;                             // agathe personnage
 let rat;                                // rat pnj
+let MOVX = true;                        // le rat peut se déplacer en x
+let MOVY = true;                        // le rat peut se déplacer en y
 let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas

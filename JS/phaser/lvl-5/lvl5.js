@@ -94,6 +94,10 @@ function update()
     dialogueWithMinor(this, agathe);
 
 
+    //^ANIMATION RAT (AUTOMATIQUE) ^//
+    moveThisFuckingRat();
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     // on empêche de se déplacer si on est au milieu d'un dialogue

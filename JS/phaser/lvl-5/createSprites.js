@@ -14,7 +14,7 @@ function createAgathe(scene)
 function createRat(scene)
 {
     // ajout du rat
-    rat = scene.physics.add.sprite(50, 300, "rat").setDepth(10);
+    rat = scene.physics.add.sprite(150, 100, "rat").setDepth(10);
     // on définit les collisions avec la bordure
     rat.setCollideWorldBounds(true);
 }
@@ -36,10 +36,10 @@ function displayCanvasBorder()
     canvasBorder.create(795, 460, "verticalBorderRight");
 
     // bordures noires
-    blackBorders.create(400, 75, "blackBorders").setScale(3).setTint(0x000000).setDepth(10);
-    blackBorders.create(275, 200, "blackBorders").setScale(1).setTint(0x000000).setDepth(10);
-    blackBorders.create(400, 510, "blackBorders").setScale(4).setTint(0x000000).setDepth(10);
-    blackBorders.create(400, 400, "blackBorders").setScale(1).setTint(0x000000).setDepth(10);
+    // blackBorders.create(400, 75, "blackBorders").setScale(3).setTint(0x000000).setDepth(10);
+    // blackBorders.create(275, 200, "blackBorders").setScale(1).setTint(0x000000).setDepth(10);
+    // blackBorders.create(400, 510, "blackBorders").setScale(4).setTint(0x000000).setDepth(10);
+    // blackBorders.create(400, 400, "blackBorders").setScale(1).setTint(0x000000).setDepth(10);
 
     // porte
     poopDoor.create(795, 300, "poop-door").setScale(1.1);

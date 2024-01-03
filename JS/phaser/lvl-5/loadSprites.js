@@ -4,7 +4,7 @@ function loadImages(scene)
     scene.load.spritesheet("agathe", "../../../img/assets/common/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
     // chargement sprites rat
-    scene.load.spritesheet("rat", "../../../img/assets/lvl5/rat_sprite.png", { frameWidth: 32, frameHeight: 32 });
+    scene.load.spritesheet("rat", "../../../img/assets/lvl5/rat_sprite.png", { frameWidth: 50, frameHeight: 50 });
 
     // bordures du canvas
     scene.load.image("horizontalBorder", "../../../img/assets/lvl5/horizontal-border.png");

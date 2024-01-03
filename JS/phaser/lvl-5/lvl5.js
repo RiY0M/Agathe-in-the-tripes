@@ -96,12 +96,10 @@ function update()
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
-
-    /* GAUCHE */
-
     // on empêche de se déplacer si on est au milieu d'un dialogue
     if (!isDialogueAreaDisplayed)
     {
+        /* GAUCHE */
         if (cursors.left.isDown)
         {
             // vitesse et direction du déplacement
@@ -110,10 +108,6 @@ function update()
             agathe.anims.play("left", true);
             // last frame facing afk
             lastFrame = 4;
-
-
-            rat.setVelocityX(-160);
-            rat.anims.play("left-rat", true);
         }
 
         /* DROITE */
@@ -129,10 +123,6 @@ function update()
             if (agathe.x >= 790) {
                 window.alert("fin du jeu");
             }
-
-
-            rat.setVelocityX(160);
-            rat.anims.play("right-rat", true);
         }
 
         /* HAUT */
@@ -144,10 +134,6 @@ function update()
             agathe.anims.play("up", true);
             // last frame facing afk
             lastFrame = 12;
-
-
-            rat.setVelocityY(-160);
-            rat.anims.play("up-rat", true);
         }
 
         /* BAS */
@@ -159,10 +145,6 @@ function update()
             agathe.anims.play("down", true);
             // last frame facing afk
             lastFrame = 0;
-
-
-            rat.setVelocityY(160);
-            rat.anims.play("down-rat", true);
         }
 
         /* AFK */
@@ -173,10 +155,6 @@ function update()
             agathe.setVelocityY(0);
             // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
             agathe.anims.play("afk-" + lastFrame);
-
-
-            rat.setVelocityX(0);
-            rat.setVelocityY(0);
         }
     }
     else
@@ -186,10 +164,6 @@ function update()
         agathe.setVelocityY(0);
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
-
-
-        rat.setVelocityX(0);
-        rat.setVelocityY(0);
     }
 }
 

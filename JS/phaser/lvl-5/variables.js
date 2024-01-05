@@ -4,6 +4,7 @@ let MOVX = true;                        // le rat peut se déplacer en x
 let MOVY = true;                        // le rat peut se déplacer en y
 let allowRatToMove = false;             // autorisation deplacement rat
 let switchRatDirection = false;         // check si direction rat change ou pas
+let delaybeforeCapture = 0;             // délai avant que le rat puisse de nouveau être capturé
 let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
@@ -47,6 +48,13 @@ let dialogueMinorList = [               // dialogues du mineur
     "À ton avis, le comble pour un mineur c'est quoi ?<br><br><span class='minor-answer-1'>- C'est feur !</span><br><span class='minor-answer-2'>- Être une tête de pioche ?</span>",
     ""
 ];
+
+let dialogueRat = 0;
+let dialogueRatList = [
+    "Vous venez d'attraper ce rat plutôt dégoutant",
+    "Le rat gesticule et vous vomit dessus",
+    "Vous obtenez du fil !"
+]
 
 // variables des objets à récupérer
 let sticksGathered = 0;

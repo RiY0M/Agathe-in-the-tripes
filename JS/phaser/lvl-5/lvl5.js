@@ -99,11 +99,25 @@ function update()
 
 
     //? CHECK COLLISION AGATHE - RAT ?//
-    if (agathe.x > rat.x -10 && agathe.x < rat.x +10 && agathe.y +10 > rat.y -15 && agathe.y +10 < rat.y +15 && !switchRatDirection) {
-        
-        ratPath = ratPath.switchOrder();
-        switchRatDirection = true;
+    // si on tape le rat et que l'on a pas encore récupéré le fil
+    if (agathe.x > rat.x -10 && agathe.x < rat.x +10 && agathe.y +10 > rat.y -15 && agathe.y +10 < rat.y +15 && !hasString) {
+
+        // si on a pas encore changé la direction
+        if (!switchRatDirection) {
+            // on change la direction
+            ratPath = ratPath.switchOrder();
+            switchRatDirection = true;
+        }
+
+        // si on attrape le rat 50 frames après qu'il ait changé de direction
+        if (delaybeforeCapture >= 50) {
+
+            // lancement dialogue avec rat
+            dialogueWithRat();
+        }        
     }
+
+    if (switchRatDirection && dialogueRat == 0) delaybeforeCapture++;
 
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//

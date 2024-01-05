@@ -50,7 +50,7 @@ function dialogueWithMinor(scene, agathe)
     // vérification des coordonnées
     if ((agathe.x >= 650 && agathe.x <= 700) && (agathe.y >= 475 && agathe.y <= 550))
     {
-        // on regarde si on a déjà parlé au vieux pour lancer le premier dialogue
+        // on regarde si on a déjà parlé au mineur pour lancer le premier dialogue
         if (dialogueMinor == 0)
         {
             // on indique à qui on parle
@@ -65,6 +65,28 @@ function dialogueWithMinor(scene, agathe)
             // on passe au dialogue suivant
             dialogueMinor++;
         }
+    }
+}
+
+
+//% FONCTION DIALOGUE RAT %//
+function dialogueWithRat(scene, agathe)
+{
+    
+    // on regarde si on a déjà parlé au rat pour lancer le premier dialogue
+    if (dialogueRat == 0)
+    {
+        // on indique à qui on parle
+        talkingTo = "rat";
+
+        // changement de l'image et du texte
+        changeImgTextDialogue("../../../img/assets/lvl5/rat.png", dialogueRatList[0]);
+
+        // affichage de la zone de dialogue
+        displayTextArea(dialogueArea);
+
+        // on passe au dialogue suivant
+        dialogueRat++;
     }
 }
 
@@ -209,6 +231,25 @@ document.addEventListener('keypress', (event) => {
                 // on passe au dialogue suivant
                 changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
                 strangeRockDialogue++;
+                break;
+
+            
+            //% DIALOGUE RAT %//
+            case "rat":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (dialogueRat === dialogueRatList.length) {
+
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
+
+                    // on donne le fil à l'utilisateur
+                    hasString = true;
+                    updateObjectifs();
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/lvl5/rat.png", dialogueRatList[dialogueRat]);
+                dialogueRat++;
                 break;
 
 

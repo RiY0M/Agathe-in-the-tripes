@@ -54,4 +54,7 @@ function loadImages(scene)
 
     // bâton dynamite
     scene.load.image("stick", "../../../img/assets/lvl5/stick.png");
+
+    // vide
+    scene.load.image("blank", "../../../img/assets/lvl5/blank.png");
 }

@@ -245,6 +245,9 @@ document.addEventListener('keypress', (event) => {
                     // on donne le fil à l'utilisateur
                     hasString = true;
                     updateObjectifs();
+
+                    // on permet au rat de se déplacer à nouveau
+                    allowRatToMove = true;
                 }
 
                 // on passe au dialogue suivant

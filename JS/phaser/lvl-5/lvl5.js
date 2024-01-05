@@ -112,6 +112,14 @@ function update()
         // si on attrape le rat 50 frames après qu'il ait changé de direction
         if (delaybeforeCapture >= 50) {
 
+            // arrêt déplacement rat
+            allowRatToMove = false;
+            rat.setVelocityX(0);
+            rat.setVelocityY(0);
+
+            // on le cache
+            rat.setTexture("blank");
+
             // lancement dialogue avec rat
             dialogueWithRat();
         }        

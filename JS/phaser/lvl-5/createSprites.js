@@ -67,13 +67,22 @@ function displayFlatThings()
     flatThings.create(40, 490, "flat-poop-0").setScale(0.4);
 
     flatThings.create(600, 290, "flat-poop-1").setScale(0.7);
+    flatThings.create(675, 425, "flat-poop-1").setScale(0.6);
 
     flatThings.create(275, 575, "flat-poop-2").setScale(1.3);
+    flatThings.create(475, 475, "flat-poop-2").setScale(1.3);
+    flatThings.create(250, 120, "flat-poop-2").setScale(1.3);
+    flatThings.create(275, 125, "flat-poop-2").setScale(1.3);
 
 
     // sang top
     flatThings.create(340, 30, "blood-0").setScale(1.4).angle = 180;
     flatThings.create(370, 40, "blood-1").setScale(0.8).angle -= 90;
+
+    // sang/caca middle top
+    flatThings.create(195, 120, "blood-0").setScale(0.4).angle = 180;
+    flatThings.create(255, 115, "blood-0").setScale(0.4);
+    flatThings.create(300, 155, "flat-poop-0").setScale(0.5).angle = 180;
 
     // caca top
     flatThings.create(460, 50, "flat-poop-1").setScale(0.6);
@@ -99,18 +108,27 @@ function displayBloodyRocks()
     // caca
     bloodyRocks.create(400, 320, "poop-0");
     bloodyRocks.create(615, 305, "poop-0");
+    bloodyRocks.create(685, 440, "poop-0");
+
     bloodyRocks.create(250, 572, "poop-0");
     bloodyRocks.create(300, 568, "poop-0");
 
+    bloodyRocks.create(450, 472, "poop-0");
+    bloodyRocks.create(500, 468, "poop-0");
+
     bloodyRocks.create(460, 305, "poop-1");
+    bloodyRocks.create(650, 405, "poop-1");
 
     // bâton dynamite
-    sticks.create(590, 275, "stick").angle -= 90;
+    sticks.create(610, 280, "stick");
+    sticks.create(405, 35, "stick").angle -= 60;
 
     bloodyRocks.create(600, 280, "poop-2");
     bloodyRocks.create(720, 535, "poop-2").setDepth(1);
 
     // porte entrée
+    // bâton dynamite
+    sticks.create(35, 125, "stick");
     bloodyRocks.create(15, 335, "blood-rock-0").setScale(1.4);
     bloodyRocks.create(20, 265, "blood-rock-1").setScale(0.7);
 
@@ -125,9 +143,6 @@ function displayBloodyRocks()
     bloodyRocks.create(80, 450, "blood-rock-1");
     bloodyRocks.create(120, 560, "blood-rock-1");
 
-    // bâton dynamite
-    sticks.create(380, 30, "stick").angle -= 30;
-
     // top gauche
     bloodyRocks.create(15, 15, "blood-rock-1");
     bloodyRocks.create(120, 15, "blood-rock-1");
@@ -136,6 +151,13 @@ function displayBloodyRocks()
     bloodyRocks.create(90, 35, "blood-rock-0").setScale(1.5);
     bloodyRocks.create(20, 115, "blood-rock-0").setScale(1.3);
     bloodyRocks.create(15, 150, "blood-rock-1");
+
+    // top middle gauche
+    bloodyRocks.create(200, 115, "blood-rock-0").setScale(1.1);
+    bloodyRocks.create(250, 115, "blood-rock-0").setScale(1.1);
+    bloodyRocks.create(260, 120, "poop-0");
+    bloodyRocks.create(300, 145, "poop-1");
+    bloodyRocks.create(290, 160, "poop-0");
 
     // middle top
     bloodyRocks.create(350, 25, "blood-rock-1");

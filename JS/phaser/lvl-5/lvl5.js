@@ -128,6 +128,19 @@ function update()
     if (switchRatDirection && dialogueRat == 0) delaybeforeCapture++;
 
 
+    //? CHECK SI ON PEUT TRANSFORMER LA PIERRE EN POUDRE ?//
+    if (canDestroyRock) {
+                
+        // destruction pierre
+        strangeRock.children.entries[0].disableBody(true, true);
+
+        canDestroyRock = false;
+
+        // affichage poudre
+        displayPowder(this);
+    }
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     // on empêche de se déplacer si on est au milieu d'un dialogue
@@ -221,19 +234,15 @@ function collidePowderRock(player, rock)
     // lacement dialogue si on a pas la pioche
     if (!hasPickaxe) dialogueWithStrangeRock();
 
-    // transformation pierre en poudre si on a la pioche
-    else {
-        // destruction pierre
-        rock.disableBody(true, true);
-
-        // affichage poudre
-        displayPowder(this);
-    }
+    // transformation pierre en poudre si on a la pioche (lancement dialogue avec pierre)
+    else if (strangeRockDialogueWithPickaxe == 0) dialogueWithStrangeRockWithPickaxe();
 }
 
 
 function collectPowder(player, powder)
 {
+    console.log("should collect powder");
+    
     // destruction poudre
     powder.disableBody(true, true);
 

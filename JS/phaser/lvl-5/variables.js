@@ -39,6 +39,13 @@ let strangeRockDialogueList = [         // pensées devant le cailloux chelou
     "*Peut-être pourriez-vous la briser avec un outil adapté ?*"
 ];
 
+let canDestroyRock = false;                        // boolean pour savoir quand on peut péter le cailloux
+let strangeRockDialogueWithPickaxe = 0;            // check si on a déjà pensé devant le cailloux
+let strangeRockDialogueListWithPickaxe = [         // pensées devant le cailloux chelou
+    "*Grâce à la pioche du mineur vous arrivez désormais à casser cette pierre étrange*",
+    "*Vous la brisez et il n'en reste désormais plus que cet amas de poudre*",
+];
+
 let dialogueMinor = 0;                  // check si on a déjà parlé au mineur
 let dialogueMinorList = [               // dialogues du mineur
     "Quoi ?<br>Qu'est-ce que tu m'veux gamine ?",
@@ -51,13 +58,13 @@ let dialogueMinorList = [               // dialogues du mineur
 
 let dialogueRat = 0;
 let dialogueRatList = [
-    "Vous venez d'attraper ce rat plutôt dégoutant",
-    "Le rat gesticule et vous vomit dessus",
-    "Vous obtenez du fil !"
+    "*Vous venez d'attraper ce rat plutôt dégoutant*",
+    "*Le rat gesticule et vous vomit dessus*",
+    "*Vous obtenez du fil !*"
 ]
 
 // variables des objets à récupérer
-let sticksGathered = 0;
+let sticksGathered = 3;
 let hasPowder = false;
 let hasString = false;
 let hasLighter = false;

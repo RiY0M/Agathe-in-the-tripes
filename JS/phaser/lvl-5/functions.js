@@ -44,6 +44,23 @@ function dialogueWithStrangeRock()
 }
 
 
+//% FONCTION DIALOGUE PIERRE POUDREUSE AVEC PIOCHE %//
+function dialogueWithStrangeRockWithPickaxe()
+{
+    // on regarde si on a déjà parlé à la pierre pour lancer le premier dialogue
+    talkingTo = "strangeRockPickaxe";
+
+    // changement de l'image et du texte
+    changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[0]);
+
+    // affichage de la zone de dialogue
+    displayTextArea(dialogueArea);
+
+    // on passe au dialogue suivant
+    strangeRockDialogueWithPickaxe++;
+}
+
+
 //% FONCTION DIALOGUE MINEUR %//
 function dialogueWithMinor(scene, agathe)
 {
@@ -231,6 +248,22 @@ document.addEventListener('keypress', (event) => {
                 // on passe au dialogue suivant
                 changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
                 strangeRockDialogue++;
+                break;
+
+            
+            //% DIALOGUE PIERRE AVEC PIOCHE %//
+            case "strangeRockPickaxe":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (strangeRockDialogueWithPickaxe === strangeRockDialogueListWithPickaxe.length) {
+
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
+                    canDestroyRock = true;
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[strangeRockDialogueWithPickaxe]);
+                strangeRockDialogueWithPickaxe++;
                 break;
 
             

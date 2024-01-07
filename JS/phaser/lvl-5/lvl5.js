@@ -34,12 +34,11 @@ function create()
     //$ ZONE DE DIALOGUE $//
     dialogueArea = document.querySelector("#dialogue-area");
 
+    //* BORDURE DU CANVAS *//
+    displayCanvasBorder();
 
     //* AFFICHAGE IMAGES PLATES *//
     displayFlatThings();
-
-    //* BORDURE DU CANVAS *//
-    displayCanvasBorder();
 
     //* AFFICHAGE CAILLOUX DE SANG *//
     displayBloodyRocks();

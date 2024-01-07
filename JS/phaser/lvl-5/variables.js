@@ -64,7 +64,7 @@ let dialogueRatList = [
 ]
 
 // variables des objets à récupérer
-let sticksGathered = 3;
+let sticksGathered = 0;
 let hasPowder = false;
 let hasString = false;
 let hasLighter = false;

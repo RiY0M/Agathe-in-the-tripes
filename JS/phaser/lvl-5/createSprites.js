@@ -104,6 +104,9 @@ function displayBloodyRocks()
 
     bloodyRocks.create(460, 305, "poop-1");
 
+    // bâton dynamite
+    sticks.create(590, 275, "stick").angle -= 90;
+
     bloodyRocks.create(600, 280, "poop-2");
     bloodyRocks.create(720, 535, "poop-2").setDepth(1);
 

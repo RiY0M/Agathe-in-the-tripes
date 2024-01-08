@@ -64,6 +64,7 @@ function create()
     this.physics.add.collider(agathe, strangeRock, collidePowderRock, null, this);
     this.physics.add.collider(agathe, powder, collectPowder, null, this);
     this.physics.add.collider(agathe, fakeBloodyRocks);
+    this.physics.add.collider(agathe, dynamite, dropDynamite, null, this);
 
     //! DETECTION RECUP DYNAMITE !//
     this.physics.add.overlap(agathe, sticks, collectStick, null, this);
@@ -84,8 +85,6 @@ function create()
 
 function update()
 {
-    // console.log("Mouse : (", game.input.mousePointer.x, " ; ", game.input.mousePointer.y, ")");
-
     //% FONCTION DIALOGUE VIEUX %//
     dialogueWithOld(this, agathe);
 
@@ -247,9 +246,7 @@ function collidePowderRock(player, rock)
 
 
 function collectPowder(player, powder)
-{
-    console.log("should collect powder");
-    
+{    
     // destruction poudre
     powder.disableBody(true, true);
 
@@ -258,4 +255,10 @@ function collectPowder(player, powder)
     
     // vérification des objets en notre possession
     updateObjectifs();
+}
+
+
+function dropDynamite(player, dyna)
+{
+    dyna.setAlpha(1);
 }

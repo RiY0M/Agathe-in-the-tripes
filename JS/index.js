@@ -128,10 +128,11 @@ continuePartyButton.addEventListener("click", () => {
         console.log(json)
         if (json.status == 'error') {
             console.log(json.message);
-        }
+        } else {
 
-        const id = json.data.level_id;
-        window.location.replace(`../HTML/phaser/lvl${id}.html`);
+            const id = json.data.level_id;
+            window.location.replace(`../HTML/phaser/lvl${id}.html`);
+        }
     });
 });
 

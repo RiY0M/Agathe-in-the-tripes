@@ -13,7 +13,7 @@ try {
     WHERE token = :token";
 
     $res = $db->prepare($query);
-    $res->bindParam(":token", $_COOKIE["token"], PDO::PARAM_STR);
+    $res->bindParam(":token", $_COOKIE["token"] ?? null, PDO::PARAM_STR);
     $data = $res->fetch(PDO::FETCH_ASSOC);
     $idGame = intval($data->game_id);
     $idUser = intval($data->user_id);

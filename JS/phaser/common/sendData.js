@@ -29,12 +29,24 @@ function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, getDyna
 
     // Calcul du temps
     const time = (new Date().getTime() - startTime) / 1000;
-    console.log(time);
+    // console.log(time);
     
     // Appel API
     sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
 
     // Changement map
     // window.alert("Changement de niveau !"); // debug
-    window.location.replace(`./lvl${idNextLvl}.html`);
+    // window.location.replace(`./lvl${idNextLvl}.html`);
+}
+
+function getCookies() {
+    return {
+        hpRemain: document.cookie.split("; ").find((row) => row.startsWith("hpRemain="))?.split("=")[1],
+        nbDynamite: document.cookie.split("; ").find((row) => row.startsWith("nbDynamite="))?.split("=")[1],
+        idLvl: document.cookie.split("; ").find((row) => row.startsWith("idLvl="))?.split("=")[1],
+    };
+}
+
+function afficheInitialHearts(hpRemain) {
+    document.querySelector(".heart-image").src = `../../../img/assets/common/${hpRemain}-heart.png`;
 }

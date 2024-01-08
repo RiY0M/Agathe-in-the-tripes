@@ -140,6 +140,14 @@ function update()
     }
 
 
+    //? CHECK SI ON PEUT AFFICHER LE CALQUE DE LA DYNA ?//
+    if (canDropDyna) {
+
+        dynamite.create(760, 315, "dynamite").setAlpha(0.4);
+        canDropDyna = false;
+    }
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     // on empêche de se déplacer si on est au milieu d'un dialogue

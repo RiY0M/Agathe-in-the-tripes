@@ -16,6 +16,8 @@ let bloodyRocks;                        // images cailloux de sang + caca
 let fakeBloodyRocks;                    // cailloux pouvant bouger
 let deadThings;                         // sprites trucs morts
 let sticks;                             // bâtons de dynamite à ramasser
+let dynamite;                           // dynamite pour péter la porte de caca
+let canDropDyna = false;                // var check si on peut mettre calque dyna
 let angryMinor;                         // sprite mineur
 
 let talkingTo = "";                     // variable pour savoir à qui on parle
@@ -100,4 +102,7 @@ function loadSpriteVariables(scene)
 
     // poudre à canon
     powder = scene.physics.add.staticGroup();
+
+    // dynamite
+    dynamite = scene.physics.add.staticGroup();
 }

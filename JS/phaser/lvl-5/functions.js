@@ -171,6 +171,9 @@ document.addEventListener('keypress', (event) => {
                         // on change la liste des objectifs
                         document.querySelector("#lvl5-objectifs-1").style.display = "none";
                         document.querySelector("#lvl5-objectifs-2").style.visibility = "visible";
+
+                        // on drop la dyna
+                        canDropDyna = true;
                     }
                 }
 

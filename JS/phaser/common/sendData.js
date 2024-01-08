@@ -1,6 +1,6 @@
 "use strict";
 
-async function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamite = false) {
+async function sendData(idLevel, idNextLevel, time, hp_remain = 3, getDynamite = false) {
 
     const response = await fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/saveScore.php', {
         method: 'POST',
@@ -12,10 +12,14 @@ async function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamit
             get_dynamite: getDynamite,
         }),
     });
-    const json = response.json();
+    const json = await response.json();
+    // console.log(json)
     if (json.status == 'error') {
         console.log(json.message);
     }
+    Object.entries(json.data).forEach(element => {
+        document.cookie = `${element[0]}=${element[1]}; expires=Thu, ${new Date().getTime() + 86400 * 365}; path=/`;
+    });
 }
 
 /**
@@ -25,7 +29,7 @@ async function sendData(idLevel, idNextLevel, time, hp_remain = null, getDynamit
  * int idCurrentLvl : id du niveau actuel
  * int idNextLvl : id du niveau suivant
  */
-function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, getDynamite = false) {
+function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = 3, getDynamite = false) {
 
     // Calcul du temps
     const time = (new Date().getTime() - startTime) / 1000;

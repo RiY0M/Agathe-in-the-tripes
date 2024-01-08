@@ -127,8 +127,6 @@ function displayBloodyRocks()
     bloodyRocks.create(720, 535, "poop-2").setDepth(1);
 
     // porte entrée
-    // bâton dynamite
-    sticks.create(35, 125, "stick");
     bloodyRocks.create(15, 335, "blood-rock-0").setScale(1.4);
     bloodyRocks.create(20, 265, "blood-rock-1").setScale(0.7);
 
@@ -144,6 +142,8 @@ function displayBloodyRocks()
     bloodyRocks.create(120, 560, "blood-rock-1");
 
     // top gauche
+    // bâton dynamite
+    sticks.create(35, 125, "stick");
     bloodyRocks.create(15, 15, "blood-rock-1");
     bloodyRocks.create(120, 15, "blood-rock-1");
     bloodyRocks.create(60, 5, "blood-rock-1");

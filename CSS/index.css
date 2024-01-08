@@ -91,6 +91,10 @@ body {
     font-size: 0.9rem;
 }
 
+#lvl5-objectifs-2 {
+    visibility: hidden;
+}
+
 
 .tuto {
     /* border: 1px dashed rgb(205, 14, 205) ; */

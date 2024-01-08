@@ -161,6 +161,17 @@ document.addEventListener('keypress', (event) => {
 
                     // on autorise le rat à se déplcer
                     allowRatToMove = true;
+
+                    // si on a le briquet
+                    if (hasLighter) {
+
+                        // si on a le briquet, on l'enlève pour le donner à agathe
+                        oldOnPoop.children.entries[0].setTexture("old-on-poop");
+
+                        // on change la liste des objectifs
+                        document.querySelector("#lvl5-objectifs-1").style.display = "none";
+                        document.querySelector("#lvl5-objectifs-2").style.visibility = "visible";
+                    }
                 }
 
                 // on passe au dialogue suivant
@@ -321,7 +332,7 @@ function updateStickNumber()
 function updateObjectifs()
 {
     // si on a le bon nombre de sticks
-    if (sticksGathered === 5) document.querySelector("#lvl5-objectifs-sticks").style.textDecorationLine = "line-through";
+    if (sticksGathered >= 5) document.querySelector("#lvl5-objectifs-sticks").style.textDecorationLine = "line-through";
 
     // si on a la poudre
     if (hasPowder) document.querySelector("#lvl5-objectifs-powder").style.textDecorationLine = "line-through";
@@ -331,6 +342,24 @@ function updateObjectifs()
 
     // si on a le briquet
     if (hasLighter) document.querySelector("#lvl5-objectifs-lighter").style.textDecorationLine = "line-through";
+
+    // si on a tous les objets que le vieux demande
+    if (sticksGathered >= 5 && hasPowder && hasString && !hasLighter) {
+
+        // on change le sprite du vieux
+        oldOnPoop.children.entries[0].setTexture("old-on-poop-lighter");
+
+        // reset dialogue
+        dialogueOldPoop = 0;            // check si on a déjà parlé au vieux
+        oldDialogueList = [             // dialogues du vieux au caca
+            "Ah je vois que tu as rassemblé tous ce qu'il fallait pour nous faire sortir d'ici.",
+            "Tiens, j'ai retrouvé ça au fond d'une de mes poches.<br>Ça te sera sûrement utile",
+            "*Vous obtenez un briquet !*",
+            "Tu devrais poser tout ton bric à brac devant ce gros tas de m**** si tu veux en finir avec ce monstre...",
+        ];
+
+        hasLighter = true;
+    }
 }
 
 

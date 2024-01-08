@@ -13,19 +13,23 @@ try {
     WHERE token = :token";
 
     $res = $db->prepare($query);
-    $res->bindParam(":token", $_COOKIE["token"] ?? null, PDO::PARAM_STR);
+    $res->bindValue(":token", $_COOKIE["token"] ?? '', PDO::PARAM_STR);
+    $res->execute();
+    
     $data = $res->fetch(PDO::FETCH_ASSOC);
-    $idGame = intval($data->game_id);
-    $idUser = intval($data->user_id);
-    $hpRemain = $_POST["hp_remain"] ?? $data->hpRemain ?? $_COOKIE["hpRemain"];
-    $nbDynamite = ($data->nbDynamite ?? $_COOKIE["nbDynamite"]) + intval($_POST["get_dynamite"]);
-
-    setcookie("hpRemain", $hpRemain, time() + 86400 * 365, "/");
-    setcookie("nbDynamite", $nbDynamite, time() + 86400 * 365, "/");
-    setcookie("idLvl", $_POST["next_level_id"], time() + 86400 * 365, "/");
+    $idGame = intval($data->game_id ?? null);
+    $idUser = intval($data->user_id ?? null);
+    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? $_COOKIE["hpRemain"] ?? 3);
+    $nbDynamite = intval($data->nb_dynamite ?? $_COOKIE["nbDynamite"] ?? 0) + intval($_POST["get_dynamite"] ?? 0);
+    
+    // setcookie("hpRemain", $hpRemain, time() + 86400 * 365, "/");
+    // setcookie("nbDynamite", $nbDynamite, time() + 86400 * 365, "/");
+    // setcookie("idLvl", $_POST["next_level_id"], time() + 86400 * 365, "/");
+    $json["data"]["hpRemain"] = $hpRemain;
+    $json["data"]["nbDynamite"] = $nbDynamite;
 
     if(!$_COOKIE["token"]) {
-        throw new ErrorException("Utilisateur non connecté, résultat non enregistré");
+        throw new Exception("Utilisateur non connecté, résultat non enregistré");
     }
 
     $query =
@@ -53,7 +57,7 @@ try {
     $json["status"] = "success";
     $json["message"] = "Enregistrement réussi";
 
-} catch(Exception $exception) {
+} catch(\Exception $exception) {
     $json["status"] = "error";
     $json["message"] = $exception->getMessage();
 }

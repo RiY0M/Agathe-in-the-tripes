@@ -12,4 +12,7 @@ let squelettonHeart;        // coeur du squelette
 let map;                    // tilemap
 let tileset;                // tileset
 let sol;                    // sol
-let music;                  //Theme (musique de fond) 
+let music;                  //Theme (musique de fond)
+const idCurrentLvl = 4;      // Id du niveau courant
+const idNextLvl = 5;        // Id du prochain niveau
+let startTime = new Date().getTime(); // Starting time for the chronometer

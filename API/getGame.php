@@ -23,13 +23,13 @@ try {
     $res->execute();
 
     $data = $res->fetch();
-    $data["level_id"] = intval($data["level_id"] ?? $_POST["level_id"] ?? 0);
-    $data["hpRemain"] = intval($data["hp_remain"] ?? $_POST["hp_remain"] ?? 3);
-    $data["nbDynamite"] = intval($data["nb_dynamite"] ?? $_POST["nb_dynamite"] ?? 0);
+    $json["data"]["level_id"] = intval($data["level_id"] ?? $_POST["level_id"] ?? 0);
+    $json["data"]["hpRemain"] = intval($data["hp_remain"] ?? $_POST["hp_remain"] ?? 3);
+    $json["data"]["nbDynamite"] = intval($data["nb_dynamite"] ?? $_POST["nb_dynamite"] ?? 0);
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";
-    $json["data"] = $data;
+    // $json["data"] = $data;
 
 } catch(Exception $exception) {
     $json["status"] = "error";

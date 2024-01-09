@@ -180,11 +180,3 @@ btnDecoAgree.addEventListener("click", () => {
     supprimeTousLesCookies();
     window.location.href = "index.html";
 });
-
-//Fonction qui supprime tous les cookies existants
-function supprimeTousLesCookies() {
-    document.cookie.split(";").forEach(cookie => {
-        const [name] = cookie.split("=");
-        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-    });
-}

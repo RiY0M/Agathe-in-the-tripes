@@ -16,16 +16,18 @@ try {
     $res->bindValue(":token", $_POST["token"] ?? '', PDO::PARAM_STR);
     $res->execute();
     
-    $data = $res->fetch(PDO::FETCH_ASSOC);
+    $data = $res->fetch(PDO::FETCH_OBJ);
     $idGame = intval($data->game_id ?? null);
     $idUser = intval($data->user_id ?? null);
-    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? $_POST["hpRemain"] ?? 3);
-    $nbDynamite = intval($data->nb_dynamite ?? $_POST["nbDynamite"] ?? 0) + intval($_POST["get_dynamite"] ?? 0);
-    
-    // setcookie("hpRemain", $hpRemain, time() + 86400 * 365, "/");
-    // setcookie("nbDynamite", $nbDynamite, time() + 86400 * 365, "/");
-    // setcookie("idLvl", $_POST["next_level_id"], time() + 86400 * 365, "/");
-    $json["data"]["level_id"] = $_POST["next_level_id"];
+    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? 3);
+    $nbDynamite = intval($data->nb_dynamite ?? 0) + intval($_POST["get_dynamite"] ?? 0);
+
+    $idNextLvl = intval($_POST["next_level_id"] ?? 7);
+
+    $json["data"]["id_game"] = $idGame;
+    $json["data"]["id_user"] = $idUser;
+
+    $json["data"]["level_id"] = $idNextLvl;
     $json["data"]["hpRemain"] = $hpRemain;
     $json["data"]["nbDynamite"] = $nbDynamite;
 
@@ -40,7 +42,7 @@ try {
     $res = $db->prepare($query);
     $res->bindParam(":id", $idGame, PDO::PARAM_INT);
     $res->bindParam(":user_id", $idUser, PDO::PARAM_INT);
-    $res->bindParam(":level_id", $_POST["next_level_id"], PDO::PARAM_INT);
+    $res->bindParam(":level_id", $idNextLvl, PDO::PARAM_INT);
     $res->bindParam(":hp_remain", $hpRemain, PDO::PARAM_INT);
     $res->bindParam(":nb_dynamite", $nbDynamite, PDO::PARAM_INT);
     $res->execute();
@@ -54,6 +56,17 @@ try {
     $res->bindParam(":level_id", $_POST["level_id"], PDO::PARAM_INT);
     $res->bindParam(":complete_time", $_POST["complete_time"]);
     $res->execute();
+
+    if($idNextLvl == 7) {
+        $query =
+        "INSERT INTO SCORES (game_id, level_id, complete_time)
+        VALUES (:game_id, 7, 
+            (SELECT SUM(S1.complete_time) as complete_time FROM `SCORES` S1 WHERE S1.game_id = :game_id)
+        )";
+        $res = $db->prepare($query);
+        $res->bindParam(":game_id", $idGame, PDO::PARAM_INT);
+        $res->execute();
+    }
 
     $json["status"] = "success";
     $json["message"] = "Enregistrement réussi";

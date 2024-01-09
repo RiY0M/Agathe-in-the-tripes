@@ -50,3 +50,15 @@ function labyrinthe(scene) {
     walls.create(-15, 330, "tiles");
     walls.create(-15, 360, "tiles");
 }
+
+
+//* SPRITE COEUR DU SQUELETTE *//
+function createSquelettonHeart(scene)
+{
+    // sang du coeur
+    blood1.create(705, 190, "blood1").setScale(0.5);
+
+    // coeur du squelette
+    squelettonHeart = scene.physics.add.group();
+    squelettonHeart.create(705, 190, "squeletton-heart").setScale(0.9).angle += 25;
+}

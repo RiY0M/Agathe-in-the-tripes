@@ -40,7 +40,7 @@ function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = 3, getDynamit
 
     // Changement map
     // window.alert("Changement de niveau !"); // debug
-    // window.location.replace(`./lvl${idNextLvl}.html`);
+    window.location.replace(`./lvl${idNextLvl}.html`);
 }
 
 function getCookies() {

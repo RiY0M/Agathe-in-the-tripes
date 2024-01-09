@@ -2,7 +2,7 @@
 //~ SPRITE AGATHE ~//
 function createAgathe(scene){
     // ajout d'agathe à la fenêtre
-    agathe = scene.physics.add.sprite(400, 3050, "agathe")
+    agathe = scene.physics.add.sprite(400, 50, "agathe")
         .setSize(21, 8)
         .setOffset(5, 40)
         .setBounce(0.2);
@@ -66,6 +66,6 @@ function createSquelettonHeart(scene)
     blood.create(600, 100, "blood-1").setScale(0.5);
 
     // coeur du squelette
-    squelettonHeart = scene.physics.add.group()
+    squelettonHeart = scene.physics.add.staticGroup();
     squelettonHeart.create(600, 100, "squeletton-heart").setScale(0.7).angle += 25;
 }

@@ -23,28 +23,34 @@ async function sendData(idLevel, idNextLevel, time, hp_remain = 3, getDynamite =
  * int idCurrentLvl : id du niveau actuel
  * int idNextLvl : id du niveau suivant
  */
-function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = 3, getDynamite = false) {
+async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, getDynamite = false) {
 
+    game.destroy()
     // Calcul du temps
     const time = (new Date().getTime() - startTime) / 1000;
     // console.log(time);
     
+    if(!hp_remain) hp_remain = getCookie("hpRemain");
     // Appel API
-    sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
+    await sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
 
     // Changement map
     window.location.replace(`./lvl${idNextLvl}.html`);
 }
 
 function getCookies() {
+    const hpRemain = getCookie("hpRemain");
+    const nbDynamite = getCookie("nbDynamite");
+    const idLvl = getCookie("level_id");
+
     return {
-        hpRemain: parseInt(getCookie("hp_remain")),
-        nbDynamite: parseInt(getCookie("nb_dynamite")),
-        idLvl: parseInt(getCookie("level_id")),
+        hpRemain: hpRemain ? parseInt(hpRemain) : 3,
+        nbDynamite: nbDynamite ? parseInt(nbDynamite) : 0,
+        idLvl: idLvl ? parseInt(idLvl) : 0,
     };
 }
 
-function afficheInitialHearts(hpRemain) {
+function afficheInitialHearts(hpRemain = 3) {
     document.querySelector(".heart-image").src = `../../../img/assets/common/${hpRemain}-heart.png`;
 }
 

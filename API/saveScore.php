@@ -25,6 +25,7 @@ try {
     // setcookie("hpRemain", $hpRemain, time() + 86400 * 365, "/");
     // setcookie("nbDynamite", $nbDynamite, time() + 86400 * 365, "/");
     // setcookie("idLvl", $_POST["next_level_id"], time() + 86400 * 365, "/");
+    $json["data"]["level_id"] = $_POST["next_level_id"];
     $json["data"]["hpRemain"] = $hpRemain;
     $json["data"]["nbDynamite"] = $nbDynamite;
 
@@ -57,7 +58,7 @@ try {
     $json["status"] = "success";
     $json["message"] = "Enregistrement réussi";
 
-} catch(\Exception $exception) {
+} catch(Exception $exception) {
     $json["status"] = "error";
     $json["message"] = $exception->getMessage();
 }

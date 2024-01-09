@@ -23,9 +23,9 @@ try {
     $res->execute();
 
     $data = $res->fetch();
-    $data["level_id"] = intval($data["level_id"]);
-    $data["hp_remain"] = intval($data["hp_remain"]);
-    $data["nb_dynamite"] = intval($data["nb_dynamite"]);
+    $data["level_id"] = intval($data["level_id"] ?? $_POST["level_id"] ?? 0);
+    $data["hpRemain"] = intval($data["hp_remain"] ?? $_POST["hp_remain"] ?? 3);
+    $data["nbDynamite"] = intval($data["nb_dynamite"] ?? $_POST["nb_dynamite"] ?? 0);
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";

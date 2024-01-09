@@ -120,7 +120,11 @@ confirmerNouvellePartyButton.addEventListener("click", async () => {
 
 continuePartyButton.addEventListener("click", async () => {
 
-    const json = await callAPI("getGame");
+    const json = await callAPI("getGame", {
+        level_id: getCookie("level_id"),
+        hp_remain: getCookie("hpRemain"),
+        nb_dynamite: getCookie("nbDynamite"),
+    });
 
     console.log(json)
     if (json.status == 'error') {

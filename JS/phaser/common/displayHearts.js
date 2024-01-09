@@ -37,5 +37,6 @@ function reloadNbHearts()
 function displayDeathScreen()
 {
     youAreDeadCheh = true;
-    if (!isInvicible) document.querySelector("#game-over").style.display = "initial";
+    if (delayBeforeDeathScreen < 50) delayBeforeDeathScreen++;
+    if (delayBeforeDeathScreen == 50) document.querySelector("#game-over").style.display = "initial";
 }

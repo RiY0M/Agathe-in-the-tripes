@@ -178,6 +178,10 @@ function update()
     }
 
 
+    // vérification de notre vie
+    if (nbHearts == 0) displayDeathScreen();
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
 
     // on empêche de se déplacer si on est au milieu d'un dialogue

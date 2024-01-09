@@ -39,7 +39,7 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, g
     }
 
     // Changement map
-    // window.location.replace(`./lvl${idNextLvl}.html`);
+    window.location.replace(`./lvl${idNextLvl}.html`);
 }
 
 function getCredited() {

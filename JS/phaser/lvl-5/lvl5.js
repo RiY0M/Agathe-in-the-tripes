@@ -81,6 +81,22 @@ function create()
     
     //? AFK ANIMS ?//
     createAFK(this);
+
+    //? EXPLOSION ?//
+    this.anims.create({
+        key: 'EXPLOSION',
+        frames: this.anims.generateFrameNumbers('EXPLOSION', {
+          start: 0,
+          end: 7
+        }),
+        repeat: 0,
+        frameRate: 10
+    });
+
+    
+    boom.on('animationcomplete', () => {
+        boom.setVisible(false);
+    });
 }
 
 function update()
@@ -120,7 +136,7 @@ function update()
 
             // lancement dialogue avec rat
             dialogueWithRat();
-        }        
+        }      
     }
 
     if (switchRatDirection && dialogueRat == 0) delaybeforeCapture++;
@@ -144,6 +160,21 @@ function update()
 
         dynamite.create(760, 315, "dynamite").setAlpha(0.4);
         canDropDyna = false;
+    }
+
+
+    //? CHECK SI ON PEUT EXPLOSER DYNAMITE ?//
+    if (hasDropDyna && delaybeforeExplosion <= 50) delaybeforeExplosion++
+    if (delaybeforeExplosion == 50) {
+
+        // affichage explosion
+        boom.setVisible(true);
+        boom.play('EXPLOSION');
+        updateObjectifs();
+        
+        // suppression dynamite + porte
+        dynamite.children.entries[0].disableBody(true, true);
+        poopDoor.children.entries[0].disableBody(true, true);
     }
 
 
@@ -261,4 +292,6 @@ function collectPowder(player, powder)
 function dropDynamite(player, dyna)
 {
     dyna.setAlpha(1);
+    hasDropDyna = true;
+    updateObjectifs();
 }

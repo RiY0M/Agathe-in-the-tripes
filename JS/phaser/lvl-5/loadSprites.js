@@ -61,4 +61,7 @@ function loadImages(scene)
 
     // vide
     scene.load.image("blank", "../../../img/assets/lvl5/blank.png");
+
+    // EXPLOSION
+    scene.load.spritesheet("EXPLOSION", "../../../img/assets/lvl5/EXPLOSION.png", {frameWidth: 64, frameHeight: 64} );
 }

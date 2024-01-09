@@ -5,6 +5,7 @@ let MOVY = true;                        // le rat peut se déplacer en y
 let allowRatToMove = false;             // autorisation deplacement rat
 let switchRatDirection = false;         // check si direction rat change ou pas
 let delaybeforeCapture = 0;             // délai avant que le rat puisse de nouveau être capturé
+let delaybeforeExplosion = 0;           // délai avant explosion dynamite
 let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
@@ -17,6 +18,7 @@ let fakeBloodyRocks;                    // cailloux pouvant bouger
 let deadThings;                         // sprites trucs morts
 let sticks;                             // bâtons de dynamite à ramasser
 let dynamite;                           // dynamite pour péter la porte de caca
+let boom;                               // explosion de la dynamite
 let canDropDyna = false;                // var check si on peut mettre calque dyna
 let angryMinor;                         // sprite mineur
 
@@ -66,11 +68,12 @@ let dialogueRatList = [
 ]
 
 // variables des objets à récupérer
-let sticksGathered = 4;
-let hasPowder = true;
-let hasString = true;
+let sticksGathered = 0;
+let hasPowder = false;
+let hasString = false;
 let hasLighter = false;
 let hasPickaxe = false;
+let hasDropDyna = false;
 
 
 function loadSpriteVariables(scene)
@@ -105,4 +108,7 @@ function loadSpriteVariables(scene)
 
     // dynamite
     dynamite = scene.physics.add.staticGroup();
+
+    // explosion
+    boom = scene.physics.add.sprite(760, 315, 'EXPLOSION').setScale(2).setVisible(false);
 }

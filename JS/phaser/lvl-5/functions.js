@@ -363,6 +363,12 @@ function updateObjectifs()
 
         hasLighter = true;
     }
+
+    // si on a déposé la dynamite
+    if (hasDropDyna) document.querySelector("#lvl5-objectifs-drop").style.textDecorationLine = "line-through";
+
+    // si on a allumé la dynamite
+    if (delaybeforeExplosion == 50) document.querySelector("#lvl5-objectifs-turn-on").style.textDecorationLine = "line-through";
 }
 
 

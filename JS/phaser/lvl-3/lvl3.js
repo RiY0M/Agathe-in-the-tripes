@@ -150,7 +150,7 @@ function update(){
 
         //console.log("Remplie poison:",filledHeight);
 
-        if (agathe.y >= 3200 - filledHeight ){
+        if (agathe.y >= 3200 - filledHeight - (agathe.height/2) ){
             collidePoison();
             agathe.setVelocityY(-800);
 

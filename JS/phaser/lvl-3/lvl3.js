@@ -132,16 +132,23 @@ function update(){
         this.poison.fillStyle(0x2dff2d); // Couleur de barre remplie
     
         if (Vitesse_de_poison < 1) {
-            Vitesse_de_poison += 0.0002; // Vitesse de poison
+            Vitesse_de_poison += augmentation_poison; // Vitesse de poison
         }
         // Ajustement de la hauteur de la barre remplie pour correspondre à l'inversion du poison
         let filledHeight = size_poison * Vitesse_de_poison;
 
-        if (agathe.y + 200 <= 3200 - filledHeight) filledHeight = 3200 - (agathe.y-200);   //correction
+        if (filledHeight >= 400) augmentation_poison = 0.0005;
+
 
         this.poison.fillRect(0, 3200 - filledHeight, 800, filledHeight); // Poison de la barre
 
-        console.log("Remplie poison:",filledHeight);
+        //console.log("Remplie poison:",filledHeight);
+
+        if (agathe.y >= 3200 - filledHeight ){
+            collidePoison();
+            agathe.setVelocityY(-800);
+
+        }
     }
 
 }

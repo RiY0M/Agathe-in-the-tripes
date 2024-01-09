@@ -24,4 +24,5 @@ let startTime = new Date().getTime(); // Starting time for the chronometer
 
 let hasMoved = false;       // booleen verif si affi ou non tuto                  
 let size_poison = 3000;
-let Vitesse_de_poison = 0.001; 
+let Vitesse_de_poison = 0.001;
+let augmentation_poison = 0.0002;

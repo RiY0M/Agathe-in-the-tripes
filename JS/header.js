@@ -14,6 +14,12 @@ dashboardScores.id = "header-dashboard-button"
 dashboardScores.href = "../HTML/leaderboard.html";
 dashboardScores.textContent = "Scores";
 
+// credit/remerciements
+let creditRemerciements = document.createElement("a");
+creditRemerciements.id = "header-credits-button"
+creditRemerciements.href = "../HTML/credits.html";
+creditRemerciements.textContent = "Credits";
+
 // span vide de délimitation
 let emptySpan = document.createElement("span");
 
@@ -29,6 +35,7 @@ profilePicture.src = "../img/agathe.png";
 
 header.appendChild(headerAccueil);
 header.appendChild(dashboardScores);
+header.appendChild(creditRemerciements);
 header.appendChild(emptySpan);
 header.appendChild(nomJoueur);
 header.appendChild(profilePicture);

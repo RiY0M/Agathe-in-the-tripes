@@ -9,4 +9,7 @@ function loadImages(scene){
 
     //chargement du theme
     scene.load.audio('theme', '../../sound/lvl3.mp3');
+
+    scene.load.image('wall', '../../img/TileMapsLv3/wall.png')
+
 }

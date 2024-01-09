@@ -48,3 +48,12 @@ function tilemap(scene){
         platf.body.checkCollision = {down: false, left: false, none: false, right: false, up: true}; 
     });
 }
+
+function createWalls(scene) {
+    wall = scene.physics.add.staticGroup();
+    //wall.create(-10, 3100, "wall");
+    for (let y = 3100; y >= 0; y -= 150) {
+        wall.create(-18, y, "wall");
+        wall.create(818, y, "wall");
+    }
+}

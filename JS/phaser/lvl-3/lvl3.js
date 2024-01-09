@@ -39,8 +39,12 @@ function create(){
     //~ SPRITE AGATHE ~//
     createAgathe(this);
 
+    //*Murs*//
+    createWalls(this);
+
     //! COLLISIONS !//
     this.physics.add.collider(agathe, platforms);
+    this.physics.add.collider(agathe, wall);
 
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -57,6 +61,8 @@ function create(){
     this.cameras.main.setBounds(0, 0, 800, 3200);
     this.cameras.main.startFollow(agathe, true, 0.5, 0.5);
 
+    //* Nuage de Poison *//
+    this.poison = this.add.graphics(); // Ajout du poison
     
 }
 
@@ -65,13 +71,13 @@ function update(){
     if (cursors.left.isDown)
     {
         agathe.setVelocityX(-160);
-
+        hasMoved = true;
         agathe.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
         agathe.setVelocityX(160);
-
+        hasMoved = true;
         agathe.anims.play('right', true);
     }
     else
@@ -85,7 +91,7 @@ function update(){
     {
         agathe.setVelocityY(-450);
         
-        if (agathe.y <= 95) //console.log("next lv");               
+        if (agathe.y <= 105) //console.log("next lv");               
         changeLvl(idCurrentLvl, idNextLvl, startTime);
 
     }
@@ -113,6 +119,31 @@ function update(){
         // on réinitialise le compteur de frames
         invicibility = 150;
     }
+
+    if (hasMoved){  //Lance le poison des que le joueur a bougé.
+        this.poison.clear();
+
+        //this.poison.fillStyle(0x2d2d2d); // Couleur du poison
+        // Ajustement de la position du poison pour commencer du bas
+        let poisonY = 3200 - (size_poison * Vitesse_de_poison);
+        let poisonHeight = size_poison * Vitesse_de_poison;
+        this.poison.fillRect(0, poisonY, 800, poisonHeight); // Taille du poison
+    
+        this.poison.fillStyle(0x2dff2d); // Couleur de barre remplie
+    
+        if (Vitesse_de_poison < 1) {
+            Vitesse_de_poison += 0.0002; // Vitesse de poison
+        }
+        // Ajustement de la hauteur de la barre remplie pour correspondre à l'inversion du poison
+        let filledHeight = size_poison * Vitesse_de_poison;
+
+        if (agathe.y + 200 <= 3200 - filledHeight) filledHeight = 3200 - (agathe.y-200);   //correction
+
+        this.poison.fillRect(0, 3200 - filledHeight, 800, filledHeight); // Poison de la barre
+
+        console.log("Remplie poison:",filledHeight);
+    }
+
 }
 
 function collidePoison()
@@ -131,4 +162,3 @@ function collidePoison()
         start3sCoolDown = true;
     }
 }
-

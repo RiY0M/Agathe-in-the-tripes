@@ -256,7 +256,7 @@ header {
     border-bottom: 2px solid #1e2124;
 
     display: grid;
-    grid-template-columns: 10fr 10fr 60fr 20fr;
+    grid-template-columns: 10fr 10fr 10fr 50fr 20fr;
 }
 
 #header-accueil-button {
@@ -269,6 +269,13 @@ header {
     /* border: 1px dashed pink; */
 
     margin-left: -3rem;
+    width: 50%;
+}
+
+#header-credits-button {
+    /* border: 1px dashed pink; */
+
+    margin-left: -6rem;
     width: 50%;
 }
 

@@ -57,3 +57,15 @@ function createWalls(scene) {
         wall.create(818, y, "wall");
     }
 }
+
+//* SPRITE COEUR DU SQUELETTE *//
+function createSquelettonHeart(scene)
+{
+    // sang du coeur
+    blood = scene.physics.add.staticGroup();
+    blood.create(600, 100, "blood-1").setScale(0.5);
+
+    // coeur du squelette
+    squelettonHeart = scene.physics.add.group()
+    squelettonHeart.create(600, 100, "squeletton-heart").setScale(0.7).angle += 25;
+}

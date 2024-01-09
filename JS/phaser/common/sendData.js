@@ -38,9 +38,9 @@ function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = 3, getDynamit
 
 function getCookies() {
     return {
-        hpRemain: getCookie("hp_remain"),
-        nbDynamite: getCookie("nb_dynamite"),
-        idLvl: getCookie("idLvl"),
+        hpRemain: parseInt(getCookie("hp_remain")),
+        nbDynamite: parseInt(getCookie("nb_dynamite")),
+        idLvl: parseInt(getCookie("level_id")),
     };
 }
 
@@ -50,12 +50,11 @@ function afficheInitialHearts(hpRemain) {
 
 function verifyLvl(idLvlCookie, idCurrentLvl) {
     if (idLvlCookie != idCurrentLvl && idCurrentLvl != 0) {
-        window.location.replace("./index.html");
+        window.location.replace("../index.html");
     }
 }
 
 const cookies = getCookies();
 
-console.log(cookies.hpRemain);
+verifyLvl(cookies.idLvl, idCurrentLvl);
 afficheInitialHearts(cookies.hpRemain);
-// verifyLvl(cookies.idLvl, idCurrentLvl);

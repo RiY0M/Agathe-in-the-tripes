@@ -12,8 +12,7 @@ function queryBasic(PDO $db, string $whereClause): array {
 
     SELECT @row_number:=@row_number+1 AS num,
     login AS name,
-    G.user_id,
-    token
+    token,
     LEFT(DATE_FORMAT(SEC_TO_TIME(complete_time), '%i:%s:%f'), 9) AS complete_time
     FROM SCORES S
     INNER JOIN GAMES G ON S.game_id = G.id
@@ -24,9 +23,9 @@ function queryBasic(PDO $db, string $whereClause): array {
     $res = $db->query($query);
 
     $query =
-    "SELECT * FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
+    "SELECT num, name, complete_time FROM (SELECT * FROM TAB LIMIT 0,5) AS TAB1
     UNION ALL
-    SELECT * FROM (SELECT * FROM TAB WHERE token = :token LIMIT 0,1) AS TAB2";
+    SELECT num, name, complete_time FROM (SELECT * FROM TAB WHERE token = :token LIMIT 0,1) AS TAB2;";
 
     $res = $db->prepare($query);
     $res->bindValue(":token", $_POST["token"] ?? '', PDO::PARAM_STR);

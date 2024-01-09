@@ -7,12 +7,9 @@ let cursors;                // détection clavier
 let finNiv;                 // Hitbox représentant la fin du niveau
 let obstacles = [];         // sprites cailloux
 let borders;                // bordure du haut et du bas
-// let cave;                   // sprite grotte
-// let hasLight = false;       // taille halo en fonction lampe ou pas
-// let lamp;                   // lampe
-// let hole;                   // halo lumineux
-// let holeRadius = 60;        // rayon du halo de lumière
-// let holeDiffHeight = 0;     // décalage du halo si lampe
+let heart;
+let dynamite;
+let hasDynamite = false;
 let hasMoved = false;       // booleen verif si affi ou non tuto                  
 // let tutoDeplacement;        // message tutoriel pour apprendre touches
 let xScroll = 0;             // Compteur pour combien on a scroll dans le niveau

@@ -16,9 +16,18 @@ function moveLevel(value) {
         rock.refreshBody();
     });
 
+    heart.getChildren().forEach(coeur => {
+        coeur.x -= value;
+        coeur.refreshBody();
+    });
+
+    dynamite.getChildren().forEach(dyn => {
+        dyn.x -= value;
+        dyn.refreshBody();
+    });
+
     finNiv.getChildren().forEach(fin => {
         fin.x -= value;
-        // Update the hitbox position
         fin.refreshBody();
     });
 

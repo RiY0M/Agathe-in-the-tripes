@@ -41,6 +41,9 @@ function create()
     //* SPRITES CAILLOUX *//
     createObstacles(this);
 
+    //* SPRITES CAILLOUX *//
+    createBenef(this);
+
     //* SPRITES FIN *//
     createEnd(this);
 
@@ -51,6 +54,8 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, obstacles, hitObstacle, null, this);
+    this.physics.add.collider(agathe, heart, getHeart, null, this);
+    this.physics.add.collider(agathe, dynamite, getDynamite, null, this);
     this.physics.add.collider(agathe, finNiv, reachEnd, null, this);
     this.physics.add.collider(agathe, borders);
 
@@ -123,7 +128,7 @@ function update()
 }
 
 //^ Si agathe rencontre un obstacle ^//
-function hitObstacle(character, rock) {
+function hitObstacle(character, obstacles) {
 
     // Stoppe le niveau pendant 1 seconde
     levelStop = true;
@@ -137,13 +142,35 @@ function hitObstacle(character, rock) {
         agathe.y = initialY;
         startTime = new Date().getTime();
         moveLevel(-xScroll);
+        // heart.disableBody(false, false);
+        // dynamite.disableBody(false, false);
+        heart.visible = true;
+        dynamite.visible = true;
+        hasDynamite = false;
         hasMoved = false;
         levelStop = false;
     }, 1000);
-    
+}
+
+//^ Si agathe touche le coeur ^//
+function getHeart(character, heart) {
+
+    // heart.disableBody(true, true);
+    heart.visible = false;
+    if (nbHearts < 3) {
+        nbHearts++;
+        reloadNbHearts();
+    }
+}
+
+//^ Si agathe touche le coeur ^//
+function getDynamite(character, dynamite) {
+    // dynamite.disableBody(true, true);
+    dynamite.visible = false;
+    hasDynamite = true;
 }
 
 //^ Si Agathe termine le niveau ^//
 function reachEnd(character, end) {
-    changeLvl(idCurrentLvl, idNextLvl, startTime);
+    changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts, hasDynamite);
 }

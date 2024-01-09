@@ -30,6 +30,7 @@ document.querySelector("body").appendChild(lifeDiv);
 function reloadNbHearts()
 {
     document.querySelector(".heart-image").src = "../../../img/assets/common/" + nbHearts + "-heart.png";
+    // createCookiesFromData({hpRemain: nbHearts}); // Pour synchro les coeurs directement
 }
 
 

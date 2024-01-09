@@ -170,6 +170,15 @@ function createObstacles(scene)
     houses.forEach(house => obstacles.create(house[0], house[1], "house"));
 }
 
+function createBenef(scene) {
+
+    heart = scene.physics.add.staticGroup();
+    dynamite = scene.physics.add.staticGroup();
+
+    heart.create(4300, 260, "heart");
+    dynamite.create(4300, 330, "dynamite");
+}
+
 //* Création de la fin du niveau *//
 function createEnd(scene) {
 

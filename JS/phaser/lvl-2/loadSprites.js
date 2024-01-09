@@ -10,12 +10,15 @@ function loadImages(scene)
         scene.load.image("map"+i, "../../../img/assets/lvl2/tilemap-lvl2.png");
     }
 
-    // chargement sprites cailloux
+    // chargement sprites obstacles
     scene.load.image("log", "../../../img/assets/lvl2/log.png");
     scene.load.image("meatball", "../../../img/assets/lvl2/meatball.png");
     scene.load.image("vomit", "../../../img/assets/lvl2/vomit.png");
     scene.load.image("blob", "../../../img/assets/lvl2/blob.png");
     scene.load.image("house", "../../../img/assets/lvl2/house.png");
+
+    scene.load.image("heart", "../../../img/assets/common/heart.png");
+    scene.load.image("dynamite", "../../../img/assets/common/dynamite-stick.png");
 
     // chargement bordure du haut
     scene.load.image("border-0", "../../../img/assets/common/border-0.png");

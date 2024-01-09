@@ -11,4 +11,6 @@ function loadImages(scene){
     //chargement du theme
     scene.load.audio('theme', '../../sound/lvl4.mp3');
 
+    // chargement coeur mort
+    scene.load.image("squeletton-heart", "../../../img/assets/lvl1/squeletton-heart.png");
 }

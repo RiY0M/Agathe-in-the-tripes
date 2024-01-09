@@ -7,6 +7,8 @@ let holeRadius = 200;       // rayon du halo
 let blood1;
 let blood0;
 
+let squelettonHeart;        // coeur du squelette
+
 let map;                    // tilemap
 let tileset;                // tileset
 let sol;                    // sol

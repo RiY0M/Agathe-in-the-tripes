@@ -33,6 +33,9 @@ function create(){
     //* TACHES DE SANG *//
     tacheDeSang(this);
 
+    //* SPRITE COEUR DU SQUELETTE *//
+    createSquelettonHeart(this);
+
     //* MAP *//
     labyrinthe(this);
 
@@ -41,6 +44,9 @@ function create(){
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, walls);
+
+    //! ACTION RECUP COEUR !//
+    this.physics.add.overlap(agathe, squelettonHeart, collectSquelettonHeart, null, this);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -60,6 +66,8 @@ function create(){
 }
 
 function update(){
+
+    // console.log(agathe.x, agathe.y);
 
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
@@ -84,4 +92,18 @@ function update(){
     else if (agathe.y >= 1300) hole.style.top = agathe.y - 1000 - holeRadius/2 - 48 + "px";
     
     
+}
+
+
+function collectSquelettonHeart(agathe, squelettonHeart) {
+
+    // suppression du coeur du squelette
+    squelettonHeart.disableBody(true, true);
+
+    // si agathe n'a pas toutes ses vies
+    if (nbHearts < 3) {
+        // on lui en rajoute une
+        nbHearts++;
+        reloadNbHearts();
+    }
 }

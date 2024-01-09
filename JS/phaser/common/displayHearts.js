@@ -3,6 +3,11 @@ let nbHearts = 3;
 // immortalité par défaut (non)
 let isInvicible = false;
 
+// délai avant affichage mort
+let delayBeforeDeathScreen = 0;
+
+// mort du perso
+let youAreDeadCheh = false;
 
 // div affichage des coeurs
 let lifeDiv = document.createElement("div");
@@ -25,4 +30,13 @@ document.querySelector("body").appendChild(lifeDiv);
 function reloadNbHearts()
 {
     document.querySelector(".heart-image").src = "../../../img/assets/common/" + nbHearts + "-heart.png";
+}
+
+
+// affichage écran de mort
+function displayDeathScreen()
+{
+    youAreDeadCheh = true;
+    if (delayBeforeDeathScreen < 50) delayBeforeDeathScreen++;
+    if (delayBeforeDeathScreen == 50) document.querySelector("#game-over").style.display = "initial";
 }

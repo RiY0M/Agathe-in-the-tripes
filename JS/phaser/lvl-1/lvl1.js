@@ -233,6 +233,9 @@ function update()
         invicibility = 150;
     }
 
+    // vérification de notre vie
+    if (nbHearts == 0) displayDeathScreen();
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
     lastFrame = createMove(agathe, cursors, lastFrame)[0];
 

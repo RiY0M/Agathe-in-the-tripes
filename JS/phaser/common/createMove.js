@@ -4,7 +4,7 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
     const speed = diagonal ? 160 : 135.8;
 
     /* GAUCHE */
-    if (cursors.left.isDown)
+    if (cursors.left.isDown && !youAreDeadCheh)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(-speed);
@@ -24,7 +24,7 @@ function createMoveX(agathe, cursors, lastFrame, diagonal = false) {
     }
 
     /* DROITE */
-    else if (cursors.right.isDown)
+    else if (cursors.right.isDown && !youAreDeadCheh)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityX(speed);
@@ -56,7 +56,7 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
     const speed = diagonal ? 160 : 135.8;
 
     /* HAUT */
-    if (cursors.up.isDown)
+    if (cursors.up.isDown && !youAreDeadCheh)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(-speed);
@@ -76,7 +76,7 @@ function createMoveY(agathe, cursors, lastFrame, diagonal = false) {
     }
 
     /* BAS */
-    else if (cursors.down.isDown)
+    else if (cursors.down.isDown && !youAreDeadCheh)
     {
         // vitesse et direction du déplacement
         agathe.setVelocityY(speed);

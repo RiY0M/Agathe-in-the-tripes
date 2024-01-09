@@ -143,7 +143,7 @@ function update(){
         // Ajustement de la hauteur de la barre remplie pour correspondre à l'inversion du poison
         let filledHeight = size_poison * Vitesse_de_poison;
 
-        if (filledHeight >= 400) augmentation_poison = 0.0005;
+        if (filledHeight >= 400) augmentation_poison = 0.00045;
 
 
         this.poison.fillRect(0, 3200 - filledHeight, 800, filledHeight); // Poison de la barre

@@ -14,6 +14,8 @@ try {
     $db_config['USER'], $db_config['PASSWORD'],
     array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, 0);
+
     // permet d’afficher les caractères utf8 si la BdD est définie en utf8 (accents...)
     unset($db_config);
 

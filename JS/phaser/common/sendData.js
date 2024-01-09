@@ -2,24 +2,18 @@
 
 async function sendData(idLevel, idNextLevel, time, hp_remain = 3, getDynamite = false) {
 
-    const response = await fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/saveScore.php', {
-        method: 'POST',
-        body: new URLSearchParams({
-            level_id: idLevel,
-            next_level_id: idNextLevel,
-            complete_time: time,
-            hp_remain: hp_remain,
-            get_dynamite: getDynamite,
-        }),
+    const json = await callAPI("saveScore", {
+        level_id: idLevel,
+        next_level_id: idNextLevel,
+        complete_time: time,
+        hp_remain: hp_remain,
+        get_dynamite: getDynamite,
     });
-    const json = await response.json();
-    // console.log(json)
+
     if (json.status == 'error') {
         console.log(json.message);
     }
-    Object.entries(json.data).forEach(element => {
-        document.cookie = `${element[0]}=${element[1]}; expires=Thu, ${new Date().getTime() + 86400 * 365}; path=/`;
-    });
+    createCookiesFromData(json.data);
 }
 
 /**
@@ -39,18 +33,29 @@ function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = 3, getDynamit
     sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
 
     // Changement map
-    // window.alert("Changement de niveau !"); // debug
     window.location.replace(`./lvl${idNextLvl}.html`);
 }
 
 function getCookies() {
     return {
-        hpRemain: document.cookie.split("; ").find((row) => row.startsWith("hpRemain="))?.split("=")[1],
-        nbDynamite: document.cookie.split("; ").find((row) => row.startsWith("nbDynamite="))?.split("=")[1],
-        idLvl: document.cookie.split("; ").find((row) => row.startsWith("idLvl="))?.split("=")[1],
+        hpRemain: getCookie("hp_remain"),
+        nbDynamite: getCookie("nb_dynamite"),
+        idLvl: getCookie("idLvl"),
     };
 }
 
 function afficheInitialHearts(hpRemain) {
     document.querySelector(".heart-image").src = `../../../img/assets/common/${hpRemain}-heart.png`;
 }
+
+function verifyLvl(idLvlCookie, idCurrentLvl) {
+    if (idLvlCookie != idCurrentLvl && idCurrentLvl != 0) {
+        window.location.replace("./index.html");
+    }
+}
+
+const cookies = getCookies();
+
+console.log(cookies.hpRemain);
+afficheInitialHearts(cookies.hpRemain);
+// verifyLvl(cookies.idLvl, idCurrentLvl);

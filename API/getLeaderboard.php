@@ -29,7 +29,7 @@ function queryBasic(PDO $db, string $whereClause): array {
     SELECT * FROM (SELECT * FROM TAB WHERE token = :token LIMIT 0,1) AS TAB2";
 
     $res = $db->prepare($query);
-    $res->bindParam(":token", $_COOKIE["token"], PDO::PARAM_STR);
+    $res->bindValue(":token", $_POST["token"] ?? '', PDO::PARAM_STR);
     $res->execute();
 
     $data = $res->fetchAll(PDO::FETCH_ASSOC);
@@ -45,9 +45,7 @@ function queryLevels(PDO $db): array {
     $res->execute();
 
     return $res->fetchAll(PDO::FETCH_ASSOC);
-} 
-
-// $login = $_SESSION["user_id"] ?? 0;
+}
 
 $json = [];
 try {

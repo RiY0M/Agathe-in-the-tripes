@@ -7,7 +7,7 @@ $json["data"] = [];
 
 try {
 
-    if(!isset($_COOKIE["token"])) {
+    if(!isset($_POST["token"])) {
         throw new ErrorException("utilisateur non connecté, résultat non enregistré");
     }
 
@@ -25,13 +25,13 @@ try {
     WHERE token = :token";
 
     $res = $db->prepare($query);
-    $res->bindParam(":token", $_COOKIE["token"]);
+    $res->bindValue(":token", $_POST["token"] ?? '');
     $res->execute();
     $idUser = intval($res->fetch()["id"]);
 
     $query =
-    "INSERT INTO GAMES (id, user_id, level_id, hp_remain)
-    VALUES (:game_id, :user_id, 0, 3);";
+    "INSERT INTO GAMES (id, user_id, level_id, hp_remain, nb_dynamite)
+    VALUES (:game_id, :user_id, 0, 3, 0);";
 
     $res = $db->prepare($query);
     $res->bindParam(":game_id", $nextId, PDO::PARAM_INT);

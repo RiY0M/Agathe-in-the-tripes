@@ -8,16 +8,13 @@ const msgErreurReg = document.querySelector("#RegisterSpanErreur");
 //fonction register
 async function register(login, mdp) {
 
-    const response = await fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/newUser.php', {
-        method: 'POST',
-        body: new URLSearchParams({
-            login: login,
-            mdp: mdp,
-        }),
+    const json = await callAPI("newUser", {
+        login: login,
+        mdp: mdp,
     });
-    const json = await response.json();
+
     const data = json.data;
-    console.log(data);
+    // console.log(data);
     if (json.status == 'success') {
         // L'Authentification a réussi
         const msgErreur = await connectUser(login, mdp);
@@ -29,20 +26,17 @@ async function register(login, mdp) {
 
 async function connectUser(login, mdp) {
     try {
-        const response = await fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/connexion.php', {
-            method: 'POST',
-            body: new URLSearchParams({
-                login: login,
-                mdp: mdp,
-            })
+        const json = await callAPI("connexion", {
+            login: login,
+            mdp: mdp,
         });
-
-        const json = await response.json();
 
         if (json.status !== "success") {
             console.log(json.message);
             return json.message;
         }
+
+        createCookiesFromData(json.data);
 
         window.location.replace("index.html");
         return "";

@@ -1,16 +1,5 @@
 "use strict";
 
-//^ Data from the api
-let apiData;
-
-// http://localhost:5500/api/leaderboard
-await fetch("https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/getLeaderboard.php")
-.then(reponse => reponse.json())
-.then(realData => apiData = realData.data)
-.catch(error => console.error("Error : " + error));
-
-console.log(apiData)
-
 //^ Tag to modify with the data
 const titreNiv = document.getElementById("titre-niv");
 let cases = [];
@@ -49,7 +38,16 @@ for(let key in btnLabels) {
 buttons[5].class = "active";
 
 //^ Functions
-function changeAffichage(valueToChange) {
+async function changeAffichage(valueToChange) {
+
+    //^ Data from the api
+    const json = await callAPI("getLeaderboard");
+    if(json.status = 'error') {
+        console.log(json.message);
+    }
+
+    const apiData = json.data;
+    // console.log(apiData);
 
     const levelInfo = apiData["levels"].filter(data => data["id"] == valueToChange)[0];
     const id = levelInfo["id"];

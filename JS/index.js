@@ -1,4 +1,4 @@
-const cookieValue = document.cookie.split("; ").find((row) => row.startsWith("login="))?.split("=")[1]; // récupération de la valeur du cookie "login"
+const cookieValue = getCookie("login"); // récupération de la valeur du cookie "login"
 
 // VARIABLES TEST
 let isConnected = cookieValue ? true : false;
@@ -106,34 +106,31 @@ nouvellePartyButton.addEventListener("click", () => {
     popUpNewGame.style.visibility = "visible";
 });
 
-confirmerNouvellePartyButton.addEventListener("click", () => {
+confirmerNouvellePartyButton.addEventListener("click", async () => {
 
-    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/creerGame.php')
-    .then(response => response.json())
-    .then(json => {
-        console.log(json)
-        if (json.status == 'error') {
-            console.log(json.message);
-        }
-    });
+    const json = await callAPI("creerGame");
+
+    console.log(json)
+    if (json.status == 'error') {
+        console.log(json.message);
+    }
 
     window.location.replace("../HTML/phaser/lvl0.html");
 });
 
-continuePartyButton.addEventListener("click", () => {
+continuePartyButton.addEventListener("click", async () => {
 
-    fetch('https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/getGame.php')
-    .then(response => response.json())
-    .then(json => {
-        console.log(json)
-        if (json.status == 'error') {
-            console.log(json.message);
-        } else {
+    const json = await callAPI("getGame");
 
-            const id = json.data.level_id;
-            window.location.replace(`../HTML/phaser/lvl${id}.html`);
-        }
-    });
+    console.log(json)
+    if (json.status == 'error') {
+        console.log(json.message);
+    } else {
+
+        createCookiesFromData(json.data);
+        const id = json.data.level_id;
+        window.location.replace(`../HTML/phaser/lvl${id}.html`);
+    }
 });
 
 // remplissage pop-up

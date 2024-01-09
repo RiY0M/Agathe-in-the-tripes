@@ -7,24 +7,25 @@ $json["data"] = [];
 
 try {
 
-    if(!$_COOKIE["token"]) {
+    if(!$_POST["token"]) {
         throw new ErrorException("utilisateur non connecté, résultat non enregistré");
     }
     
     $query =
-    "SELECT level_id, hp_remain
+    "SELECT level_id, hp_remain, nb_dynamite
     FROM GAMES G
     INNER JOIN USERS U ON U.id = G.user_id
     WHERE token = :token
     ORDER BY G.id DESC;";
 
     $res = $db->prepare($query);
-    $res->bindParam(":token", $_COOKIE["token"], PDO::PARAM_STR);
+    $res->bindValue(":token", $_POST["token"] ?? '', PDO::PARAM_STR);
     $res->execute();
 
     $data = $res->fetch();
     $data["level_id"] = intval($data["level_id"]);
     $data["hp_remain"] = intval($data["hp_remain"]);
+    $data["nb_dynamite"] = intval($data["nb_dynamite"]);
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";

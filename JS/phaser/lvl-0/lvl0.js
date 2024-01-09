@@ -89,7 +89,9 @@ function create()
     createAnims(this);
     
     //? AFK ANIMS ?//
-    createAFK(this);    
+    createAFK(this);
+
+    // afficheInitialHearts(cookies.hpRemain);
 }
 
 function update()

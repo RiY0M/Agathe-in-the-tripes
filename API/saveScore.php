@@ -13,14 +13,14 @@ try {
     WHERE token = :token";
 
     $res = $db->prepare($query);
-    $res->bindValue(":token", $_COOKIE["token"] ?? '', PDO::PARAM_STR);
+    $res->bindValue(":token", $_POST["token"] ?? '', PDO::PARAM_STR);
     $res->execute();
     
     $data = $res->fetch(PDO::FETCH_ASSOC);
     $idGame = intval($data->game_id ?? null);
     $idUser = intval($data->user_id ?? null);
-    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? $_COOKIE["hpRemain"] ?? 3);
-    $nbDynamite = intval($data->nb_dynamite ?? $_COOKIE["nbDynamite"] ?? 0) + intval($_POST["get_dynamite"] ?? 0);
+    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? $_POST["hpRemain"] ?? 3);
+    $nbDynamite = intval($data->nb_dynamite ?? $_POST["nbDynamite"] ?? 0) + intval($_POST["get_dynamite"] ?? 0);
     
     // setcookie("hpRemain", $hpRemain, time() + 86400 * 365, "/");
     // setcookie("nbDynamite", $nbDynamite, time() + 86400 * 365, "/");
@@ -28,7 +28,7 @@ try {
     $json["data"]["hpRemain"] = $hpRemain;
     $json["data"]["nbDynamite"] = $nbDynamite;
 
-    if(!$_COOKIE["token"]) {
+    if(!$_POST["token"]) {
         throw new Exception("Utilisateur non connecté, résultat non enregistré");
     }
 

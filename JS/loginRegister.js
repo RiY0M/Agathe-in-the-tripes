@@ -36,6 +36,7 @@ async function connectUser(login, mdp) {
             return json.message;
         }
 
+        supprimeTousLesCookies();
         createCookiesFromData(json.data);
 
         window.location.replace("index.html");

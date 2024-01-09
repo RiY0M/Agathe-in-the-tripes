@@ -16,13 +16,16 @@ try {
     $res->bindValue(":token", $_POST["token"] ?? '', PDO::PARAM_STR);
     $res->execute();
     
-    $data = $res->fetch(PDO::FETCH_ASSOC);
+    $data = $res->fetch(PDO::FETCH_OBJ);
     $idGame = intval($data->game_id ?? null);
     $idUser = intval($data->user_id ?? null);
-    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? $_POST["hpRemain"] ?? 3);
-    $nbDynamite = intval($data->nb_dynamite ?? $_POST["nbDynamite"] ?? 0) + intval($_POST["get_dynamite"] ?? 0);
+    $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? 3);
+    $nbDynamite = intval($data->nb_dynamite ?? 0) + intval($_POST["get_dynamite"] ?? 0);
 
     $idNextLvl = intval($_POST["next_level_id"] ?? 7);
+
+    $json["data"]["id_game"] = $idGame;
+    $json["data"]["id_user"] = $idUser;
 
     $json["data"]["level_id"] = $idNextLvl;
     $json["data"]["hpRemain"] = $hpRemain;
@@ -55,10 +58,13 @@ try {
     $res->execute();
 
     if($idNextLvl == 7) {
+        $query =
+        "INSERT INTO SCORES (game_id, level_id, complete_time)
+        VALUES (:game_id, 7, 
+            (SELECT SUM(S1.complete_time) as complete_time FROM `SCORES` S1 WHERE S1.game_id = :game_id)
+        )";
         $res = $db->prepare($query);
         $res->bindParam(":game_id", $idGame, PDO::PARAM_INT);
-        $res->bindParam(":level_id", $idNextLvl, PDO::PARAM_INT);
-        $res->bindParam(":complete_time", $_POST["complete_time"]);
         $res->execute();
     }
 

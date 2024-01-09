@@ -24,6 +24,11 @@ function preload()
 
 function create()
 {
+    //* Theme de fond *//
+    music = this.sound.add("theme");
+    music.setLoop(true);
+    music.play();
+
     //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup()
     bg.create(400, 300, "lvl5-bg");

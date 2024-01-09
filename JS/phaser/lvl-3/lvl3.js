@@ -36,6 +36,9 @@ function create(){
     //* MAP *//
     tilemap(this);
 
+    //* SPRITE COEUR DU SQUELETTE *//
+    createSquelettonHeart(this);
+
     //~ SPRITE AGATHE ~//
     createAgathe(this);
 
@@ -48,6 +51,9 @@ function create(){
 
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
+
+    //! ACTION RECUP COEUR !//
+    this.physics.add.overlap(agathe, squelettonHeart, collectSquelettonHeart, null, this);
 
     //^ ANIMATIONS AGATHE (SPRITES) ^//
 
@@ -151,6 +157,9 @@ function update(){
         }
     }
 
+    // vérification de notre vie
+    if (nbHearts == 0) displayDeathScreen();
+
 }
 
 function collidePoison()
@@ -167,5 +176,18 @@ function collidePoison()
 
         // lancement des 3s d'invincibilité
         start3sCoolDown = true;
+    }
+}
+
+function collectSquelettonHeart(agathe, squelettonHeart) {
+
+    // suppression du coeur du squelette
+    squelettonHeart.disableBody(true, true);
+
+    // si agathe n'a pas toutes ses vies
+    if (nbHearts < 3) {
+        // on lui en rajoute une
+        nbHearts++;
+        reloadNbHearts();
     }
 }

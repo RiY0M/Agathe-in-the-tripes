@@ -1,14 +1,25 @@
 let agathe;                             // agathe personnage
+let rat;                                // rat pnj
+let MOVX = true;                        // le rat peut se déplacer en x
+let MOVY = true;                        // le rat peut se déplacer en y
+let allowRatToMove = false;             // autorisation deplacement rat
+let switchRatDirection = false;         // check si direction rat change ou pas
+let delaybeforeCapture = 0;             // délai avant que le rat puisse de nouveau être capturé
+let delaybeforeExplosion = 0;           // délai avant explosion dynamite
 let cursors;                            // détection clavier
 let lastFrame = 8;                      // last frame facing afk
 let canvasBorder;                       // bordure du canvas
 let blackBorders;                       // bordures noires limiter déplacement
+let poopDoor;                           // porte caca
 let oldOnPoop;                          // image pnj sur caca
 let flatThings;                         // images plates (sang, caca, ...)
-let bloodyRocks;                        // images cailloux de sang
+let bloodyRocks;                        // images cailloux de sang + caca
 let fakeBloodyRocks;                    // cailloux pouvant bouger
 let deadThings;                         // sprites trucs morts
 let sticks;                             // bâtons de dynamite à ramasser
+let dynamite;                           // dynamite pour péter la porte de caca
+let boom;                               // explosion de la dynamite
+let canDropDyna = false;                // var check si on peut mettre calque dyna
 let angryMinor;                         // sprite mineur
 
 let talkingTo = "";                     // variable pour savoir à qui on parle
@@ -32,6 +43,13 @@ let strangeRockDialogueList = [         // pensées devant le cailloux chelou
     "*Peut-être pourriez-vous la briser avec un outil adapté ?*"
 ];
 
+let canDestroyRock = false;                        // boolean pour savoir quand on peut péter le cailloux
+let strangeRockDialogueWithPickaxe = 0;            // check si on a déjà pensé devant le cailloux
+let strangeRockDialogueListWithPickaxe = [         // pensées devant le cailloux chelou
+    "*Grâce à la pioche du mineur vous arrivez désormais à casser cette pierre étrange*",
+    "*Vous la brisez et il n'en reste désormais plus que cet amas de poudre*",
+];
+
 let dialogueMinor = 0;                  // check si on a déjà parlé au mineur
 let dialogueMinorList = [               // dialogues du mineur
     "Quoi ?<br>Qu'est-ce que tu m'veux gamine ?",
@@ -42,12 +60,20 @@ let dialogueMinorList = [               // dialogues du mineur
     ""
 ];
 
+let dialogueRat = 0;
+let dialogueRatList = [
+    "*Vous venez d'attraper ce rat plutôt dégoutant*",
+    "*Le rat gesticule et vous vomit dessus*",
+    "*Vous obtenez du fil !*"
+]
+
 // variables des objets à récupérer
 let sticksGathered = 0;
 let hasPowder = false;
 let hasString = false;
 let hasLighter = false;
 let hasPickaxe = false;
+let hasDropDyna = false;
 
 
 function loadSpriteVariables(scene)
@@ -55,6 +81,7 @@ function loadSpriteVariables(scene)
     // bordure
     canvasBorder = scene.physics.add.staticGroup();
     blackBorders = scene.physics.add.staticGroup();
+    poopDoor = scene.physics.add.staticGroup();
 
     // PNJs
     oldOnPoop = scene.physics.add.staticGroup();
@@ -78,4 +105,10 @@ function loadSpriteVariables(scene)
 
     // poudre à canon
     powder = scene.physics.add.staticGroup();
+
+    // dynamite
+    dynamite = scene.physics.add.staticGroup();
+
+    // explosion
+    boom = scene.physics.add.sprite(760, 315, 'EXPLOSION').setScale(2).setVisible(false);
 }

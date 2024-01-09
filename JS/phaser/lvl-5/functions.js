@@ -11,7 +11,7 @@ function dialogueWithOld(scene, agathe)
             talkingTo = "oldOnPoop";
 
             // changement de l'image et du texte
-            changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[0]);
+            changeImgTextDialogue("../../../img/assets/lvl5/old-on-poop.png", oldDialogueList[0]);
 
             // affichage de la zone de dialogue
             displayTextArea(dialogueArea);
@@ -33,7 +33,7 @@ function dialogueWithStrangeRock()
         talkingTo = "strangeRock";
 
         // changement de l'image et du texte
-        changeImgTextDialogue("../../../img/assets/powder-rock.png", strangeRockDialogueList[0]);
+        changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[0]);
 
         // affichage de la zone de dialogue
         displayTextArea(dialogueArea);
@@ -44,20 +44,37 @@ function dialogueWithStrangeRock()
 }
 
 
+//% FONCTION DIALOGUE PIERRE POUDREUSE AVEC PIOCHE %//
+function dialogueWithStrangeRockWithPickaxe()
+{
+    // on regarde si on a déjà parlé à la pierre pour lancer le premier dialogue
+    talkingTo = "strangeRockPickaxe";
+
+    // changement de l'image et du texte
+    changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[0]);
+
+    // affichage de la zone de dialogue
+    displayTextArea(dialogueArea);
+
+    // on passe au dialogue suivant
+    strangeRockDialogueWithPickaxe++;
+}
+
+
 //% FONCTION DIALOGUE MINEUR %//
 function dialogueWithMinor(scene, agathe)
 {
     // vérification des coordonnées
-    if ((agathe.x >= 0 && agathe.x <= 65) && (agathe.y >= 150 && agathe.y <= 200))
+    if ((agathe.x >= 650 && agathe.x <= 700) && (agathe.y >= 475 && agathe.y <= 550))
     {
-        // on regarde si on a déjà parlé au vieux pour lancer le premier dialogue
+        // on regarde si on a déjà parlé au mineur pour lancer le premier dialogue
         if (dialogueMinor == 0)
         {
             // on indique à qui on parle
             talkingTo = "minor";
 
             // changement de l'image et du texte
-            changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[0]);
+            changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[0]);
 
             // affichage de la zone de dialogue
             displayTextArea(dialogueArea);
@@ -65,6 +82,28 @@ function dialogueWithMinor(scene, agathe)
             // on passe au dialogue suivant
             dialogueMinor++;
         }
+    }
+}
+
+
+//% FONCTION DIALOGUE RAT %//
+function dialogueWithRat(scene, agathe)
+{
+    
+    // on regarde si on a déjà parlé au rat pour lancer le premier dialogue
+    if (dialogueRat == 0)
+    {
+        // on indique à qui on parle
+        talkingTo = "rat";
+
+        // changement de l'image et du texte
+        changeImgTextDialogue("../../../img/assets/lvl5/rat.png", dialogueRatList[0]);
+
+        // affichage de la zone de dialogue
+        displayTextArea(dialogueArea);
+
+        // on passe au dialogue suivant
+        dialogueRat++;
     }
 }
 
@@ -119,10 +158,27 @@ document.addEventListener('keypress', (event) => {
 
                     // on affiche les objetcifs
                     displayObjectifs();
+
+                    // on autorise le rat à se déplcer
+                    allowRatToMove = true;
+
+                    // si on a le briquet
+                    if (hasLighter) {
+
+                        // si on a le briquet, on l'enlève pour le donner à agathe
+                        oldOnPoop.children.entries[0].setTexture("old-on-poop");
+
+                        // on change la liste des objectifs
+                        document.querySelector("#lvl5-objectifs-1").style.display = "none";
+                        document.querySelector("#lvl5-objectifs-2").style.visibility = "visible";
+
+                        // on drop la dyna
+                        canDropDyna = true;
+                    }
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
+                changeImgTextDialogue("../../../img/assets/lvl5/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
                 dialogueOldPoop++;
                 break;
 
@@ -135,10 +191,14 @@ document.addEventListener('keypress', (event) => {
 
                     dialogueArea.style.visibility = "hidden";
                     isDialogueAreaDisplayed = false;
+
+                    // on lui enlève sa pioche
+                    angryMinor.children.entries[0].disableBody(true, true);
+                    angryMinor.create(700, 525, "angry-minor");
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                 dialogueMinor++;
 
 
@@ -162,7 +222,7 @@ document.addEventListener('keypress', (event) => {
                         dialogueMinorList[5] = "Hein ? Tu te fiches de moi ?<br>T'as pas du bien comprendre la question, je vais te la reposer...";
                         
                         // changement visuel de texte
-                        changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
 
                         // on repose la question
                         dialogueMinor = 4;
@@ -177,7 +237,7 @@ document.addEventListener('keypress', (event) => {
                         dialogueMinorList[5] = "Ah oui oui oui oui oui !<br>Bien trouvé gamine !<br>Tiens, tu as mérité ma pioche !";
 
                         // changement visuel de texte
-                        changeImgTextDialogue("../../../img/assets/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                         dialogueMinor++;
 
                         // changement image skip
@@ -200,8 +260,46 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
+                changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
                 strangeRockDialogue++;
+                break;
+
+            
+            //% DIALOGUE PIERRE AVEC PIOCHE %//
+            case "strangeRockPickaxe":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (strangeRockDialogueWithPickaxe === strangeRockDialogueListWithPickaxe.length) {
+
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
+                    canDestroyRock = true;
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[strangeRockDialogueWithPickaxe]);
+                strangeRockDialogueWithPickaxe++;
+                break;
+
+            
+            //% DIALOGUE RAT %//
+            case "rat":
+                // si on arrive au dernier dialogue on ferme la zone d'affichage
+                if (dialogueRat === dialogueRatList.length) {
+
+                    dialogueArea.style.visibility = "hidden";
+                    isDialogueAreaDisplayed = false;
+
+                    // on donne le fil à l'utilisateur
+                    hasString = true;
+                    updateObjectifs();
+
+                    // on permet au rat de se déplacer à nouveau
+                    allowRatToMove = true;
+                }
+
+                // on passe au dialogue suivant
+                changeImgTextDialogue("../../../img/assets/lvl5/rat.png", dialogueRatList[dialogueRat]);
+                dialogueRat++;
                 break;
 
 
@@ -237,7 +335,7 @@ function updateStickNumber()
 function updateObjectifs()
 {
     // si on a le bon nombre de sticks
-    if (sticksGathered === 5) document.querySelector("#lvl5-objectifs-sticks").style.textDecorationLine = "line-through";
+    if (sticksGathered >= 5) document.querySelector("#lvl5-objectifs-sticks").style.textDecorationLine = "line-through";
 
     // si on a la poudre
     if (hasPowder) document.querySelector("#lvl5-objectifs-powder").style.textDecorationLine = "line-through";
@@ -247,6 +345,30 @@ function updateObjectifs()
 
     // si on a le briquet
     if (hasLighter) document.querySelector("#lvl5-objectifs-lighter").style.textDecorationLine = "line-through";
+
+    // si on a tous les objets que le vieux demande
+    if (sticksGathered >= 5 && hasPowder && hasString && !hasLighter) {
+
+        // on change le sprite du vieux
+        oldOnPoop.children.entries[0].setTexture("old-on-poop-lighter");
+
+        // reset dialogue
+        dialogueOldPoop = 0;            // check si on a déjà parlé au vieux
+        oldDialogueList = [             // dialogues du vieux au caca
+            "Ah je vois que tu as rassemblé tous ce qu'il fallait pour nous faire sortir d'ici.",
+            "Tiens, j'ai retrouvé ça au fond d'une de mes poches.<br>Ça te sera sûrement utile",
+            "*Vous obtenez un briquet !*",
+            "Tu devrais poser tout ton bric à brac devant ce gros tas de m**** si tu veux en finir avec ce monstre...",
+        ];
+
+        hasLighter = true;
+    }
+
+    // si on a déposé la dynamite
+    if (hasDropDyna) document.querySelector("#lvl5-objectifs-drop").style.textDecorationLine = "line-through";
+
+    // si on a allumé la dynamite
+    if (delaybeforeExplosion == 50) document.querySelector("#lvl5-objectifs-turn-on").style.textDecorationLine = "line-through";
 }
 
 
@@ -254,4 +376,51 @@ function updateObjectifs()
 function displayEnterKey()
 {
     document.querySelector("#enter-key").src = "../../../img/enter-key.png";
+}
+
+
+//* DEPLACEMENT DU RAT *//
+function moveThisFuckingRat()
+{
+    // si on a retiré la bordure noire
+    if (allowRatToMove) {
+
+        // on permet au rat de se déplacer
+
+        // si le rat se trouve dans un intervalle suffisament proche des abscisses souhaitées
+        if (rat.x > (ratPath._head.x -1) && rat.x < (ratPath._head.x +1)) {
+            // il arrête de se déplacer en x
+            rat.setVelocityX(0);
+            MOVX = false;
+        }
+        // sinon il se déplace
+        else {
+            rat.setVelocityX(ratPath._head.velX);
+            rat.anims.play(ratPath._head.anim, true);
+        }
+
+        // si le rat se trouve dans un intervalle suffisament proche des ordonnées souhaitées
+        if (rat.y > (ratPath._head.y -1) && rat.y < (ratPath._head.y +1)) {
+            // il arrête de se déplacer en y
+            rat.setVelocityY(0);
+            MOVY = false;
+        }
+        // sinon il se déplace
+        else {
+            rat.setVelocityY(ratPath._head.velY);
+            rat.anims.play(ratPath._head.anim, true);
+        }
+
+
+        // si le rat est arrivé aux coordonnées souhaitées
+        if (!MOVX && !MOVY) {
+
+            // on décale la tête pour passer à l'étape suivante
+            ratPath.decalage();
+            
+            // on indique qu'il faut à nouveau se déplacer
+            MOVX = true;
+            MOVY = true;
+        }
+    }
 }

@@ -77,13 +77,11 @@ function update(){
     if (cursors.left.isDown)
     {
         agathe.setVelocityX(-160);
-        hasMoved = true;
         agathe.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
         agathe.setVelocityX(160);
-        hasMoved = true;
         agathe.anims.play('right', true);
     }
     else
@@ -95,6 +93,7 @@ function update(){
 
     if (cursors.up.isDown && agathe.body.touching.down)
     {
+        hasMoved = true;
         agathe.setVelocityY(-450);
         
         if (agathe.y <= 105) //console.log("next lv");               

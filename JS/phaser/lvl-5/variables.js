@@ -21,6 +21,9 @@ let dynamite;                           // dynamite pour péter la porte de caca
 let boom;                               // explosion de la dynamite
 let canDropDyna = false;                // var check si on peut mettre calque dyna
 let angryMinor;                         // sprite mineur
+const idCurrentLvl = 5;      // Id du niveau courant
+const idNextLvl = 7;         // Id du prochain niveau
+let startTime = new Date().getTime(); // Starting time for the chronometer
 
 let talkingTo = "";                     // variable pour savoir à qui on parle
 let dialogueArea;                       // zone de dialogue

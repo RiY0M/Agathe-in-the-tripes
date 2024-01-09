@@ -111,6 +111,7 @@ function update()
     //^ANIMATION RAT (AUTOMATIQUE) ^//
     moveThisFuckingRat();
 
+    // changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain);
 
     //? CHECK COLLISION AGATHE - RAT ?//
     // si on tape le rat et que l'on a pas encore récupéré le fil

@@ -74,7 +74,7 @@ function update(){
     lastFrame = createMove(agathe, cursors, lastFrame)[0];
 
     if (agathe.x >= 1580) {
-        window.location.replace("./lvl5.html");
+        changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts/*, getDynamite*/);
     }
 
     // innerWidth = taille écran disponible

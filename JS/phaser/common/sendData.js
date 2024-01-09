@@ -34,8 +34,19 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, g
     // Appel API
     await sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
 
+    if(idNextLvl == 7) {
+        window.location.replace(`../credits.html`);
+    }
+
     // Changement map
     window.location.replace(`./lvl${idNextLvl}.html`);
+}
+
+function getCredited() {
+    supprimeTousLesCookies();
+
+    // Changement map
+    window.location.replace(`./index.html`);
 }
 
 function getCookies() {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,50 +15,53 @@
 
     <div id="body">
         <div id="credit-content">
+            <div>
 
-        <h1 id="credit-title">Merci d'avoir joué à notre jeu !</h1>
-        
-        <h2 id="credit-subtitle">Les développeurs de Agathe In the Tripes souhaitent remercier et créditer&nbsp;:</h2>
-        
-        <ul id="credit-thanks-list">
+                <h1 id="credit-title">Merci d'avoir joué à notre jeu&nbsp;!</h1>
 
-            <li>Sithjester et angel-of-britannia pour le sprite de Agathe</li>
-            <li>Dall-E pour son sprite de la grotte dans le lvl-0</li>
-            <li>Undertale pour sa musique Snowy</li>
-            <li>Minecraft pour ses bruits de pas dans la neige, dans le sable et de silverfish</li>
-            <li>Roblox pour son bruit de dégâts</li>
-            <li>The Binding of Isaac pour ses musiques Pulso Profundum et Anima Vendit</li>
-            <li>Nintendo pour sa musique de Super Mario 64 Slider Race Theme Song et de 1up</li>
-            <li>Pokémon pour sa musique du jeu Donjon Mystère 3 Grotte Étuve</li>
-            <li>MyxelPyxel pour son sprite du mineur dans le lvl-5</li>
-            <li>Cassy pour ses idées de sprites du lvl-1</li>
-            <li>Lilisagi pour sa magnifique illustration d'Agathe In the Tripes</li>
+                <h2 id="credit-subtitle">Les développeurs de Agathe In the Tripes souhaitent remercier et
+                    créditer&nbsp;:</h2>
+
+                <ul id="credit-thanks-list">
+
+                    <li>Sithjester et angel-of-britannia pour le sprite de Agathe</li>
+                    <li>Dall-E pour son sprite de la grotte dans le lvl-0</li>
+                    <li>Undertale pour sa musique Snowy</li>
+                    <li>Minecraft pour ses bruits de pas dans la neige, dans le sable et de silverfish</li>
+                    <li>Roblox pour son bruit de dégâts</li>
+                    <li>The Binding of Isaac pour ses musiques Pulso Profundum et Anima Vendit</li>
+                    <li>Nintendo pour sa musique de Super Mario 64 Slider Race Theme Song et de 1up</li>
+                    <li>Pokémon pour sa musique du jeu Donjon Mystère 3 Grotte Étuve</li>
+                    <li>MyxelPyxel pour son sprite du mineur dans le lvl-5</li>
+                    <li>Cassy pour ses idées de sprites du lvl-1</li>
+                    <li>Lilisagi pour sa magnifique illustration d'Agathe In the Tripes</li>
 
                 </ul>
 
                 <h2>Les développeurs du Bahaha_studio&nbsp;:</h3>
 
-                <div id="bahaha-devs">
+                    <div id="bahaha-devs">
 
-                    <div id="bahaha-dev-justin" class="bahaha-dev">
-                        <img src="../img/justin.png">
-                        <span>Justin</span>
+                        <div id="bahaha-dev-justin" class="bahaha-dev">
+                            <img src="../img/justin.png">
+                            <span>Justin</span>
+                        </div>
+
+                        <div id="bahaha-dev-yoni" class="bahaha-dev">
+                            <img src="../img/yoni.png">
+                            <span>Yoni</span>
+                        </div>
+
+                        <div id="bahaha-dev-victor" class="bahaha-dev">
+                            <img src="../img/victor.png">
+                            <span>Victor</span>
+                        </div>
+
+                        <div></div>
+
                     </div>
-
-                    <div id="bahaha-dev-yoni" class="bahaha-dev">
-                        <img src="../img/yoni.png">
-                        <span>Yoni</span>
-                    </div>
-
-                    <div id="bahaha-dev-victor" class="bahaha-dev">
-                        <img src="../img/victor.png">
-                        <span>Victor</span>
-                    </div>
-
-                    <div></div>
-
-                </div>
             </div>
+
 
             <div style="text-align: right; margin-top: auto;">
                 <button id="retour">Accueil</button>
@@ -70,7 +74,7 @@
         </div>
 
     </div>
-    
+
 </body>
 
 <footer></footer>
@@ -79,19 +83,19 @@
 <script src="../JS/footer.js"></script>
 <script src="../JS/header.js"></script>
 <script>
-function getCredited() {
-    document.cookie = `level_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-    document.cookie = `hpRemain=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-    document.cookie = `nbDynamite=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    function getCredited() {
+        document.cookie = `level_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+        document.cookie = `hpRemain=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+        document.cookie = `nbDynamite=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
 
-    // Changement map
-    window.location.replace(`./index.html`);
-}
+        // Changement map
+        window.location.replace(`./index.html`);
+    }
 
-document.getElementById("retour").addEventListener("click", () => {
+    document.getElementById("retour").addEventListener("click", () => {
 
-    getCredited();
-});
+        getCredited();
+    });
 
 </script>
 

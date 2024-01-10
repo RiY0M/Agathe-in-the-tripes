@@ -12,7 +12,8 @@
 
 <body>
 
-    <div id="credit-content">
+    <div id="body">
+        <div id="credit-content">
 
         <h1 id="credit-title">Merci d'avoir joué à notre jeu !</h1>
         
@@ -32,36 +33,43 @@
             <li>Cassy pour ses idées de sprites du lvl-1</li>
             <li>Lilisagi pour sa magnifique illustration d'Agathe In the Tripes</li>
 
-        </ul>
+                </ul>
 
-        <h2>Les développeurs du Bahaha_studio :</h3>
+                <h2>Les développeurs du Bahaha_studio&nbsp;:</h3>
 
-        <div id="bahaha-devs">
+                <div id="bahaha-devs">
 
-            <div id="bahaha-dev-justin" class="bahaha-dev">
-                <img src="../img/justin.png">
-                <span>Justin</span>
+                    <div id="bahaha-dev-justin" class="bahaha-dev">
+                        <img src="../img/justin.png">
+                        <span>Justin</span>
+                    </div>
+
+                    <div id="bahaha-dev-yoni" class="bahaha-dev">
+                        <img src="../img/yoni.png">
+                        <span>Yoni</span>
+                    </div>
+
+                    <div id="bahaha-dev-victor" class="bahaha-dev">
+                        <img src="../img/victor.png">
+                        <span>Victor</span>
+                    </div>
+
+                    <div></div>
+
+                </div>
             </div>
 
-            <div id="bahaha-dev-yoni" class="bahaha-dev">
-                <img src="../img/yoni.png">
-                <span>Yoni</span>
+            <div style="text-align: right; margin-top: auto;">
+                <button id="retour">Accueil</button>
             </div>
-
-            <div id="bahaha-dev-victor" class="bahaha-dev">
-                <img src="../img/victor.png">
-                <span>Victor</span>
-            </div>
-
-            <div></div>
 
         </div>
 
+        <div id="img-agathe-artiste-schandel">
+            <img src="../img/ait_cover.jpeg" alt="cover" id="image">
+        </div>
+
     </div>
-
-    <div id="img-agathe-artiste-schandel"></div>
-
-
     
 </body>
 
@@ -70,5 +78,21 @@
 <script src="../JS/createCookiesFromData.js"></script>
 <script src="../JS/footer.js"></script>
 <script src="../JS/header.js"></script>
+<script>
+function getCredited() {
+    document.cookie = `level_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    document.cookie = `hpRemain=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    document.cookie = `nbDynamite=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+
+    // Changement map
+    window.location.replace(`./index.html`);
+}
+
+document.getElementById("retour").addEventListener("click", () => {
+
+    getCredited();
+});
+
+</script>
 
 </html>

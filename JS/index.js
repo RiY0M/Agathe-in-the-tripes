@@ -36,7 +36,7 @@ if (!alreadyInGame) {
     nouvellePartyButton.style.marginTop = "-10rem";
 }
 
-loginRegisterButton.value = isConnected ? "Inscription" : "Déconnexion";
+loginRegisterButton.value = !isConnected ? "Inscription" : "Déconnexion";
 
 // on permet à l'utilisateur de voir le formulaire de deconnexion
 

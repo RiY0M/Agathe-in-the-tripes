@@ -9,7 +9,7 @@ headerAccueil.href = "../HTML/index.html";
 headerAccueil.textContent = "Accueil";
 
 // dashboard scores
-// const dashboardScores = document.createElement("a");
+const dashboardScores = document.createElement("a");
 // dashboardScores.id = "header-dashboard-button"
 // dashboardScores.href = "../HTML/leaderboard.html";
 // dashboardScores.textContent = "Scores";
@@ -34,8 +34,8 @@ profilePicture.id = "header-agathe-img"
 profilePicture.src = "../img/agathe.png";
 
 header.appendChild(headerAccueil);
-header.appendChild(dashboardScores);
 header.appendChild(creditRemerciements);
+header.appendChild(dashboardScores);
 header.appendChild(emptySpan);
 header.appendChild(nomJoueur);
 header.appendChild(profilePicture);

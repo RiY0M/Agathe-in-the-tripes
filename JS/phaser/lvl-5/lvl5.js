@@ -14,7 +14,7 @@ let config = {
 
 //$ CREATION FENETRE PHASER $//
 let game = new Phaser.Game(config);
-sticks = cookies.nbDynamite;
+sticksGathered = cookies.nbDynamite;
 
 
 function preload()

@@ -31,6 +31,7 @@ function preload()
 function create()
 {
     music = this.sound.add("theme");
+    music.volume -= 0.9;
     music.setLoop(true);
     music.play();
 

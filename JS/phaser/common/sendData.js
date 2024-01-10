@@ -43,13 +43,6 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, n
     window.location.replace(`./lvl${idNextLvl}.html`);
 }
 
-function getCredited() {
-    supprimeTousLesCookies();
-
-    // Changement map
-    window.location.replace(`./index.html`);
-}
-
 function getCookies() {
     const hpRemain = getCookie("hpRemain");
     const nbDynamite = getCookie("nbDynamite");

@@ -32,7 +32,7 @@ function create()
 {
     music = this.sound.add("theme");
     music.setLoop(true);
-    //music.play();
+    music.play();
 
     //* SPRITE BORDURE DU HAUT *//
     createTopBorder(this);
@@ -100,21 +100,22 @@ function create()
 
 
 function update()
-{
-    if (cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.down.isDown) {
-        if (!isWalking) {
-            isWalking = true; // Met à jour l'état de la marche
-            steps.play(); 
-        }
-    } else {
-        if (isWalking) {
-            isWalking = false; // Agathe marche 
+{   
+    //* Ce code permet de rajouter des bruits de pas. Cpdt, JS lag et donne un résultat à désirer. *//
+    // if (cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.down.isDown) {
+    //     if (!isWalking) {
+    //         isWalking = true; // Met à jour l'état de la marche
+    //         steps.play(); 
+    //     }
+    // } else {
+    //     if (isWalking) {
+    //         isWalking = false; // Agathe marche 
     
-            this.time.delayedCall(900, () => { // Delai pour 1sec
-                steps.stop();
-            });
-        }
-    }
+    //         this.time.delayedCall(900, () => { // Delai pour 1sec
+    //             steps.stop();
+    //         });
+    //     }
+    // }
 
 
     //^ ANIMATIONS AGATHE (CLAVIER) ^//

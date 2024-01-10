@@ -64,4 +64,6 @@ function loadImages(scene)
 
     // EXPLOSION
     scene.load.spritesheet("EXPLOSION", "../../../img/assets/lvl5/EXPLOSION.png", {frameWidth: 64, frameHeight: 64} );
+    scene.load.audio('theme', '../../sound/lvl5/lvl5.mp3');
+
 }

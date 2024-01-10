@@ -8,7 +8,7 @@ function loadImages(scene){
     scene.load.image("platforms", "../../img/TileMapsLv3/platforme.png");
 
     //chargement du theme
-    scene.load.audio('theme', '../../sound/lvl3.mp3');
+    scene.load.audio('theme', '../../sound/lvl3/lvl3.mp3');
 
     scene.load.image('wall', '../../img/TileMapsLv3/wall.png')
     scene.load.image("squeletton-heart", "../../img/assets/lvl1/squeletton-heart.png");

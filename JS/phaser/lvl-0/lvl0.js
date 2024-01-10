@@ -31,6 +31,7 @@ function preload()
 function create()
 {
     music = this.sound.add("theme");
+    music.setLoop(true);
     music.play();
 
     //* SPRITE BORDURE DU HAUT *//

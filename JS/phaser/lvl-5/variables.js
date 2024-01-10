@@ -115,3 +115,4 @@ function loadSpriteVariables(scene)
     // explosion
     boom = scene.physics.add.sprite(760, 315, 'EXPLOSION').setScale(2).setVisible(false);
 }
+let music;                  //Theme (musique de fond)

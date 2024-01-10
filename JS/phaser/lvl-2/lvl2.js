@@ -29,6 +29,7 @@ function create()
 {
     //* Theme de fond *//
     music = this.sound.add("theme");
+    music.setLoop(true);
     music.play();
 
     this.scrollSpeed = 6;

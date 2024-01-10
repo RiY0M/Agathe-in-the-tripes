@@ -9,7 +9,7 @@ function loadImages(scene){
     scene.load.tilemapTiledJSON('tilemap', '../../img/TileMapsLv4/game.json')
 
     //chargement du theme
-    scene.load.audio('theme', '../../sound/lvl4.mp3');
+    scene.load.audio('theme', '../../sound/lvl4/lvl4.mp3');
 
     // chargement coeur mort
     scene.load.image("squeletton-heart", "../../../img/assets/lvl1/squeletton-heart.png");

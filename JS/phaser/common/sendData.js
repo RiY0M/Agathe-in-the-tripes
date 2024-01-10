@@ -36,6 +36,7 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, n
 
     if(idNextLvl == 7) {
         window.location.replace(`../credits.html`);
+        return;
     }
 
     // Changement map

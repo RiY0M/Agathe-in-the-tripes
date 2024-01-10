@@ -1,7 +1,11 @@
-body {
+* {
+    box-sizing: border-box;
+}
+
+#body {
     /* border: 5px solid blue; */
     display: grid;
-    grid-template-columns: 60fr 40fr;
+    grid-template-columns: 3fr 2fr;
     background-color: #36393e;
 
     margin: 0;
@@ -9,6 +13,7 @@ body {
     padding: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
+    /* height: calc(100vh - 10rem); */
 }
 
 #credit-content {
@@ -56,9 +61,18 @@ body {
 #img-agathe-artiste-schandel {
     /* border: 5px dashed greenyellow; */
     
-    background-image: url("../img/ait_cover.jpeg");
+    /* background-image: url("../img/ait_cover.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: 70%;
-    height: 100%;
+    background-position: 70%; */
+    height: calc(100vh - 10rem);
+    text-align: center;
+}
+
+#test {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
 }

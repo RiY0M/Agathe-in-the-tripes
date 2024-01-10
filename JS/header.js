@@ -9,10 +9,10 @@ headerAccueil.href = "../HTML/index.html";
 headerAccueil.textContent = "Accueil";
 
 // dashboard scores
-const dashboardScores = document.createElement("a");
-dashboardScores.id = "header-dashboard-button"
-dashboardScores.href = "../HTML/leaderboard.html";
-dashboardScores.textContent = "Scores";
+// const dashboardScores = document.createElement("a");
+// dashboardScores.id = "header-dashboard-button"
+// dashboardScores.href = "../HTML/leaderboard.html";
+// dashboardScores.textContent = "Scores";
 
 // credit/remerciements
 const creditRemerciements = document.createElement("a");

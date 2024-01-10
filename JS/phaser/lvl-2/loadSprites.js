@@ -17,8 +17,8 @@ function loadImages(scene)
     scene.load.image("blob", "../../../img/assets/lvl2/blob.png");
     scene.load.image("house", "../../../img/assets/lvl2/house.png");
 
-    scene.load.image("heart", "../../../img/assets/common/heart.png");
-    scene.load.image("dynamite", "../../../img/assets/common/dynamite-stick.png");
+    scene.load.image("heart", "../../img/assets/common/heart.png");
+    scene.load.image("dynamite", "../../img/assets/common/dynamite-stick.png");
 
     // chargement bordure du haut
     scene.load.image("border-0", "../../../img/assets/common/border-0.png");
@@ -30,4 +30,5 @@ function loadImages(scene)
     scene.load.audio('bump', '../../sound/lvl2/bumpObstacle.mp3');
 
     scene.load.audio('theme', '../../sound/lvl2/lvl2.mp3');
+    scene.load.audio('newHeart', "../../sound/common/newHeart.mp3");
 }

@@ -42,6 +42,7 @@ function create(){
     music.volume -= 0.8;
     music.setLoop(true);
     music.play();
+    newHeart = this.sound.add("newHeart");
 
     //* MAP *//
     tilemap(this);
@@ -208,6 +209,7 @@ function collectSquelettonHeart(agathe, squelettonHeart) {
     if (nbHearts < 3) {
         // on lui en rajoute une
         nbHearts++;
+        newHeart.play();
         reloadNbHearts();
     }
 }

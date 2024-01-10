@@ -30,6 +30,7 @@ function create(){
     music = this.sound.add("theme");
     music.setLoop(true);
     music.play();
+    newHeart = this.sound.add("newHeart");
 
     //* TACHES DE SANG *//
     tacheDeSang(this);
@@ -105,6 +106,7 @@ function collectSquelettonHeart(agathe, squelettonHeart) {
     if (nbHearts < 3) {
         // on lui en rajoute une
         nbHearts++;
+        newHeart.play();
         reloadNbHearts();
     }
 }

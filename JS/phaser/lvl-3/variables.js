@@ -16,6 +16,7 @@ let wall;
 
 let platforms;
 let music;                  //Theme (musique de fond) 
+let newHeart;
 
 let start3sCoolDown = false;    // lancement de l'invincibilité
 let invicibility = 150;         // temps d'immortalité

@@ -21,4 +21,5 @@ function loadImages(scene){
 
     // dégât
     scene.load.audio('damage', '../../sound/common/damage.mp3');
+    scene.load.audio('newHeart', "../../sound/common/newHeart.mp3");
 }

@@ -32,6 +32,7 @@ function create()
     music.volume -= 0.9;
     music.setLoop(true);
     music.play();
+    newHeart = this.sound.add("newHeart");
 
     this.scrollSpeed = 6;
 
@@ -169,6 +170,7 @@ function getHeart(character, heart) {
     console.log("collide hearts");
     if (nbHearts < 3) {
         nbHearts = 1 + cookies.hpRemain;
+        newHeart.play();
         reloadNbHearts();
     }
     heart.visible = false;

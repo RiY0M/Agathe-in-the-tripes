@@ -29,6 +29,14 @@ function preload(){
 }
 
 function create(){
+
+    // bg
+    for (let y = 3000; y > 0; y -= 970) {
+        this.add.image(400, y, 'background').setScale(0.45);
+        this.add.image(400, y-485, 'background-reversed').setScale(0.45);
+    }
+
+
     //* Theme de fond *//
     music = this.sound.add("theme");
     music.play();
@@ -44,6 +52,11 @@ function create(){
 
     //*Murs*//
     createWalls(this);
+
+    // plateforme fond
+    this.add.image(150, 3186, "flesh-wall").setScale(2);
+    this.add.image(470, 3186, "flesh-wall").setScale(2).flipX=true;
+    this.add.image(700, 3186, "flesh-wall").setScale(2);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, platforms);
@@ -69,7 +82,6 @@ function create(){
 
     //* Nuage de Poison *//
     this.poison = this.add.graphics(); // Ajout du poison
-    
 }
 
 function update(){
@@ -134,7 +146,7 @@ function update(){
         let poisonHeight = size_poison * Vitesse_de_poison;
         this.poison.fillRect(0, poisonY, 800, poisonHeight); // Taille du poison
     
-        this.poison.fillStyle(0x2dff2d); // Couleur de barre remplie
+        this.poison.fillStyle(0x5cc43d); // Couleur de barre remplie
     
         if (Vitesse_de_poison < 1) {
             Vitesse_de_poison += augmentation_poison; // Vitesse de poison

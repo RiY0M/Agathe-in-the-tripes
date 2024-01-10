@@ -28,6 +28,7 @@ function preload(){
 function create(){
     //* Theme de fond *//
     music = this.sound.add("theme");
+    music.setLoop(true);
     music.play();
 
     //* TACHES DE SANG *//

@@ -2,7 +2,7 @@
 document.querySelector("#header-accueil-button").href = "../../HTML/index.html";
 
 // dashboard scores
-document.querySelector("#header-dashboard-button").href = "../../HTML/leaderboard.html";
+// document.querySelector("#header-dashboard-button").href = "../../HTML/leaderboard.html";
 
 // credits
 document.querySelector("#header-credits-button").href = "../../HTML/credits.html";

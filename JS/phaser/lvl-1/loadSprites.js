@@ -36,4 +36,5 @@ function loadImages(scene)
 
     //chargement du theme
     scene.load.audio('theme', '../../sound/lvl1/lvl1.mp3');
+    scene.load.audio('teeth', "../../sound/lvl1/teeth.mp3");
 }

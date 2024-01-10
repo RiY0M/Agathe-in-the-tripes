@@ -18,4 +18,7 @@ function loadImages(scene){
     scene.load.image('background', '../../img/TileMapsLv3/lvl-3-bg.png');
     scene.load.image('background-reversed', '../../img/TileMapsLv3/lvl-3-bg-reversed.png');
     scene.load.image('flesh-wall', '../../img/TileMapsLv3/flesh-wall.png');
+
+    // dégât
+    scene.load.audio('damage', '../../sound/common/damage.mp3');
 }

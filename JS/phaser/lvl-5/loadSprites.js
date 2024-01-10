@@ -5,6 +5,8 @@ function loadImages(scene)
 
     // chargement sprites rat
     scene.load.spritesheet("rat", "../../../img/assets/lvl5/rat_sprite.png", { frameWidth: 50, frameHeight: 50 });
+    scene.load.audio('ratDamage', "../../sound/lvl5/ratDamage.mp3");
+    scene.load.audio('ratVomit', "../../sound/lvl5/ratVomit.mp3");
 
     // bordures du canvas
     scene.load.image("horizontalBorder", "../../../img/assets/lvl5/horizontal-border.png");
@@ -25,6 +27,7 @@ function loadImages(scene)
 
     // pierre étrange
     scene.load.image("powder-rock", "../../../img/assets/lvl5/powder-rock.png");
+    scene.load.audio('breakingStone', "../../sound/lvl5/breakingStone.mp3");
 
     // poudre à canon
     scene.load.image("powder", "../../../img/assets/lvl5/gunpowder.png");
@@ -64,6 +67,8 @@ function loadImages(scene)
 
     // EXPLOSION
     scene.load.spritesheet("EXPLOSION", "../../../img/assets/lvl5/EXPLOSION.png", {frameWidth: 64, frameHeight: 64} );
-    scene.load.audio('theme', '../../sound/lvl5/lvl5.mp3');
+    scene.load.audio('explosion', '../../sound/lvl5/explosion.mp3');
 
+    // audio theme
+    scene.load.audio('theme', '../../sound/lvl5/lvl5.mp3');
 }

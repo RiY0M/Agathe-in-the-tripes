@@ -29,6 +29,7 @@ function create()
     music = this.sound.add("theme");
     music.setLoop(true);
     music.play();
+    newHeart = this.sound.add("newHeart");
     
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
@@ -303,5 +304,6 @@ function collectSquelettonHeart(agathe, squelettonHeart) {
         // on lui en rajoute une
         nbHearts++;
         reloadNbHearts();
+        newHeart.play();
     }
 }

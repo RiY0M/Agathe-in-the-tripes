@@ -125,6 +125,7 @@ function update()
 
                 // sound-effect
                 music = this.sound.add("teeth");
+                music.volume -= 0.3;
                 music.play();
             }
         });
@@ -154,6 +155,7 @@ function update()
 
                 // sound-effect
                 music = this.sound.add("teeth");
+                music.volume -= 0.3;
                 music.play();
             }
         });
@@ -183,6 +185,7 @@ function update()
 
                 // sound-effect
                 music = this.sound.add("teeth");
+                music.volume -= 0.3;
                 music.play();
             }
         });
@@ -213,6 +216,7 @@ function update()
 
                 // sound-effect
                 music = this.sound.add("teeth");
+                music.volume -= 0.3;
                 music.play();
             }
 

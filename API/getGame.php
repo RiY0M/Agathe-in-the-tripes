@@ -23,6 +23,7 @@ try {
     $res->execute();
 
     $data = $res->fetch();
+    if($data["level_id"] == "7") $data = null;
     $json["data"]["level_id"] = intval($data["level_id"] ?? $_POST["level_id"] ?? 0);
     $json["data"]["hpRemain"] = intval($data["hp_remain"] ?? $_POST["hp_remain"] ?? 3);
     $json["data"]["nbDynamite"] = intval($data["nb_dynamite"] ?? $_POST["nb_dynamite"] ?? 0);

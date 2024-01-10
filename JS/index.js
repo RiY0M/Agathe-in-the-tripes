@@ -30,8 +30,8 @@ const headerPseudo = document.querySelector("#header-player-name");
 const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
 
 
-// si le joueur n'a pas de partie en cours on cache le bouton "nouvelle partie"
-if (!alreadyInGame) { 
+// si le joueur n'a pas de partie en cours on cache le bouton "continuer partie"
+if (!alreadyInGame && getCookie("level_id") !== "7") { 
     continuePartyButton.style.display = "none";
     nouvellePartyButton.style.marginTop = "-10rem";
 }

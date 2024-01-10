@@ -27,7 +27,7 @@ function loadImages(scene)
 
     // pierre étrange
     scene.load.image("powder-rock", "../../img/assets/lvl5/powder-rock.png");
-    scene.load.audio('breakingStone', "../../sound/lvl5/BreakingStone.mp3");
+    scene.load.audio('breakingStone', "../../sound/lvl5/breakingStone.mp3");
 
     // poudre à canon
     scene.load.image("powder", "../../img/assets/lvl5/gunpowder.png");

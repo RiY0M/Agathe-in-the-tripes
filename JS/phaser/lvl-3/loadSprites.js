@@ -14,4 +14,8 @@ function loadImages(scene){
     scene.load.image("squeletton-heart", "../../img/assets/lvl1/squeletton-heart.png");
     scene.load.image("blood-1", "../../img/assets/common/blood-1.png");
 
+    // bg
+    scene.load.image('background', '../../img/TileMapsLv3/lvl-3-bg.png');
+    scene.load.image('background-reversed', '../../img/TileMapsLv3/lvl-3-bg-reversed.png');
+    scene.load.image('flesh-wall', '../../img/TileMapsLv3/flesh-wall.png');
 }

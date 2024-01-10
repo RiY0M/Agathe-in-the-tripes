@@ -32,7 +32,7 @@ function create()
 {
     music = this.sound.add("theme");
     music.setLoop(true);
-    music.play();
+    //music.play();
 
     //* SPRITE BORDURE DU HAUT *//
     createTopBorder(this);
@@ -93,10 +93,30 @@ function create()
     createAFK(this);
 
     // afficheInitialHearts(cookies.hpRemain);
+    steps = this.sound.add("steps");
+    steps.setLoop(true);
 }
+
+
 
 function update()
 {
+    if (cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.down.isDown) {
+        if (!isWalking) {
+            isWalking = true; // Met à jour l'état de la marche
+            steps.play(); 
+        }
+    } else {
+        if (isWalking) {
+            isWalking = false; // Agathe marche 
+    
+            this.time.delayedCall(900, () => { // Delai pour 1sec
+                steps.stop();
+            });
+        }
+    }
+
+
     //^ ANIMATIONS AGATHE (CLAVIER) ^//
     tab = createMove(agathe, cursors, lastFrame);
     lastFrame = tab[0];

@@ -142,11 +142,11 @@ function hitObstacle(character, obstacles) {
         agathe.y = initialY;
         startTime = new Date().getTime();
         moveLevel(-xScroll);
-        // heart.disableBody(false, false);
-        // dynamite.disableBody(false, false);
         heart.visible = true;
         dynamite.visible = true;
-        hasDynamite = false;
+        nbHearts = cookies.hpRemain;
+        reloadNbHearts();
+        nbDynamite = cookies.nbDynamite;
         hasMoved = false;
         levelStop = false;
     }, 1000);
@@ -155,22 +155,21 @@ function hitObstacle(character, obstacles) {
 //^ Si agathe touche le coeur ^//
 function getHeart(character, heart) {
 
-    // heart.disableBody(true, true);
-    heart.visible = false;
+    console.log("collide hearts");
     if (nbHearts < 3) {
-        nbHearts++;
+        nbHearts = 1 + cookies.hpRemain;
         reloadNbHearts();
     }
+    heart.visible = false;
 }
 
 //^ Si agathe touche le coeur ^//
 function getDynamite(character, dynamite) {
-    // dynamite.disableBody(true, true);
+    nbDynamite = cookies.nbDynamite + 1;
     dynamite.visible = false;
-    hasDynamite = true;
 }
 
 //^ Si Agathe termine le niveau ^//
 function reachEnd(character, end) {
-    changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts, hasDynamite);
+    changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts, nbDynamite);
 }

@@ -20,7 +20,7 @@ try {
     $idGame = intval($data->game_id ?? null);
     $idUser = intval($data->user_id ?? null);
     $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? 3);
-    $nbDynamite = intval($data->nb_dynamite ?? 0) + intval(boolval($_POST["get_dynamite"] ?? 0));
+    $nbDynamite = intval($data->nb_dynamite ?? 0) + intval($_POST["nb_dynamite"] ?? 0);
 
     $idNextLvl = intval($_POST["next_level_id"] ?? 7);
 

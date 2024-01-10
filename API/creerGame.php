@@ -3,7 +3,11 @@
 require_once "./connexionBDD.php";
 
 $json = [];
-$json["data"] = [];
+$json["data"] = [
+    "hpRemain" => 3,
+    "nbDynamite" => 0,
+    "level_id" => 0
+];
 
 try {
 

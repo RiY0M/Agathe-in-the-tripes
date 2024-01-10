@@ -110,7 +110,7 @@ confirmerNouvellePartyButton.addEventListener("click", async () => {
 
     const json = await callAPI("creerGame");
 
-    console.log(json)
+    createCookiesFromData(json.data);
     if (json.status == 'error') {
         console.log(json.message);
     }

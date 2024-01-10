@@ -9,7 +9,7 @@ let obstacles = [];         // sprites cailloux
 let borders;                // bordure du haut et du bas
 let heart;
 let dynamite;
-let hasDynamite = false;
+let nbDynamite = parseInt(getCookie("nbDynamite"));
 let hasMoved = false;       // booleen verif si affi ou non tuto                  
 // let tutoDeplacement;        // message tutoriel pour apprendre touches
 let xScroll = 0;             // Compteur pour combien on a scroll dans le niveau

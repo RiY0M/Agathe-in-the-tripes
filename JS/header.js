@@ -18,7 +18,7 @@ dashboardScores.textContent = "Scores";
 let creditRemerciements = document.createElement("a");
 creditRemerciements.id = "header-credits-button"
 creditRemerciements.href = "../HTML/credits.html";
-creditRemerciements.textContent = "Credits";
+creditRemerciements.textContent = "Crédits";
 
 // span vide de délimitation
 let emptySpan = document.createElement("span");

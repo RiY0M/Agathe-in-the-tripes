@@ -1,13 +1,13 @@
 "use strict";
 
-async function sendData(idLevel, idNextLevel, time, hp_remain = 3, getDynamite = false) {
+async function sendData(idLevel, idNextLevel, time, hp_remain = 3, nbDynamite = 0) {
 
     const json = await callAPI("saveScore", {
         level_id: idLevel,
         next_level_id: idNextLevel,
         complete_time: time,
         hp_remain: hp_remain,
-        get_dynamite: getDynamite,
+        nb_dynamite: nbDynamite,
     });
 
     if (json.status == 'error') {
@@ -23,7 +23,7 @@ async function sendData(idLevel, idNextLevel, time, hp_remain = 3, getDynamite =
  * int idCurrentLvl : id du niveau actuel
  * int idNextLvl : id du niveau suivant
  */
-async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, getDynamite = false) {
+async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, nbDynamite = 0) {
 
     game.destroy()
     // Calcul du temps
@@ -32,7 +32,7 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, g
     
     if(!hp_remain) hp_remain = getCookie("hpRemain");
     // Appel API
-    await sendData(idCurrentLvl, idNextLvl, time, hp_remain, getDynamite);
+    await sendData(idCurrentLvl, idNextLvl, time, hp_remain, nbDynamite);
 
     if(idNextLvl == 7) {
         window.location.replace(`../credits.html`);
@@ -66,12 +66,13 @@ function afficheInitialHearts(hpRemain = 3) {
 }
 
 function verifyLvl(idLvlCookie, idCurrentLvl) {
-    if (idLvlCookie != idCurrentLvl && idCurrentLvl != 0) {
+    if (idLvlCookie != idCurrentLvl) {
         window.location.replace("../index.html");
     }
 }
 
 const cookies = getCookies();
+nbHearts = cookies.nbHearts;
 
 verifyLvl(cookies.idLvl, idCurrentLvl);
 afficheInitialHearts(cookies.hpRemain);

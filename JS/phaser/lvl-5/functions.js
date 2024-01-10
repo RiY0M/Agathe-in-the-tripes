@@ -11,7 +11,7 @@ function dialogueWithOld(scene, agathe)
             talkingTo = "oldOnPoop";
 
             // changement de l'image et du texte
-            changeImgTextDialogue("../../../img/assets/lvl5/old-on-poop.png", oldDialogueList[0]);
+            changeImgTextDialogue("../../img/assets/lvl5/old-on-poop.png", oldDialogueList[0]);
 
             // affichage de la zone de dialogue
             displayTextArea(dialogueArea);
@@ -33,7 +33,7 @@ function dialogueWithStrangeRock()
         talkingTo = "strangeRock";
 
         // changement de l'image et du texte
-        changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[0]);
+        changeImgTextDialogue("../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[0]);
 
         // affichage de la zone de dialogue
         displayTextArea(dialogueArea);
@@ -51,7 +51,7 @@ function dialogueWithStrangeRockWithPickaxe()
     talkingTo = "strangeRockPickaxe";
 
     // changement de l'image et du texte
-    changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[0]);
+    changeImgTextDialogue("../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[0]);
 
     // affichage de la zone de dialogue
     displayTextArea(dialogueArea);
@@ -74,7 +74,7 @@ function dialogueWithMinor(scene, agathe)
             talkingTo = "minor";
 
             // changement de l'image et du texte
-            changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[0]);
+            changeImgTextDialogue("../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[0]);
 
             // affichage de la zone de dialogue
             displayTextArea(dialogueArea);
@@ -97,7 +97,7 @@ function dialogueWithRat(scene, agathe)
         talkingTo = "rat";
 
         // changement de l'image et du texte
-        changeImgTextDialogue("../../../img/assets/lvl5/rat.png", dialogueRatList[0]);
+        changeImgTextDialogue("../../img/assets/lvl5/rat.png", dialogueRatList[0]);
 
         // affichage de la zone de dialogue
         displayTextArea(dialogueArea);
@@ -178,7 +178,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/lvl5/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
+                changeImgTextDialogue("../../img/assets/lvl5/old-on-poop.png", oldDialogueList[dialogueOldPoop]);
                 dialogueOldPoop++;
                 break;
 
@@ -198,7 +198,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                changeImgTextDialogue("../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                 dialogueMinor++;
 
 
@@ -206,7 +206,7 @@ document.addEventListener('keypress', (event) => {
                 if (dialogueMinor == 5) {
 
                     //$ CHANGEMENT IMG SKIP $//
-                    document.querySelector("#enter-key").src = "../../../img/mouse.png";
+                    document.querySelector("#enter-key").src = "../../img/mouse.png";
 
                     //$ CHECK SI ON CLIQUE SUR UNE DES PROPOSITIONS DU MINEUR $//
                     let answer1 = document.querySelector(".minor-answer-1");        // réponse 1
@@ -222,7 +222,7 @@ document.addEventListener('keypress', (event) => {
                         dialogueMinorList[5] = "Hein ? Tu te fiches de moi ?<br>T'as pas du bien comprendre la question, je vais te la reposer...";
                         
                         // changement visuel de texte
-                        changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        changeImgTextDialogue("../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
 
                         // on repose la question
                         dialogueMinor = 4;
@@ -237,7 +237,7 @@ document.addEventListener('keypress', (event) => {
                         dialogueMinorList[5] = "Ah oui oui oui oui oui !<br>Bien trouvé gamine !<br>Tiens, tu as mérité ma pioche !";
 
                         // changement visuel de texte
-                        changeImgTextDialogue("../../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
+                        changeImgTextDialogue("../../img/assets/lvl5/angry-minor-pickaxe.png", dialogueMinorList[dialogueMinor]);
                         dialogueMinor++;
 
                         // changement image skip
@@ -260,7 +260,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
+                changeImgTextDialogue("../../img/assets/lvl5/powder-rock.png", strangeRockDialogueList[strangeRockDialogue]);
                 strangeRockDialogue++;
                 break;
 
@@ -276,7 +276,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[strangeRockDialogueWithPickaxe]);
+                changeImgTextDialogue("../../img/assets/lvl5/powder-rock.png", strangeRockDialogueListWithPickaxe[strangeRockDialogueWithPickaxe]);
                 strangeRockDialogueWithPickaxe++;
                 break;
 
@@ -298,7 +298,7 @@ document.addEventListener('keypress', (event) => {
                 }
 
                 // on passe au dialogue suivant
-                changeImgTextDialogue("../../../img/assets/lvl5/rat.png", dialogueRatList[dialogueRat]);
+                changeImgTextDialogue("../../img/assets/lvl5/rat.png", dialogueRatList[dialogueRat]);
                 dialogueRat++;
                 break;
 
@@ -375,7 +375,7 @@ function updateObjectifs()
 //$ CHANGEMENT IMG SKIP VERSION CLASSIQUE $//
 function displayEnterKey()
 {
-    document.querySelector("#enter-key").src = "../../../img/enter-key.png";
+    document.querySelector("#enter-key").src = "../../img/enter-key.png";
 }
 
 

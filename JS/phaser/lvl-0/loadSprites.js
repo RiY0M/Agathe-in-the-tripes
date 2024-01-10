@@ -32,4 +32,5 @@ function loadImages(scene)
 
     //chargement du theme
     scene.load.audio('theme', '../../sound/lvl0/lvl0.mp3');
+    scene.load.audio('steps', '../../sound/lvl0/stepsOnSnowBetter.mp3');
 }

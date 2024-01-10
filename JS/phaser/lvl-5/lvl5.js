@@ -131,6 +131,10 @@ function update()
             // on change la direction
             ratPath = ratPath.switchOrder();
             switchRatDirection = true;
+
+            // sound-effect
+            music = this.sound.add("ratDamage");
+            music.play();
         }
 
         // si on attrape le rat 50 frames après qu'il ait changé de direction
@@ -140,6 +144,15 @@ function update()
             allowRatToMove = false;
             rat.setVelocityX(0);
             rat.setVelocityY(0);
+
+            if (!hasVomit) {
+
+                // sound-effect
+                music = this.sound.add("ratVomit");
+                music.play();
+
+                hasVomit = true;
+            }
 
             // on le cache
             rat.setTexture("blank");
@@ -157,6 +170,10 @@ function update()
                 
         // destruction pierre
         strangeRock.children.entries[0].disableBody(true, true);
+
+        // sound-effect
+        music = this.sound.add("breakingStone");
+        music.play();
 
         canDestroyRock = false;
 
@@ -181,6 +198,10 @@ function update()
         boom.setVisible(true);
         boom.play('EXPLOSION');
         updateObjectifs();
+
+        // sound-effect
+        music = this.sound.add("explosion");
+        music.play();
         
         // suppression dynamite + porte
         dynamite.children.entries[0].disableBody(true, true);

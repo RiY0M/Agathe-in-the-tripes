@@ -122,6 +122,10 @@ function update()
                 teeth.setTexture("moving-teeth-up");
                 // suppression collisions
                 teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+
+                // sound-effect
+                music = this.sound.add("teeth");
+                music.play();
             }
         });
         // on inverse le statut haut-bas
@@ -147,6 +151,10 @@ function update()
                 teeth.setTexture("moving-teeth-up");
                 // suppression collisions
                 teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+
+                // sound-effect
+                music = this.sound.add("teeth");
+                music.play();
             }
         });
         // on inverse le statut haut-bas
@@ -172,6 +180,10 @@ function update()
                 teeth.setTexture("moving-teeth-up");
                 // suppression collisions
                 teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+
+                // sound-effect
+                music = this.sound.add("teeth");
+                music.play();
             }
         });
         // on inverse le statut haut-bas
@@ -198,6 +210,10 @@ function update()
                 teeth.setTexture("moving-teeth-up");
                 // suppression collisions
                 teeth.body.checkCollision = {down: true, left: true, none: false, right: true, up: true};
+
+                // sound-effect
+                music = this.sound.add("teeth");
+                music.play();
             }
 
             // changement valeur aléatoire déclenchement dents n°4 

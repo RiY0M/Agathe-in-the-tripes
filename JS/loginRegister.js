@@ -83,10 +83,3 @@ function messageErreur(msg, spanMsgErreur) {
         spanMsgErreur.innerHTML = "";
     }, 7000);
 }
-
-
-// let testtest = connectUser("rdm", "d");
-// console.log(testtest);
-
-// let testRegg = register("rdm", "tttt");
-// console.log("Reg : ", testtest);

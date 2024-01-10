@@ -8,7 +8,7 @@ document.querySelector("#header-dashboard-button").href = "../../HTML/leaderboar
 document.querySelector("#header-credits-button").href = "../../HTML/credits.html";
 
 // player name
-let playerName = document.querySelector("#header-player-name");
+const playerName = document.querySelector("#header-player-name");
 playerName.addEventListener("mouseover", () => {
     playerName.style.cursor = "default";
     playerName.style.color = "white";

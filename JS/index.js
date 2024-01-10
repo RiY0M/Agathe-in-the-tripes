@@ -1,15 +1,12 @@
-const cookieValue = getCookie("login"); // récupération de la valeur du cookie "login"
-
 // VARIABLES TEST
-let isConnected = cookieValue ? true : false;
-let pseudo = cookieValue ? cookieValue : "Invité";
-let alreadyAGame = true;
+const isConnected = getCookie("token") ? true : false;
+const alreadyInGame = getCookie("level_id");
 
 
 // FORMULAIRE CONNEXION / INSCRIPTION
-let loginRegisterForm = document.querySelector(".loginRegisterPopUp");
-let deconnexionForm = document.querySelector("#deconnexion-player");
-let popUpNewGame = document.querySelector("#pop-up-new-game");
+const loginRegisterForm = document.querySelector(".loginRegisterPopUp");
+const deconnexionForm = document.querySelector("#deconnexion-player");
+const popUpNewGame = document.querySelector("#pop-up-new-game");
 
 // par défaut, on cache ces formulaires
 loginRegisterForm.style.visibility = "hidden";
@@ -25,76 +22,39 @@ const confirmerNouvellePartyButton = document.querySelector("#pop-up-new-game-ag
 
 // récupération pop-up subtitle
 const popUpNewGameSubtitle = document.querySelector("#pop-up-new-game-subtitle");
+const span = document.createElement("span");
 
 // PSEUDO DU JOUEUR
 const headerPseudo = document.querySelector("#header-player-name");
+// bouton de confirmation de déconnexion
+const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
 
 
 // si le joueur n'a pas de partie en cours on cache le bouton "nouvelle partie"
-if (!alreadyAGame) { 
+if (!alreadyInGame) { 
     continuePartyButton.style.display = "none";
     nouvellePartyButton.style.marginTop = "-10rem";
 }
 
+loginRegisterButton.value = isConnected ? "Inscription" : "Déconnexion";
 
-// si le joueur est déjà connecté :
-if (isConnected) {
-    // on affiche son pseudo
-    headerPseudo.textContent = pseudo;
+// on permet à l'utilisateur de voir le formulaire de deconnexion
 
-    // on change le bouton pour "déconnexion"
-    loginRegisterButton.value = "Déconnexion";
-
-    // on permet à l'utilisateur de voir le formulaire de deconnexion
-
-    // DEPUIS LE BOUTON DECONNEXION
-    loginRegisterButton.addEventListener("click", () => {
+// DEPUIS LE BOUTON DECONNEXION OU LE PSEUDO DU JOUEUR
+[loginRegisterButton, headerPseudo].forEach(element => {
+    element.addEventListener("click", () => {
 
         // vidage body
         ereaseBody();
         
         // affichage du formulaire connexion / inscription
-        deconnexionForm.style.visibility = "visible";
-    })
-
-    // DEPUIS LE PSEUDO DU JOUEUR
-    headerPseudo.addEventListener("click", () => {
-
-        // vidage body
-        ereaseBody();
-        
-        // affichage du formulaire connexion / inscription
-        deconnexionForm.style.visibility = "visible";
-    })
-}
-
-// si le joueur n'est pas connecté :
-else {
-    // on affiche le nom "Invité"
-    headerPseudo.textContent = "Invité";
-
-    // on permet à l'utilisateur de voir le formulaire d'inscription et de connexion
-
-    // DEPUIS LE BOUTON CONNEXION / INSCRIPTION
-    loginRegisterButton.addEventListener("click", () => {
-
-        // vidage body
-        ereaseBody();
-        
-        // affichage du formulaire connexion / inscription
-        loginRegisterForm.style.visibility = "visible";
-    })
-
-    // DEPUIS LE PSEUDO DU JOUEUR
-    headerPseudo.addEventListener("click", () => {
-
-        // vidage body
-        ereaseBody();
-        
-        // affichage du formulaire connexion / inscription
-        loginRegisterForm.style.visibility = "visible";
-    })
-}
+        if(isConnected) {
+            deconnexionForm.style.visibility = "visible";
+        } else {
+            loginRegisterForm.style.visibility = "visible";
+        }
+    });
+});
 
 
 // affichage pop-up
@@ -126,7 +86,6 @@ continuePartyButton.addEventListener("click", async () => {
         nb_dynamite: getCookie("nbDynamite"),
     });
 
-    console.log(json)
     if (json.status == 'error') {
         console.log(json.message);
     } else {
@@ -138,45 +97,33 @@ continuePartyButton.addEventListener("click", async () => {
 });
 
 // remplissage pop-up
+span.textContent = "Attention, votre partie actuelle sera supprimée !";
 
-// boîte sous-titre
-let span = document.createElement("span");
-
-// CAS POUR CONNECTE
-if (isConnected) {
-    // texte sous-titre
-    span.textContent = "Attention, votre partie actuelle sera supprimée !";
-
-    popUpNewGameSubtitle.appendChild(span);
-}
-// CAS POUR INVITE
-else {
+if(!isConnected) {
     // texte sous-titre
     span.textContent = "Attention, vous vous apprêtez à jouer en tant qu'invité !";
     // création élément retour à la ligne pour conserver taille pop-up raisonnable
-    let br = document.createElement("br");
+    const br = document.createElement("br");
     // suite du texte sous-titre
-    let spanBracket = document.createElement("span");
+    const spanBracket = document.createElement("span");
     spanBracket.textContent = "(votre progression ne sera pas sauvegardée)";
 
     // ajout des éléments
-    popUpNewGameSubtitle.appendChild(span);
     popUpNewGameSubtitle.appendChild(br);
     popUpNewGameSubtitle.appendChild(spanBracket);
 }
 
+popUpNewGameSubtitle.appendChild(span);
 
 // VIDAGE BODY
 function ereaseBody() {
 
     // on masque tout ce qui se trouve dans le body pour ne laisser que le formulaire
-    let divInBody = document.querySelectorAll("body>div");
+    const divInBody = document.querySelectorAll("body>div");
     divInBody.forEach((div) => div.style.visibility = "hidden");
 }
 
-const btnDecoAgree = document.querySelector("#deconnexion-agree-button"); // bouton de confirmation de déconnexion
-
 btnDecoAgree.addEventListener("click", () => {
     supprimeTousLesCookies();
-    window.location.href = "index.html";
+    window.location.replace("index.html");
 });

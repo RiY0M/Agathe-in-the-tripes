@@ -117,7 +117,10 @@ function update()
     //^ANIMATION RAT (AUTOMATIQUE) ^//
     moveThisFuckingRat();
 
-    // changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts);
+
+    if(agathe.x >= 790) {
+        changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts);
+    }
 
     //? CHECK COLLISION AGATHE - RAT ?//
     // si on tape le rat et que l'on a pas encore récupéré le fil

@@ -25,7 +25,7 @@ const gameButtons = document.getElementById("leaderboard-buttons");
 let buttons = [];
 
 for(let key in btnLabels) {
-    let input = document.createElement("input");
+    const input = document.createElement("input");
     input.id = key;
     input.type = "button";
     input.value = btnLabels[key];

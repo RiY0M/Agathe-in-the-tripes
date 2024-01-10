@@ -26,7 +26,7 @@ async function register(login, mdp) {
 
 async function connectUser(login, mdp) {
     try {
-        const json = await callAPI("connexion", {
+        let json = await callAPI("connexion", {
             login: login,
             mdp: mdp,
         });
@@ -37,6 +37,9 @@ async function connectUser(login, mdp) {
         }
 
         supprimeTousLesCookies();
+        createCookiesFromData(json.data);
+
+        json = await callAPI("getGame");
         createCookiesFromData(json.data);
 
         window.location.replace("index.html");
@@ -58,7 +61,7 @@ loginForm.addEventListener('submit', async (event) => {
     const passwordLog = document.querySelector('#loginMdp').value;
 
     const msgErreur = await connectUser(loginLog, passwordLog);
-    console.log("BLABLA : ",msgErreur);
+    // console.log("BLABLA : ",msgErreur);
     if(msgErreur) messageErreur(msgErreur, msgErreurLog);
 });
 

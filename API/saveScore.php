@@ -49,7 +49,7 @@ try {
     VALUES (:game_id, :level_id, :complete_time);";
 
     $res = $db->prepare($query);
-    $res->bindParam(":game_id", $idGame, PDO::PARAM_INT);
+    $res->bindValue(":game_id", $idGame, PDO::PARAM_INT);
     $res->bindParam(":level_id", $_POST["level_id"], PDO::PARAM_INT);
     $res->bindParam(":complete_time", $_POST["complete_time"]);
     $res->execute();
@@ -60,8 +60,9 @@ try {
         VALUES (:game_id, 7, 
             (SELECT SUM(S1.complete_time) as complete_time FROM `SCORES` S1 WHERE S1.game_id = :game_id)
         )";
+        // Invalid number of parameters
         $res = $db->prepare($query);
-        $res->bindParam(":game_id", $idGame, PDO::PARAM_INT);
+        $res->bindValue(":game_id", $idGame, PDO::PARAM_INT);
         $res->execute();
     }
 

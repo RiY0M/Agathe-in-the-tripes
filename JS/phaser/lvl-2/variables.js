@@ -20,3 +20,4 @@ const idCurrentLvl = 2;      // Id du niveau courant
 const idNextLvl = 3;         // Id du prochain niveau
 let startTime = new Date().getTime(); // Starting time for the chronometer
 let music;
+let hasCollide = false;

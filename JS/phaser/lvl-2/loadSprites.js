@@ -26,5 +26,8 @@ function loadImages(scene)
     // chargement bordure de fin de niveau
     scene.load.image("border-1", "../../../img/assets/common/border-1.png");
 
+    // sound effect dégât
+    scene.load.audio('bump', '../../sound/lvl2/bumpObstacle.mp3');
+
     scene.load.audio('theme', '../../sound/lvl2/lvl2.mp3');
 }

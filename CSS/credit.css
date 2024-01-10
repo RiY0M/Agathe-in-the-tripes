@@ -35,6 +35,10 @@
     overflow: auto;
 }
 
+#credit-title {
+    text-decoration: underline;
+}
+
 #credit-content h2 {
 
     font-size: 1.25rem;

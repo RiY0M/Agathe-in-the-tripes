@@ -39,6 +39,7 @@ function create(){
 
     //* Theme de fond *//
     music = this.sound.add("theme");
+    music.volume -= 0.8;
     music.setLoop(true);
     music.play();
 
@@ -122,6 +123,13 @@ function update(){
     else agathe.setTint(0xFF0000);
 
     if (start3sCoolDown) {
+
+        if (invicibility == 150) {
+            // sound-effect
+            music = this.sound.add("damage");
+            music.play();
+        }
+
         // on lance la décrémentation des 150 frames (150 frames = 3s)
         invicibility--;
         // on rend agathe invincible

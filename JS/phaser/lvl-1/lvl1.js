@@ -234,6 +234,13 @@ function update()
 
     // si le lancement de l'invincibilité est lancé
     if (start3sCoolDown) {
+
+        if (invicibility == 150) {
+            // sound-effect
+            music = this.sound.add("damage");
+            music.play();
+        }
+
         // on lance la décrémentation des 150 frames (150 frames = 3s)
         invicibility--;
         // on rend agathe invincible

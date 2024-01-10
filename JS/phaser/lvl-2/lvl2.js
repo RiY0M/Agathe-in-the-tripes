@@ -29,6 +29,7 @@ function create()
 {
     //* Theme de fond *//
     music = this.sound.add("theme");
+    music.volume -= 0.9;
     music.setLoop(true);
     music.play();
 
@@ -131,6 +132,14 @@ function update()
 //^ Si agathe rencontre un obstacle ^//
 function hitObstacle(character, obstacles) {
 
+    if (!hasCollide) {
+        // sound-effect
+        music = this.sound.add("bump");
+        music.play();
+
+        hasCollide = true;
+    }
+
     // Stoppe le niveau pendant 1 seconde
     levelStop = true;
     this.scrollSpeed = 0;
@@ -150,6 +159,7 @@ function hitObstacle(character, obstacles) {
         nbDynamite = cookies.nbDynamite;
         hasMoved = false;
         levelStop = false;
+        hasCollide = false;
     }, 1000);
 }
 

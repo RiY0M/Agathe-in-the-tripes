@@ -71,4 +71,6 @@ function loadImages(scene)
 
     // audio theme
     scene.load.audio('theme', '../../sound/lvl5/lvl5.mp3');
+    scene.load.audio('itemCollect', '../../sound/lvl5/itemCollect.mp3');
+    
 }

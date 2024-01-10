@@ -245,6 +245,7 @@ document.addEventListener('keypress', (event) => {
 
                         // on donne la pioche au joueur
                         hasPickaxe = true;
+                        itemCollect.play();
                     });
                 }
                 break;
@@ -291,8 +292,9 @@ document.addEventListener('keypress', (event) => {
 
                     // on donne le fil à l'utilisateur
                     hasString = true;
+                    itemCollect.play();
                     updateObjectifs();
-
+                    
                     // on permet au rat de se déplacer à nouveau
                     allowRatToMove = true;
                 }
@@ -360,7 +362,7 @@ function updateObjectifs()
             "*Vous obtenez un briquet !*",
             "Tu devrais poser tout ton bric à brac devant ce gros tas de m**** si tu veux en finir avec ce monstre...",
         ];
-
+        itemCollect.play();
         hasLighter = true;
     }
 

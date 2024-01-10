@@ -29,6 +29,7 @@ function create()
     music = this.sound.add("theme");
     music.setLoop(true);
     music.play();
+    itemCollect = this.sound.add("itemCollect");
 
     //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup()
@@ -235,6 +236,7 @@ function collectStick(player, stick)
 {
     // destruction stick
     stick.disableBody(true, true);
+    itemCollect.play();
 
     // indication qu'on en a récupéré un
     sticksGathered++;
@@ -259,6 +261,7 @@ function collectPowder(player, powder)
 {    
     // destruction poudre
     powder.disableBody(true, true);
+    itemCollect.play();
 
     // indication qu'on a récupéré la poudre
     hasPowder = true;

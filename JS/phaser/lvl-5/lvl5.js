@@ -28,6 +28,7 @@ function create()
     //* Theme de fond *//
     music = this.sound.add("theme");
     music.setLoop(true);
+    music.volume -= 0.5;
     music.play();
     itemCollect = this.sound.add("itemCollect");
 

@@ -28,6 +28,7 @@ function preload(){
 function create(){
     //* Theme de fond *//
     music = this.sound.add("theme");
+    music.volume -= 0.5;
     music.setLoop(true);
     music.play();
     newHeart = this.sound.add("newHeart");

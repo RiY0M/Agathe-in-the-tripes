@@ -6,6 +6,7 @@ https://devweb.iutmetz.univ-lorraine.fr/~schandel2u/SAE501/HTML/index.HTML
 
 __Méthode 2 : Installer le jeu__   
 Pour ce faire, clonez le projet ou téléchargez le zip du main.   
+Faites ensuite `npm install phaser`   
 Pour faire fonctionner la base de données, vous devez être connecté au VPN de l'IUT
 
 __Peu importe la méthode choisie, suivez ensuite ces étapes :__   

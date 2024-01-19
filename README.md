@@ -13,3 +13,8 @@ __Peu importe la méthode choisie, suivez ensuite ces étapes :__
 Créez vous un compte pour enregistrez votre score (facultatif)   
 Appuyez ensuite sur le bouton "Nouvelle partie" ou "Continuer partie" si vous êtes connecté et que vous aviez une partie en cours   
 Jouez et profitez !
+
+Ajouts pour la saé 6.01 :
+* Ajout d'un niveau 6 qui sera sous la forme d'un combat de boss
+* Réglage de bugs concernant le vpn, il est pour l'instant impossible de jouer sans y être connecté
+* Ajout d'une page de scores si le temps nous le permet

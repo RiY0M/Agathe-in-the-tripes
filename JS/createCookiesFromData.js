@@ -12,7 +12,7 @@ function getCookie(name) {
     return document.cookie.split("; ").find((row) => row.startsWith(`${name}=`))?.split("=")[1];
 }
 
-async function callAPI(fichierApi, basic, bjsonDataPostasic = {}) {
+async function callAPI(fichierApi, basic, jsonDataPost = {}) {
 
     try {
         jsonDataPost.token = getCookie("token");

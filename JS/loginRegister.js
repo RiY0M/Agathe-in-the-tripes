@@ -10,7 +10,8 @@ async function register(login, mdp) {
 
     const json = await callAPI("newUser", {
         error: "Not connected to db"
-    }, {
+    },
+    {
         login: login,
         mdp: mdp,
     });

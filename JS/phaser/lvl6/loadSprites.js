@@ -8,4 +8,16 @@ function loadImages(scene)
     
     // invisible road
     scene.load.image("road", "../../img/assets/lvl6/road.png");
+
+    // pont rouge
+    scene.load.image("bridge", "../../img/assets/lvl6/bridge.png");
+
+    // coline
+    scene.load.image("cliff-1", "../../img/assets/lvl6/cliff-1.png");
+
+    // soleil
+    scene.load.image("sun", "../../img/assets/lvl6/sun.png");
+
+    // worm tail
+    scene.load.image("worm-tail", "../../img/assets/lvl6/worm-tail.png");
 }

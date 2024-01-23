@@ -38,11 +38,14 @@ function create()
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 
-    //* CREATION DE LA MAP *//
-    createMap(this);
+    //* CREATION DE LA MAP BACK *//
+    createBackMap(this);
 
     //~ SPRITE AGATHE ~//
     createAgathe(this);
+
+    //* CREATION DE LA MAP FRONT *//
+    createFrontMap(this);
 
 
     //! COLLISIONS !//
@@ -63,5 +66,5 @@ function create()
 
 function update()
 {
-    createVerticalMove(agathe, cursors, lastFrame);
+    createVerticalMove(agathe, cursors);
 }

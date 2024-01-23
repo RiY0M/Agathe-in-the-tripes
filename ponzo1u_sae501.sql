@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : devbdd.iutmetz.univ-lorraine.fr
--- Généré le : jeu. 18 jan. 2024 à 16:11
+-- Généré le : mar. 23 jan. 2024 à 08:40
 -- Version du serveur : 10.3.39-MariaDB
 -- Version de PHP : 8.2.14
 
@@ -40,7 +40,7 @@ CREATE TABLE `GAMES` (
 --
 
 INSERT INTO `GAMES` (`id`, `user_id`, `level_id`, `hp_remain`, `nb_dynamite`) VALUES
-(1, 1, 7, 3, 0),
+(1, 1, 8, 3, 0),
 (2, 3, 1, 3, 0),
 (3, 13, 0, 3, 0),
 (4, 13, 0, 3, 0),
@@ -50,10 +50,10 @@ INSERT INTO `GAMES` (`id`, `user_id`, `level_id`, `hp_remain`, `nb_dynamite`) VA
 (8, 15, 0, 3, 0),
 (9, 14, 0, 3, 0),
 (10, 3, 2, 1, 1),
-(11, 3, 7, 3, 0),
-(12, 3, 7, 2, 0),
+(11, 3, 6, 3, 0),
+(12, 3, 6, 2, 0),
 (13, 3, 0, 3, 0),
-(14, 3, 7, 2, 0),
+(14, 3, 6, 2, 0),
 (15, 16, 2, 1, 0);
 
 -- --------------------------------------------------------
@@ -78,7 +78,9 @@ INSERT INTO `LEVELS` (`id`, `name`) VALUES
 (3, 'L\'estomac'),
 (4, 'L\'intestin'),
 (5, 'L\'anus'),
-(7, 'Partie complète');
+(6, 'Préparation'),
+(7, 'Boss'),
+(8, 'Partie complète');
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,6 @@ INSERT INTO `SCORES` (`game_id`, `level_id`, `complete_time`) VALUES
 (1, 3, 76),
 (1, 4, 84),
 (1, 5, 96),
-(1, 7, 367.76),
 (2, 0, 6.866),
 (10, 0, 13.667),
 (10, 1, 50.726),
@@ -114,7 +115,6 @@ INSERT INTO `SCORES` (`game_id`, `level_id`, `complete_time`) VALUES
 (12, 3, 41.375),
 (12, 4, 36.225),
 (12, 5, 54.808),
-(12, 7, 198.186),
 (14, 0, 8.469),
 (14, 1, 39.493),
 (14, 2, 18.868),
@@ -168,7 +168,7 @@ CREATE TRIGGER `Login_Distinct` BEFORE INSERT ON `USERS` FOR EACH ROW BEGIN
     WHERE USERS.login = NEW.login;
     
     IF compteur > 0 THEN
-    SIGNAL SQLSTATE '42001'
+    SIGNAL SQLSTATE '45001'
         SET MESSAGE_TEXT = 'Login déjà utilisé.';
     END IF;
 END

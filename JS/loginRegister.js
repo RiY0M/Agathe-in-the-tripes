@@ -16,8 +16,7 @@ async function register(login, mdp) {
         mdp: mdp,
     });
 
-    const data = json.data;
-    // console.log(data);
+    // console.log(json.data);
     if (json.status == 'success') {
         // L'Authentification a réussi
         const msgErreur = await connectUser(login, mdp);

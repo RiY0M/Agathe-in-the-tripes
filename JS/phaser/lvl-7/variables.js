@@ -9,4 +9,6 @@ let startTime = new Date().getTime(); // Starting time for the chronometer
 
 let start3sCoolDown = false;    // lancement de l'invincibilité
 let invicibility = 150;         // temps d'immortalité
-//------------------------
+//-------------------------
+
+let ground;

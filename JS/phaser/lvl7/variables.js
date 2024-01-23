@@ -11,4 +11,9 @@ let start3sCoolDown = false;    // lancement de l'invincibilité
 let invicibility = 150;         // temps d'immortalité
 //-------------------------
 
-let ground;
+let roadBorder;                         // bordure route invisible
+
+function loadSpriteVariables(scene){
+    roadBorder = scene.physics.add.staticGroup();
+
+}

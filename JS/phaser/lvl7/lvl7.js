@@ -4,7 +4,13 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: "#e78c93",
-    physics: { default: 'arcade' },
+    physics: { default: 'arcade',
+                arcade : {
+                    gravity: { y: 600 },
+                    debug: false
+                }
+
+            },
     scene: {
         preload: preload,
         create: create,
@@ -28,11 +34,17 @@ function create(){
     music.setLoop(true);
     music.play();
 
+    //$ CHARGEMENT VARIABLES DE SPRITES $//
+    loadSpriteVariables(this);
+
     //~ SPRITE AGATHE ~//
     createAgathe(this);    
 
+    //* CREATION DE LA MAP *//
+    createMap(this);
+
     //! COLLISIONS !//
-    // this.physics.add.collider(agathe, walls);
+    this.physics.add.collider(agathe, roadBorder);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -40,7 +52,7 @@ function create(){
     //^ ANIMATIONS AGATHE (SPRITES) ^//
 
     //? MOVING ANIMS ?//
-    createAnims(this);
+    createVerticalAnims(this);
     
     //? AFK ANIMS ?//
     createAFK(this);   
@@ -75,6 +87,7 @@ function update(){
         invicibility = 150;
     }
 
+    createVerticalMove(agathe, cursors);
 }
 
 

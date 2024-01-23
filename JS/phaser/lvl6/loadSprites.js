@@ -4,5 +4,8 @@ function loadImages(scene)
     scene.load.spritesheet("agathe", "../../img/assets/common/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
     // background
-    scene.load.image("lvl6-bg", "../../img/assets/lvl6/lvl6-bg.png");    
+    scene.load.image("lvl6-bg", "../../img/assets/lvl6/lvl6-bg.png");  
+    
+    // invisible road
+    scene.load.image("road", "../../img/assets/lvl6/road.png");
 }

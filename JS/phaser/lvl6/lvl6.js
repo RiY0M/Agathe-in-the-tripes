@@ -38,11 +38,15 @@ function create()
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 
+    //* CREATION DE LA MAP *//
+    createMap(this);
+
     //~ SPRITE AGATHE ~//
     createAgathe(this);
 
 
     //! COLLISIONS !//
+    this.physics.add.collider(agathe, roadBorder);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();

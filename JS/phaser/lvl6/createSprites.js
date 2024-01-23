@@ -8,3 +8,11 @@ function createAgathe(scene)
     // on définit les collisions avec la bordure
     agathe.setCollideWorldBounds(true);
 }
+
+
+//* CREATION DE LA MAP *//
+function createMap(scene)
+{
+    // ajout de la route invisible
+    roadBorder.create(400, 333, "road");
+}

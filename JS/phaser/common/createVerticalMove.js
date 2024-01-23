@@ -22,7 +22,7 @@ function createVerticalMove(agathe, cursors, lastFrame)
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }
-    if (cursors.up.isDown)
+    if (cursors.up.isDown && agathe.body.touching.down)
     {
         agathe.setVelocityY(-200);
     }

@@ -20,7 +20,7 @@ function preload() {
     this.load.spritesheet("agathe", "../../img/assets/TransitionAgathe.png", { frameWidth: 32, frameHeight: 48 });
     this.load.image("fond-img", "../../img/TransitionBouche.png");
 
-    this.load.audio('theme', '../../sound/LippsInc.mp3');
+    this.load.audio('theme', '../../sound/transition/LippsInc.mp3');
 
 }
 
@@ -62,11 +62,12 @@ function update (){
 
 
     if (Vitesse_de_Chargement < 1) {
-        Vitesse_de_Chargement += 0.004; //Vitesse de chargement
+        Vitesse_de_Chargement += 0.0035; //Vitesse de chargement
     }
     else{
         agathe.anims.play("afk-" + 0);
         music.stop();
+        
     }
     this.chargement.fillRect(64, 64, size_chargement * Vitesse_de_Chargement, 48); //Chargement de la barre
 }

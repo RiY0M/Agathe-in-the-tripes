@@ -5,8 +5,8 @@ function loadImages(scene){
     scene.load.image("blood1", "../../img/assets/common/blood-1.png");
     scene.load.image("blood0", "../../img/assets/common/blood-0.png");
 
-    scene.load.image('tiles', '../../img/TileMapsLv4/Mur32x32.png')
-    scene.load.tilemapTiledJSON('tilemap', '../../img/TileMapsLv4/game.json')
+    scene.load.image('tiles', '../../img/assets/TileMapsLvl4/Mur32x32.png')
+    scene.load.tilemapTiledJSON('tilemap', '../../img/assets/TileMapsLvl4/game.json')
 
     //chargement du theme
     scene.load.audio('theme', '../../sound/lvl4/lvl4.mp3');

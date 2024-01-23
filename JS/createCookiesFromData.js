@@ -24,7 +24,10 @@ async function callAPI(fichierApi, basic, jsonDataPost = {}) {
 
         return await response.json();
     } catch(error) {
-        return basic;
+        return {
+            status: "success",
+            data: basic
+        };
     }
 }
 

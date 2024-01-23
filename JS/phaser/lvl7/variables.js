@@ -17,3 +17,9 @@ function loadSpriteVariables(scene){
     roadBorder = scene.physics.add.staticGroup();
 
 }
+
+let graphics;
+let boss;
+let percent_bar;
+let width_bar
+let bossHealth = 100; // PV initiale du boss

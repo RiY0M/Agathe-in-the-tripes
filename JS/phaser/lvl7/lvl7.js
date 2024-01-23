@@ -28,6 +28,13 @@ function preload(){
 }
 
 function create(){
+    //*Barre de vie *//
+    graphics = this.add.graphics();
+    setHealthBar(bossHealth);
+
+    //events.on('')
+
+
     //* Theme de fond *//
     music = this.sound.add("theme");
     music.volume -= 0.5;
@@ -38,13 +45,20 @@ function create(){
     loadSpriteVariables(this);
 
     //~ SPRITE AGATHE ~//
-    createAgathe(this);    
+    createAgathe(this);  
+    
+    //~ SPRITE AGATHE ~//
+    createBoss(this);    
 
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
+    this.physics.add.collider(boss, roadBorder);
+
+    //* Test dégats *//
+    this.physics.add.collider(agathe, boss, inflictDamage);   // A SUPPR
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -106,4 +120,33 @@ function collidePlayerProjectile()
         // lancement des 3s d'invincibilité
         start3sCoolDown = true;
     }
+}
+
+
+function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du boss
+    width_bar = 700; //Taille bar de vie
+    percent_bar = Phaser.Math.Clamp(value, 0, 100) / 100; //Nb de pv : Ici de 0 -> 100
+
+    graphics.clear();
+    graphics.fillStyle(0x808080);
+    graphics.fillRoundedRect(10, 10, width_bar, 20, 5);
+
+    if (percent_bar > 0){
+        graphics.fillStyle(0x00ff00);
+        graphics.fillRoundedRect(10, 10, width_bar * percent_bar, 20, 5)
+    }
+
+}
+
+function inflictDamage() {
+    
+    bossHealth -= 15; // Réduire la santé du boss
+
+    setHealthBar(bossHealth);
+
+    console.log("Test");
+    // if (bossHealth <= 0) {
+    //     // Code à exécuter lorsque le boss est mort
+    //     bossDeath();
+    // }
 }

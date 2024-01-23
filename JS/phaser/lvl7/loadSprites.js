@@ -10,4 +10,8 @@ function loadImages(scene){
     // invisible road
     scene.load.image("road", "../../img/assets/lvl7/road.png");
 
+    scene.load.spritesheet("boss", "../../img/assets/common/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
+
+    // dégât
+    scene.load.audio('damage', "../../sound/common/damage.mp3");
 }

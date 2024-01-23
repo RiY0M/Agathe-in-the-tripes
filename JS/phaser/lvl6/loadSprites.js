@@ -20,4 +20,7 @@ function loadImages(scene)
 
     // worm tail
     scene.load.image("worm-tail", "../../img/assets/lvl6/worm-tail.png");
+
+    // home sign
+    scene.load.image("sign", "../../img/assets/lvl6/sign.png");
 }

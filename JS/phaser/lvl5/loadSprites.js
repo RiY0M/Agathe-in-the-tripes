@@ -57,7 +57,7 @@ function loadImages(scene)
     scene.load.image("bones-pile", "../../img/assets/lvl5/bones-pile.png");
 
     // bâton dynamite
-    scene.load.image("stick", "../../img/assets/lvl5/dynamite-stick.png");
+    scene.load.image("stick", "../../img/assets/common/dynamite-stick.png");
 
     // dynamite
     scene.load.image("dynamite", "../../img/assets/lvl5/dynamite.png");

@@ -3,7 +3,13 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    physics: { default: 'arcade' },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 600 },
+            debug: false
+        }
+    },
     scene: {
         preload: preload,
         create: create,
@@ -45,7 +51,7 @@ function create()
     //^ ANIMATIONS AGATHE (SPRITES) ^//
 
     //? MOVING ANIMS ?//
-    createAnims(this);
+    createVerticalAnims(this);
     
     //? AFK ANIMS ?//
     createAFK(this);
@@ -53,16 +59,5 @@ function create()
 
 function update()
 {
-    if(agathe.x >= 790) {
-        changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts);
-    }
-    
-    else
-    {
-        // si aucune touche du clavier n'est appuyée : on arrête agathe
-        agathe.setVelocityX(0);
-        agathe.setVelocityY(0);
-        // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
-        agathe.anims.play("afk-" + lastFrame);
-    }
+    createVerticalMove(agathe, cursors, lastFrame);
 }

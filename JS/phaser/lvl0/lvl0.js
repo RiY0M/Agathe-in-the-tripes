@@ -102,7 +102,7 @@ function create()
 
 function update()
 {   
-    //* Ce code permet de rajouter des bruits de pas. Cpdt, JS lag et donne un résultat à désirer. *//
+    //* Ce code permet de rajouter des bruits de pas. Cpdt, JS lag et donne un résultat qui laisse à désirer. *//
     // if (cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.down.isDown) {
     //     if (!isWalking) {
     //         isWalking = true; // Met à jour l'état de la marche

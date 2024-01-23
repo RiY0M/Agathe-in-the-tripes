@@ -68,5 +68,5 @@ function verifyLvl(idLvlCookie, idCurrentLvl) {
 const cookies = getCookies();
 nbHearts = cookies.hpRemain;
 
-//verifyLvl(cookies.idLvl, idCurrentLvl);
+verifyLvl(cookies.idLvl, idCurrentLvl);
 afficheInitialHearts(cookies.hpRemain);

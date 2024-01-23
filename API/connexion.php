@@ -23,11 +23,7 @@ try{
         $json["message"] = "Connexion réussie";
         $json["data"]["token"] = $res["token"];
         $json["data"]["login"] = $_POST["login"];
-
-        // setcookie("token", $res["token"], time() + 86400 * 365, "/");
-        // setcookie("login", $_POST["login"], time() + 86400 * 365, "/");
-    }
-    else{
+    } else {
         $json["status"] = "failed";
         $json["message"] = "Pseudo ou mot de passe incorrect";
     }

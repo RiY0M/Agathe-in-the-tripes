@@ -22,7 +22,7 @@ try {
     $hpRemain = intval($_POST["hp_remain"] ?? $data->hp_remain ?? 3);
     $nbDynamite = intval($data->nb_dynamite ?? 0) + intval($_POST["nb_dynamite"] ?? 0);
 
-    $idNextLvl = intval($_POST["next_level_id"] ?? 7);
+    $idNextLvl = intval($_POST["next_level_id"] ?? 8);
 
     $json["data"]["level_id"] = $idNextLvl;
     $json["data"]["hpRemain"] = $hpRemain;
@@ -54,10 +54,10 @@ try {
     $res->bindParam(":complete_time", $_POST["complete_time"]);
     $res->execute();
 
-    if($idNextLvl == 7) {
+    if($idNextLvl == 8) {
         $query =
         "INSERT INTO SCORES (game_id, level_id, complete_time)
-        VALUES (:game_id, 7, 
+        VALUES (:game_id, 8, 
             (SELECT SUM(S1.complete_time) as complete_time FROM `SCORES` S1 WHERE S1.game_id = :game_id)
         )";
         // Invalid number of parameters

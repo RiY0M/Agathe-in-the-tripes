@@ -18,7 +18,7 @@ function createVerticalMove(agathe, cursors, lastFrame)
     {
         // si aucune touche du clavier n'est appuyée : on arrête agathe
         agathe.setVelocityX(0);
-        agathe.setVelocityY(0);
+        
         // pose du joueur selon la dernière touche (gauche/droite/haut/bas)
         agathe.anims.play("afk-" + lastFrame);
     }

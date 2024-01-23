@@ -39,6 +39,11 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, n
     // Appel API
     await sendData(idCurrentLvl, idNextLvl, time, hp_remain, nbDynamite);
 
+    if(idNextLvl == 1) {
+        window.location.replace(`../phaser/transition.html`);
+        return;
+    }
+
     if(idNextLvl == 8) {
         window.location.replace(`../credits.html`);
         return;

@@ -128,10 +128,10 @@ function collidePlayerProjectile()
     }
 }
 
-function inflictDamage() {
+function bossGetDamaged() {
     if (!isInvicibleBoss) {
         if (bossHealth >= 1) {
-            bossHealth -= 15; // Réduire la santé du boss
+            bossHealth -= 1; // Réduire la santé du boss
             setHealthBar(bossHealth);
 
             // Faire clignoter le boss en rouge

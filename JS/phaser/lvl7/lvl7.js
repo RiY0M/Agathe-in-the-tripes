@@ -58,7 +58,7 @@ function create(){
     this.physics.add.collider(boss, roadBorder);
 
     //* Test dégats *//
-    this.physics.add.collider(agathe, boss, inflictDamage);   // A SUPPR
+    this.physics.add.collider(agathe, boss, collidePlayerProjectile);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -75,35 +75,41 @@ function create(){
 
 function update(){
 
-    if (nbHearts == 0) displayDeathScreen();
+    if (nbHearts == 0) displayDeathScreen();        //Personnage mort
 
-    if (start3sCoolDown) {
+    if (start3sCoolDownAgathe) {
 
-        if (invicibility == 150) {
+        if (invicibilityAgathe == 150) {
             // sound-effect
             music = this.sound.add("damage");
             music.play();
         }
 
         // on lance la décrémentation des 150 frames (150 frames = 3s)
-        invicibility--;
+        invicibilityAgathe--;
         // on rend agathe invincible
         isInvicible = true;
     }
 
     // si les 3s d'invincibilité sont écoulées
-    if (invicibility == 0) {
+    if (invicibilityAgathe == 0) {
         // on enlève l'effet d'immortalité à agathe
         isInvicible = false;
         // on arrête le chorno
-        start3sCoolDown = false;
+        start3sCoolDownAgathe = false;
         // on réinitialise le compteur de frames
-        invicibility = 150;
+        invicibilityAgathe = 150;
     }
+
+    // boucle en fonction du timer de l'invincibilité allant de 0.0 à 4.9
+    let timer = invicibilityAgathe / 10 % 5;
+    
+    // la moitié du temps on passe en rouge
+    if ((timer >= 0 && timer <= 1.25) || (timer >= 2.5 && timer <= 3.75)) agathe.setTint(0xFFFFFF);
+    else agathe.setTint(0xFF0000);
 
     createVerticalMove(agathe, cursors);
 }
-
 
 function collidePlayerProjectile()
 {
@@ -118,35 +124,27 @@ function collidePlayerProjectile()
         }
 
         // lancement des 3s d'invincibilité
-        start3sCoolDown = true;
+        start3sCoolDownAgathe = true;
     }
-}
-
-
-function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du boss
-    width_bar = 700; //Taille bar de vie
-    percent_bar = Phaser.Math.Clamp(value, 0, 100) / 100; //Nb de pv : Ici de 0 -> 100
-
-    graphics.clear();
-    graphics.fillStyle(0x808080);
-    graphics.fillRoundedRect(10, 10, width_bar, 20, 5);
-
-    if (percent_bar > 0){
-        graphics.fillStyle(0x00ff00);
-        graphics.fillRoundedRect(10, 10, width_bar * percent_bar, 20, 5)
-    }
-
 }
 
 function inflictDamage() {
-    
-    bossHealth -= 15; // Réduire la santé du boss
+    if (!isInvicibleBoss) {
+        if (bossHealth >= 1) {
+            bossHealth -= 15; // Réduire la santé du boss
+            setHealthBar(bossHealth);
 
-    setHealthBar(bossHealth);
+            // Faire clignoter le boss en rouge
+            boss.setTint(0xFF0000);
 
-    console.log("Test");
-    // if (bossHealth <= 0) {
-    //     // Code à exécuter lorsque le boss est mort
-    //     bossDeath();
-    // }
+            isInvicibleBoss = true;
+            setTimeout(() => {
+                // Arrêter le clignotement et revenir à la couleur normale
+                boss.clearTint();
+                isInvicibleBoss = false;
+            }, 1000); // 3s invincible
+        } else {
+            console.log("Il est mort !");
+        }
+    }
 }

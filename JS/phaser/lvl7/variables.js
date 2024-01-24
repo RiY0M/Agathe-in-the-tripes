@@ -7,8 +7,8 @@ const idCurrentLvl = 4;      // Id du niveau courant
 const idNextLvl = 5;        // Id du prochain niveau
 let startTime = new Date().getTime(); // Starting time for the chronometer
 
-let start3sCoolDown = false;    // lancement de l'invincibilité
-let invicibility = 150;         // temps d'immortalité
+let start3sCoolDownAgathe = false;    // lancement de l'invincibilité pour Agathe
+let invicibilityAgathe = 150;         // temps d'immortalité d'agathe
 //-------------------------
 
 let roadBorder;                         // bordure route invisible
@@ -23,3 +23,5 @@ let boss;
 let percent_bar;
 let width_bar
 let bossHealth = 100; // PV initiale du boss
+
+let isInvicibleBoss = false;        // Bool : mob invicible ou non

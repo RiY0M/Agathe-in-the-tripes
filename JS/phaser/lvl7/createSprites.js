@@ -21,3 +21,19 @@ function createMap(scene){
     // ajout de la route invisible
     roadBorder.create(400, 353, "road").setVisible(false);
 }
+
+//* Créer et gère les PV de barre de vie *//
+function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du boss
+    width_bar = 700; //Taille bar de vie
+    percent_bar = Phaser.Math.Clamp(value, 0, 100) / 100; //Nb de pv : Ici de 0 -> 100
+
+    graphics.clear();
+    graphics.fillStyle(0x808080);
+    graphics.fillRoundedRect(10, 10, width_bar, 20, 5);
+
+    if (percent_bar > 0){
+        graphics.fillStyle(0x00ff00);
+        graphics.fillRoundedRect(10, 10, width_bar * percent_bar, 20, 5)
+    }
+
+}

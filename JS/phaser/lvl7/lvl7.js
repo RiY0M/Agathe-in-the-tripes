@@ -48,14 +48,14 @@ function create()
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300);
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
-    setHealthBar(boss.health);
+    setHealthBar(boss.health, 21);
 
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
+    //this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
     // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//

@@ -1,6 +1,12 @@
 "use strict";
 
 class Vomitball extends Phaser.GameObjects.Sprite {
+
+    targetX = this.x;
+    targetY = this.y;
+    speedX = 0;
+    speedY = 0;
+
     constructor(scene, x, y) {
         // Call the parent constructor
         super(scene, x, y, 'vomitball');
@@ -18,16 +24,28 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.body.setSize(32, 32);
 
         // Set additional properties for the fireball
-        this.speed = 30; // You can adjust the speed
+        this.speed = 100; // You can adjust the speed
         this.isAlive = false; // Flag to check if the fireball is active
     }
 
     // Custom method to initialize the fireball
-    throwVomitball(x, y) {
-        this.setPosition(x, y);
+    throwVomitball(initialX, initialY, targetX, targetY) {
+        this.setPosition(initialX, initialY);
         this.setActive(true);
         this.setVisible(true);
         this.isAlive = true;
+        this.targetX = targetX;
+        this.targetY = targetY;
+
+        const diffX = initialX - targetX;
+        const diffY = initialY - targetY; // Sera toujours positif puisque la boule ne peux pas aller en haut
+
+        // const direction = diffX == Math.abs(diffX) ? 1 : -1;
+
+        const distance = Math.sqrt(Math.pow(Math.abs(diffX), 2) + Math.pow(diffY, 2));
+
+        this.speedX = (this.speed * diffX) / distance;
+        this.speedY = (this.speed * diffY) / distance;
     }
 
     // Custom method to update the fireball
@@ -35,8 +53,9 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         if (!this.isAlive) {
             return;
         }
-        // Move the fireball to the right (adjust as needed)
-        this.x += this.speed * delta / 1000;
+
+        this.x -= this.speedX * delta / 1000;
+        this.y -= this.speedY * delta / 1000;
 
         // Check if the fireball is out of bounds
         if (this.x <= game.config.width) {
@@ -58,6 +77,9 @@ class Boss extends Phaser.GameObjects.Sprite {
 
         // Enable physics for the boss
         scene.physics.world.enable(this);
+
+        // Disable gravity for the fireball
+        this.body.setAllowGravity(false);
 
         // this.setCollideWorldBounds(true); // on définit les collisions avec la bordure
         // Additional properties

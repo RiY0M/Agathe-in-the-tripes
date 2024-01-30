@@ -48,7 +48,7 @@ function create(){
     createAgathe(this);  
     
     //~ SPRITE AGATHE ~//
-    boss = new Boss(this, 400, 320);
+    boss = new Boss(this, 400, 120);
     vomitball = new Vomitball(this, -100, -100); // Initialize off-screen
 
     //* CREATION DE LA MAP *//
@@ -71,8 +71,8 @@ function create(){
 
     // Handle boss throwing a vomitball (replace this with your actual logic)
     boss.on('throwVomitball', (targetX, targetY) => {
-        // vomitball.throwVomitball(boss.x, boss.y); // Set initial position to boss position
-        vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
+        vomitball.throwVomitball(boss.x, boss.y, agathe.x, agathe.y); // Set initial position to boss position
+        // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
     });
 
     //* Test dégats *//

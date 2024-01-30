@@ -48,7 +48,8 @@ function create(){
     createAgathe(this);  
     
     //~ SPRITE AGATHE ~//
-    createBoss(this);    
+    boss = new Boss(this, 400, 320);
+    vomitball = new Vomitball(this, -100, -100); // Initialize off-screen
 
     //* CREATION DE LA MAP *//
     createMap(this);
@@ -56,9 +57,6 @@ function create(){
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
     this.physics.add.collider(boss, roadBorder);
-
-    //* Test dégats *//
-    this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -69,13 +67,24 @@ function create(){
     createVerticalAnims(this);
     
     //? AFK ANIMS ?//
-    createAFK(this);   
+    createAFK(this);
 
+    // Handle boss throwing a vomitball (replace this with your actual logic)
+    boss.on('throwVomitball', (targetX, targetY) => {
+        // vomitball.throwVomitball(boss.x, boss.y); // Set initial position to boss position
+        vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
+    });
+
+    //* Test dégats *//
+    this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
 }
 
-function update(){
+function update(time, delta) {
 
     if (nbHearts == 0) displayDeathScreen();        //Personnage mort
+
+    boss.update(time, delta);
+    vomitball.update(time, delta);
 
     if (start3sCoolDownAgathe) {
 
@@ -129,22 +138,24 @@ function collidePlayerProjectile()
 }
 
 function bossGetDamaged() {
-    if (!isInvicibleBoss) {
-        if (bossHealth >= 1) {
-            bossHealth -= 1; // Réduire la santé du boss
-            setHealthBar(bossHealth);
-
-            // Faire clignoter le boss en rouge
-            boss.setTint(0xFF0000);
-
-            isInvicibleBoss = true;
-            setTimeout(() => {
-                // Arrêter le clignotement et revenir a la couleur normale
-                boss.clearTint();
-                isInvicibleBoss = false;
-            }, 1000); // 3s invincible
-        } else {
-            console.log("Il est mort !");
-        }
+    if (isInvicibleBoss) {
+        return;
     }
+    if (bossHealth < 1) {
+        console.log("Il est mort !");
+        return;
+    }
+
+    bossHealth -= 1; // Réduire la santé du boss
+    setHealthBar(bossHealth);
+
+    // Faire clignoter le boss en rouge
+    boss.setTint(0xFF0000);
+
+    isInvicibleBoss = true;
+    setTimeout(() => {
+        // Arrêter le clignotement et revenir a la couleur normale
+        boss.clearTint();
+        isInvicibleBoss = false;
+    }, 1000); // 3s invincible
 }

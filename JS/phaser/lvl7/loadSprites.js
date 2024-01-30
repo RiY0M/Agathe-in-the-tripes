@@ -10,6 +10,8 @@ function loadImages(scene){
     // invisible road
     scene.load.image("road", "../../img/assets/lvl7/road.png");
 
+    scene.load.image("vomitball", "../../img/assets/lvl7/vomitball.png");
+
     scene.load.spritesheet("boss", "../../img/assets/common/agathe_sprite.png", { frameWidth: 32, frameHeight: 48 });
 
     // dégât

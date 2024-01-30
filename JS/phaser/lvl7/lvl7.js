@@ -71,7 +71,7 @@ function create()
 
     // Handle boss throwing a vomitball (replace this with your actual logic)
     boss.on('throwVomitball', (targetX, targetY) => {
-        vomitball.throwVomitball(boss.x, boss.y, agathe.x, agathe.y); // Set initial position to boss position
+        vomitball.throwVomitball(boss.x, boss.y - 200, agathe.x, agathe.y); // Set initial position to boss position
         // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
     });
 }

@@ -1,10 +1,25 @@
 //~ SPRITE AGATHE ~//
 function createAgathe(scene){
-    agathe = scene.physics.add.sprite(15, 320, "agathe")
+    agathe = scene.physics.add.sprite(15, 320, "agathe").setDepth(3)
         .setSize(21, 8)
         .setOffset(5, 40);
     
     agathe.setCollideWorldBounds(true); // on définit les collisions avec la bordure
+}
+
+//~ SPRITE BOSS ~//
+function createBoss(scene){
+    boss = scene.physics.add.staticGroup();
+    boss.create(400, 300, "boss").setDepth(1);
+}
+
+//~ SPRITE VOMITBALL ~//
+function createVomitball(scene){
+    vomitball = scene.physics.add.sprite(400, 100, "vomitball");    
+    vomitball.setCollideWorldBounds(true); // on définit les collisions avec la bordure
+
+    createVomitballAnim(scene);
+    vomitball.anims.play("vomitball", true);
 }
 
 //* CREATION DE LA MAP *//

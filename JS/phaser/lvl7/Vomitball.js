@@ -45,14 +45,12 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         const diffX = initialX - targetX;
         const diffY = initialY - targetY; // Sera toujours positif puisque la boule ne peux pas aller en haut
 
-        // const direction = diffX == Math.abs(diffX) ? 1 : -1;
-
         const distance = Math.sqrt(Math.pow(Math.abs(diffX), 2) + Math.pow(diffY, 2));
 
         this.speedX = (this.speed * diffX) / distance;
         this.speedY = (this.speed * diffY) / distance;
 
-        this.rotation = Math.asin(diffX / distance);
+        this.rotation = Math.asin(diffX / distance) - (Math.PI/2);
         console.log(this.angle);
     }
 
@@ -77,6 +75,10 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 }
 
 class Boss extends Phaser.GameObjects.Sprite {
+
+    health = 21;
+    isInvicible = false;
+
     constructor(scene, x, y) {
         super(scene, x, y, "boss");
 

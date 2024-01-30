@@ -30,8 +30,7 @@ function create()
 {
     //*Barre de vie *//
     graphics = this.add.graphics().setDepth(3);
-    setHealthBar(bossHealth);
-
+    
     //* Theme de fond *//
     startBackgroundMusic(this);
     
@@ -39,16 +38,17 @@ function create()
     let bg = this.physics.add.staticGroup();
     bg.create(400, 75, "back-map").setDepth(0);
     bg.create(400, 440, "front-map").setScale(1.3).setDepth(2);
-
+    
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
-
+    
     //~ SPRITE AGATHE ~//
     createAgathe(this);
-
-    //~ SPRITE AGATHE ~//
+    
+    //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300);
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
+    setHealthBar(boss.health);
 
     //* CREATION DE LA MAP *//
     createMap(this);
@@ -135,25 +135,25 @@ function collidePlayerProjectile()
 }
 
 function bossGetDamaged() {
-    if (isInvicibleBoss) {
+    if (boss.isInvicible) {
         return;
     }
-    if (bossHealth < 1) {
+    if (boss.health < 1) {
         console.log("Il est mort !");
         return;
     }
 
-    bossHealth -= 1; // Réduire la santé du boss
-    setHealthBar(bossHealth);
+    boss.health -= 1; // Réduire la santé du boss
+    setHealthBar(boss.health);
 
     // Faire clignoter le boss en rouge
     boss.setTint(0xFF0000);
 
-    isInvicibleBoss = true;
+    boss.isInvicible = true;
     setTimeout(() => {
         // Arrêter le clignotement et revenir a la couleur normale
         boss.clearTint();
-        isInvicibleBoss = false;
+        boss.isInvicible = false;
     }, 1000); // 3s invincible
 }
 

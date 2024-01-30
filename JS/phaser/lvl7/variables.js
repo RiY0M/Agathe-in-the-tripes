@@ -27,5 +27,3 @@ let graphics;
 let boss;
 let percent_bar;
 let width_bar
-let bossHealth = 20; // PV initiale du boss
-let isInvicibleBoss = false;        // Bool : mob invicible ou non

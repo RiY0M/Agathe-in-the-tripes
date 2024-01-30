@@ -137,7 +137,6 @@ function bossGetDamaged() {
     if (isInvicibleBoss) {
         return;
     }
-<<<<<<< HEAD
     if (bossHealth < 1) {
         console.log("Il est mort !");
         return;
@@ -155,7 +154,6 @@ function bossGetDamaged() {
         boss.clearTint();
         isInvicibleBoss = false;
     }, 1000); // 3s invincible
-=======
 }
 
 function startBackgroundMusic(scene) {
@@ -171,5 +169,4 @@ function startBackgroundMusic(scene) {
             seek: restartMusic
         });
     }
->>>>>>> main
 }

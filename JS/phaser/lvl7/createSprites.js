@@ -1,6 +1,6 @@
 //~ SPRITE AGATHE ~//
 function createAgathe(scene){
-    agathe = scene.physics.add.sprite(15, 320, "agathe")
+    agathe = scene.physics.add.sprite(15, 320, "agathe").setDepth(3)
         .setSize(21, 8)
         .setOffset(5, 40);
     
@@ -21,11 +21,11 @@ function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du bo
     const centerX = (config.width - width_bar) / 2;
 
     graphics.clear();
-    graphics.fillStyle(0x808080);
-    graphics.fillRoundedRect(centerX, 10, width_bar, 20, 5);
+    graphics.fillStyle(0xff6600);
+    graphics.fillRoundedRect(centerX, 550, width_bar, 20, 5);
 
     if (percent_bar > 0){
-        graphics.fillStyle(0x00ff00);
-        graphics.fillRoundedRect(centerX, 10, width_bar * percent_bar, 20, 5)
+        graphics.fillStyle(0xff0000);
+        graphics.fillRoundedRect(centerX, 550, width_bar * percent_bar, 20, 5)
     }
 }

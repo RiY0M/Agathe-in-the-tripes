@@ -3,7 +3,6 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#e78c93",
     physics: { default: 'arcade',
                 arcade : {
                     gravity: { y: 600 },
@@ -27,31 +26,37 @@ function preload(){
     loadImages(this);
 }
 
-function create(){
+function create()
+{
     //*Barre de vie *//
-    graphics = this.add.graphics();
+    graphics = this.add.graphics().setDepth(3);
     setHealthBar(bossHealth);
 
     //* Theme de fond *//
     startBackgroundMusic(this);
-    //restartMusic = 16;
+    
+    //$ FOND DU BACKGROUND $//
+    let bg = this.physics.add.staticGroup();
+    bg.create(400, 75, "back-map").setDepth(0);
+    bg.create(400, 440, "front-map").setScale(1.3).setDepth(2);
 
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 
     //~ SPRITE AGATHE ~//
-    createAgathe(this);  
-    
+    createAgathe(this);
+
     //~ SPRITE AGATHE ~//
-    boss = new Boss(this, 400, 120);
-    vomitball = new Vomitball(this, -100, -100); // Initialize off-screen
+    boss = new Boss(this, 400, 300);
+    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
 
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.collider(boss, roadBorder);
+    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
+    // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -69,10 +74,6 @@ function create(){
         vomitball.throwVomitball(boss.x, boss.y, agathe.x, agathe.y); // Set initial position to boss position
         // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
     });
-
-    //* Test dégats *//
-    // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
-    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);   // PERMET DE TEST DEGATS
 }
 
 function update(time, delta) {

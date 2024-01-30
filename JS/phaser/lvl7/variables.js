@@ -1,4 +1,5 @@
 let agathe;                 // agathe personnage
+let vomitball;              // boule de vomis
 let cursors;                // détection clavier
 let lastFrame = 8;          // last frame facing afk
 let music;                  //Theme (musique de fond)

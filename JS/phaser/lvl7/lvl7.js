@@ -32,8 +32,6 @@ function create(){
     graphics = this.add.graphics();
     setHealthBar(bossHealth);
 
-    //events.on('')
-
     //* Theme de fond *//
     startBackgroundMusic(this);
     //restartMusic = 16;
@@ -44,8 +42,11 @@ function create(){
     //~ SPRITE AGATHE ~//
     createAgathe(this);  
     
-    //~ SPRITE AGATHE ~//
-    createBoss(this);    
+    //~ SPRITE BOSS ~//
+    createBoss(this);
+
+    //~ SPRITE VOMITBALL ~//
+    createVomitball(this);    
 
     //* CREATION DE LA MAP *//
     createMap(this);

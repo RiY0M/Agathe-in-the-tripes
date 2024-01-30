@@ -14,3 +14,14 @@ function createVerticalAnims(scene)
         repeat: -1
     });
 }
+
+
+function createVomitballAnim(scene)
+{
+    scene.anims.create({
+        key: "vomitball",
+        frames: scene.anims.generateFrameNumbers("vomitball", { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: 999
+    });
+}

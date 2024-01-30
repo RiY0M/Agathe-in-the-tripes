@@ -77,6 +77,7 @@ function create(){
 
     //* Test dégats *//
     this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
+    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);   // PERMET DE TEST DEGATS
 }
 
 function update(time, delta) {
@@ -123,18 +124,20 @@ function update(time, delta) {
 function collidePlayerProjectile()
 {
     // si agathe n'est pas invincible
-    if (!isInvicible)
-    {
-        // si elle a encore au moins une vie
-        if (nbHearts > 0) {
-            // on lui en retire une
-            nbHearts--;
-            reloadNbHearts();
-        }
-
-        // lancement des 3s d'invincibilité
-        start3sCoolDownAgathe = true;
+    if (isInvicible) {
+        return;
     }
+    // si elle a encore au moins une vie
+    if (nbHearts > 0) {
+        // on lui en retire une
+        nbHearts--;
+        reloadNbHearts();
+    }
+
+    console.log(nbHearts);
+
+    // lancement des 3s d'invincibilité
+    start3sCoolDownAgathe = true;
 }
 
 function bossGetDamaged() {

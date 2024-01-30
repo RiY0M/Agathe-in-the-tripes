@@ -9,7 +9,13 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
 
         // Enable physics for the fireball
-        // scene.physics.world.enable(this);
+        scene.physics.world.enable(this);
+
+        // Disable gravity for the fireball
+        this.body.setAllowGravity(false);
+
+        // Set the size of the hitbox (adjust as needed)
+        this.body.setSize(32, 32);
 
         // Set additional properties for the fireball
         this.speed = 30; // You can adjust the speed

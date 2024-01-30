@@ -58,7 +58,7 @@ function create(){
     this.physics.add.collider(boss, roadBorder);
 
     //* Test dégats *//
-    this.physics.add.collider(agathe, boss, collidePlayerProjectile);   // PERMET DE TEST DEGATS
+    this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -139,7 +139,7 @@ function bossGetDamaged() {
 
             isInvicibleBoss = true;
             setTimeout(() => {
-                // Arrêter le clignotement et revenir à la couleur normale
+                // Arrêter le clignotement et revenir a la couleur normale
                 boss.clearTint();
                 isInvicibleBoss = false;
             }, 1000); // 3s invincible

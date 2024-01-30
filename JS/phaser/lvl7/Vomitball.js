@@ -37,6 +37,8 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.setActive(true);
         this.setVisible(true);
         this.isAlive = true;
+
+
         this.targetX = targetX;
         this.targetY = targetY;
 
@@ -49,6 +51,9 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 
         this.speedX = (this.speed * diffX) / distance;
         this.speedY = (this.speed * diffY) / distance;
+
+        this.rotation = Math.asin(diffX / distance);
+        console.log(this.angle);
     }
 
     // Custom method to update the fireball
@@ -95,9 +100,9 @@ class Boss extends Phaser.GameObjects.Sprite {
         // Boss update logic...
 
         if (this.x < 0) {
-            this.x = 0;  // If the boss goes beyond the left border, set its position to the left border
+            this.x = 0; // If the boss goes beyond the left border, set its position to the left border
         } else if (this.x > game.config.width) {
-            this.x = game.config.width;  // If the boss goes beyond the right border, set its position to the right border
+            this.x = game.config.width; // If the boss goes beyond the right border, set its position to the right border
         }
 
         // Check if enough time has passed since the last fireball throw

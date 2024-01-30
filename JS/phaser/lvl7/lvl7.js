@@ -71,7 +71,7 @@ function create(){
     });
 
     //* Test dégats *//
-    this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
+    // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);   // PERMET DE TEST DEGATS
 }
 

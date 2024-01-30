@@ -21,10 +21,10 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.body.setAllowGravity(false);
 
         createVomitballAnim(scene);
-        this.anims.play("vomitball", true);
+        this.anims.play("vomitballAnims", true);
 
         // Set the size of the hitbox (adjust as needed)
-        this.body.setSize(32, 32);
+        this.body.setSize(64, 64);
 
         // Set additional properties for the fireball
         this.speed = 100; // You can adjust the speed

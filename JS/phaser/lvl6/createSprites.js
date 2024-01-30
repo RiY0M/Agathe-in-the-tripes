@@ -37,4 +37,7 @@ function createBackMap(scene)
 
     // panneau maison
     frontMapElement.create(560, 315, "sign").setScale(0.2);
+
+    // potion
+    potion.create(205, 330, "heal");
 }

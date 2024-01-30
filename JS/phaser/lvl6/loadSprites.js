@@ -23,4 +23,7 @@ function loadImages(scene)
 
     // home sign
     scene.load.image("sign", "../../img/assets/lvl6/sign.png");
+
+    // heal potion
+    scene.load.image("heal", "../../img/assets/lvl6/heal.png");
 }

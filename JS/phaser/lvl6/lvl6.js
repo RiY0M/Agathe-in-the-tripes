@@ -50,6 +50,7 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
+    this.physics.add.collider(agathe, potion, gulpDown, null, this);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -67,4 +68,14 @@ function create()
 function update()
 {
     createVerticalMove(agathe, cursors);
+}
+
+
+function gulpDown(player, potion)
+{
+    // destruction potion
+    potion.disableBody(true, true);
+
+    // joueur full vie
+    nbHearts = 3;
 }

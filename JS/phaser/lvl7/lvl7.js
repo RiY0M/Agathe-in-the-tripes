@@ -33,10 +33,8 @@ function create(){
     setHealthBar(bossHealth);
 
     //* Theme de fond *//
-    music = this.sound.add("theme");
-    music.volume -= 0.5;
-    music.setLoop(true);
-    music.play();
+    startBackgroundMusic(this);
+    //restartMusic = 16;
 
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
@@ -146,5 +144,20 @@ function bossGetDamaged() {
         } else {
             console.log("Il est mort !");
         }
+    }
+}
+
+function startBackgroundMusic(scene) {
+    music = scene.sound.add("theme");
+    music.volume -= 0.5;
+    music.setLoop(true);
+
+    if (isFirstTime) {
+        isFirstTime = false;
+        music.play();
+    } else {
+        music.play({
+            seek: restartMusic
+        });
     }
 }

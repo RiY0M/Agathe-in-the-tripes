@@ -3,6 +3,10 @@ let vomitball;              // boule de vomis
 let cursors;                // détection clavier
 let lastFrame = 8;          // last frame facing afk
 let music;                  //Theme (musique de fond)
+let restartMusic = 16;       // Musique se relance au moment choisis
+let isFirstTime = true; 
+
+
 
 const idCurrentLvl = 7;      // Id du niveau courant
 const idNextLvl = 8;        // Id du prochain niveau

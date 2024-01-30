@@ -36,5 +36,5 @@ function createBackMap(scene)
     frontMapElement.create(15, 310, "worm-tail").setScale(0.7).angle -= 5;
 
     // panneau maison
-    frontMapElement.create(105, 315, "sign").setScale(0.2);
+    frontMapElement.create(560, 315, "sign").setScale(0.2);
 }

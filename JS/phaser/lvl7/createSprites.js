@@ -28,5 +28,4 @@ function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du bo
         graphics.fillStyle(0x00ff00);
         graphics.fillRoundedRect(centerX, 10, width_bar * percent_bar, 20, 5)
     }
-
 }

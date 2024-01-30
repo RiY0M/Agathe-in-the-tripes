@@ -9,10 +9,10 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
 
         // Enable physics for the fireball
-        scene.physics.world.enable(this);
+        // scene.physics.world.enable(this);
 
         // Set additional properties for the fireball
-        this.speed = 3; // You can adjust the speed
+        this.speed = 30; // You can adjust the speed
         this.isAlive = false; // Flag to check if the fireball is active
     }
 
@@ -31,7 +31,6 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         }
         // Move the fireball to the right (adjust as needed)
         this.x += this.speed * delta / 1000;
-        console.log(this.x)
 
         // Check if the fireball is out of bounds
         if (this.x <= game.config.width) {

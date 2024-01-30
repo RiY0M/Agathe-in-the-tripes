@@ -26,4 +26,8 @@ function loadImages(scene)
 
     // heal potion
     scene.load.image("heal", "../../img/assets/lvl6/heal.png");
+
+    //audio
+    scene.load.audio('theme', '../../sound/lvl6/lvl6.mp3');
+    scene.load.audio('newHeart', "../../sound/common/newHeart.mp3");
 }

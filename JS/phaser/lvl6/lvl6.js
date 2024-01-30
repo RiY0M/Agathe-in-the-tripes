@@ -31,6 +31,14 @@ function preload()
 
 function create()
 {
+
+    //* Theme de fond *//
+    music = this.sound.add("theme");
+    music.volume -= 0.3;
+    music.setLoop(true);
+    music.play();
+    newHeart = this.sound.add("newHeart");
+
     //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup()
     bg.create(400, 300, "lvl6-bg");
@@ -78,4 +86,5 @@ function gulpDown(player, potion)
 
     // joueur full vie
     nbHearts = 3;
+    newHeart.play();
 }

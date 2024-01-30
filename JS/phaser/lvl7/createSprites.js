@@ -7,21 +7,6 @@ function createAgathe(scene){
     agathe.setCollideWorldBounds(true); // on définit les collisions avec la bordure
 }
 
-//~ SPRITE BOSS ~//
-function createBoss(scene){
-    boss = scene.physics.add.staticGroup();
-    boss.create(400, 300, "boss").setDepth(1);
-}
-
-//~ SPRITE VOMITBALL ~//
-function createVomitball(scene){
-    vomitball = scene.physics.add.sprite(400, 100, "vomitball");    
-    vomitball.setCollideWorldBounds(true); // on définit les collisions avec la bordure
-
-    createVomitballAnim(scene);
-    vomitball.anims.play("vomitball", true);
-}
-
 //* CREATION DE LA MAP *//
 function createMap(scene){
     // ajout de la route invisible
@@ -36,11 +21,11 @@ function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du bo
     const centerX = (config.width - width_bar) / 2;
 
     graphics.clear();
-    graphics.fillStyle(0x808080);
-    graphics.fillRoundedRect(centerX, 10, width_bar, 20, 5);
+    graphics.fillStyle(0xff6600);
+    graphics.fillRoundedRect(centerX, 550, width_bar, 20, 5);
 
     if (percent_bar > 0){
-        graphics.fillStyle(0x00ff00);
-        graphics.fillRoundedRect(centerX, 10, width_bar * percent_bar, 20, 5)
+        graphics.fillStyle(0xff0000);
+        graphics.fillRoundedRect(centerX, 550, width_bar * percent_bar, 20, 5)
     }
 }

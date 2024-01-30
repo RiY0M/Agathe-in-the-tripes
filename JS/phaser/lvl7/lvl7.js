@@ -29,7 +29,7 @@ function preload(){
 function create()
 {
     //*Barre de vie *//
-    graphics = this.add.graphics();
+    graphics = this.add.graphics().setDepth(3);
     setHealthBar(bossHealth);
 
     //* Theme de fond *//
@@ -47,19 +47,15 @@ function create()
     createAgathe(this);
 
     //~ SPRITE AGATHE ~//
-    createBoss(this);
-
-    //~ SPRITE VOMITBALL ~//
-    createVomitball(this);    
+    boss = new Boss(this, 400, 300);
+    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
 
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-
-    //* Test dégats *//
-    this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
+    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -77,10 +73,6 @@ function create()
         vomitball.throwVomitball(boss.x, boss.y, agathe.x, agathe.y); // Set initial position to boss position
         // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
     });
-
-    //* Test dégats *//
-    this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
-    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);   // PERMET DE TEST DEGATS
 }
 
 function update(time, delta) {

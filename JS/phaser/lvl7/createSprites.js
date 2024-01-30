@@ -18,13 +18,15 @@ function setHealthBar(value){   //Fonction qui s'occupe de la barre de vie du bo
     width_bar = 700; //Taille bar de vie
     percent_bar = Phaser.Math.Clamp(value, 0, 20) / 20; //Nb de pv : Ici de 0 -> 100
 
+    const centerX = (config.width - width_bar) / 2;
+
     graphics.clear();
     graphics.fillStyle(0x808080);
-    graphics.fillRoundedRect(10, 10, width_bar, 20, 5);
+    graphics.fillRoundedRect(centerX, 10, width_bar, 20, 5);
 
     if (percent_bar > 0){
         graphics.fillStyle(0x00ff00);
-        graphics.fillRoundedRect(10, 10, width_bar * percent_bar, 20, 5)
+        graphics.fillRoundedRect(centerX, 10, width_bar * percent_bar, 20, 5)
     }
 
 }

@@ -134,8 +134,6 @@ function collidePlayerProjectile()
         reloadNbHearts();
     }
 
-    console.log(nbHearts);
-
     // lancement des 3s d'invincibilité
     start3sCoolDownAgathe = true;
 }

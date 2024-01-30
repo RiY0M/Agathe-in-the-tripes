@@ -19,7 +19,7 @@ function createVerticalAnims(scene)
 function createVomitballAnim(scene)
 {
     scene.anims.create({
-        key: "vomitball",
+        key: "vomitballAnims",
         frames: scene.anims.generateFrameNumbers("vomitball", { start: 0, end: 3 }),
         frameRate: 10,
         repeat: 999

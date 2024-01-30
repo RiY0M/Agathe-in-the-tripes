@@ -3,7 +3,6 @@ let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: "#e78c93",
     physics: { default: 'arcade',
                 arcade : {
                     gravity: { y: 600 },
@@ -27,22 +26,27 @@ function preload(){
     loadImages(this);
 }
 
-function create(){
+function create()
+{
     //*Barre de vie *//
     graphics = this.add.graphics();
     setHealthBar(bossHealth);
 
     //* Theme de fond *//
     startBackgroundMusic(this);
-    //restartMusic = 16;
+    
+    //$ FOND DU BACKGROUND $//
+    let bg = this.physics.add.staticGroup();
+    bg.create(400, 75, "back-map").setDepth(0);
+    bg.create(400, 440, "front-map").setScale(1.3).setDepth(2);
 
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
 
     //~ SPRITE AGATHE ~//
-    createAgathe(this);  
-    
-    //~ SPRITE BOSS ~//
+    createAgathe(this);
+
+    //~ SPRITE AGATHE ~//
     createBoss(this);
 
     //~ SPRITE VOMITBALL ~//
@@ -53,7 +57,6 @@ function create(){
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.collider(boss, roadBorder);
 
     //* Test dégats *//
     this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS

@@ -1,6 +1,6 @@
 //~ SPRITE AGATHE ~//
 function createAgathe(scene){
-    agathe = scene.physics.add.sprite(15, 320, "agathe")
+    agathe = scene.physics.add.sprite(15, 320, "agathe").setDepth(3)
         .setSize(21, 8)
         .setOffset(5, 40);
     
@@ -10,11 +10,7 @@ function createAgathe(scene){
 //~ SPRITE BOSS ~//
 function createBoss(scene){
     boss = scene.physics.add.staticGroup();
-    boss = scene.physics.add.sprite(400, 320, "boss")
-        .setSize(21, 8) 
-        .setOffset(5, 40);
-    
-    boss.setCollideWorldBounds(true); // on définit les collisions avec la bordure
+    boss.create(400, 300, "boss").setDepth(1);
 }
 
 //~ SPRITE VOMITBALL ~//

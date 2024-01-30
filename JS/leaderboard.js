@@ -17,8 +17,9 @@ const btnLabels = {
     3: "Niv 3",
     4: "Niv 4",
     5: "Niv 5",
-    // 6: "épilogue",
-    7: "Total"
+    6: "Niv 6",
+    7: "Boss",
+    8: "Total"
 };
 
 const gameButtons = document.getElementById("leaderboard-buttons");
@@ -41,7 +42,9 @@ buttons[5].class = "active";
 async function changeAffichage(valueToChange) {
 
     //^ Data from the api
-    const json = await callAPI("getLeaderboard");
+    const json = await callAPI("getLeaderboard", {
+        error: "Not connected to db"
+    });
     if(json.status = 'error') {
         console.log(json.message);
     }

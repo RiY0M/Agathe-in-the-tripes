@@ -32,14 +32,9 @@ function create(){
     graphics = this.add.graphics();
     setHealthBar(bossHealth);
 
-    //events.on('')
-
-
     //* Theme de fond *//
-    music = this.sound.add("theme");
-    music.volume -= 0.5;
-    music.setLoop(true);
-    music.play();
+    startBackgroundMusic(this);
+    //restartMusic = 16;
 
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
@@ -142,6 +137,7 @@ function bossGetDamaged() {
     if (isInvicibleBoss) {
         return;
     }
+<<<<<<< HEAD
     if (bossHealth < 1) {
         console.log("Il est mort !");
         return;
@@ -159,4 +155,21 @@ function bossGetDamaged() {
         boss.clearTint();
         isInvicibleBoss = false;
     }, 1000); // 3s invincible
+=======
+}
+
+function startBackgroundMusic(scene) {
+    music = scene.sound.add("theme");
+    music.volume -= 0.5;
+    music.setLoop(true);
+
+    if (isFirstTime) {
+        isFirstTime = false;
+        music.play();
+    } else {
+        music.play({
+            seek: restartMusic
+        });
+    }
+>>>>>>> main
 }

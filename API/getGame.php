@@ -30,7 +30,6 @@ try {
 
     $json["status"] = "success";
     $json["message"] = "Sélection réussie";
-    // $json["data"] = $data;
 
 } catch(Exception $exception) {
     $json["status"] = "error";

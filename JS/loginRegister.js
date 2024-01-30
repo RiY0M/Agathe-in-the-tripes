@@ -9,12 +9,14 @@ const msgErreurReg = document.querySelector("#RegisterSpanErreur");
 async function register(login, mdp) {
 
     const json = await callAPI("newUser", {
+        error: "Not connected to db"
+    },
+    {
         login: login,
         mdp: mdp,
     });
 
-    const data = json.data;
-    // console.log(data);
+    // console.log(json.data);
     if (json.status == 'success') {
         // L'Authentification a réussi
         const msgErreur = await connectUser(login, mdp);
@@ -27,6 +29,9 @@ async function register(login, mdp) {
 async function connectUser(login, mdp) {
     try {
         let json = await callAPI("connexion", {
+            error: "Not connected to db"
+        },
+        {
             login: login,
             mdp: mdp,
         });
@@ -39,7 +44,11 @@ async function connectUser(login, mdp) {
         supprimeTousLesCookies();
         createCookiesFromData(json.data);
 
-        json = await callAPI("getGame");
+        json = await callAPI("getGame", {
+            level_id: 0,
+            HpRemain: 3,
+            nbDynamite: 0
+        });
         createCookiesFromData(json.data);
 
         window.location.replace("index.html");

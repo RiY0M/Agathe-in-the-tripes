@@ -11,7 +11,7 @@ function loadImages(scene){
     scene.load.audio('theme', '../../sound/lvl3/lvl3.mp3');
 
     scene.load.image('wall', '../../img/assets/TileMapsLvl3/wall.png')
-    scene.load.image("squeletton-heart", "../../img/assets/lvl1/squeletton-heart.png");
+    scene.load.image("squeletton-heart", "../../img/assets/common/heart.png");
     scene.load.image("blood-1", "../../img/assets/common/blood-1.png");
 
     // bg

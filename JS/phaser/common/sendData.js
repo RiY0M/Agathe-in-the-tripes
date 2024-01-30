@@ -3,6 +3,11 @@
 async function sendData(idLevel, idNextLevel, time, hp_remain = 3, nbDynamite = 0) {
 
     const json = await callAPI("saveScore", {
+        level_id: idNextLevel,
+        hpRemain: hp_remain,
+        nbDynamite: nbDynamite,
+    },
+    {
         level_id: idLevel,
         next_level_id: idNextLevel,
         complete_time: time,
@@ -34,7 +39,12 @@ async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, n
     // Appel API
     await sendData(idCurrentLvl, idNextLvl, time, hp_remain, nbDynamite);
 
-    if(idNextLvl == 7) {
+    if(idNextLvl == 1) {
+        window.location.replace(`../phaser/transition.html`);
+        return;
+    }
+
+    if(idNextLvl == 8) {
         window.location.replace(`../credits.html`);
         return;
     }

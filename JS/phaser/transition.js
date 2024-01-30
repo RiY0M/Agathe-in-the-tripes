@@ -67,6 +67,7 @@ function update (){
     else{
         agathe.anims.play("afk-" + 0);
         music.stop();
+        window.location.replace("../../HTML/phaser/lvl1.html");
         
     }
     this.chargement.fillRect(64, 64, size_chargement * Vitesse_de_Chargement, 48); //Chargement de la barre

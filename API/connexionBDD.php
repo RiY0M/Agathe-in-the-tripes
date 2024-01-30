@@ -19,8 +19,7 @@ try {
     // permet d’afficher les caractères utf8 si la BdD est définie en utf8 (accents...)
     unset($db_config);
 
-} catch( Exception $exception ) {
+} catch(Exception $exception) {
 
     die($exception->getMessage());
 }
-?>

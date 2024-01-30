@@ -68,7 +68,11 @@ nouvellePartyButton.addEventListener("click", () => {
 
 confirmerNouvellePartyButton.addEventListener("click", async () => {
 
-    const json = await callAPI("creerGame");
+    const json = await callAPI("creerGame", {
+        hpRemain: 3,
+        nbDynamite: 0,
+        level_id: 0
+    });
 
     createCookiesFromData(json.data);
     if (json.status == 'error') {
@@ -81,6 +85,11 @@ confirmerNouvellePartyButton.addEventListener("click", async () => {
 continuePartyButton.addEventListener("click", async () => {
 
     const json = await callAPI("getGame", {
+        hpRemain: 3,
+        nbDynamite: 0,
+        level_id: 0
+    },
+    {
         level_id: getCookie("level_id"),
         hp_remain: getCookie("hpRemain"),
         nb_dynamite: getCookie("nbDynamite"),

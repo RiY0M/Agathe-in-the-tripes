@@ -1,6 +1,6 @@
 // configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
 let config = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     width: 800,
     height: 600,
     physics: { default: 'arcade',
@@ -13,7 +13,7 @@ let config = {
     scene: {
         preload: preload,
         create: create,
-        update: update
+        update: update,
     }
 };
 
@@ -21,14 +21,13 @@ let config = {
 // $ CREATION FENETRE PHASER $//
 let game = new Phaser.Game(config);
 
-
 function preload(){
     loadImages(this);
 }
 
 function create()
 {
-    //*Barre de vie *//
+    //* Barre de vie *//
     graphics = this.add.graphics().setDepth(3);
     
     //* Theme de fond *//
@@ -48,14 +47,14 @@ function create()
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300);
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
-    setHealthBar(boss.health, 21);
+    setHealthBar(boss.health, boss.maxHealth);
 
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
+    this.physics.add.overlap(agathe, vomitball, collidePlayerProjectile);
     // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//
@@ -70,9 +69,8 @@ function create()
     createAFK(this);
 
     // Handle boss throwing a vomitball (replace this with your actual logic)
-    boss.on('throwVomitball', (targetX, targetY) => {
-        vomitball.throwVomitball(boss.x, boss.y - 200, agathe.x, agathe.y); // Set initial position to boss position
-        // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
+    boss.on('throwVomitball', () => {
+        vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
     });
 
     boss.on('hideAndReappearEvent', (speed) => {
@@ -123,6 +121,7 @@ function update(time, delta) {
 
 function collidePlayerProjectile()
 {
+    vomitball.body.enable = false;
     // si agathe n'est pas invincible
     if (isInvicible) {
         return;
@@ -148,11 +147,11 @@ function bossGetDamaged() {
     }
 
     boss.health -= 1; // Réduire la santé du boss
-    setHealthBar(boss.health);
+    setHealthBar(boss.health, boss.maxHealth);
     if (boss.health % 2 == 1) {
         boss.emit('hideAndReappearEvent', 3);
     }
-
+    
     // Faire clignoter le boss en rouge
     boss.setTint(0xFF0000);
 

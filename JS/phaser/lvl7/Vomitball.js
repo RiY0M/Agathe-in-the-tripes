@@ -20,14 +20,20 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         // Disable gravity for the fireball
         this.body.setAllowGravity(false);
 
+        this.body.debugShowBody = true;
+        this.body.debugShowVelocity = true;
+
         createVomitballAnim(scene);
         this.anims.play("vomitballAnims", true);
 
-        // Set the size of the hitbox (adjust as needed)
+        // Set the size of the hitbox
         this.body.setSize(64, 64);
+        this.body.setOffset(5);
+        // set the size of the texture
+        this.setScale(0.9);
 
         // Set additional properties for the fireball
-        this.speed = 100; // You can adjust the speed
+        this.speed = 120; // You can adjust the speed
         this.isAlive = false; // Flag to check if the fireball is active
     }
 
@@ -37,6 +43,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.setActive(true);
         this.setVisible(true);
         this.isAlive = true;
+        this.body.enable = true;
 
 
         this.targetX = targetX;
@@ -53,7 +60,6 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.rotation = Math.asin(diffX / distance) - (Math.PI/2);
     }
 
-    // Custom method to update the fireball
     update(time, delta) {
         if (!this.isAlive) {
             return;
@@ -63,26 +69,33 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.y -= this.speedY * delta / 1000;
 
         // Check if the fireball is out of bounds
-        if (this.x <= game.config.width) {
+        if (this.x < game.config.width && this.x > 0 && this.y < 320) {
             return;
         }
 
         this.setActive(false);
         this.setVisible(false);
         this.isAlive = false;
+        this.body.enable = false;
+
+        // create explosion
     }
 }
 
 class Boss extends Phaser.GameObjects.Sprite {
 
-    health = 21;
+    maxHealth = 21;
+    health = this.maxHealth;
     isInvicible = false;
     isMoving = false;
-    initialY = this.y; // Stocker la position initiale en Y du boss
-    paterneDeplacement = false;
+    initialYBoss = this.y; // Stocker la position initiale en Y du boss
+    vomitballCooldown = 3000;
+    lastVomitballTime = 0;
+    headY;
 
     constructor(scene, x, y) {
         super(scene, x, y, "boss");
+        this.headY = y - 200;
 
         // Add the boss to the scene
         scene.add.existing(this);
@@ -96,8 +109,13 @@ class Boss extends Phaser.GameObjects.Sprite {
         // this.setCollideWorldBounds(true); // on définit les collisions avec la bordure
         // Additional properties
         this.speed = 100;
-        this.vomitballCooldown = 3000;
-        this.lastVomitballTime = 0;
+        // this.vomitballCooldown = 3000;
+        // this.lastVomitballTime = 0;
+    }
+
+    setY(y) {
+        this.y = y;
+        this.headY = y - 200;
     }
 
     update(time, delta) {
@@ -124,14 +142,14 @@ class Boss extends Phaser.GameObjects.Sprite {
 
     throwVomitball() {
         // Trigger the event to throw a fireball with the boss's current position
-        this.emit('throwVomitball', this.x, this.y);
+        this.emit('throwVomitball', this.x, this.headY);
     }
 
     movingDown(speed){
-        this.y += speed;
+        setY(this.y += speed);
     }
     movingUp(speed){
-        this.y -= speed;
+        setY(this.y -= speed);
     }
 
     hideAndReappear(speed) {
@@ -149,7 +167,7 @@ class Boss extends Phaser.GameObjects.Sprite {
         };
     
         const moveUp = (targetX) => {  // Gère le déplacement progressif vers le haut
-            if (this.y > this.initialY) {
+            if (this.y > this.initialYBoss) {
                 this.movingUp(speed); // Fait remonter le worm
                 // Delai pour suivre agathe
                 delayX = targetX - this.x > 0 ? 1 : -1; // De quel coté le boss doit aller ?

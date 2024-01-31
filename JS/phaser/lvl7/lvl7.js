@@ -80,6 +80,10 @@ function create()
 
 function update(time, delta) {
 
+    if (agathe.x - littleWorm.x <= 20 && agathe.x - littleWorm.x >= 1) {
+        littleWorm.playAttackAnim();
+    }
+
     if (nbHearts == 0) displayDeathScreen();        //Personnage mort
 
     boss.update(time, delta);

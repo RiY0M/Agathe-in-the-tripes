@@ -6,9 +6,7 @@ function loadImages(scene){
     scene.load.image("boss", "../../img/assets/lvl7/worm.png");
 
     // chargement sprite petits vers
-    scene.load.image("boss", "../../img/assets/lvl7/little-worms/out.png");
-    scene.load.image("boss", "../../img/assets/lvl7/little-worms/attack.png");
-    scene.load.image("boss", "../../img/assets/lvl7/little-worms/in.png");
+    scene.load.spritesheet("little-worms", "../../img/assets/lvl7/little-worms.png", { frameWidth: 32, frameHeight: 32 });
 
     // chargement sprites vomitball
     scene.load.spritesheet("vomitball", "../../img/assets/lvl7/vomitball.png", { frameWidth: 100, frameHeight: 42 });

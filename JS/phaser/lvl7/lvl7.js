@@ -50,6 +50,8 @@ function create()
     boss = new Boss(this, 400, 300);
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
 
+    littleWorm = new LittleWorm(this, 100, 325).setScale(1.2).setDepth(4);
+
     //* CREATION DE LA MAP *//
     createMap(this);
 

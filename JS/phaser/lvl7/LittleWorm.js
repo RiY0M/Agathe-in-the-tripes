@@ -1,47 +1,41 @@
-class LittleWorm
+class LittleWorm extends Phaser.GameObjects.Sprite
 {
-    _scene;
-    _x;
+    constructor(scene, x, y) {
+        super(scene, x, y, "little-worms");
 
-    constructor(scene, x) {
-        this._scene = scene;
-        this._x = x;
-    }
+        // Add the worm to the scene
+        scene.add.existing(this);
 
-    get x () {
-        return this._x;
-    }
+        // Enable physics
+        scene.physics.world.enable(this);
 
-    set x (newX) {
-        this._x = newX;
-    }
+        // Disable gravity
+        this.body.setAllowGravity(false);
 
-    //^ ANIMATIONS ^//
 
-    createOutAnim()
-    {
-        this._scene.anims.create({
+        //^ ANIMATIONS (CHARGEMENT) ^//
+        this.scene.anims.create({
             key: "outAnim",
-            frames: scene.anims.generateFrameNumbers("out", { start: 0, end: 7 }),
+            frames: scene.anims.generateFrameNumbers("little-worms", { start: 0, end: 7 }),
             frameRate: 10,
         });
-    }
 
-    createAttackAnim()
-    {
-        this._scene.anims.create({
+        this.scene.anims.create({
             key: "attackAnim",
-            frames: scene.anims.generateFrameNumbers("attack", { start: 0, end: 5 }),
+            frames: scene.anims.generateFrameNumbers("little-worms", { start: 8, end: 13 }),
             frameRate: 10,
         });
+
+        this.scene.anims.create({
+            key: "inAnim",
+            frames: scene.anims.generateFrameNumbers("little-worms", { start: 16, end: 23 }),
+            frameRate: 10,
+        });
+
+        //^ ANIMATIONS (LANCEMENT) ^//
+        this.anims.play("outAnim", true);
     }
 
-    createInAnim()
-    {
-        this._scene.anims.create({
-            key: "inAnim",
-            frames: scene.anims.generateFrameNumbers("in", { start: 0, end: 7 }),
-            frameRate: 10,
-        });
-    }
+    playAttackAnim() { this.anims.play("attackAnim", true); }
+    playInAnim() { this.anims.play("inAnim", true); }
 }

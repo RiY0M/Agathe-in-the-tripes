@@ -146,15 +146,17 @@ class Boss extends Phaser.GameObjects.Sprite {
     }
 
     movingDown(speed){
-        setY(this.y += speed);
+        let calcul = this.y + speed;
+        this.setY(calcul);
+        
     }
     movingUp(speed){
-        setY(this.y -= speed);
+        let calcul = this.y - speed;
+        this.setY(calcul);
     }
 
     hideAndReappear(speed) {
         this.isMoving = true; 
-        nbHearts = nbHearts - 1;    //Condition pour pas que fct se relance 
         let delayX;
         
         const moveDown = () => {    //Gere deplacement progressif vers le bas

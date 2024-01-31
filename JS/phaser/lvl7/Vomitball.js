@@ -116,11 +116,7 @@ class Boss extends Phaser.GameObjects.Sprite {
                 this.throwVomitball();
                 this.lastVomitballTime = time;
             }
-        }
-
-        //if (this.paterneDeplacement) this.hideAndReappear(2);
-        if (nbHearts == 2) this.hideAndReappear(4);
-        
+        }        
 
         // Move the boss to the right (adjust as needed)
         // this.x += this.speed * delta / 1000;
@@ -140,7 +136,7 @@ class Boss extends Phaser.GameObjects.Sprite {
 
     hideAndReappear(speed) {
         this.isMoving = true; 
-        nbHearts = nbHearts - 1;
+        nbHearts = nbHearts - 1;    //Condition pour pas que fct se relance 
         let delayX;
         
         const moveDown = () => {    //Gere deplacement progressif vers le bas
@@ -148,7 +144,7 @@ class Boss extends Phaser.GameObjects.Sprite {
                 this.movingDown(speed); // Fait descendre le worm
                 setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
             } else {
-                setTimeout(() => moveUp(agathe.x), 4000); // 4s avant de remonter, puis remonte avec la coordonnée x d'Agathe
+                setTimeout(() => moveUp(agathe.x), 3000); // 4s avant de remonter, puis remonte avec la coordonnée x d'Agathe
             }
         };
     

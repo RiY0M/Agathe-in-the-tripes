@@ -74,6 +74,10 @@ function create()
         vomitball.throwVomitball(boss.x, boss.y - 200, agathe.x, agathe.y); // Set initial position to boss position
         // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
     });
+
+    boss.on('hideAndReappearEvent', (speed) => {
+        boss.hideAndReappear(speed);
+    });
 }
 
 function update(time, delta) {
@@ -145,6 +149,9 @@ function bossGetDamaged() {
 
     boss.health -= 1; // Réduire la santé du boss
     setHealthBar(boss.health);
+    if (boss.health % 2 == 1) {
+        boss.emit('hideAndReappearEvent', 3);
+    }
 
     // Faire clignoter le boss en rouge
     boss.setTint(0xFF0000);

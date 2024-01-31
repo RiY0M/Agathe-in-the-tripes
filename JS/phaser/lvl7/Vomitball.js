@@ -119,7 +119,7 @@ class Boss extends Phaser.GameObjects.Sprite {
         }
 
         //if (this.paterneDeplacement) this.hideAndReappear(2);
-        if (nbHearts == 2) this.hideAndReappear(2);
+        if (nbHearts == 2) this.hideAndReappear(4);
         
 
         // Move the boss to the right (adjust as needed)
@@ -131,37 +131,6 @@ class Boss extends Phaser.GameObjects.Sprite {
         this.emit('throwVomitball', this.x, this.y);
     }
 
-    hideAndReappear(speed) {
-        nbHearts = nbHearts-1;
-        this.isMoving = true;
-        let enBas = false;
-        let coordsX = 400;
-
-        // if (this.y <= 580) { this.movingDown(speed);}
-        // else {
-        //     enBas = true;
-        // }
-        console.log(this.y);
-        while (this.y <= 580) {
-            this.movingDown(speed);
-        }
-        console.log(this.y);
-
-        // if (enBas){
-        //     coordsX = agathe.x;
-        //     setTimeout(() => {
-        //         this.x = coordsX;
-
-        //         while (this.y >= this.initialY && enBas) {
-        //             this.movingUp(speed);
-        //             if (this.y <= this.initialY- speed){
-        //                 enBas = false;
-        //             }
-        //         }
-        //     },5000);
-        // }
-    }
-
     movingDown(speed){
         this.y += speed;
     }
@@ -169,6 +138,33 @@ class Boss extends Phaser.GameObjects.Sprite {
         this.y -= speed;
     }
 
+    hideAndReappear(speed) {
+        this.isMoving = true; 
+        nbHearts = nbHearts - 1;
+        let delayX;
+        
+        const moveDown = () => {    //Gere deplacement progressif vers le bas
+            if (this.y < game.config.height) {
+                this.movingDown(speed); // Fait descendre le worm
+                setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
+            } else {
+                setTimeout(() => moveUp(agathe.x), 4000); // 4s avant de remonter, puis remonte avec la coordonnée x d'Agathe
+            }
+        };
     
+        const moveUp = (targetX) => {  // Gère le déplacement progressif vers le haut
+            if (this.y > this.initialY) {
+                this.movingUp(speed); // Fait remonter le worm
+                // Delai pour suivre agathe
+                delayX = targetX - this.x > 0 ? 1 : -1; // De quel coté le boss doit aller ?
+                this.x += delayX; // Applique le décalage sur l'axe x
+                setTimeout(() => moveUp(targetX), 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
+            } else {
+                this.isMoving = false;
+            }
+        };
+    
+        moveDown(); // Lance deplacement
+    }
 
 }

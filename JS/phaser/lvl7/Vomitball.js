@@ -79,6 +79,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     isInvicible = false;
     isMoving = false;
     initialY = this.y; // Stocker la position initiale en Y du boss
+    paterneDeplacement = false;
 
     constructor(scene, x, y) {
         super(scene, x, y, "boss");
@@ -109,7 +110,7 @@ class Boss extends Phaser.GameObjects.Sprite {
         }
 
         // Check if enough time has passed since the last fireball throw
-        if (time - this.lastVomitballTime > this.vomitballCooldown && this.isMoving) {
+        if (time - this.lastVomitballTime > this.vomitballCooldown && !this.isMoving) {
             // Decide to throw a fireball (replace this with your own logic)
             if (Math.random() < 0.01) {
                 this.throwVomitball();
@@ -117,10 +118,9 @@ class Boss extends Phaser.GameObjects.Sprite {
             }
         }
 
-        if (true) {
-            this.hideAndReappear();
-        }
-
+        //if (this.paterneDeplacement) this.hideAndReappear(2);
+        if (nbHearts == 2) this.hideAndReappear(2);
+        
 
         // Move the boss to the right (adjust as needed)
         // this.x += this.speed * delta / 1000;
@@ -131,36 +131,44 @@ class Boss extends Phaser.GameObjects.Sprite {
         this.emit('throwVomitball', this.x, this.y);
     }
 
-    hideAndReappear() {
-        const hideDuration = 5000; // Durée de la disparition (5 secondes)
-        const reappearDuration = 3000; // Durée de la réapparition (3 secondes)
-    
-        // Cacher le boss progressivement en descendant sous terre
-        if (this.y < 530) {
-            this.setAlpha(Math.max(0, 1 - (this.y - 530) / (game.config.height - 530))); // Réduire progressivement l'opacité
-            if (this.alpha === 0) {
-                this.setVisible(false); // Cacher le boss lorsque l'opacité atteint 0
-            }
+    hideAndReappear(speed) {
+        nbHearts = nbHearts-1;
+        this.isMoving = true;
+        let enBas = false;
+        let coordsX = 400;
+
+        // if (this.y <= 580) { this.movingDown(speed);}
+        // else {
+        //     enBas = true;
+        // }
+        console.log(this.y);
+        while (this.y <= 580) {
+            this.movingDown(speed);
         }
-    
-        // Réapparition progressive du boss après quelques secondes
-        setTimeout(() => {
-            // Réinitialiser la visibilité et l'opacité du boss
-            this.setVisible(true);
-            this.setAlpha(1);
-    
-            // Calculer la vitesse de remontée en fonction de la durée de réapparition
-            const speedY = (this.initialY - this.y) / reappearDuration;
-    
-            // Déplacer progressivement le boss vers sa position initiale en Y
-            const reappearTimer = setInterval(() => {
-                if (this.y < this.initialY) {
-                    this.y += speedY * 16; // 16ms correspond à une frame à 60FPS
-                } else {
-                    clearInterval(reappearTimer); // Arrêter le déplacement lorsque la position initiale est atteinte
-                }
-            }, 16); // Répéter toutes les 16ms pour correspondre à un framerate de 60FPS
-        }, hideDuration); // Attendre la durée de disparition avant de réapparaître
+        console.log(this.y);
+
+        // if (enBas){
+        //     coordsX = agathe.x;
+        //     setTimeout(() => {
+        //         this.x = coordsX;
+
+        //         while (this.y >= this.initialY && enBas) {
+        //             this.movingUp(speed);
+        //             if (this.y <= this.initialY- speed){
+        //                 enBas = false;
+        //             }
+        //         }
+        //     },5000);
+        // }
     }
+
+    movingDown(speed){
+        this.y += speed;
+    }
+    movingUp(speed){
+        this.y -= speed;
+    }
+
+    
 
 }

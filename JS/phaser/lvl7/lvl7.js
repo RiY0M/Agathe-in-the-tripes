@@ -55,7 +55,7 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    //this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
+    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
     // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//

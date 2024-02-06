@@ -164,7 +164,8 @@ class Boss extends Phaser.GameObjects.Sprite {
                 this.movingDown(speed); // Fait descendre le worm
                 setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
             } else {
-                setTimeout(() => moveUp(agathe.x), 3000); // 4s avant de remonter, puis remonte avec la coordonnée x d'Agathe
+                this.x = agathe.x - this.x > 0 ? agathe.x - 80 : agathe.x + 80;
+                setTimeout(() => moveUp(agathe.x), 1500); // Attendre 1.5sec avant de remonter vers Agathe
             }
         };
     

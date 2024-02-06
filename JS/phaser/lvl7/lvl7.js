@@ -94,7 +94,7 @@ function update(time, delta) {
 
     //& DROITE &//
     rightLittleWorms.forEach(littleWorm => {
-        if (littleWorm.x - agathe.x <= 20 && littleWorm.x - agathe.x >= 1) {
+        if (littleWorm.x - agathe.x <= 30 && littleWorm.x - agathe.x >= 0) {
             littleWorm.playAttackAnim();
         }
     });

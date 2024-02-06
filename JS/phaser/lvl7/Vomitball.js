@@ -20,15 +20,12 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         // Disable gravity for the fireball
         this.body.setAllowGravity(false);
 
-        this.body.debugShowBody = true;
-        this.body.debugShowVelocity = true;
-
         createVomitballAnim(scene);
         this.anims.play("vomitballAnims", true);
 
         // Set the size of the hitbox
-        this.body.setSize(64, 64);
-        this.body.setOffset(5);
+        this.body.setSize(50, 55);
+        // this.body.setOffset(5);
         // set the size of the texture
         this.setScale(0.9);
 
@@ -57,7 +54,9 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.speedX = (this.speed * diffX) / distance;
         this.speedY = (this.speed * diffY) / distance;
 
-        this.rotation = Math.asin(diffX / distance) - (Math.PI/2);
+        // this.body.setOffset(-this.speedX / this.speed, -this.speedY / this.speed);
+
+        this.rotation = Math.asin(diffX / distance) - Math.PI / 2;
     }
 
     update(time, delta) {
@@ -68,7 +67,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.x -= this.speedX * delta / 1000;
         this.y -= this.speedY * delta / 1000;
 
-        // Check if the fireball is out of bounds
+        // Check if the fireball is not out of bounds
         if (this.x < game.config.width && this.x > 0 && this.y < 320) {
             return;
         }

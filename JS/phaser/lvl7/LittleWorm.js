@@ -12,6 +12,9 @@ class LittleWorm extends Phaser.GameObjects.Sprite
         // Disable gravity
         this.body.setAllowGravity(false);
 
+        // size of hitbox
+        this.body.setSize(20, 20);
+
 
         //^ ANIMATIONS (CHARGEMENT) ^//
         this.scene.anims.create({
@@ -37,5 +40,8 @@ class LittleWorm extends Phaser.GameObjects.Sprite
     }
 
     playAttackAnim() { this.anims.play("attackAnim", true); }
-    playInAnim() { this.anims.play("inAnim", true); }
+    playInAnim() { 
+        this.anims.play("inAnim", true);
+        this.on('animationcomplete', () => {this.destroy();});
+    }
 }

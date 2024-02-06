@@ -48,7 +48,11 @@ function create()
 
     //~ SPRITE AGATHE ~//
     boss = new Boss(this, 400, 300);
-    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen
+
+    // initialize off-screen
+    vomitball = new Vomitball(this, -100, -100).setDepth(4);
+    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4);
+    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4).setFlip(true, false);
 
     //* CREATION DE LA MAP *//
     createMap(this);
@@ -56,7 +60,8 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
     this.physics.add.collider(agathe, vomitball, bossGetDamaged);
-    // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
+    this.physics.add.collider(agathe, leftLittleWorms, getDamaged);
+    this.physics.add.collider(agathe, rightLittleWorms, getDamaged);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -138,8 +143,10 @@ function update(time, delta) {
     createVerticalMove(agathe, cursors);
 }
 
-function collidePlayerProjectile()
+function getDamaged()
 {
+    console.log("touché");
+
     // si agathe n'est pas invincible
     if (isInvicible) {
         return;
@@ -209,7 +216,7 @@ function summonLilWorms(scene) {
     let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
     
     // apparition ver de gauche
-    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(4);
+    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(3);
     // apparition ver de droite en miroir
-    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(4).setFlip(true, false);
+    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
 }

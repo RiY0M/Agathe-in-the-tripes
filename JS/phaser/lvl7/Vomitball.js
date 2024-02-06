@@ -165,7 +165,8 @@ class Boss extends Phaser.GameObjects.Sprite {
                 setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
             } else {
                 this.x = agathe.x - this.x > 0 ? agathe.x - 80 : agathe.x + 80; this.y += 50;
-                this.scene.physics.add.overlap(agathe, this, console.log('test')).name = 'boss_colider';;
+                // this.scene.physics.add.overlap(agathe, this, collidePlayerProjectile()).name = 'boss_colider';;
+                this.emit('bossReachedBottom');
                 setTimeout(() => moveUp(agathe.x), 1500); // Attendre 1.5sec avant de remonter vers Agathe
             }
         };
@@ -180,9 +181,11 @@ class Boss extends Phaser.GameObjects.Sprite {
             } else {
                 this.isMoving = false;
 
-                this.scene.physics.world.colliders.getActive().find(function(i){
-                    return i.name == 'boss_colider'
-                }).destroy();
+                // this.scene.physics.world.colliders.getActive().find(function(i){
+                //     return i.name == 'boss_colider'
+                // }).destroy();
+                this.emit('bossReachedTop');
+
                 console.log("Test after");
             }
         };

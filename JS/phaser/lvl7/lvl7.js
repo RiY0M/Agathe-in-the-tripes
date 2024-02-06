@@ -45,9 +45,19 @@ function create()
     createAgathe(this);
     
     //~ SPRITE BOSS ~//
-    boss = new Boss(this, 400, 300).setDepth(15);   //a enlever avant de commit
+    boss = new Boss(this, 400, 300)
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
     setHealthBar(boss.health, boss.maxHealth);
+
+    // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
+    boss.on('bossReachedBottom', () => {
+        this.physics.add.overlap(agathe, boss, collidePlayerProjectile).name = 'boss_colider';
+    });
+
+    boss.on('bossReachedTop', () => {
+        this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider').destroy();
+    });
+
 
     //* CREATION DE LA MAP *//
     createMap(this);

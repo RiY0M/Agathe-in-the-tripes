@@ -184,8 +184,6 @@ class Boss extends Phaser.GameObjects.Sprite {
                 //     return i.name == 'boss_colider'
                 // }).destroy();
                 this.emit('bossReachedTop');
-
-                console.log("Test after");
             }
         };
     

@@ -82,7 +82,7 @@ function create()
 
     //& RECUPERATION BOUTON SUMMON &//
     document.querySelector("#summonBtn").addEventListener("click", () => {
-        summonLilWorms(this);
+        summonLilWorms(agathe, this);
     });
 }
 
@@ -201,7 +201,7 @@ function startBackgroundMusic(scene) {
 }
 
 //& RANDOM SUMMON LITTLE-WORMS &//
-function summonLilWorms(scene) {
+function summonLilWorms(agathe, scene) {
 
     // si des vers existent déjà
     if (leftLittleWorms !== null && rightLittleWorms !== null) {
@@ -219,4 +219,8 @@ function summonLilWorms(scene) {
     leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(3);
     // apparition ver de droite en miroir
     rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
+
+    //! COLLISIONS !//
+    scene.physics.add.collider(agathe, leftLittleWorms, getDamaged);
+    scene.physics.add.collider(agathe, rightLittleWorms, getDamaged);
 }

@@ -13,7 +13,8 @@ class LittleWorm extends Phaser.GameObjects.Sprite
         this.body.setAllowGravity(false);
 
         // size of hitbox
-        this.body.setSize(20, 20);
+        this.body.setSize(10, 5);
+        this.body.setOffset(10, 20);
 
 
         //^ ANIMATIONS (CHARGEMENT) ^//

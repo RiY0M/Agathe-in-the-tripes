@@ -145,8 +145,6 @@ function update(time, delta) {
 
 function getDamaged()
 {
-    console.log("touché");
-
     // si agathe n'est pas invincible
     if (isInvicible) {
         return;
@@ -221,6 +219,38 @@ function summonLilWorms(agathe, scene) {
     rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
 
     //! COLLISIONS !//
-    scene.physics.add.collider(agathe, leftLittleWorms, getDamaged);
-    scene.physics.add.collider(agathe, rightLittleWorms, getDamaged);
+    scene.physics.add.collider(agathe, leftLittleWorms, getleftLilWormDamage, null, this);
+    scene.physics.add.collider(agathe, rightLittleWorms, getRightLilWormDamage, null, this);
+}
+
+
+//! COLLISION LITTLE-WORM !//
+//& GAUCHE &//
+function getleftLilWormDamage(player, worm)
+{
+    // prise de dégât
+    getDamaged();
+
+    // si on est derrière le monstre de gauche
+    if (agathe.x <= worm.x) {
+        // destruction immédiate
+        worm.playInAnim();
+    }
+    // sinon on attend la fin d'animation
+    else worm.on('animationcomplete', () => {worm.playInAnim();});
+}
+
+//& DROITE &//
+function getRightLilWormDamage(player, worm)
+{
+    // prise de dégât
+    getDamaged();
+
+    // si on est derrière le monstre de gauche
+    if (agathe.x >= worm.x) {
+        // destruction immédiate
+        worm.playInAnim();
+    }
+    // sinon on attend la fin d'animation
+    else worm.on('animationcomplete', () => {worm.playInAnim();});
 }

@@ -52,7 +52,7 @@ function create()
 
     // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
     boss.on('bossReachedBottom', () => {
-        this.physics.add.overlap(agathe, boss, collidePlayerProjectile).name = 'boss_colider';
+        this.physics.add.overlap(agathe, boss, getDamaged).name = 'boss_colider';
     });
 
     boss.on('bossReachedTop', () => {

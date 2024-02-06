@@ -86,18 +86,18 @@ function update(time, delta) {
     //& ACTIVATION ATTAQUE LIL-WORM SI AGATHE A COTE &//
 
     //& GAUCHE &//
-    leftLittleWorms.forEach(littleWorm => {
-        if (agathe.x - littleWorm.x <= 30 && agathe.x - littleWorm.x >= 0) {
-            littleWorm.playAttackAnim();
+    if (leftLittleWorms !== null) {
+        if (agathe.x - leftLittleWorms.x <= 30 && agathe.x - leftLittleWorms.x >= 0) {
+            leftLittleWorms.playAttackAnim();
         }
-    });
+    }
 
     //& DROITE &//
-    rightLittleWorms.forEach(littleWorm => {
-        if (littleWorm.x - agathe.x <= 30 && littleWorm.x - agathe.x >= 0) {
-            littleWorm.playAttackAnim();
+    if (rightLittleWorms !== null) {
+        if (rightLittleWorms.x - agathe.x <= 30 && rightLittleWorms.x - agathe.x >= 0) {
+            rightLittleWorms.playAttackAnim();
         }
-    });
+    }
 
     if (nbHearts == 0) displayDeathScreen();        //Personnage mort
 
@@ -193,15 +193,23 @@ function startBackgroundMusic(scene) {
     }
 }
 
+//& RANDOM SUMMON LITTLE-WORMS &//
 function summonLilWorms(scene) {
+
+    // si des vers existent déjà
+    if (leftLittleWorms !== null && rightLittleWorms !== null) {
+        // on les remballe sous terre
+        leftLittleWorms.playInAnim();
+        rightLittleWorms.playInAnim();
+    }
 
     // nombre aléatoire entre 10 et 750 pour ver de gauche
     let leftX = Math.floor(Math.random() * (250 - 10 + 1)) + 10;
-
+    // nombre aléatoire entre 650 et 790 pour ver de droite
     let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
     
-    leftLittleWorms.push(new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(4));
-    rightLittleWorms.push(new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(4).setFlip(true, false));
-
-    console.log("ouais tkt y'en a 2");
+    // apparition ver de gauche
+    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(4);
+    // apparition ver de droite en miroir
+    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(4).setFlip(true, false);
 }

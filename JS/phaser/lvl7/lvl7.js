@@ -43,6 +43,7 @@ function create()
     
     //~ SPRITE AGATHE ~//
     createAgathe(this);
+
     
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300)
@@ -59,13 +60,19 @@ function create()
     });
 
 
+    //& LITTLE-WORMS INITIALIZATION &//
+    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4);
+    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4).setFlip(true, false);
+
+
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.overlap(agathe, vomitball, collidePlayerProjectile);
-    // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
+    this.physics.add.overlap(agathe, vomitball, bossGetDamaged);
+    this.physics.add.collider(agathe, leftLittleWorms, getDamaged);
+    this.physics.add.collider(agathe, rightLittleWorms, getDamaged);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -86,9 +93,30 @@ function create()
     boss.on('hideAndReappearEvent', (speed) => {
         boss.hideAndReappear(speed);
     });
+
+    //& RECUPERATION BOUTON SUMMON &//
+    document.querySelector("#summonBtn").addEventListener("click", () => {
+        summonLilWorms(agathe, this);
+    });
 }
 
 function update(time, delta) {
+
+    //& ACTIVATION ATTAQUE LIL-WORM SI AGATHE A COTE &//
+
+    //& GAUCHE &//
+    if (leftLittleWorms !== null) {
+        if (agathe.x - leftLittleWorms.x <= 30 && agathe.x - leftLittleWorms.x >= 0) {
+            leftLittleWorms.playAttackAnim();
+        }
+    }
+
+    //& DROITE &//
+    if (rightLittleWorms !== null) {
+        if (rightLittleWorms.x - agathe.x <= 30 && rightLittleWorms.x - agathe.x >= 0) {
+            rightLittleWorms.playAttackAnim();
+        }
+    }
 
     if (nbHearts == 0) displayDeathScreen();        //Personnage mort
 
@@ -129,7 +157,7 @@ function update(time, delta) {
     createVerticalMove(agathe, cursors);
 }
 
-function collidePlayerProjectile()
+function getDamaged()
 {
     vomitball.body.enable = false;
     // si agathe n'est pas invincible
@@ -186,4 +214,61 @@ function startBackgroundMusic(scene) {
             seek: restartMusic
         });
     }
+}
+
+//& RANDOM SUMMON LITTLE-WORMS &//
+function summonLilWorms(agathe, scene) {
+
+    // si des vers existent déjà
+    if (leftLittleWorms !== null && rightLittleWorms !== null) {
+        // on les remballe sous terre
+        leftLittleWorms.playInAnim();
+        rightLittleWorms.playInAnim();
+    }
+
+    // nombre aléatoire entre 10 et 750 pour ver de gauche
+    let leftX = Math.floor(Math.random() * (250 - 10 + 1)) + 10;
+    // nombre aléatoire entre 650 et 790 pour ver de droite
+    let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
+    
+    // apparition ver de gauche
+    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(3);
+    // apparition ver de droite en miroir
+    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
+
+    //! COLLISIONS !//
+    scene.physics.add.collider(agathe, leftLittleWorms, getleftLilWormDamage, null, this);
+    scene.physics.add.collider(agathe, rightLittleWorms, getRightLilWormDamage, null, this);
+}
+
+
+//! COLLISION LITTLE-WORM !//
+//& GAUCHE &//
+function getleftLilWormDamage(player, worm)
+{
+    // prise de dégât
+    getDamaged();
+
+    // si on est derrière le monstre de gauche
+    if (agathe.x <= worm.x) {
+        // destruction immédiate
+        worm.playInAnim();
+    }
+    // sinon on attend la fin d'animation
+    else worm.on('animationcomplete', () => {worm.playInAnim();});
+}
+
+//& DROITE &//
+function getRightLilWormDamage(player, worm)
+{
+    // prise de dégât
+    getDamaged();
+
+    // si on est derrière le monstre de gauche
+    if (agathe.x >= worm.x) {
+        // destruction immédiate
+        worm.playInAnim();
+    }
+    // sinon on attend la fin d'animation
+    else worm.on('animationcomplete', () => {worm.playInAnim();});
 }

@@ -87,14 +87,14 @@ function update(time, delta) {
 
     //& GAUCHE &//
     leftLittleWorms.forEach(littleWorm => {
-        if (agathe.x - littleWorm.x <= 20 && agathe.x - littleWorm.x >= 1) {
+        if (agathe.x - littleWorm.x <= 30 && agathe.x - littleWorm.x >= 0) {
             littleWorm.playAttackAnim();
         }
     });
 
     //& DROITE &//
     rightLittleWorms.forEach(littleWorm => {
-        if (agathe.x - littleWorm.x >= 20 && agathe.x - littleWorm.x <= 1) {
+        if (littleWorm.x - agathe.x <= 20 && littleWorm.x - agathe.x >= 1) {
             littleWorm.playAttackAnim();
         }
     });

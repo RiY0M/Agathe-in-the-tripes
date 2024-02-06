@@ -45,7 +45,7 @@ function create()
     createAgathe(this);
     
     //~ SPRITE BOSS ~//
-    boss = new Boss(this, 400, 300);
+    boss = new Boss(this, 400, 300).setDepth(15);   //a enlever avant de commit
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
     setHealthBar(boss.health, boss.maxHealth);
 

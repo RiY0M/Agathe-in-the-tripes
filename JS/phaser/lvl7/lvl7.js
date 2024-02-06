@@ -48,16 +48,14 @@ function create()
 
     //~ SPRITE AGATHE ~//
     boss = new Boss(this, 400, 300);
-    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
-
-    littleWorm = new LittleWorm(this, 100, 325).setScale(1.2).setDepth(4);
+    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen
 
     //* CREATION DE LA MAP *//
     createMap(this);
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.collider(agathe, vomitball, collidePlayerProjectile);
+    this.physics.add.collider(agathe, vomitball, bossGetDamaged);
     // this.physics.add.collider(agathe, boss, bossGetDamaged);   // PERMET DE TEST DEGATS
     
     //! DETECTION DU CLAVIER !//
@@ -76,13 +74,30 @@ function create()
         vomitball.throwVomitball(boss.x, boss.y - 200, agathe.x, agathe.y); // Set initial position to boss position
         // vomitball.throwVomitball(targetX, targetY); // Set initial position to boss position
     });
+
+    //& RECUPERATION BOUTON SUMMON &//
+    document.querySelector("#summonBtn").addEventListener("click", () => {
+        summonLilWorms(this);
+    });
 }
 
 function update(time, delta) {
 
-    if (agathe.x - littleWorm.x <= 20 && agathe.x - littleWorm.x >= 1) {
-        littleWorm.playAttackAnim();
-    }
+    //& ACTIVATION ATTAQUE LIL-WORM SI AGATHE A COTE &//
+
+    //& GAUCHE &//
+    leftLittleWorms.forEach(littleWorm => {
+        if (agathe.x - littleWorm.x <= 20 && agathe.x - littleWorm.x >= 1) {
+            littleWorm.playAttackAnim();
+        }
+    });
+
+    //& DROITE &//
+    rightLittleWorms.forEach(littleWorm => {
+        if (agathe.x - littleWorm.x >= 20 && agathe.x - littleWorm.x <= 1) {
+            littleWorm.playAttackAnim();
+        }
+    });
 
     if (nbHearts == 0) displayDeathScreen();        //Personnage mort
 
@@ -176,4 +191,17 @@ function startBackgroundMusic(scene) {
             seek: restartMusic
         });
     }
+}
+
+function summonLilWorms(scene) {
+
+    // nombre aléatoire entre 10 et 750 pour ver de gauche
+    let leftX = Math.floor(Math.random() * (250 - 10 + 1)) + 10;
+
+    let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
+    
+    leftLittleWorms.push(new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(4));
+    rightLittleWorms.push(new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(4));
+
+    console.log("ouais tkt y'en a 2");
 }

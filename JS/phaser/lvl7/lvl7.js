@@ -201,7 +201,7 @@ function summonLilWorms(scene) {
     let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
     
     leftLittleWorms.push(new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(4));
-    rightLittleWorms.push(new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(4));
+    rightLittleWorms.push(new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(4).setFlip(true, false));
 
     console.log("ouais tkt y'en a 2");
 }

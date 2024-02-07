@@ -18,7 +18,7 @@ let config = {
 };
 
 
-// $ CREATION FENETRE PHASER $//
+//$ CREATION FENETRE PHASER $//
 let game = new Phaser.Game(config);
 
 function preload(){
@@ -46,7 +46,8 @@ function create()
     
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300);
-    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
+    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen 
+    vomitspike = new Vomitspike(this, -100, -100).setDepth(4); // Initialize off-screen  
     setHealthBar(boss.health, boss.maxHealth);
 
     //* CREATION DE LA MAP *//
@@ -71,6 +72,10 @@ function create()
     // Handle boss throwing a vomitball (replace this with your actual logic)
     boss.on('throwVomitball', () => {
         vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
+    });
+    // Handle boss throwing a vomitball (replace this with your actual logic)
+    vomitball.on('throwVomilspike', () => {
+        vomitspike.throwVomitspike(vomitball.x, vomitball.y, boss.x, boss.headY); // Set initial position to boss position
     });
 }
 

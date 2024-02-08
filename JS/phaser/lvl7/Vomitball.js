@@ -58,10 +58,11 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.rotation = Math.asin(diffX / distance) - Math.PI / 2;
     }
 
-    throwVomitspike() {
-        // Trigger the event to throw a vomitspike with the boss's current position
-        this.emit('throwVomitspike', this.x, this.y);
-    }
+    // throwVomitshard() {
+    //     // Trigger the event to throw a vomitshard with the boss's current position
+    //     this.emit('throwVomitshard', this.x, this.y);
+    //     // new Vomitshard(scene, this.x, this.y);
+    // }
 
     update(time, delta) {
         if (!this.isAlive) {
@@ -83,11 +84,13 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 
         // create explosion
 
-        this.throwVomitspike();
+        this.emit('throwVomitshard', this.x, this.y);
+        // const vomitshard = new Vomitshard(this.scene, this.x, this.y);
+        // this.scene.add.existing(vomitshard);
     }
 }
 
-class Vomitspike extends Phaser.GameObjects.Sprite {
+class Vomitshard extends Phaser.GameObjects.Sprite {
 
     targetX = this.x;
     targetY = this.y;
@@ -96,21 +99,23 @@ class Vomitspike extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y) {
         // Call the parent constructor
-        super(scene, x, y, 'vomitspike');
+        super(scene, x, y, 'vomitshard');
 
         scene.add.existing(this);
         scene.physics.world.enable(this);
-        this.body.setAllowGravity(false);
-        this.setScale(1.1);
-        this.speed = 120;
-        this.isAlive = false;
-    }
-
-    throwVomitspike(targetX, targetY) {
         this.setActive(true);
         this.setVisible(true);
+        this.body.setAllowGravity(false);
+        this.setScale(1.1);
         this.isAlive = true;
         this.body.enable = true;
+        this.speed = 120;
+    }
+
+    throwVomitshard(initialX, initialY, targetX, targetY) {
+
+        this.x = initialX;
+        this.y = initialY;
 
         this.targetX = targetX;
         this.targetY = targetY;
@@ -151,7 +156,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     maxHealth = 21;
     health = this.maxHealth;
     isInvicible = false;
-    vomitballCooldown = 3000;
+    vomitballCooldown = 0;
     lastVomitballTime = 0;
     headY;
 

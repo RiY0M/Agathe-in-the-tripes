@@ -46,8 +46,8 @@ function create()
     
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300);
-    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen 
-    vomitspike = new Vomitspike(this, -100, -100).setDepth(4); // Initialize off-screen  
+    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen
+    vomitshard = new Vomitshard(this, -100, -100).setDepth(4); // Initialize off-screen
     setHealthBar(boss.health, boss.maxHealth);
 
     //* CREATION DE LA MAP *//
@@ -74,8 +74,8 @@ function create()
         vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
     });
     // Handle boss throwing a vomitball (replace this with your actual logic)
-    vomitball.on('throwVomilspike', () => {
-        vomitspike.throwVomitspike(vomitball.x, vomitball.y, boss.x, boss.headY); // Set initial position to boss position
+    vomitball.on('throwVomitshard', () => {
+        vomitshard.throwVomitshard(vomitball.x, vomitball.y, boss.x, boss.headY); // Set initial position to boss position
     });
 }
 

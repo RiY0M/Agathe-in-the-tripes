@@ -8,6 +8,8 @@ function loadImages(scene){
     // chargement sprites vomitball
     scene.load.spritesheet("vomitball", "../../img/assets/lvl7/vomitball.png", { frameWidth: 100, frameHeight: 42 });
 
+    scene.load.spritesheet("vomitshard", "../../img/assets/lvl7/vomitshard.png", { frameWidth: 16, frameHeight: 16 });
+
     //chargement du theme
     scene.load.audio('theme', '../../sound/lvl7/lvl7.mp3');
     

@@ -36,7 +36,8 @@ function create()
     //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup();
     bg.create(400, 75, "back-map").setDepth(0);
-    bg.create(400, 440, "front-map").setScale(1.3).setDepth(2);
+    bg.create(400, 297, "front-map-back").setScale(1.25).setDepth(2);
+    bg.create(400, 480, "front-map-front").setScale(1.25).setDepth(4);
     
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
@@ -46,7 +47,7 @@ function create()
 
     
     //~ SPRITE BOSS ~//
-    boss = new Boss(this, 400, 300)
+    boss = new Boss(this, 400, 300).setDepth(1);
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
     setHealthBar(boss.health, boss.maxHealth);
 

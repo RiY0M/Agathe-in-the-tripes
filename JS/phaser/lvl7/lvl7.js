@@ -106,14 +106,14 @@ function update(time, delta) {
 
     //& GAUCHE &//
     if (leftLittleWorms !== null) {
-        if (agathe.x - leftLittleWorms.x <= 30 && agathe.x - leftLittleWorms.x >= 0) {
+        if (agathe.x - leftLittleWorms.x <= 40 && agathe.x - leftLittleWorms.x >= 0 && okForLeftWormAnim) {
             leftLittleWorms.playAttackAnim();
         }
     }
 
     //& DROITE &//
     if (rightLittleWorms !== null) {
-        if (rightLittleWorms.x - agathe.x <= 30 && rightLittleWorms.x - agathe.x >= 0) {
+        if (rightLittleWorms.x - agathe.x <= 40 && rightLittleWorms.x - agathe.x >= 0 && okForRightWormAnim) {
             rightLittleWorms.playAttackAnim();
         }
     }
@@ -236,6 +236,10 @@ function summonLilWorms(agathe, scene) {
     // apparition ver de droite en miroir
     rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
 
+    // on permet à nouveau l'attaque des vers
+    okForLeftWormAnim = true;
+    okForRightWormAnim = true;
+
     //! COLLISIONS !//
     scene.physics.add.collider(agathe, leftLittleWorms, getleftLilWormDamage, null, this);
     scene.physics.add.collider(agathe, rightLittleWorms, getRightLilWormDamage, null, this);
@@ -253,22 +257,46 @@ function getleftLilWormDamage(player, worm)
     if (agathe.x <= worm.x) {
         // destruction immédiate
         worm.playInAnim();
+        // suppression physique
+        worm.body.enable = false;
     }
     // sinon on attend la fin d'animation
-    else worm.on('animationcomplete', () => {worm.playInAnim();});
+    else {
+        // suppression animation attaque
+        okForLeftWormAnim = false;
+        worm.anims.stop();
+
+        // destruction monstre
+        worm.playInAnim();
+
+        // suppression physique
+        worm.body.enable = false;
+    }
 }
 
 //& DROITE &//
 function getRightLilWormDamage(player, worm)
-{
+{    
     // prise de dégât
     getDamaged();
-
+    
     // si on est derrière le monstre de gauche
     if (agathe.x >= worm.x) {
         // destruction immédiate
         worm.playInAnim();
+        // suppression physique
+        worm.body.enable = false;
     }
     // sinon on attend la fin d'animation
-    else worm.on('animationcomplete', () => {worm.playInAnim();});
+    else {
+        // suppression animation attaque
+        okForRightWormAnim = false;
+        worm.anims.stop();
+
+        // destruction monstre
+        worm.playInAnim();
+
+        // suppression physique
+        worm.body.enable = false;
+    }
 }

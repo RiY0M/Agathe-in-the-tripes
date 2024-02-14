@@ -1,5 +1,5 @@
 // configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
-let config = {
+const config = {
     type: Phaser.CANVAS,
     width: 800,
     height: 600,
@@ -19,7 +19,7 @@ let config = {
 
 
 //$ CREATION FENETRE PHASER $//
-let game = new Phaser.Game(config);
+const game = new Phaser.Game(config);
 
 function preload(){
     loadImages(this);
@@ -28,7 +28,7 @@ function preload(){
 function create()
 {
     //* Barre de vie *//
-    graphics = this.add.graphics().setDepth(5);
+    
     
     //* Theme de fond *//
     startBackgroundMusic(this);

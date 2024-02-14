@@ -29,5 +29,4 @@ function loadSpriteVariables(scene){
 
 }
 
-let graphics;
 let boss;

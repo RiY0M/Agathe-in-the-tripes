@@ -20,10 +20,15 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.setScale(1.1);
         this.isAlive = true;
         this.body.enable = true;
-        this.speed = 120;
+        this.speed = 200;
     }
 
     spawnVomitShard(initialX, initialY, targetX, targetY) {
+
+        // Ne créé pas de nouvelle shard si il y en a déjà une qui bouge
+        if(this.isMoving) {
+            return;
+        }
 
         this.x = initialX;
         this.y = initialY;

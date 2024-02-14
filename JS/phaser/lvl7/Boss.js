@@ -7,8 +7,6 @@ class Boss extends Phaser.GameObjects.Sprite {
     isInvicible = false;
     isMoving = false;
     initialYBoss = this.y; // Stocker la position initiale en Y du boss
-    vomitballCooldown = 3000;
-    lastVomitballTime = 0;
     headY;
 
     constructor(scene, x, y) {
@@ -42,6 +40,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     
         const centerX = (config.width - widthBar) / 2;
     
+        const graphics = this.scene.add.graphics().setDepth(5);
         graphics.clear();
         graphics.fillStyle(0xff6600);
         graphics.fillRoundedRect(centerX, 550, widthBar, this.maxHealth, 5);
@@ -62,16 +61,12 @@ class Boss extends Phaser.GameObjects.Sprite {
         }
 
         // Check if enough time has passed since the last fireball throw
-        if (time - this.lastVomitballTime > this.vomitballCooldown && !this.isMoving) {
+        if (!vomitball.isAlive) {
             // Decide to throw a fireball (replace this with your own logic)
             if (Math.random() < 0.01) {
                 this.throwVomitball();
-                this.lastVomitballTime = time;
             }
-        }        
-
-        // Move the boss to the right (adjust as needed)
-        // this.x += this.speed * delta / 1000;
+        }
     }
 
     throwVomitball() {
@@ -141,5 +136,4 @@ class Boss extends Phaser.GameObjects.Sprite {
     
         moveDown(); // Lance deplacement
     }
-
 }

@@ -24,16 +24,32 @@ class Boss extends Phaser.GameObjects.Sprite {
         // Disable gravity for the fireball
         this.body.setAllowGravity(false);
 
-        // this.setCollideWorldBounds(true); // on définit les collisions avec la bordure
-        // Additional properties
         this.speed = 100;
-        // this.vomitballCooldown = 3000;
-        // this.lastVomitballTime = 0;
+        this.setHealth(this.maxHealth);
     }
 
     setY(y) {
         this.y = y;
         this.headY = y - 200;
+    }
+
+    //* Créer et gère les PV de barre de vie *//
+    setHealth(value){ // Fonction qui s'occupe de la barre de vie du boss
+        this.health = value;
+
+        const widthBar = 700; // Taille barre de vie
+        const percentBar = Phaser.Math.Clamp(this.health, 0, this.maxHealth) / this.maxHealth; // Nb de pv : Ici de 0 -> 21
+    
+        const centerX = (config.width - widthBar) / 2;
+    
+        graphics.clear();
+        graphics.fillStyle(0xff6600);
+        graphics.fillRoundedRect(centerX, 550, widthBar, this.maxHealth, 5);
+    
+        if (percentBar > 0){
+            graphics.fillStyle(0xff0000);
+            graphics.fillRoundedRect(centerX, 550, widthBar * percentBar, this.maxHealth, 5)
+        }
     }
 
     update(time, delta) {

@@ -1,5 +1,4 @@
-class LittleWorm extends Phaser.GameObjects.Sprite
-{
+class LittleWorm extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, "little-worms");
 
@@ -11,6 +10,9 @@ class LittleWorm extends Phaser.GameObjects.Sprite
 
         // Disable gravity
         this.body.setAllowGravity(false);
+
+        // Disable collisions
+        this.body.setCollideWorldBounds(false);
 
         // size of hitbox
         this.body.setSize(10, 5);
@@ -42,7 +44,9 @@ class LittleWorm extends Phaser.GameObjects.Sprite
 
     playAttackAnim() { this.anims.play("attackAnim", true); }
     playInAnim() { 
+        // lancement animation
         this.anims.play("inAnim", true);
+        // suppression du ver après animation entrée sol
         this.on('animationcomplete', () => {this.destroy();});
     }
 }

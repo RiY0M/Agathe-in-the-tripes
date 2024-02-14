@@ -76,6 +76,10 @@ function create()
 function update()
 {
     createVerticalMove(agathe, cursors);
+
+    if(agathe.x >= 790) {
+        changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts);
+    }
 }
 
 

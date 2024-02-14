@@ -8,6 +8,7 @@ let okForRightWormAnim = true;
 let cursors;                // détection clavier
 let lastFrame = 8;          // last frame facing afk
 let music;                  //Theme (musique de fond)
+let bossDmgSound;                  //Sound effect boss
 let restartMusic = 16;       // Musique se relance au moment choisis
 let isFirstTime = true; 
 

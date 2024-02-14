@@ -10,6 +10,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     vomitballCooldown = 3000;
     lastVomitballTime = 0;
     headY;
+    canThrowVomitBall = true;
 
     constructor(scene, x, y) {
         super(scene, x, y, "boss");
@@ -80,8 +81,10 @@ class Boss extends Phaser.GameObjects.Sprite {
     }
 
     throwVomitball() {
-        // Trigger the event to throw a fireball with the boss's current position
-        this.emit('throwVomitball', this.x, this.headY);
+        if (this.canThrowVomitBall) {
+            // Trigger the event to throw a fireball with the boss's current position
+            this.emit('throwVomitball', this.x, this.headY);
+        }
     }
 
     movingDown(speed){
@@ -100,6 +103,9 @@ class Boss extends Phaser.GameObjects.Sprite {
 
         // premier déplacement
         let firstMove = true;
+
+        // on empêche de tirer des boules de vomis pendant l'anim up and down
+        this.canThrowVomitBall = false;
         
         const moveDown = () => {    //Gere deplacement progressif vers le bas
 
@@ -133,6 +139,11 @@ class Boss extends Phaser.GameObjects.Sprite {
 
                 // boss atteint le haut
                 this.emit('bossReachedTop');
+
+                if (!firstMove) {
+                    // on permet au boss de tirer à nouveau si il a fini son anim
+                    this.canThrowVomitBall = true;
+                }
 
                 // on repart pour un second tour si on est encore au premier plan
                 if (firstMove) {

@@ -25,8 +25,6 @@ class Boss extends Phaser.GameObjects.Sprite {
         // Disable gravity for the fireball
         this.body.setAllowGravity(false);
 
-        // this.setCollideWorldBounds(true); // on définit les collisions avec la bordure
-        // Additional properties
         this.speed = 100;
         this.setHealth(this.maxHealth);
         // this.vomitballCooldown = 3000;

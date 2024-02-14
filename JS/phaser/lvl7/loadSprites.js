@@ -25,4 +25,10 @@ function loadImages(scene){
 
     // chargement back-map
     scene.load.image("back-map", "../../img/assets/lvl7/back-map.png");
+
+    //chargement sound-effect
+    scene.load.audio('bossDamage', '../../sound/lvl7/bossDamaged.mp3');
+    scene.load.audio('dirt', '../../sound/lvl7/dirt-interaction.mp3');
+    scene.load.audio('fireball', '../../sound/lvl7/fireball.mp3');
+    scene.load.audio('little-worm', '../../sound/lvl7/little-worm.mp3');
 }

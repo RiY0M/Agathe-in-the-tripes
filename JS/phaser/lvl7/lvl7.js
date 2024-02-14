@@ -32,6 +32,7 @@ function create()
     
     //* Theme de fond *//
     startBackgroundMusic(this);
+    bossDmgSound = this.sound.add("bossDamage");
     
     //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup();
@@ -87,15 +88,21 @@ function create()
 
     // Handle boss throwing a vomitball (replace this with your actual logic)
     boss.on('throwVomitball', () => {
+        music = this.sound.add("fireball");
+        music.play();
         vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
     });
 
     boss.on('hideAndReappearEvent', (speed) => {
+        music = this.sound.add("dirt");
+        music.play();
         boss.hideAndReappear(speed);
     });
 
     //& RECUPERATION BOUTON SUMMON &//
     document.querySelector("#summonBtn").addEventListener("click", () => {
+        music = this.sound.add("little-worm");
+        music.play();
         summonLilWorms(agathe, this);
     });
 }
@@ -175,7 +182,7 @@ function getDamaged()
     start3sCoolDownAgathe = true;
 }
 
-function bossGetDamaged() {
+function bossGetDamaged(scene) {
     if (boss.isInvicible) {
         return;
     }
@@ -183,6 +190,8 @@ function bossGetDamaged() {
         console.log("Il est mort !");
         return;
     }
+
+    bossDmgSound.play();
 
     boss.health -= 1; // Réduire la santé du boss
     setHealthBar(boss.health, boss.maxHealth);

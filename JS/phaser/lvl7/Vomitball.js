@@ -157,6 +157,10 @@ class Boss extends Phaser.GameObjects.Sprite {
     maxHealth = 21;
     health = this.maxHealth;
     isInvicible = false;
+    isMoving = false;
+    initialYBoss = this.y; // Stocker la position initiale en Y du boss
+    vomitballCooldown = 3000;
+    lastVomitballTime = 0;
     headY;
 
     constructor(scene, x, y) {
@@ -218,4 +222,51 @@ class Boss extends Phaser.GameObjects.Sprite {
         // Trigger the event to throw a vomitball with the boss's current position
         this.emit('throwVomitball', this.x, this.headY);
     }
+
+    movingDown(speed){
+        let calcul = this.y + speed;
+        this.setY(calcul);
+        
+    }
+    movingUp(speed){
+        let calcul = this.y - speed;
+        this.setY(calcul);
+    }
+
+    hideAndReappear(speed) {
+        this.isMoving = true; 
+        let delayX;
+        
+        const moveDown = () => {    //Gere deplacement progressif vers le bas
+            if (this.y < game.config.height) {
+                this.movingDown(speed); // Fait descendre le worm
+                setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
+            } else {
+                this.x = agathe.x - this.x > 0 ? agathe.x - 80 : agathe.x + 80; this.y += 50;
+                // this.scene.physics.add.overlap(agathe, this, collidePlayerProjectile()).name = 'boss_colider';;
+                this.emit('bossReachedBottom');
+                setTimeout(() => moveUp(agathe.x), 1500); // Attendre 1.5sec avant de remonter vers Agathe
+            }
+        };
+    
+        const moveUp = (targetX) => {  // Gère le déplacement progressif vers le haut
+            if (this.y > this.initialYBoss) {
+                this.movingUp(speed); // Fait remonter le worm
+                // Delai pour suivre agathe
+                delayX = targetX - this.x > 0 ? 1 : -1; // De quel coté le boss doit aller ?
+                this.x += delayX; // Applique le décalage sur l'axe x
+                setTimeout(() => moveUp(targetX), 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
+            } else {
+                this.isMoving = false;
+
+                // this.scene.physics.world.colliders.getActive().find(function(i){
+                //     return i.name == 'boss_colider'
+                // }).destroy();
+                this.emit('bossReachedTop');
+            }
+        };
+    
+        moveDown(); // Lance deplacement
+    }
+
 }

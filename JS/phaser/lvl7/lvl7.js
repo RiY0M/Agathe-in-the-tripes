@@ -58,7 +58,8 @@ function create()
     });
 
     boss.on('bossReachedTop', () => {
-        this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider').destroy();
+        if (this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider'))
+            this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider').destroy();
     });
 
 

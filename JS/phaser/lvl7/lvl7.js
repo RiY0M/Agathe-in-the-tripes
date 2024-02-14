@@ -28,7 +28,7 @@ function preload(){
 function create()
 {
     //* Barre de vie *//
-    graphics = this.add.graphics().setDepth(3);
+    graphics = this.add.graphics().setDepth(5);
     
     //* Theme de fond *//
     startBackgroundMusic(this);
@@ -233,9 +233,9 @@ function summonLilWorms(agathe, scene) {
     let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
     
     // apparition ver de gauche
-    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(3);
+    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(6);
     // apparition ver de droite en miroir
-    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
+    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(6).setFlip(true, false);
 
     // on permet à nouveau l'attaque des vers
     okForLeftWormAnim = true;

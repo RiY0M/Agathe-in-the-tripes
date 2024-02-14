@@ -159,14 +159,20 @@ class Boss extends Phaser.GameObjects.Sprite {
         let delayX;
         
         const moveDown = () => {    //Gere deplacement progressif vers le bas
+
             if (this.y < game.config.height) {
                 this.movingDown(speed); // Fait descendre le worm
                 setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
             } else {
                 this.x = agathe.x - this.x > 0 ? agathe.x - 80 : agathe.x + 80; this.y += 50;
-                // this.scene.physics.add.overlap(agathe, this, collidePlayerProjectile()).name = 'boss_colider';;
+
+                // boss atteint le bas
                 this.emit('bossReachedBottom');
-                setTimeout(() => moveUp(agathe.x), 1500); // Attendre 1.5sec avant de remonter vers Agathe
+
+                setTimeout(() => {
+                    this.setDepth(3);
+                    moveUp(agathe.x), 1500
+                }); // Attendre 1.5sec avant de remonter vers Agathe
             }
         };
     
@@ -180,9 +186,7 @@ class Boss extends Phaser.GameObjects.Sprite {
             } else {
                 this.isMoving = false;
 
-                // this.scene.physics.world.colliders.getActive().find(function(i){
-                //     return i.name == 'boss_colider'
-                // }).destroy();
+                // boss atteint le haut
                 this.emit('bossReachedTop');
             }
         };

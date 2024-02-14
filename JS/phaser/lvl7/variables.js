@@ -30,5 +30,3 @@ function loadSpriteVariables(scene){
 
 let graphics;
 let boss;
-let percent_bar;
-let width_bar

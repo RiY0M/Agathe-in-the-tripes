@@ -49,7 +49,6 @@ function create()
     boss = new Boss(this, 400, 300);
     vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen
     vomitshard = new Vomitshard(this, -100, -100).setDepth(4);
-    setHealthBar(boss.health, boss.maxHealth);
 
     // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
     boss.on('bossReachedBottom', () => {
@@ -92,7 +91,7 @@ function create()
     });
     vomitball.on('spawnVomitShard', () => {
         vomitshard.spawnVomitShard(vomitball.x, vomitball.y, boss.x, boss.headY); // Set initial position to boss position
-
+    });
     boss.on('hideAndReappearEvent', (speed) => {
         boss.hideAndReappear(speed);
     });
@@ -187,12 +186,11 @@ function bossGetDamaged() {
         return;
     }
 
-    boss.health -= 1; // Réduire la santé du boss
-    setHealthBar(boss.health, boss.maxHealth);
+    boss.setHealth(boss.health - 1);
     if (boss.health % 2 == 1) {
         boss.emit('hideAndReappearEvent', 3);
     }
-    
+
     // Faire clignoter le boss en rouge
     boss.setTint(0xFF0000);
 

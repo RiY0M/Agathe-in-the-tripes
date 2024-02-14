@@ -32,8 +32,6 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         // Set additional properties for the vomitball
         this.speed = 200; // You can adjust the speed
         this.isAlive = false; // Flag to check if the vomitball is active
-
-        // this.vomitshard = new Vomitshard(this, -100, -100).setDepth(4); // Initialize off-screen
     }
 
     throwVomitball(initialX, initialY, targetX, targetY) {
@@ -82,8 +80,6 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.setVisible(false);
         this.isAlive = false;
         this.body.enable = false;
-
-        // create explosion
 
         this.spawnVomitshard();
     }
@@ -155,7 +151,6 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
 class Boss extends Phaser.GameObjects.Sprite {
 
     maxHealth = 21;
-    health = this.maxHealth;
     isInvicible = false;
     isMoving = false;
     initialYBoss = this.y; // Stocker la position initiale en Y du boss
@@ -176,10 +171,9 @@ class Boss extends Phaser.GameObjects.Sprite {
         // Disable gravity for the vomitball
         this.body.setAllowGravity(false);
 
-        // this.setCollideWorldBounds(true); // on définit les collisions avec la bordure
-        // Additional properties
         this.speed = 100;
 
+        this.setHealth(this.maxHealth);
         // this.on('throwVomitball', () => {
         //     this.vomitball.throwVomitball(this.x, this.headY, agathe.x, agathe.y); // Set initial position to boss position
         // });
@@ -193,6 +187,25 @@ class Boss extends Phaser.GameObjects.Sprite {
     setY(y) {
         this.y = y;
         this.headY = y - 200;
+    }
+
+    //* Créer et gère les PV de barre de vie *//
+    setHealth(value){ // Fonction qui s'occupe de la barre de vie du boss
+        this.health = value;
+
+        const widthBar = 700; // Taille barre de vie
+        const percentBar = Phaser.Math.Clamp(this.health, 0, this.maxHealth) / this.maxHealth; // Nb de pv : Ici de 0 -> 21
+    
+        const centerX = (config.width - widthBar) / 2;
+    
+        graphics.clear();
+        graphics.fillStyle(0xff6600);
+        graphics.fillRoundedRect(centerX, 550, widthBar, this.maxHealth, 5);
+    
+        if (percentBar > 0){
+            graphics.fillStyle(0xff0000);
+            graphics.fillRoundedRect(centerX, 550, widthBar * percentBar, this.maxHealth, 5)
+        }
     }
 
     update(time, delta) {
@@ -213,9 +226,6 @@ class Boss extends Phaser.GameObjects.Sprite {
         // } else {
             // this.vomitball.update(time, delta);
         }
-
-        // Move the boss to the right (adjust as needed)
-        // this.x += this.speed * delta / 1000;
     }
 
     throwVomitball() {
@@ -268,5 +278,4 @@ class Boss extends Phaser.GameObjects.Sprite {
     
         moveDown(); // Lance deplacement
     }
-
 }

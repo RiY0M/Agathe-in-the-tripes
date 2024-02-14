@@ -48,7 +48,7 @@ function create()
 
     
     //~ SPRITE BOSS ~//
-    boss = new Boss(this, 400, 300).setDepth(1);
+    boss = new Boss(this, 400, 300, music);
     vomitball = new Vomitball(this, -100, -100).setDepth(6); // Initialize off-screen  
     vomitshard = new Vomitshard(this, -100, -100).setDepth(6);
 
@@ -63,8 +63,8 @@ function create()
 
 
     //& LITTLE-WORMS INITIALIZATION &//
-    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6);
-    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6).setFlip(true, false);
+    leftLittleWorms = new LittleWorm(this, -100, -100);
+    rightLittleWorms = new LittleWorm(this, -100, -100).setFlip(true, false);
 
 
     //* CREATION DE LA MAP *//
@@ -73,6 +73,7 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
     this.physics.add.overlap(agathe, vomitball, bossGetDamaged);
+    this.physics.add.overlap(agathe, vomitshard, throwVomitshard);
     this.physics.add.collider(agathe, leftLittleWorms, getDamaged);
     this.physics.add.collider(agathe, rightLittleWorms, getDamaged);
     
@@ -89,12 +90,9 @@ function create()
 
     // Handle boss throwing a vomitball (replace this with your actual logic)
     boss.on('throwVomitball', () => {
-        music = this.sound.add("fireball");
+        music = this.sound.add("vomitball");
         music.play();
         vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
-    });
-    vomitball.on('spawnVomitShard', () => {
-        vomitshard.spawnVomitShard(vomitball.x, vomitball.y, boss.x, boss.headY); // Set initial position to boss position
     });
     boss.on('hideAndReappearEvent', (speed) => {
         music = this.sound.add("dirt");
@@ -132,6 +130,7 @@ function update(time, delta) {
 
     boss.update(time, delta);
     vomitball.update(time, delta);
+    vomitshard.update(time, delta);
 
     if (start3sCoolDownAgathe) {
 
@@ -165,6 +164,11 @@ function update(time, delta) {
     else agathe.setTint(0xFF0000);
 
     createVerticalMove(agathe, cursors);
+}
+
+function throwVomitshard() {
+    vomitshard.isMoving = true;
+    console.log("touched");
 }
 
 function getDamaged()

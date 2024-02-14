@@ -14,49 +14,48 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
 
         scene.add.existing(this);
         scene.physics.world.enable(this);
-        this.setActive(true);
-        this.setVisible(true);
         this.body.setAllowGravity(false);
         this.setScale(1.1);
         this.isAlive = true;
         this.body.enable = true;
         this.speed = 200;
     }
-
+    
     spawnVomitShard(initialX, initialY, targetX, targetY) {
-
+        
         // Ne créé pas de nouvelle shard si il y en a déjà une qui bouge
         if(this.isMoving) {
             return;
         }
 
-        this.x = initialX;
-        this.y = initialY;
+        this.setPosition(initialX, initialY);
+        this.setActive(true);
+        this.setVisible(true);
 
         this.targetX = targetX;
         this.targetY = targetY;
 
         const diffX = this.x - targetX;
-        const diffY = this.y - targetY; // Sera toujours positif puisque la boule ne peux pas aller en haut
+        const diffY = this.y - targetY;
 
         const distance = Math.sqrt(Math.pow(Math.abs(diffX), 2) + Math.pow(Math.abs(diffY), 2));
 
         this.speedX = (this.speed * diffX) / distance;
         this.speedY = (this.speed * diffY) / distance;
 
-        this.rotation = Math.asin(diffX / distance) - Math.PI / 2;
+        this.rotation = Math.asin(-diffX / distance);
     }
 
     update(time, delta) {
-        if (!this.isAlive) {
+        if (!this.isMoving) {
             return;
         }
 
         this.x -= this.speedX * delta / 1000;
         this.y -= this.speedY * delta / 1000;
 
-        // Check if the vomitball is not out of bounds
-        if (this.x < game.config.width && this.x > 0 && this.y < 0) {
+        // Check if the vomitshard is not out of bounds
+        if (this.x < game.config.width && this.x > 0 && this.y > 0) {
             return;
         }
 

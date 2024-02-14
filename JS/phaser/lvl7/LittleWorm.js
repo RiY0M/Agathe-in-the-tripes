@@ -17,6 +17,8 @@ class LittleWorm extends Phaser.GameObjects.Sprite {
         // size of hitbox
         this.body.setSize(10, 5);
         this.body.setOffset(10, 20);
+        this.setScale(1.2);
+        this.setDepth(6);
 
 
         //^ ANIMATIONS (CHARGEMENT) ^//

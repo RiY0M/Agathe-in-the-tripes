@@ -9,7 +9,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     initialYBoss = this.y; // Stocker la position initiale en Y du boss
     headY;
 
-    constructor(scene, x, y) {
+    constructor(scene, x, y, music) {
         super(scene, x, y, "boss");
         this.headY = y - 200;
 
@@ -19,11 +19,23 @@ class Boss extends Phaser.GameObjects.Sprite {
         // Enable physics for the boss
         scene.physics.world.enable(this);
 
-        // Disable gravity for the fireball
+        // Disable gravity for the vomitball
         this.body.setAllowGravity(false);
+        this.setDepth(1);
 
         this.speed = 100;
         this.setHealth(this.maxHealth);
+
+        // this.on('throwVomitball', () => {
+        //     music = this.sound.add("vomitball");
+        //     music.play();
+        //     vomitball.throwVomitball(this.x, this.headY, agathe.x, agathe.y); // Set initial position to boss position
+        // });
+        // this.on('hideAndReappearEvent', (speed) => {
+        //     music = this.sound.add("dirt");
+        //     music.play();
+        //     this.hideAndReappear(speed);
+        // });
     }
 
     setY(y) {
@@ -60,9 +72,9 @@ class Boss extends Phaser.GameObjects.Sprite {
             this.x = game.config.width; // If the boss goes beyond the right border, set its position to the right border
         }
 
-        // Check if enough time has passed since the last fireball throw
+        // Check if enough time has passed since the last vomitball throw
         if (!vomitball.isAlive) {
-            // Decide to throw a fireball (replace this with your own logic)
+            // Decide to throw a vomitball (replace this with your own logic)
             if (Math.random() < 0.01) {
                 this.throwVomitball();
             }
@@ -70,23 +82,19 @@ class Boss extends Phaser.GameObjects.Sprite {
     }
 
     throwVomitball() {
-        // Trigger the event to throw a fireball with the boss's current position
+        // Trigger the event to throw a vomitball with the boss's current position
         this.emit('throwVomitball', this.x, this.headY);
     }
 
     movingDown(speed){
-        let calcul = this.y + speed;
-        this.setY(calcul);
-        
+        this.setY(this.y + speed);
     }
     movingUp(speed){
-        let calcul = this.y - speed;
-        this.setY(calcul);
+        this.setY(this.y - speed);
     }
 
     hideAndReappear(speed) {
-        this.isMoving = true; 
-        let delayX;
+        this.isMoving = true;
 
         // premier déplacement
         let firstMove = true;
@@ -97,23 +105,26 @@ class Boss extends Phaser.GameObjects.Sprite {
                 this.movingDown(speed); // Fait descendre le worm
                 setTimeout(moveDown, 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
             } else {
-                this.x = agathe.x - this.x > 0 ? agathe.x - 80 : agathe.x + 80; this.y += 50;
+                this.x = agathe.x - this.x > 0 ? agathe.x - 80 : agathe.x + 80;
+                this.movingDown(50);
 
                 // boss atteint le bas
                 this.emit('bossReachedBottom');
 
                 // si on retourne à l'arrière du bg on change le depth
-                if (!firstMove) this.setDepth(1);
-                else this.setDepth(3);
-                setTimeout(() => {moveUp(agathe.x), 3000}); // Attendre 1.5sec avant de remonter vers Agathe
+                this.setDepth(!firstMove ? 1 : 3);
+                setTimeout(() => {
+                    moveUp(agathe.x),
+                    3000
+                }); // Attendre 1.5sec avant de remonter vers Agathe
             }
         };
-    
+
         const moveUp = (targetX) => {  // Gère le déplacement progressif vers le haut
             if (this.y > this.initialYBoss) {
                 this.movingUp(speed); // Fait remonter le worm
                 // Delai pour suivre agathe
-                delayX = targetX - this.x > 0 ? 1 : -1; // De quel coté le boss doit aller ?
+                const delayX = targetX - this.x > 0 ? 1 : -1; // De quel coté le boss doit aller ?
                 this.x += delayX; // Applique le décalage sur l'axe x
                 setTimeout(() => moveUp(targetX), 16); // Appele recursivement la fct toutes les 16ms pour obtenir un mouvement fluide
             } else {
@@ -128,12 +139,13 @@ class Boss extends Phaser.GameObjects.Sprite {
                     firstMove = false;
                     // on attend avant de retourner au fond du bg
                     setTimeout(() => {
-                        moveDown(agathe.x), 3000
+                        moveDown(agathe.x),
+                        3000
                     });
                 }
             }
         };
-    
+
         moveDown(); // Lance deplacement
     }
 }

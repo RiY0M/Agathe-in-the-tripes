@@ -11,27 +11,22 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         // Call the parent constructor
         super(scene, x, y, 'vomitball');
 
-        // Add the vomitball to the scene
         scene.add.existing(this);
-
-        // Enable physics for the vomitball
         scene.physics.world.enable(this);
-
-        // Disable gravity for the vomitball
         this.body.setAllowGravity(false);
 
         createVomitballAnim(scene);
         this.anims.play("vomitballAnims", true);
 
-        // Set the size of the hitbox
         this.body.setSize(50, 55);
-        // this.body.setOffset(5);
-        // set the size of the texture
         this.setScale(0.9);
 
-        // Set additional properties for the vomitball
-        this.speed = 200; // You can adjust the speed
-        this.isAlive = false; // Flag to check if the vomitball is active
+        this.speed = 200;
+        this.isAlive = false;
+
+        this.on('spawnVomitShard', () => {
+            vomitshard.spawnVomitShard(this.x, this.y, boss.x, boss.headY); // Set initial position to vomitball position
+        });
     }
 
     throwVomitball(initialX, initialY, targetX, targetY) {
@@ -52,8 +47,6 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 
         this.speedX = (this.speed * diffX) / distance;
         this.speedY = (this.speed * diffY) / distance;
-
-        // this.body.setOffset(-this.speedX / this.speed, -this.speedY / this.speed);
 
         this.rotation = Math.asin(diffX / distance) - Math.PI / 2;
     }

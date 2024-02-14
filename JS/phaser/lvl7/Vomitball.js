@@ -157,6 +157,9 @@ class Boss extends Phaser.GameObjects.Sprite {
     hideAndReappear(speed) {
         this.isMoving = true; 
         let delayX;
+
+        // premier déplacement
+        let firstMove = true;
         
         const moveDown = () => {    //Gere deplacement progressif vers le bas
 
@@ -169,10 +172,10 @@ class Boss extends Phaser.GameObjects.Sprite {
                 // boss atteint le bas
                 this.emit('bossReachedBottom');
 
-                setTimeout(() => {
-                    this.setDepth(3);
-                    moveUp(agathe.x), 1500
-                }); // Attendre 1.5sec avant de remonter vers Agathe
+                // si on retourne à l'arrière du bg on change le depth
+                if (!firstMove) this.setDepth(1);
+                else this.setDepth(3);
+                setTimeout(() => {moveUp(agathe.x), 3000}); // Attendre 1.5sec avant de remonter vers Agathe
             }
         };
     
@@ -188,6 +191,16 @@ class Boss extends Phaser.GameObjects.Sprite {
 
                 // boss atteint le haut
                 this.emit('bossReachedTop');
+
+                // on repart pour un second tour si on est encore au premier plan
+                if (firstMove) {
+
+                    firstMove = false;
+                    // on attend avant de retourner au fond du bg
+                    setTimeout(() => {
+                        moveDown(agathe.x), 3000
+                    });
+                }
             }
         };
     

@@ -30,8 +30,10 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.setScale(0.9);
 
         // Set additional properties for the vomitball
-        this.speed = 120; // You can adjust the speed
+        this.speed = 200; // You can adjust the speed
         this.isAlive = false; // Flag to check if the vomitball is active
+
+        // this.vomitshard = new Vomitshard(this, -100, -100).setDepth(4); // Initialize off-screen
     }
 
     throwVomitball(initialX, initialY, targetX, targetY) {
@@ -58,11 +60,10 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.rotation = Math.asin(diffX / distance) - Math.PI / 2;
     }
 
-    // throwVomitshard() {
-    //     // Trigger the event to throw a vomitshard with the boss's current position
-    //     this.emit('throwVomitshard', this.x, this.y);
-    //     // new Vomitshard(scene, this.x, this.y);
-    // }
+    spawnVomitshard() {
+        // Trigger the event to throw a vomitshard with the boss's current position
+        this.emit('spawnVomitShard', this.x, this.y);
+    }
 
     update(time, delta) {
         if (!this.isAlive) {
@@ -84,9 +85,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 
         // create explosion
 
-        this.emit('throwVomitshard', this.x, this.y);
-        // const vomitshard = new Vomitshard(this.scene, this.x, this.y);
-        // this.scene.add.existing(vomitshard);
+        this.spawnVomitshard();
     }
 }
 
@@ -96,6 +95,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
     targetY = this.y;
     speedX = 0;
     speedY = 0;
+    isMoving = false;
 
     constructor(scene, x, y) {
         // Call the parent constructor
@@ -112,7 +112,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.speed = 120;
     }
 
-    throwVomitshard(initialX, initialY, targetX, targetY) {
+    spawnVomitShard(initialX, initialY, targetX, targetY) {
 
         this.x = initialX;
         this.y = initialY;
@@ -148,6 +148,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.setVisible(false);
         this.isAlive = false;
         this.body.enable = false;
+        this.isMoving = false;
     }
 }
 
@@ -156,8 +157,6 @@ class Boss extends Phaser.GameObjects.Sprite {
     maxHealth = 21;
     health = this.maxHealth;
     isInvicible = false;
-    vomitballCooldown = 0;
-    lastVomitballTime = 0;
     headY;
 
     constructor(scene, x, y) {
@@ -176,6 +175,15 @@ class Boss extends Phaser.GameObjects.Sprite {
         // this.setCollideWorldBounds(true); // on définit les collisions avec la bordure
         // Additional properties
         this.speed = 100;
+
+        // this.on('throwVomitball', () => {
+        //     this.vomitball.throwVomitball(this.x, this.headY, agathe.x, agathe.y); // Set initial position to boss position
+        // });
+
+        // this.vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen
+        // this.vomitball.on('spawnVomitShard', () => {
+        //     this.vomitball.vomitshard.spawnVomitShard(this.vomitball.x, this.vomitball.y, this.x, this.headY); // Set initial position to boss position
+        // });
     }
 
     setY(y) {
@@ -193,12 +201,13 @@ class Boss extends Phaser.GameObjects.Sprite {
         }
 
         // Check if enough time has passed since the last vomitball throw
-        if (time - this.lastVomitballTime > this.vomitballCooldown) {
+        if (!vomitball.isAlive) { //  && vomitBallCD
             // Decide to throw a vomitball (replace this with your own logic)
             if (Math.random() < 0.01) {
                 this.throwVomitball();
-                this.lastVomitballTime = time;
             }
+        // } else {
+            // this.vomitball.update(time, delta);
         }
 
         // Move the boss to the right (adjust as needed)

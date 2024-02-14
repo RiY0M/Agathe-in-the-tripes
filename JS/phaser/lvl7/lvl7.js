@@ -127,7 +127,7 @@ function update(time, delta) {
         }
     }
 
-    if (nbHearts == 0) displayDeathScreen();        //Personnage mort
+    if (nbHearts == 0) displayDeathScreen(); // Personnage mort
 
     boss.update(time, delta);
     vomitball.update(time, delta);

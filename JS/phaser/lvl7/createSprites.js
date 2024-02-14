@@ -1,6 +1,6 @@
 //~ SPRITE AGATHE ~//
 function createAgathe(scene){
-    agathe = scene.physics.add.sprite(15, 320, "agathe").setDepth(3)
+    agathe = scene.physics.add.sprite(15, 320, "agathe").setDepth(5)
         .setSize(21, 8)
         .setOffset(5, 40);
     

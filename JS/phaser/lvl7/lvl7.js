@@ -48,7 +48,7 @@ function create()
     
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300).setDepth(1);
-    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
+    vomitball = new Vomitball(this, -100, -100).setDepth(6); // Initialize off-screen  
     setHealthBar(boss.health, boss.maxHealth);
 
     // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
@@ -62,8 +62,8 @@ function create()
 
 
     //& LITTLE-WORMS INITIALIZATION &//
-    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4);
-    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4).setFlip(true, false);
+    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6);
+    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6).setFlip(true, false);
 
 
     //* CREATION DE LA MAP *//

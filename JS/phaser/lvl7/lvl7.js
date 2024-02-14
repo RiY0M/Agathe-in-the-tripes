@@ -28,7 +28,7 @@ function preload(){
 function create()
 {
     //* Barre de vie *//
-    graphics = this.add.graphics().setDepth(3);
+    graphics = this.add.graphics().setDepth(5);
     
     //* Theme de fond *//
     startBackgroundMusic(this);
@@ -37,7 +37,8 @@ function create()
     //$ FOND DU BACKGROUND $//
     let bg = this.physics.add.staticGroup();
     bg.create(400, 75, "back-map").setDepth(0);
-    bg.create(400, 440, "front-map").setScale(1.3).setDepth(2);
+    bg.create(400, 297, "front-map-back").setScale(1.25).setDepth(2);
+    bg.create(400, 480, "front-map-front").setScale(1.25).setDepth(4);
     
     //$ CHARGEMENT VARIABLES DE SPRITES $//
     loadSpriteVariables(this);
@@ -47,8 +48,8 @@ function create()
 
     
     //~ SPRITE BOSS ~//
-    boss = new Boss(this, 400, 300)
-    vomitball = new Vomitball(this, -100, -100).setDepth(4); // Initialize off-screen  
+    boss = new Boss(this, 400, 300).setDepth(1);
+    vomitball = new Vomitball(this, -100, -100).setDepth(6); // Initialize off-screen  
     setHealthBar(boss.health, boss.maxHealth);
 
     // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
@@ -62,8 +63,8 @@ function create()
 
 
     //& LITTLE-WORMS INITIALIZATION &//
-    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4);
-    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(4).setFlip(true, false);
+    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6);
+    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6).setFlip(true, false);
 
 
     //* CREATION DE LA MAP *//
@@ -241,9 +242,9 @@ function summonLilWorms(agathe, scene) {
     let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
     
     // apparition ver de gauche
-    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(3);
+    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(6);
     // apparition ver de droite en miroir
-    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(3).setFlip(true, false);
+    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(6).setFlip(true, false);
 
     // on permet à nouveau l'attaque des vers
     okForLeftWormAnim = true;

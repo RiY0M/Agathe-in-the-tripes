@@ -22,6 +22,8 @@ function loadImages(scene){
 
     // chargement front-map
     scene.load.image("front-map", "../../img/assets/lvl7/front-map.png");
+    scene.load.image("front-map-back", "../../img/assets/lvl7/front-map-back.png");
+    scene.load.image("front-map-front", "../../img/assets/lvl7/front-map-front.png");
 
     // chargement back-map
     scene.load.image("back-map", "../../img/assets/lvl7/back-map.png");

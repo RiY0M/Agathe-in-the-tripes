@@ -16,6 +16,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         scene.physics.world.enable(this);
         this.body.setAllowGravity(false);
         this.setScale(1.1);
+        this.setDepth(6);
         this.isAlive = true;
         this.body.enable = true;
         this.speed = 200;

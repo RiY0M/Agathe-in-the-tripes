@@ -35,7 +35,7 @@ function create()
     bossDmgSound = this.sound.add("bossDamage");
     
     //$ FOND DU BACKGROUND $//
-    let bg = this.physics.add.staticGroup();
+    const bg = this.physics.add.staticGroup();
     bg.create(400, 75, "back-map").setDepth(0);
     bg.create(400, 297, "front-map-back").setScale(1.25).setDepth(2);
     bg.create(400, 480, "front-map-front").setScale(1.25).setDepth(4);
@@ -49,8 +49,8 @@ function create()
     
     //~ SPRITE BOSS ~//
     boss = new Boss(this, 400, 300, music);
-    vomitball = new Vomitball(this, -100, -100).setDepth(6); // Initialize off-screen  
-    vomitshard = new Vomitshard(this, -100, -100).setDepth(6);
+    vomitball = new Vomitball(this, -100, -100); // Initialize off-screen  
+    vomitshard = new Vomitshard(this, -100, -100);
 
     // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
     boss.on('bossReachedBottom', () => {
@@ -168,7 +168,6 @@ function update(time, delta) {
 
 function throwVomitshard() {
     vomitshard.isMoving = true;
-    console.log("touched");
 }
 
 function getDamaged()
@@ -257,14 +256,14 @@ function summonLilWorms(agathe, scene) {
     okForRightWormAnim = true;
 
     //! COLLISIONS !//
-    scene.physics.add.collider(agathe, leftLittleWorms, getleftLilWormDamage, null, this);
+    scene.physics.add.collider(agathe, leftLittleWorms, getLeftLilWormDamage, null, this);
     scene.physics.add.collider(agathe, rightLittleWorms, getRightLilWormDamage, null, this);
 }
 
 
 //! COLLISION LITTLE-WORM !//
 //& GAUCHE &//
-function getleftLilWormDamage(player, worm)
+function getLeftLilWormDamage(player, worm)
 {
     // prise de dégât
     getDamaged();

@@ -20,6 +20,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 
         this.body.setSize(50, 55);
         this.setScale(0.9);
+        this.setDepth(6);
 
         this.speed = 200;
         this.isAlive = false;

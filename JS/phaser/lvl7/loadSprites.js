@@ -33,6 +33,6 @@ function loadImages(scene){
     //chargement sound-effect
     scene.load.audio('bossDamage', '../../sound/lvl7/bossDamaged.mp3');
     scene.load.audio('dirt', '../../sound/lvl7/dirt-interaction.mp3');
-    scene.load.audio('fireball', '../../sound/lvl7/fireball.mp3');
+    scene.load.audio('vomitball', '../../sound/lvl7/vomitball.mp3');
     scene.load.audio('little-worm', '../../sound/lvl7/little-worm.mp3');
 }

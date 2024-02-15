@@ -1,5 +1,5 @@
 // configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
-let config = {
+const config = {
     type: Phaser.CANVAS,
     width: 800,
     height: 600,
@@ -19,7 +19,7 @@ let config = {
 
 
 //$ CREATION FENETRE PHASER $//
-let game = new Phaser.Game(config);
+const game = new Phaser.Game(config);
 
 function preload(){
     loadImages(this);
@@ -28,14 +28,14 @@ function preload(){
 function create()
 {
     //* Barre de vie *//
-    graphics = this.add.graphics().setDepth(5);
+    
     
     //* Theme de fond *//
     startBackgroundMusic(this);
     bossDmgSound = this.sound.add("bossDamage");
     
     //$ FOND DU BACKGROUND $//
-    let bg = this.physics.add.staticGroup();
+    const bg = this.physics.add.staticGroup();
     bg.create(400, 75, "back-map").setDepth(0);
     bg.create(400, 297, "front-map-back").setScale(1.25).setDepth(2);
     bg.create(400, 480, "front-map-front").setScale(1.25).setDepth(4);
@@ -48,9 +48,9 @@ function create()
 
     
     //~ SPRITE BOSS ~//
-    boss = new Boss(this, 400, 300).setDepth(1);
-    vomitball = new Vomitball(this, -100, -100).setDepth(6); // Initialize off-screen  
-    vomitshard = new Vomitshard(this, -100, -100).setDepth(6);
+    boss = new Boss(this, 400, 300, music);
+    vomitball = new Vomitball(this, -100, -100); // Initialize off-screen  
+    vomitshard = new Vomitshard(this, -100, -100);
 
     // Ajoutez les gestionnaires d'événements pour activer/désactiver les collisions
     boss.on('bossReachedBottom', () => {
@@ -64,8 +64,8 @@ function create()
 
 
     //& LITTLE-WORMS INITIALIZATION &//
-    leftLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6);
-    rightLittleWorms = new LittleWorm(this, -100, -100).setScale(1.2).setDepth(6).setFlip(true, false);
+    leftLittleWorms = new LittleWorm(this, -100, -100);
+    rightLittleWorms = new LittleWorm(this, -100, -100).setFlip(true, false);
 
 
     //* CREATION DE LA MAP *//
@@ -74,6 +74,7 @@ function create()
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
     this.physics.add.overlap(agathe, vomitball, bossGetDamaged);
+    this.physics.add.overlap(agathe, vomitshard, throwVomitshard);
     this.physics.add.collider(agathe, leftLittleWorms, getDamaged);
     this.physics.add.collider(agathe, rightLittleWorms, getDamaged);
     
@@ -90,12 +91,9 @@ function create()
 
     // Handle boss throwing a vomitball (replace this with your actual logic)
     boss.on('throwVomitball', () => {
-        music = this.sound.add("fireball");
+        music = this.sound.add("vomitball");
         music.play();
         vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
-    });
-    vomitball.on('spawnVomitShard', () => {
-        vomitshard.spawnVomitShard(vomitball.x, vomitball.y, boss.x, boss.headY); // Set initial position to boss position
     });
     boss.on('hideAndReappearEvent', (speed) => {
         music = this.sound.add("dirt");
@@ -133,6 +131,7 @@ function update(time, delta) {
 
     boss.update(time, delta);
     vomitball.update(time, delta);
+    vomitshard.update(time, delta);
 
     if (start3sCoolDownAgathe) {
 
@@ -166,6 +165,10 @@ function update(time, delta) {
     else agathe.setTint(0xFF0000);
 
     createVerticalMove(agathe, cursors);
+}
+
+function throwVomitshard() {
+    vomitshard.isMoving = true;
 }
 
 function getDamaged()
@@ -254,14 +257,14 @@ function summonLilWorms(agathe, scene) {
     okForRightWormAnim = true;
 
     //! COLLISIONS !//
-    scene.physics.add.collider(agathe, leftLittleWorms, getleftLilWormDamage, null, this);
+    scene.physics.add.collider(agathe, leftLittleWorms, getLeftLilWormDamage, null, this);
     scene.physics.add.collider(agathe, rightLittleWorms, getRightLilWormDamage, null, this);
 }
 
 
 //! COLLISION LITTLE-WORM !//
 //& GAUCHE &//
-function getleftLilWormDamage(player, worm)
+function getLeftLilWormDamage(player, worm)
 {
     // prise de dégât
     getDamaged();

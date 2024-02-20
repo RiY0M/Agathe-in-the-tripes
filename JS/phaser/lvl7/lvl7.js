@@ -100,13 +100,6 @@ function create()
         music.play();
         boss.hideAndReappear(speed);
     });
-
-    //& RECUPERATION BOUTON SUMMON &//
-    document.querySelector("#summonBtn").addEventListener("click", () => {
-        music = this.sound.add("little-worm");
-        music.play();
-        summonLilWorms(agathe, this);
-    });
 }
 
 function update(time, delta) {
@@ -265,6 +258,9 @@ function startBackgroundMusic(scene) {
 
 //& RANDOM SUMMON LITTLE-WORMS &//
 function summonLilWorms(agathe, scene) {
+
+    music = this.sound.add("little-worm");
+    music.play();
 
     // si des vers existent déjà
     if (leftLittleWorms !== null && rightLittleWorms !== null) {

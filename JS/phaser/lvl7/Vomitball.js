@@ -11,6 +11,9 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         // Call the parent constructor
         super(scene, x, y, 'vomitball');
 
+        this.initialX = x;
+        this.initialY = y;
+
         scene.add.existing(this);
         scene.physics.world.enable(this);
         this.body.setAllowGravity(false);
@@ -30,12 +33,19 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         });
     }
 
+    toggleEnable(toggle) {
+        this.setActive(toggle);
+        this.setVisible(toggle);
+        this.isAlive = toggle;
+        this.body.enable = toggle;
+    }
+
     throwVomitball(initialX, initialY, targetX, targetY) {
+        this.initialX = initialX;
+        this.initialY = initialY;
+
         this.setPosition(initialX, initialY);
-        this.setActive(true);
-        this.setVisible(true);
-        this.isAlive = true;
-        this.body.enable = true;
+        this.toggleEnable(true);
 
 
         this.targetX = targetX;
@@ -70,11 +80,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
             return;
         }
 
-        this.setActive(false);
-        this.setVisible(false);
-        this.isAlive = false;
-        this.body.enable = false;
-
+        this.toggleEnable(false);
         this.spawnVomitshard();
     }
 }

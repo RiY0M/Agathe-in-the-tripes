@@ -226,7 +226,7 @@ function bossGetDamaged(scene) {
         throwNecromencienPattern = true;
     }
 
-    if(vomitshard.y <= boss.collideVomitshard) {
+    if(vomitshard.y <= boss.collideVomitshard && vomitshard.isMoving) {
         vomitshard.hasTouched = true;
         // boss encore en vie
         // on retire un pv

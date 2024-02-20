@@ -18,10 +18,15 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.body.setAllowGravity(false);
         this.setScale(1.1);
         this.setDepth(6);
-        this.isAlive = true;
-        this.body.enable = true;
         this.speed = 200;
         this.body.setOffset(0, 10);
+    }
+
+    toggleEnable(toggle) {
+        this.setActive(toggle);
+        this.setVisible(toggle);
+        this.isAlive = toggle;
+        this.body.enable = toggle;
     }
     
     spawnVomitShard(initialX, initialY, targetX, targetY) {
@@ -32,10 +37,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         }
 
         this.setPosition(initialX, initialY);
-        this.setActive(true);
-        this.setVisible(true);
-        this.isAlive = true;
-        this.body.enable = true;
+        this.toggleEnable(true);
 
         this.targetX = targetX;
         this.targetY = targetY;
@@ -66,10 +68,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
             }
         }
 
-        this.setActive(false);
-        this.setVisible(false);
-        this.isAlive = false;
-        this.body.enable = false;
+        this.toggleEnable(false);
         this.isMoving = false;
         this.hasTouched = false;
     }

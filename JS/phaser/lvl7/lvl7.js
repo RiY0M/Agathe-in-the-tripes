@@ -27,9 +27,6 @@ function preload(){
 
 function create()
 {
-    //* Barre de vie *//
-    
-    
     //* Theme de fond *//
     startBackgroundMusic(this);
     bossDmgSound = this.sound.add("bossDamage");
@@ -73,10 +70,11 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.overlap(agathe, vomitball, bossGetDamaged);
+    this.physics.add.overlap(agathe, vomitball, getDamaged);
     this.physics.add.overlap(agathe, vomitshard, throwVomitshard);
     this.physics.add.collider(agathe, leftLittleWorms, getDamaged);
     this.physics.add.collider(agathe, rightLittleWorms, getDamaged);
+    this.physics.add.overlap(vomitshard, boss, bossGetDamaged);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -93,7 +91,7 @@ function create()
     boss.on('throwVomitball', () => {
         music = this.sound.add("vomitball");
         music.play();
-        vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
+        vomitball.throwVomitball(boss.x, boss.spawnVomitball, agathe.x, agathe.y); // Set initial position to boss position
     });
     boss.on('hideAndReappearEvent', (speed) => {
         music = this.sound.add("dirt");
@@ -169,7 +167,7 @@ function update(time, delta) {
 
     // lancement pattern autruche
     if (throwAutruchePattern) {
-        boss.emit('hideAndReappearEvent', 3);
+        boss.emit('hideAndReappearEvent', 1);
         throwAutruchePattern = false;
     }
 
@@ -178,8 +176,6 @@ function update(time, delta) {
         summonLilWorms(agathe, this);
         throwNecromencienPattern = false;
     }
-
-
 
     createVerticalMove(agathe, cursors);
 }
@@ -218,34 +214,35 @@ function bossGetDamaged(scene) {
         console.log("Il est mort !");
         return;
     }
-
+    
     //& CHECK PATTERN DU BOSS &//
     // lancement pattern autruche
     if (boss.health % 2 == 1 && boss.health <= 14) {
         throwAutruchePattern = true;
     }
-
+    
     // lancement pattern nécromancien
     if (boss.health % 2 == 0 && boss.health <= 7) {
         throwNecromencienPattern = true;
     }
 
+    if(vomitshard.y <= boss.collideVomitshard) {
+        vomitshard.hasTouched = true;
+        // boss encore en vie
+        // on retire un pv
+        boss.setHealth(boss.health - 1);
+        bossDmgSound.play();
+
+        // Faire clignoter le boss en rouge
+        boss.setTint(0xFF0000);
     
-
-    // boss encore en vie
-    // on retire un pv
-    boss.setHealth(boss.health - 1);
-    bossDmgSound.play();
-
-    // Faire clignoter le boss en rouge
-    boss.setTint(0xFF0000);
-
-    boss.isInvicible = true;
-    setTimeout(() => {
-        // Arrêter le clignotement et revenir a la couleur normale
-        boss.clearTint();
-        boss.isInvicible = false;
-    }, 1000); // 3s invincible
+        boss.isInvicible = true;
+        setTimeout(() => {
+            // Arrêter le clignotement et revenir a la couleur normale
+            boss.clearTint();
+            boss.isInvicible = false;
+        }, 1000); // 3s invincible
+    }
 }
 
 function startBackgroundMusic(scene) {

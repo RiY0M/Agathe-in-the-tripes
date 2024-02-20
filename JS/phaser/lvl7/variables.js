@@ -1,6 +1,5 @@
 let agathe;                 // agathe personnage
 let vomitball;              // boule de vomi
-let vomitspike;
 let leftLittleWorms;   // petits vers gauche
 let rightLittleWorms;  // petits vers droite
 let okForLeftWormAnim = true;

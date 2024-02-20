@@ -7,6 +7,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
     speedX = 0;
     speedY = 0;
     isMoving = false;
+    hasTouched = false;
 
     constructor(scene, x, y) {
         // Call the parent constructor
@@ -20,6 +21,7 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.isAlive = true;
         this.body.enable = true;
         this.speed = 200;
+        this.body.setOffset(0, 10);
     }
     
     spawnVomitShard(initialX, initialY, targetX, targetY) {
@@ -32,6 +34,8 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.setPosition(initialX, initialY);
         this.setActive(true);
         this.setVisible(true);
+        this.isAlive = true;
+        this.body.enable = true;
 
         this.targetX = targetX;
         this.targetY = targetY;
@@ -48,16 +52,18 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
     }
 
     update(time, delta) {
-        if (!this.isMoving) {
-            return;
-        }
-
-        this.x -= this.speedX * delta / 1000;
-        this.y -= this.speedY * delta / 1000;
-
-        // Check if the vomitshard is not out of bounds
-        if (this.x < game.config.width && this.x > 0 && this.y > 0) {
-            return;
+        if(!this.hasTouched) {
+            if (!this.isMoving) {
+                return;
+            }
+    
+            this.x -= this.speedX * delta / 1000;
+            this.y -= this.speedY * delta / 1000;
+    
+            // Check if the vomitshard is not out of bounds
+            if (this.x < game.config.width && this.x > 0 && this.y > 0) {
+                return;
+            }
         }
 
         this.setActive(false);
@@ -65,5 +71,6 @@ class Vomitshard extends Phaser.GameObjects.Sprite {
         this.isAlive = false;
         this.body.enable = false;
         this.isMoving = false;
+        this.hasTouched = false;
     }
 }

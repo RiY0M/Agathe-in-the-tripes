@@ -27,9 +27,6 @@ function preload(){
 
 function create()
 {
-    //* Barre de vie *//
-    
-    
     //* Theme de fond *//
     startBackgroundMusic(this);
     bossDmgSound = this.sound.add("bossDamage");
@@ -94,7 +91,7 @@ function create()
     boss.on('throwVomitball', () => {
         music = this.sound.add("vomitball");
         music.play();
-        vomitball.throwVomitball(boss.x, boss.headY, agathe.x, agathe.y); // Set initial position to boss position
+        vomitball.throwVomitball(boss.x, boss.spawnVomitball, agathe.x, agathe.y); // Set initial position to boss position
     });
     boss.on('hideAndReappearEvent', (speed) => {
         music = this.sound.add("dirt");
@@ -170,7 +167,7 @@ function update(time, delta) {
 
     // lancement pattern autruche
     if (throwAutruchePattern) {
-        boss.emit('hideAndReappearEvent', 3);
+        boss.emit('hideAndReappearEvent', 1);
         throwAutruchePattern = false;
     }
 
@@ -179,8 +176,6 @@ function update(time, delta) {
         summonLilWorms(agathe, this);
         throwNecromencienPattern = false;
     }
-
-
 
     createVerticalMove(agathe, cursors);
 }
@@ -231,7 +226,7 @@ function bossGetDamaged(scene) {
         throwNecromencienPattern = true;
     }
 
-    if(vomitshard.y <= boss.headY) {
+    if(vomitshard.y <= boss.collideVomitshard) {
         vomitshard.hasTouched = true;
         // boss encore en vie
         // on retire un pv

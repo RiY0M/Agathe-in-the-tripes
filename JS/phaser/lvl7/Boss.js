@@ -2,12 +2,11 @@
 
 class Boss extends Phaser.GameObjects.Sprite {
 
-    maxHealth = 21;
+    maxHealth = 18;
     health = this.maxHealth;
     isInvicible = false;
     isMoving = false;
     initialYBoss = this.y; // Stocker la position initiale en Y du boss
-    headY;
     canThrowVomitBall = true;
 
     constructor(scene, x, y, music) {
@@ -30,7 +29,8 @@ class Boss extends Phaser.GameObjects.Sprite {
 
     setY(y) {
         this.y = y;
-        this.headY = y - 160;
+        this.spawnVomitball = y - 200;
+        this.collideVomitshard = y - 160;
     }
 
     //* Créer et gère les PV de barre de vie *//
@@ -75,7 +75,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     throwVomitball() {
         if (this.canThrowVomitBall) {
             // Trigger the event to throw a fireball with the boss's current position
-            this.emit('throwVomitball', this.x, this.headY);
+            this.emit('throwVomitball', this.x, this.spawnVomitball);
         }
     }
 

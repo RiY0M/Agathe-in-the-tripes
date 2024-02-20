@@ -265,7 +265,7 @@ function startBackgroundMusic(scene) {
 //& RANDOM SUMMON LITTLE-WORMS &//
 function summonLilWorms(agathe, scene) {
 
-    music = this.sound.add("little-worm");
+    music = scene.sound.add("little-worm");
     music.play();
 
     // si des vers existent déjà

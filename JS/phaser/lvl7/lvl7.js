@@ -34,7 +34,7 @@ function create()
     //$ FOND DU BACKGROUND $//
     const bg = this.physics.add.staticGroup();
     bg.create(400, 75, "back-map").setDepth(0);
-    bg.create(400, 297, "front-map-back").setScale(1.25).setDepth(2);
+    bg.create(400, 298, "front-map-back").setScale(1.25).setDepth(2);
     bg.create(400, 480, "front-map-front").setScale(1.25).setDepth(4);
     
     //$ CHARGEMENT VARIABLES DE SPRITES $//

@@ -164,6 +164,23 @@ function update(time, delta) {
     if ((timer >= 0 && timer <= 1.25) || (timer >= 2.5 && timer <= 3.75)) agathe.setTint(0xFFFFFF);
     else agathe.setTint(0xFF0000);
 
+
+    //& CHECK PATTERN DU BOSS &//
+
+    // lancement pattern autruche
+    if (throwAutruchePattern) {
+        boss.emit('hideAndReappearEvent', 3);
+        throwAutruchePattern = false;
+    }
+
+    // lancement pattern nécromancien
+    if (throwNecromencienPattern) {
+        summonLilWorms(agathe, this);
+        throwNecromencienPattern = false;
+    }
+
+
+
     createVerticalMove(agathe, cursors);
 }
 
@@ -190,21 +207,35 @@ function getDamaged()
 }
 
 function bossGetDamaged(scene) {
+    // boss immortel on fait rien
     if (boss.isInvicible) {
         return;
     }
+
+    // boss mort
     if (boss.health < 1 && nbHearts > 0) {
         // changeLvl(idCurrentLvl, idNextLvl, startTime);
         console.log("Il est mort !");
         return;
     }
 
+    //& CHECK PATTERN DU BOSS &//
+    // lancement pattern autruche
+    if (boss.health % 2 == 1 && boss.health <= 14) {
+        throwAutruchePattern = true;
+    }
+
+    // lancement pattern nécromancien
+    if (boss.health % 2 == 0 && boss.health <= 7) {
+        throwNecromencienPattern = true;
+    }
+
+    
+
+    // boss encore en vie
+    // on retire un pv
     boss.setHealth(boss.health - 1);
     bossDmgSound.play();
-
-    if (boss.health % 2 == 1) {
-        boss.emit('hideAndReappearEvent', 3);
-    }
 
     // Faire clignoter le boss en rouge
     boss.setTint(0xFF0000);

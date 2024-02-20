@@ -12,6 +12,9 @@ let bossDmgSound;                  //Sound effect boss
 const restartMusic = 16;       // Musique se relance au moment choisis
 let isFirstTime = true; 
 
+let throwAutruchePattern = false;           // déclanchement pattern autruche
+let throwNecromencienPattern = false;       // déclanchement pattern nécromencien
+
 
 
 const idCurrentLvl = 7;      // Id du niveau courant

@@ -2,7 +2,7 @@
 
 class Boss extends Phaser.GameObjects.Sprite {
 
-    maxHealth = 8;
+    maxHealth = 21;
     health = this.maxHealth;
     isInvicible = false;
     isMoving = false;
@@ -26,19 +26,6 @@ class Boss extends Phaser.GameObjects.Sprite {
 
         this.speed = 100;
         this.setHealth(this.maxHealth);
-        // this.vomitballCooldown = 3000;
-        // this.lastVomitballTime = 0;
-
-        // this.on('throwVomitball', () => {
-        //     music = this.sound.add("vomitball");
-        //     music.play();
-        //     vomitball.throwVomitball(this.x, this.headY, agathe.x, agathe.y); // Set initial position to boss position
-        // });
-        // this.on('hideAndReappearEvent', (speed) => {
-        //     music = this.sound.add("dirt");
-        //     music.play();
-        //     this.hideAndReappear(speed);
-        // });
     }
 
     setY(y) {
@@ -58,11 +45,11 @@ class Boss extends Phaser.GameObjects.Sprite {
         const graphics = this.scene.add.graphics().setDepth(5);
         graphics.clear();
         graphics.fillStyle(0xff6600);
-        graphics.fillRoundedRect(centerX, 550, widthBar, this.maxHealth, 5);
+        graphics.fillRect(centerX, 550, widthBar, this.maxHealth);
     
         if (percentBar > 0){
             graphics.fillStyle(0xff0000);
-            graphics.fillRoundedRect(centerX, 550, widthBar * percentBar, this.maxHealth, 5)
+            graphics.fillRect(centerX, 550, widthBar * percentBar, this.maxHealth)
         }
     }
 

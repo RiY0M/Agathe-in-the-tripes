@@ -73,10 +73,11 @@ function create()
 
     //! COLLISIONS !//
     this.physics.add.collider(agathe, roadBorder);
-    this.physics.add.overlap(agathe, vomitball, bossGetDamaged);
+    this.physics.add.overlap(agathe, vomitball, getDamaged);
     this.physics.add.overlap(agathe, vomitshard, throwVomitshard);
     this.physics.add.collider(agathe, leftLittleWorms, getDamaged);
     this.physics.add.collider(agathe, rightLittleWorms, getDamaged);
+    this.physics.add.overlap(vomitshard, boss, bossGetDamaged);
     
     //! DETECTION DU CLAVIER !//
     cursors = this.input.keyboard.createCursorKeys();
@@ -218,34 +219,35 @@ function bossGetDamaged(scene) {
         console.log("Il est mort !");
         return;
     }
-
+    
     //& CHECK PATTERN DU BOSS &//
     // lancement pattern autruche
     if (boss.health % 2 == 1 && boss.health <= 14) {
         throwAutruchePattern = true;
     }
-
+    
     // lancement pattern nécromancien
     if (boss.health % 2 == 0 && boss.health <= 7) {
         throwNecromencienPattern = true;
     }
 
+    if(vomitshard.y <= boss.headY) {
+        vomitshard.hasTouched = true;
+        // boss encore en vie
+        // on retire un pv
+        boss.setHealth(boss.health - 1);
+        bossDmgSound.play();
+
+        // Faire clignoter le boss en rouge
+        boss.setTint(0xFF0000);
     
-
-    // boss encore en vie
-    // on retire un pv
-    boss.setHealth(boss.health - 1);
-    bossDmgSound.play();
-
-    // Faire clignoter le boss en rouge
-    boss.setTint(0xFF0000);
-
-    boss.isInvicible = true;
-    setTimeout(() => {
-        // Arrêter le clignotement et revenir a la couleur normale
-        boss.clearTint();
-        boss.isInvicible = false;
-    }, 1000); // 3s invincible
+        boss.isInvicible = true;
+        setTimeout(() => {
+            // Arrêter le clignotement et revenir a la couleur normale
+            boss.clearTint();
+            boss.isInvicible = false;
+        }, 1000); // 3s invincible
+    }
 }
 
 function startBackgroundMusic(scene) {

@@ -2,17 +2,16 @@
 
 class Boss extends Phaser.GameObjects.Sprite {
 
-    maxHealth = 21;
+    maxHealth = 18;
     health = this.maxHealth;
     isInvicible = false;
     isMoving = false;
     initialYBoss = this.y; // Stocker la position initiale en Y du boss
-    headY;
     canThrowVomitBall = true;
 
     constructor(scene, x, y, music) {
         super(scene, x, y, "boss");
-        this.headY = y - 200;
+        this.setY(y);
 
         // Add the boss to the scene
         scene.add.existing(this);
@@ -30,7 +29,8 @@ class Boss extends Phaser.GameObjects.Sprite {
 
     setY(y) {
         this.y = y;
-        this.headY = y - 200;
+        this.spawnVomitball = y - 200;
+        this.collideVomitshard = y - 160;
     }
 
     //* Créer et gère les PV de barre de vie *//
@@ -75,7 +75,7 @@ class Boss extends Phaser.GameObjects.Sprite {
     throwVomitball() {
         if (this.canThrowVomitBall) {
             // Trigger the event to throw a fireball with the boss's current position
-            this.emit('throwVomitball', this.x, this.headY);
+            this.emit('throwVomitball', this.x, this.spawnVomitball);
         }
     }
 
@@ -95,7 +95,7 @@ class Boss extends Phaser.GameObjects.Sprite {
         // on empêche de tirer des boules de vomis pendant l'anim up and down
         this.canThrowVomitBall = false;
         
-        const moveDown = () => {    //Gere deplacement progressif vers le bas
+        const moveDown = () => {    // Gere deplacement progressif vers le bas
 
             if (this.y < game.config.height) {
                 this.movingDown(speed); // Fait descendre le worm

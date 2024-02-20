@@ -1,6 +1,6 @@
 // configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
 const config = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     width: 800,
     height: 600,
     physics: { default: 'arcade',
@@ -98,16 +98,46 @@ function create()
         music.play();
         boss.hideAndReappear(speed);
     });
-
-    //& RECUPERATION BOUTON SUMMON &//
-    document.querySelector("#summonBtn").addEventListener("click", () => {
-        music = this.sound.add("little-worm");
-        music.play();
-        summonLilWorms(agathe, this);
-    });
 }
 
 function update(time, delta) {
+
+
+    //~ PV AGATHE ~//
+    // boucle en fonction du timer de l'invincibilité allant de 0.0 à 4.9
+    let timer = invicibility / 10 % 5;
+
+    // la moitié du temps on passe en rouge
+    if ((timer >= 0 && timer <= 1.25) || (timer >= 2.5 && timer <= 3.75)) agathe.setTint(0xFFFFFF);
+    else agathe.setTint(0xFF0000);
+
+
+    // si le lancement de l'invincibilité est lancé
+    if (start3sCoolDown) {
+
+        if (invicibility == 150) {
+            // sound-effect
+            music = this.sound.add("damage");
+            music.play();
+        }
+
+        // on lance la décrémentation des 150 frames (150 frames = 3s)
+        invicibility--;
+        // on rend agathe invincible
+        isInvicible = true;
+    }
+
+    // si les 3s d'invincibilité sont écoulées
+    if (invicibility == 0) {
+        // on enlève l'effet d'immortalité à agathe
+        isInvicible = false;
+        // on arrête le chorno
+        start3sCoolDown = false;
+        // on réinitialise le compteur de frames
+        invicibility = 150;
+    }
+
+
 
     //& ACTIVATION ATTAQUE LIL-WORM SI AGATHE A COTE &//
 
@@ -130,37 +160,6 @@ function update(time, delta) {
     boss.update(time, delta);
     vomitball.update(time, delta);
     vomitshard.update(time, delta);
-
-    if (start3sCoolDownAgathe) {
-
-        if (invicibilityAgathe == 150) {
-            // sound-effect
-            music = this.sound.add("damage");
-            music.play();
-        }
-
-        // on lance la décrémentation des 150 frames (150 frames = 3s)
-        invicibilityAgathe--;
-        // on rend agathe invincible
-        isInvicible = true;
-    }
-
-    // si les 3s d'invincibilité sont écoulées
-    if (invicibilityAgathe == 0) {
-        // on enlève l'effet d'immortalité à agathe
-        isInvicible = false;
-        // on arrête le chorno
-        start3sCoolDownAgathe = false;
-        // on réinitialise le compteur de frames
-        invicibilityAgathe = 150;
-    }
-
-    // boucle en fonction du timer de l'invincibilité allant de 0.0 à 4.9
-    let timer = invicibilityAgathe / 10 % 5;
-    
-    // la moitié du temps on passe en rouge
-    if ((timer >= 0 && timer <= 1.25) || (timer >= 2.5 && timer <= 3.75)) agathe.setTint(0xFFFFFF);
-    else agathe.setTint(0xFF0000);
 
 
     //& CHECK PATTERN DU BOSS &//
@@ -187,19 +186,20 @@ function throwVomitshard() {
 function getDamaged()
 {
     vomitball.body.enable = false;
+    
     // si agathe n'est pas invincible
-    if (isInvicible) {
-        return;
-    }
-    // si elle a encore au moins une vie
-    if (nbHearts > 0) {
-        // on lui en retire une
-        nbHearts--;
-        reloadNbHearts();
-    }
+    if (!isInvicible)
+    {
+        // si elle a encore au moins une vie
+        if (nbHearts > 0) {
+            // on lui en retire une
+            nbHearts--;
+            reloadNbHearts();
+        }
 
-    // lancement des 3s d'invincibilité
-    start3sCoolDownAgathe = true;
+        // lancement des 3s d'invincibilité
+        start3sCoolDown = true;
+    }
 }
 
 function bossGetDamaged(scene) {
@@ -262,6 +262,9 @@ function startBackgroundMusic(scene) {
 
 //& RANDOM SUMMON LITTLE-WORMS &//
 function summonLilWorms(agathe, scene) {
+
+    music = this.sound.add("little-worm");
+    music.play();
 
     // si des vers existent déjà
     if (leftLittleWorms !== null && rightLittleWorms !== null) {

@@ -45,11 +45,11 @@ class Boss extends Phaser.GameObjects.Sprite {
         const graphics = this.scene.add.graphics().setDepth(5);
         graphics.clear();
         graphics.fillStyle(0xff6600);
-        graphics.fillRoundedRect(centerX, 550, widthBar, this.maxHealth, 5);
+        graphics.fillRect(centerX, 550, widthBar, this.maxHealth);
     
         if (percentBar > 0){
             graphics.fillStyle(0xff0000);
-            graphics.fillRoundedRect(centerX, 550, widthBar * percentBar, this.maxHealth, 5)
+            graphics.fillRect(centerX, 550, widthBar * percentBar, this.maxHealth)
         }
     }
 

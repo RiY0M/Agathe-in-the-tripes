@@ -20,8 +20,8 @@ const idCurrentLvl = 7;      // Id du niveau courant
 const idNextLvl = 8;        // Id du prochain niveau
 let startTime = new Date().getTime(); // Starting time for the chronometer
 
-let start3sCoolDownAgathe = false;    // lancement de l'invincibilité pour Agathe
-let invicibilityAgathe = 150;         // temps d'immortalité d'agathe
+let start3sCoolDown = false;    // lancement de l'invincibilité pour Agathe
+let invicibility = 150;         // temps d'immortalité d'agathe
 //-------------------------
 
 let roadBorder;                         // bordure route invisible

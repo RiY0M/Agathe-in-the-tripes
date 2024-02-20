@@ -55,8 +55,8 @@ function create()
     });
 
     boss.on('bossReachedTop', () => {
-        if (this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider'))
-            this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider').destroy();
+        const bossCollider = this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider');
+        if (bossCollider) bossCollider.destroy();
     });
 
 

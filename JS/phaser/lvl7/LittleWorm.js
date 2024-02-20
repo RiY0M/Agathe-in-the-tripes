@@ -1,25 +1,27 @@
 class LittleWorm extends Phaser.GameObjects.Sprite {
+
     constructor(scene, x, y) {
         super(scene, x, y, "little-worms");
-
+        
         // Add the worm to the scene
         scene.add.existing(this);
-
+        
         // Enable physics
         scene.physics.world.enable(this);
-
+        
         // Disable gravity
         this.body.setAllowGravity(false);
-
+        
         // Disable collisions
         this.body.setCollideWorldBounds(false);
-
+        
         // size of hitbox
         this.body.setSize(10, 5);
         this.body.setOffset(10, 20);
         this.setScale(1.2);
         this.setDepth(6);
 
+        this.okForWormAnim = true;
 
         //^ ANIMATIONS (CHARGEMENT) ^//
         this.scene.anims.create({

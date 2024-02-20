@@ -2,8 +2,6 @@ let agathe;                 // agathe personnage
 let vomitball;              // boule de vomi
 let leftLittleWorms;   // petits vers gauche
 let rightLittleWorms;  // petits vers droite
-let okForLeftWormAnim = true;
-let okForRightWormAnim = true;
 let cursors;                // détection clavier
 let lastFrame = 8;          // last frame facing afk
 let music;                  //Theme (musique de fond)

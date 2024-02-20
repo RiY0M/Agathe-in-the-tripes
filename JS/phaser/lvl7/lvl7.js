@@ -143,14 +143,14 @@ function update(time, delta) {
 
     //& GAUCHE &//
     if (leftLittleWorms !== null) {
-        if (agathe.x - leftLittleWorms.x <= 40 && agathe.x - leftLittleWorms.x >= 0 && okForLeftWormAnim) {
+        if (agathe.x - leftLittleWorms.x <= 40 && agathe.x - leftLittleWorms.x >= 0 && leftLittleWorms.okForWormAnim) {
             leftLittleWorms.playAttackAnim();
         }
     }
 
     //& DROITE &//
     if (rightLittleWorms !== null) {
-        if (rightLittleWorms.x - agathe.x <= 40 && rightLittleWorms.x - agathe.x >= 0 && okForRightWormAnim) {
+        if (rightLittleWorms.x - agathe.x <= 40 && rightLittleWorms.x - agathe.x >= 0 && rightLittleWorms.okForWormAnim) {
             rightLittleWorms.playAttackAnim();
         }
     }
@@ -186,20 +186,22 @@ function throwVomitshard() {
 function getDamaged()
 {
     vomitball.body.enable = false;
+    // boss.body.enable = false;
     
-    // si agathe n'est pas invincible
-    if (!isInvicible)
-    {
-        // si elle a encore au moins une vie
-        if (nbHearts > 0) {
-            // on lui en retire une
-            nbHearts--;
-            reloadNbHearts();
-        }
-
-        // lancement des 3s d'invincibilité
-        start3sCoolDown = true;
+    if (isInvicible) {
+        return;
     }
+    // si agathe n'est pas invincible
+    
+    // si elle a encore au moins une vie
+    if (nbHearts > 0) {
+        // on lui en retire une
+        nbHearts--;
+        reloadNbHearts();
+    }
+
+    // lancement des 3s d'invincibilité
+    start3sCoolDown = true;
 }
 
 function bossGetDamaged(scene) {
@@ -273,19 +275,15 @@ function summonLilWorms(agathe, scene) {
         rightLittleWorms.playInAnim();
     }
 
-    // nombre aléatoire entre 10 et 750 pour ver de gauche
-    let leftX = Math.floor(Math.random() * (250 - 10 + 1)) + 10;
+    // nombre aléatoire entre 10 et 250 pour ver de gauche
+    const leftX = Math.floor(Math.random() * (250 - 10 + 1)) + 10;
     // nombre aléatoire entre 650 et 790 pour ver de droite
-    let rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
+    const rightX = Math.floor(Math.random() * (790 - 650 + 1)) + 650;
     
     // apparition ver de gauche
-    leftLittleWorms = new LittleWorm(scene, leftX, 325).setScale(1.2).setDepth(6);
+    leftLittleWorms = new LittleWorm(scene, leftX, 325);
     // apparition ver de droite en miroir
-    rightLittleWorms = new LittleWorm(scene, rightX, 325).setScale(1.2).setDepth(6).setFlip(true, false);
-
-    // on permet à nouveau l'attaque des vers
-    okForLeftWormAnim = true;
-    okForRightWormAnim = true;
+    rightLittleWorms = new LittleWorm(scene, rightX, 325).setFlip(true, false);
 
     //! COLLISIONS !//
     scene.physics.add.collider(agathe, leftLittleWorms, getLeftLilWormDamage, null, this);
@@ -310,7 +308,7 @@ function getLeftLilWormDamage(player, worm)
     // sinon on attend la fin d'animation
     else {
         // suppression animation attaque
-        okForLeftWormAnim = false;
+        worm.okForWormAnim = false;
         worm.anims.stop();
 
         // destruction monstre
@@ -337,7 +335,7 @@ function getRightLilWormDamage(player, worm)
     // sinon on attend la fin d'animation
     else {
         // suppression animation attaque
-        okForRightWormAnim = false;
+        worm.okForWormAnim = false;
         worm.anims.stop();
 
         // destruction monstre

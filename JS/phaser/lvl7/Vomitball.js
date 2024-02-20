@@ -29,7 +29,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
         this.isAlive = false;
 
         this.on('spawnVomitShard', () => {
-            vomitshard.spawnVomitShard(this.x, this.y, boss.x, boss.spawnVomitball); // Set initial position to vomitball position
+            vomitshard.spawnVomitShard(this.x, this.y, this.initialX, this.initialY); // Set initial position to vomitball position
         });
     }
 
@@ -64,7 +64,7 @@ class Vomitball extends Phaser.GameObjects.Sprite {
 
     spawnVomitshard() {
         // Trigger the event to throw a vomitshard with the boss's current position
-        this.emit('spawnVomitShard', this.x, this.y);
+        this.emit('spawnVomitShard');
     }
 
     update(time, delta) {

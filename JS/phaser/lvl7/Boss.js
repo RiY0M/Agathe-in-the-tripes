@@ -2,7 +2,7 @@
 
 class Boss extends Phaser.GameObjects.Sprite {
 
-    maxHealth = 8;
+    maxHealth = 21;
     health = this.maxHealth;
     isInvicible = false;
     isMoving = false;

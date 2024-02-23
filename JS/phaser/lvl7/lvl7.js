@@ -56,7 +56,7 @@ function create()
 
     boss.on('bossReachedTop', () => {
         const bossCollider = this.physics.world.colliders.getActive().find(i => i.name === 'boss_colider');
-        if (bossCollider) bossCollider.destroy();
+        if (bossCollider && bossCollider != undefined) bossCollider.destroy();
     });
 
 
@@ -212,19 +212,19 @@ function bossGetDamaged(scene) {
 
     // boss mort
     if (boss.health < 1 && nbHearts > 0) {
-        // changeLvl(idCurrentLvl, idNextLvl, startTime);
+        changeLvl(idCurrentLvl, idNextLvl, startTime);
         console.log("Il est mort !");
         return;
     }
     
     //& CHECK PATTERN DU BOSS &//
     // lancement pattern autruche
-    if (boss.health % 2 == 1 && boss.health <= 14) {
+    if (boss.health % 3 == 1 && boss.health <= 14) {
         throwAutruchePattern = true;
     }
     
     // lancement pattern nécromancien
-    if (boss.health % 2 == 0 && boss.health <= 7) {
+    if (boss.health % 3 == 0 && boss.health <= 7) {
         throwNecromencienPattern = true;
     }
 

@@ -1,0 +1,45 @@
+<template id="bahaha-footer">
+    <style>
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 0.5rem;
+            
+            text-align: center;
+            font-family: monospace;
+        
+            border-top: 2px solid var(--gray);    
+            background-color: var(--lightgray);
+        }
+
+        .bahaha-studio {
+            font-family: 'Rubik', sans-serif;
+        }
+    </style>
+    <footer>
+        Jeu développé par <span class="bahaha-studio">Bahaha_studio</span>
+    </footer>
+</template>
+<script>
+    class BahahaFooter extends HTMLElement {
+    
+        // connectedCallback() {
+        //     this.shadowRoot.innerHTML = `
+        //     <div>
+        //         <img style="max-width: 200px" src="${this.getAttribute("cover")}" />
+        //     </div>
+        //     <div>${this.getAttribute("name")}</div>
+        //     `;
+        // }
+        constructor() {
+            super();
+            const template = document.getElementById("bahaha-footer").content;
+            const shadowRoot = this.attachShadow({mode: "open"})
+                .appendChild(template.cloneNode(true));
+        }
+    }
+    
+    customElements.define("bahaha-footer", BahahaFooter);
+</script>

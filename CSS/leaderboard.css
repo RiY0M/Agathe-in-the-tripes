@@ -1,13 +1,13 @@
 body, input {
     margin: 0;
-    background-color: #36393e;
-    color: white;
+    background-color: var(--lightgray);
+    color: var(--white);
     font-family: 'Rubik', sans-serif;
 }
 
 #titre-niv {
     margin: auto;
-    text-shadow: 4px 4px #1e2124;
+    text-shadow: 4px 4px var(--darkgray);
     font-size: 2.5rem;
 }
 
@@ -22,22 +22,22 @@ table, tr, td {
 
 .scores {
     font-size: 1.5rem;
-    text-shadow: 2px 2px #1e2124;
+    text-shadow: 2px 2px var(--darkgray);
 
     margin: auto;
     width: 100%;
     max-width: 17rem;
     padding: 1rem;
     
-    background-color: #282b30;
+    background-color: var(--gray);
     
-    border-left: 7px solid #36393e;
-    border-top: 7px solid #36393e;
+    border-left: 7px solid var(--lightgray);
+    border-top: 7px solid var(--lightgray);
     border-right: transparent;
     border-bottom: transparent;
     border-radius: 10px;
 
-    box-shadow: 7px 7px #1e2124;
+    box-shadow: 7px 7px var(--darkgray);
 }
 
 .flex {
@@ -60,19 +60,19 @@ table, tr, td {
 #leaderboard-buttons>* {
     padding: 0.25rem;
     margin: 0.5rem;
-    border: 2px solid #282b30;
-    background-color: #36393e;
+    border: 2px solid var(--gray);
+    background-color: var(--lightgray);
     font-size: 1.5rem;
     border-radius: 10px;
 
     cursor: pointer;
-    text-shadow: 2px 2px #1e2124;
+    text-shadow: 2px 2px var(--darkgray);
 
-    background-color: #282b30;
+    background-color: var(--gray);
 
-    border-left: 7px solid #36393e;
-    border-top: 7px solid #36393e;
-    box-shadow: 7px 7px #1e2124;
+    border-left: 7px solid var(--lightgray);
+    border-top: 7px solid var(--lightgray);
+    box-shadow: 7px 7px var(--darkgray);
 
     border-right: transparent;
     border-bottom: transparent;
@@ -84,5 +84,5 @@ table, tr, td {
 
 .active {
     color: #8f2121;
-    background-color: #282b30;
+    background-color: var(--gray);
 }

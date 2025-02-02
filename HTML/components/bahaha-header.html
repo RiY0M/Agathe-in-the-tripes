@@ -1,0 +1,74 @@
+<template id="bahaha-header">
+    <style>
+        header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            padding: 1rem;
+
+            vertical-align: baseline;
+
+            background-color: var(--gray);   
+            border-bottom: 2px solid var(--darkgray);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        #header-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            width: 50%;
+        }
+
+        #player-name {
+            text-align: right;
+            margin-right: 5rem;
+        }
+
+        #agathe-img {
+            height: 50px;
+        
+            position: absolute;
+            top: 0.25rem;
+            right: 3rem;
+        }
+        
+        a {
+            color: var(--white);
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        a:hover, #header-player-name:hover {
+            color: var(--red);
+            cursor: pointer;
+        }
+    </style>
+
+    <header>
+        <div id="header-buttons">
+            <a id="accueil" href="../HTML/index.html">Accueil</a>
+            <a id="dashboard" href="../HTML/leaderboard.html">Scores</a>
+            <a id="credits" href="../HTML/credits.html">Crédits</a>
+        </div>
+        <span id="player-name">Invité</span>
+        <img id="agathe-img" src="../../img/agathe.png" alt="agathe">
+    </header>
+</template>
+
+<script>
+    class BahahaHeader extends HTMLElement {
+        constructor() {
+            super();
+            const template = document.getElementById("bahaha-header").content;
+            const shadowRoot = this.attachShadow({ mode: "open" })
+                .appendChild(template.cloneNode(true));
+        }
+    }
+
+    customElements.define("bahaha-header", BahahaHeader);
+</script>

@@ -7,15 +7,15 @@
     width: 10%;
     top: 6%;
     left: 91%;
-    height: 3%;    
+    height: 3%;
 }
 
 
 #deconnexion-player {
     /* border: 1px dashed crimson; */
 
-    background-color: #282b30;
-    box-shadow: 10px 10px 10px #1e2124;
+    background-color: var(--gray);
+    box-shadow: 10px 10px 10px var(--darkgray);
 
     position: absolute;
     top: 40%;
@@ -27,8 +27,8 @@
 
 
 #deconnexion-player input {
-    background-color: #1e2124;
-    color: white;
+    background-color: var(--darkgray);
+    color: var(--white);
 
     width: 100%;
     padding: 10px;
@@ -39,11 +39,11 @@
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
-    text-shadow: 2px 2px #282b30;
+    text-shadow: 2px 2px var(--gray);
 }
 
 #deconnexion-player input:hover {
-    color: rgb(149, 2, 2);
+    color: var(--red);
 }
 
 

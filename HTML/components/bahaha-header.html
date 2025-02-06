@@ -1,12 +1,17 @@
-<template id="bahaha-header">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/index.css">
     <style>
         header {
             position: fixed;
             left: 0;
             top: 0;
             width: 100%;
-            padding: 1rem;
 
+            padding: 1rem;
             vertical-align: baseline;
 
             background-color: var(--gray);   
@@ -48,7 +53,8 @@
             cursor: pointer;
         }
     </style>
-
+</head>
+<body>
     <header>
         <div id="header-buttons">
             <a id="accueil" href="../HTML/index.html">Accueil</a>
@@ -58,17 +64,15 @@
         <span id="player-name">Invité</span>
         <img id="agathe-img" src="../../img/agathe.png" alt="agathe">
     </header>
-</template>
 
-<script>
-    class BahahaHeader extends HTMLElement {
-        constructor() {
-            super();
-            const template = document.getElementById("bahaha-header").content;
-            const shadowRoot = this.attachShadow({ mode: "open" })
-                .appendChild(template.cloneNode(true));
+    <script src="../../JS/createCookiesFromData.js"></script>
+    <script>
+        const pseudo = getCookie("login"); // récupération de la valeur du cookie "login"
+
+        if(pseudo) {
+            const nomJoueur = document.getElementById("player-name");
+            nomJoueur.textContent = pseudo;
         }
-    }
-
-    customElements.define("bahaha-header", BahahaHeader);
-</script>
+    </script>
+</body>
+</html>

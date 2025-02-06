@@ -12,8 +12,6 @@
 
 
 #deconnexion-player {
-    /* border: 1px dashed crimson; */
-
     background-color: var(--gray);
     box-shadow: 10px 10px 10px var(--darkgray);
 

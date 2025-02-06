@@ -25,7 +25,7 @@ const popUpNewGameSubtitle = document.querySelector("#pop-up-new-game-subtitle")
 const span = document.createElement("span");
 
 // PSEUDO DU JOUEUR
-const headerPseudo = document.querySelector("#header-player-name");
+const headerPseudo = document.querySelector("#player-name");
 // bouton de confirmation de déconnexion
 const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
 

@@ -1,4 +1,9 @@
-<template id="bahaha-footer">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/index.css">
     <style>
         footer {
             position: fixed;
@@ -18,28 +23,10 @@
             font-family: 'Rubik', sans-serif;
         }
     </style>
+</head>
+<body>
     <footer>
         Jeu développé par <span class="bahaha-studio">Bahaha_studio</span>
     </footer>
-</template>
-<script>
-    class BahahaFooter extends HTMLElement {
-    
-        // connectedCallback() {
-        //     this.shadowRoot.innerHTML = `
-        //     <div>
-        //         <img style="max-width: 200px" src="${this.getAttribute("cover")}" />
-        //     </div>
-        //     <div>${this.getAttribute("name")}</div>
-        //     `;
-        // }
-        constructor() {
-            super();
-            const template = document.getElementById("bahaha-footer").content;
-            const shadowRoot = this.attachShadow({mode: "open"})
-                .appendChild(template.cloneNode(true));
-        }
-    }
-    
-    customElements.define("bahaha-footer", BahahaFooter);
-</script>
+</body>
+</html>

@@ -30,7 +30,7 @@ async function sendData(idLevel, idNextLevel, time, hp_remain = 3, nbDynamite = 
  */
 async function changeLvl(idCurrentLvl, idNextLvl, startTime, hp_remain = null, nbDynamite = 0) {
 
-    game.destroy()
+    // game.destroy()
     // Calcul du temps
     const time = (new Date().getTime() - startTime) / 1000;
     // console.log(time);
@@ -76,7 +76,8 @@ function verifyLvl(idLvlCookie, idCurrentLvl) {
 }
 
 const cookies = getCookies();
-nbHearts = cookies.hpRemain;
+let nbHearts = cookies.hpRemain;
+let idCurrentLvl = 0;
 
 verifyLvl(cookies.idLvl, idCurrentLvl);
 afficheInitialHearts(cookies.hpRemain);

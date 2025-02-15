@@ -1,6 +1,6 @@
 import ForestScene from "./Scenes/ForestScene.js";
+import TransitionScene from "./Scenes/TransitionScene.js";
 
-// configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
 const config = {
     type: Phaser.AUTO,
     width: 800,
@@ -9,9 +9,9 @@ const config = {
     physics: { default: 'arcade' },
     scene: [
         ForestScene,
-        // TransitionScene,
+        TransitionScene,
         // MouthScene,
-        // oesophagusScene,
+        // EsophagusScene,
         // StomachScene,
         // IntestineScene,
         // AnusScene,

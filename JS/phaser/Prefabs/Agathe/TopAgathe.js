@@ -1,6 +1,6 @@
 import Agathe from "./Agathe.js";
 
-export default class AgatheTop extends Agathe {
+export default class TopAgathe extends Agathe {
     constructor(scene, x, y) {
         super(scene, x, y);
     }
@@ -10,10 +10,8 @@ export default class AgatheTop extends Agathe {
 
         /* GAUCHE */
         if (cursors.left.isDown) {
-            // vitesse et direction du déplacement
             this.setVelocityX(-speed);
-            
-            // last frame facing afk
+
             this.currentDirection = "left";
 
             if(diagonal) {
@@ -22,17 +20,14 @@ export default class AgatheTop extends Agathe {
         }
         /* DROITE */
         else if (cursors.right.isDown) {
-            // vitesse et direction du déplacement
             this.setVelocityX(speed);
-            
-            // last frame facing afk
+
             this.currentDirection = "right";
 
             if(diagonal) {
                 this.createMoveY(cursors);
             }
         } else {
-            // vitesse et direction du déplacement
             this.setVelocityX(0);
         }
     }
@@ -42,10 +37,8 @@ export default class AgatheTop extends Agathe {
 
         /* HAUT */
         if (cursors.up.isDown) {
-            // vitesse et direction du déplacement
             this.setVelocityY(-speed);
 
-            // last frame facing afk
             this.currentDirection = "up";
 
             if(diagonal) {
@@ -54,17 +47,14 @@ export default class AgatheTop extends Agathe {
         }
         /* BAS */
         else if (cursors.down.isDown) {
-            // vitesse et direction du déplacement
             this.setVelocityY(speed);
 
-            // last frame facing afk
             this.currentDirection = "down";
 
             if(diagonal) {
                 this.createMoveX(cursors);
             }
         } else {
-            // vitesse et direction du déplacement
             this.setVelocityY(0);
         }
     }

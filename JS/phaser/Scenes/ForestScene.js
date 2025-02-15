@@ -1,5 +1,5 @@
 import Scene from "./Scene.js";
-import AgatheTop from "../Prefabs/Agathe/AgatheTop.js";
+import TopAgathe from "../Prefabs/Agathe/TopAgathe.js";
 import WhiteSnowflakes from "../Prefabs/Snowflakes/WhiteSnowflakes.js";
 import BlueSnowflakes from "../Prefabs/Snowflakes/BlueSnowflakes.js";
 import SmallTree from "../Prefabs/Trees/SmallTree.js";
@@ -15,41 +15,29 @@ import MediumBorder from "../Prefabs/Borders/MediumBorder.js";
 import BigBorder from "../Prefabs/Borders/BigBorder.js";
 import Cave from "../Prefabs/Cave.js";
 import Lamp from "../Prefabs/Items/Lamp.js";
+import DarkOverlay from "../Prefabs/Lighting/DarkOverlay.js";
+import TopLight from "../Prefabs/Lighting/Lights/TopLight.js";
+import TotallyNotSnowy from "../Prefabs/Sounds/Musics/TotallyNotSnowy.js";
+import StepsOnSnow from "../Prefabs/Sounds/Effects/StepsOnSnow.js";
+import TutoKeys from "../Prefabs/HUDs/TutoKeys.js";
+
+// TODO : Play the steps when agathe is walking
+// TODO : fix the HUB problem (will probably be fixed when rework of lvl 5 complete)
 
 export default class ForestScene extends Scene {
 
+    static sceneName = "ForestScene";
     nextSceneName = "TransitionScene";
-    agathe;                 // agathe personnage
-    cursors;                // détection clavier
-    lastFrame = 8;          // last frame facing afk
-    trees;                  // sprites arbres
-    rocks;                  // sprites cailloux
-    topBorder;              // bordure du haut
-    cave;                   // sprite grotte
-    hasLight = false;       // taille halo en fonction lampe ou pas
-    lamp;                   // lampe
-    hole;                   // halo lumineux
-    holeRadius = 60;        // rayon du halo de lumière
-    holeDiffHeight = 0;     // décalage du halo si lampe
-    isMoving = false;       // booleen verif si affi ou non tuto                  
-    tutoDeplacement;        // message tutoriel pour apprendre touches
+    isMoving = false;       // booleen verif si affi ou non tuto
     idCurrentLvl = 0;      // Id du niveau courant
     idNextLvl = 1;         // Id du prochain niveau
-    music;
-    steps;
-    isWalking = false;
 
     constructor() {
-        super();
+        super(ForestScene.sceneName);
     }
 
     preload() {
-        //$ ELEMENTS HTML $//
-        this.hole = document.querySelector(".hole");
-        this.tutoDeplacement = document.querySelector("#tuto-deplacement");
-
-
-        AgatheTop.preloadSprite(this);
+        TopAgathe.preloadSprite(this);
 
         WhiteSnowflakes.preloadSprite(this);
         BlueSnowflakes.preloadSprite(this);
@@ -72,17 +60,16 @@ export default class ForestScene extends Scene {
 
         Lamp.preloadSprite(this);
 
-        //chargement du theme
-        this.load.audio('theme', '../../sound/lvl0/lvl0.mp3');
-        this.load.audio('steps', '../../sound/lvl0/stepsOnSnowBetter.mp3');
+        TutoKeys.preloadSprite(this);
+
+        TotallyNotSnowy.preloadSound(this);
+        StepsOnSnow.preloadSound(this);
     }
 
     create() {
+        super.create();
 
-        this.music = this.sound.add("theme");
-        this.music.volume -= 0.9;
-        this.music.setLoop(true);
-        this.music.play();
+        this.music = new TotallyNotSnowy(this);
 
         //* SPRITE BORDURE DU HAUT *//
         this.createTopBorder(this);
@@ -100,67 +87,73 @@ export default class ForestScene extends Scene {
         this.createRocks(this);
 
         //~ SPRITE AGATHE ~//
-        this.agathe = new AgatheTop(this, 10, 300);
+        this.agathe = new TopAgathe(this, 10, 300);
 
         //* PARTICULES DE NEIGE *//
         this.whiteSnowflakes = new WhiteSnowflakes(this);
         this.blueSnowflakes = new BlueSnowflakes(this);
 
+        this.steps = new StepsOnSnow(this);
+
+        this.tutoKeys = new TutoKeys(this);
+        
+        this.topLight = new TopLight(this, this.agathe.x, this.agathe.y, 60);
+        this.darkOverlay = new DarkOverlay(this, this.topLight.mask);
+        
+        //* Code to add HUD in front of the dark overlay, not working *//
+        // const maskTexture = this.make.renderTexture({
+        //     width: this.width,
+        //     height: this.height,
+        // }, false);
+
+        // maskTexture.scaleY = -1;
+        // maskTexture.y = this.height;
+        // const masks = [this.topLight, this.tutoKeys]
+        // masks.forEach(mask => console.log(mask));
+        // masks.forEach(mask => maskTexture.draw(mask));
+        
+        // const compositeMask = new Phaser.Display.Masks.BitmapMask(this, maskTexture);
+        // compositeMask.invertAlpha = true;
+        
+        // const compositeMask = new Phaser.Display.Masks.BitmapMask(scene, maskTexture);
+        // compositeMask.invertAlpha = true;
+        // this.darkOverlay = new DarkOverlay(this, compositeMask);
+        
         //! COLLISIONS !//
         this.physics.add.collider(this.agathe, this.rocks);
         this.physics.add.collider(this.agathe, this.topBorder);
 
         //! ACTION RECUP LAMPE !//
         this.physics.add.overlap(this.agathe, this.lamp, this.collectLamp, null, this);
-        
-        //! DETECTION DU CLAVIER !//
-        this.cursors = this.input.keyboard.createCursorKeys();
-
 
         // afficheInitialHearts(cookies.hpRemain);
-        this.steps = this.sound.add("steps");
-        this.steps.setLoop(true);
     }
 
 
 
     update() {
         this.isMoving = this.agathe.createMove(this.cursors);
+        this.topLight.setPosition(this.agathe.x, this.agathe.y);
 
-        // innerWidth = taille écran disponible
-        // on divise par 2 pour avoir le milieu
-        // on retire le rayon du halo pour être au centre du cercle de 120 ou 200px
-        // on ajoute les coordonnées de agathe qui varient de 0 à 800
-        // on retire 400 pour avoir une donnée entre -400 et +400 par rapport au centre
-        this.hole.style.left = window.innerWidth/2 - this.holeRadius + (this.agathe.x - 400) + "px";
-        this.hole.style.top = this.agathe.y - this.holeDiffHeight + "px";
-
-
-        // on masque le message de tuto si on bouge
         if (this.isMoving) {
-            //* Ce code permet de rajouter des bruits de pas. Cpdt, JS lag et donne un résultat qui laisse à désirer. *//
-            // this.steps.play();
-            this.tutoDeplacement.style.visibility = "hidden";
+            this.steps.play();
+            this.tutoKeys.destroy();
         } else {
-            // this.time.delayedCall(900, () => { // Delai pour 1sec
-            //     this.steps.stop();
-            // });
+            this.steps.stop();
         }
 
         if (this.agathe.y <= 64) {
             this.switchScenes();
-            // changeLvl(idCurrentLvl, idNextLvl, startTime);
         }
     }
 
     //* SPRITE BORDURE DU HAUT *//
     createTopBorder() {
-        // affichage bordure depuis (0;0)
         this.topBorder = this.physics.add.staticGroup();
-        // bordures permettant d'accéder uniquement à la grotte
-        this.topBorder.add(new BigBorder(this, 325, 70));
+
         this.topBorder.add(new SmallBorder(this, 800, 70));
         this.topBorder.add(new MediumBorder(this, 750, 45));
+        this.topBorder.add(new BigBorder(this, 325, 70));
     }
 
     //* SPRITES ARBRES *//
@@ -278,14 +271,9 @@ export default class ForestScene extends Scene {
 
     collectLamp() {
 
-        // suppression de la lampe
-        console.log(this.lamp)
+        // Delete the lamp
         this.lamp.disableBody(true, true);
-
-        // changement taille cercle de lampe
-        this.holeRadius = 100;
-        this.holeDiffHeight = 25;
-        this.hole.style.width = "200px";
-        this.hole.style.height = "200px";
+        this.agathe.getItem(this.lamp);
+        this.topLight.setRadius(100);
     }
 }

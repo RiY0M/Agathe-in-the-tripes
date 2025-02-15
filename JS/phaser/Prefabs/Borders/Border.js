@@ -7,6 +7,7 @@ export default class Border extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, Border.spriteName);
 
         scene.add.existing(this);
+        this.setAlpha(0);
     }
 
     // static preloadSprite(scene, path) {

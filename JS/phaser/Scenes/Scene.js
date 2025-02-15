@@ -1,7 +1,7 @@
 export default class Scene extends Phaser.Scene {
 
-    // public readonly
-    static sceneName = this.constructor.name;
+    // public abstract
+    static sceneName;
     // protected
     nextSceneName = null;
     // abstract
@@ -11,12 +11,12 @@ export default class Scene extends Phaser.Scene {
     // protected
     startTime = new Date().getTime(); // Starting time for the chronometer
 
-    constructor() {
-        super({ key: Scene.sceneName });
+    constructor(sceneName) {
+        super({ key: sceneName });
 
-        // if(this.nextSceneName) {
-        //     this.scene.launch(this.nextSceneName);
-        // }
+        if(this.nextSceneName) {
+            this.scene.launch(this.nextSceneName);
+        }
     }
 
     // protected
@@ -53,7 +53,10 @@ export default class Scene extends Phaser.Scene {
 
     // preload() {}
 
-    // create() {}
+    create() {
+        // this.cursors = new AzertyLayout(this);
+        this.cursors = this.input.keyboard.createCursorKeys();
+    }
 
     // update() {}
 }

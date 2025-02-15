@@ -9,10 +9,14 @@
     --red: rgb(149, 2, 2);
 }
 
+* {
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
 body {
     background-color: var(--lightgray);
     color: var(--white);
-    font-family: 'Rubik', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     margin: 0;
@@ -206,7 +210,7 @@ a:hover {
 #main-grid-column {
     margin-top: 10%;
     display: grid;
-    grid-template-columns: 50fr 50fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 
@@ -246,22 +250,18 @@ a:hover {
 
     background-color: var(--gray);
 
-    border-left: 7px solid var(--lightgray);
-    border-top: 7px solid var(--lightgray);
-    box-shadow: 7px 7px var(--darkgray);
-
-    border-right: transparent;
-    border-bottom: transparent;
+    border-style: solid;
+    border-width: 6px;
+    border-color: var(--lightgray) var(--darkgray) var(--darkgray) var(--lightgray);
+    
+    box-shadow: 5px 5px var(--darkgray);
 }
 
 #game-buttons button:hover {
-    
     color: var(--red);
 }
 
 #game-buttons button:active {
-    
-    border-left: 9px solid var(--lightgray);
-    border-top: 9px solid var(--lightgray);
-    box-shadow: 5px 5px var(--darkgray);
+    border-width: 8px 4px 4px 8px;
+    box-shadow: 4px 4px var(--darkgray), 6px 6px var(--lightgray);
 }

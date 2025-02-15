@@ -57,7 +57,6 @@ body {
     cursor: pointer;
     background-color: var(--darkgray);
     color: var(--white);
-    font-family: 'Rubik', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;

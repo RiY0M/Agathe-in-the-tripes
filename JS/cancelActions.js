@@ -8,7 +8,6 @@ function cancelPopUp(elt) {
         divInBody.forEach((div) => div.style.visibility = "visible");
     
         // on cache toutes les pop-up
-        document.querySelector(".loginRegisterPopUp").style.visibility = "hidden";
         document.querySelector("#deconnexion-player").style.visibility = "hidden";
         document.querySelector("#pop-up-new-game").style.visibility = "hidden";
     });

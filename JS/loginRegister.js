@@ -84,7 +84,7 @@ registerForm.addEventListener('submit', async function (event) {
     const passwordConfirm = document.querySelector('#registerMdpVerif').value;
 
     if (password === passwordConfirm) await register(login, password);
-    else messageErreur("Les mots de passes ne correspondent pas", msgErreurReg);
+    else messageErreur("Les mots de passe ne correspondent pas", msgErreurReg);
     
 });
 

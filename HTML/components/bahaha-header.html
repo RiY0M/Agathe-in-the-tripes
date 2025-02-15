@@ -42,13 +42,7 @@
             right: 3rem;
         }
         
-        a {
-            color: var(--white);
-            text-decoration: none;
-            text-align: center;
-        }
-        
-        a:hover, #header-player-name:hover {
+        #player-name:hover {
             color: var(--red);
             cursor: pointer;
         }
@@ -57,9 +51,9 @@
 <body>
     <header>
         <div id="header-buttons">
-            <a id="accueil" href="../HTML/index.html">Accueil</a>
-            <a id="dashboard" href="../HTML/leaderboard.html">Scores</a>
-            <a id="credits" href="../HTML/credits.html">Crédits</a>
+            <a id="accueil" href="../index.html" target="_parent">Accueil</a>
+            <a id="dashboard" href="../leaderboard.html" target="_parent">Scores</a>
+            <a id="credits" href="../credits.html" target="_parent">Crédits</a>
         </div>
         <span id="player-name">Invité</span>
         <img id="agathe-img" src="../../img/agathe.png" alt="agathe">

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../img/agathe.png">
+    <link rel="stylesheet" href="../CSS/loginRegister.css">
+    <title>Connexion / Inscription - Agathe in the tripes</title>
+</head>
+
+<body>
+    <iframe id="bahaha-header" src="./components/bahaha-header.html" title="header"></iframe>
+
+    <div class="loginRegister">
+        <div id="login">
+            <form id="loginFormulaire">
+                <h1>Connection</h1>
+                <input id="loginLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                <input id="loginMdp" type="password" name="password" placeholder="Mot de passe" required>
+                <input id="emptyBtn" type="password" name="password" placeholder="Mot de passe" style="visibility: hidden;">
+                <input id="loginBtn" type="submit" value="Connexion">
+                <span id="loginSpanErreur"></span>
+            </form>
+        </div>
+        
+        <div id="register">
+            <form id="registerFormulaire">
+                <h1>Inscription</h1>
+                <input id="registerLog" type="text" name="pseudo" placeholder="Pseudo" required>
+                <input id="registerMdp" type="password" name="password" placeholder="Mot de passe" required>
+                <input id="registerMdpVerif" type="password" name="password" placeholder="Vérifier votre mot de passe" required>
+                <input id="registerBtn" type="submit" value="Inscription">
+                <span id="RegisterSpanErreur"></span>
+            </form>
+        </div>
+        <iframe id="cancel-cross" src="./components/cancel-cross.html" title="cancel-cross"></iframe>
+    </div>
+
+    <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>
+</body>
+
+<script src="../JS/createCookiesFromData.js"></script>
+<script src="../JS/loginRegister.js"></script>
+
+</html>

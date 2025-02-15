@@ -15,12 +15,22 @@ body {
     font-family: 'Rubik', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+    margin: 0;
 }
 
 iframe {
     border: none;
-    height: auto;
-    width: auto;
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+    text-align: center;
+}
+
+a:hover {
+    color: var(--red);
+    cursor: pointer;
 }
 
 #bahaha-header {
@@ -36,6 +46,13 @@ iframe {
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+#cancel-cross {
+    position: absolute;
+    /* Those values are doubled in practice, because it takes place once in the original body and once in the iframe body */
+    top: 8px;
+    right: 8px;
 }
 
 #game-over {
@@ -76,6 +93,7 @@ iframe {
     height: 600px;
     margin: auto;
     margin-top: 4rem;
+    aspect-ratio: 4/3;
 }
 
 
@@ -213,7 +231,7 @@ iframe {
 }
 
 
-#game-buttons input {
+#game-buttons button {
     padding: 2rem;
     margin-bottom: 1.5rem;
     border-radius: 10px;
@@ -236,12 +254,12 @@ iframe {
     border-bottom: transparent;
 }
 
-#game-buttons input:hover {
+#game-buttons button:hover {
     
     color: var(--red);
 }
 
-#game-buttons input:active {
+#game-buttons button:active {
     
     border-left: 9px solid var(--lightgray);
     border-top: 9px solid var(--lightgray);

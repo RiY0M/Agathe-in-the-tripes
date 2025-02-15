@@ -4,12 +4,10 @@ const alreadyInGame = getCookie("level_id");
 
 
 // FORMULAIRE CONNEXION / INSCRIPTION
-const loginRegisterForm = document.querySelector(".loginRegisterPopUp");
 const deconnexionForm = document.querySelector("#deconnexion-player");
 const popUpNewGame = document.querySelector("#pop-up-new-game");
 
 // par défaut, on cache ces formulaires
-loginRegisterForm.style.visibility = "hidden";
 deconnexionForm.style.visibility = "hidden";
 popUpNewGame.style.visibility = "hidden";
 
@@ -50,8 +48,6 @@ loginRegisterButton.value = !isConnected ? "Inscription" : "Déconnexion";
         // affichage du formulaire connexion / inscription
         if(isConnected) {
             deconnexionForm.style.visibility = "visible";
-        } else {
-            loginRegisterForm.style.visibility = "visible";
         }
     });
 });

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../img/agathe.png">
     <link rel="stylesheet" href="../CSS/index.css">
-    <link rel="stylesheet" href="../CSS/loginRegister.css">
     <link rel="stylesheet" href="../CSS/deconnexion.css">
     <link rel="stylesheet" href="../CSS/popUpNewGame.css">
     <title>Agathe in the tripes</title>
@@ -21,46 +21,13 @@
         </div>
 
         <div id="game-buttons">
-
-            <input type="button" id="login-register-button" value="Connexion / Inscription">
-            <input type="button" id="restart-game-button" value="Nouvelle partie">
-            <input type="button" id="start-game-button" value="Continuer partie">
-
+            <button id="login-register-button"><a href="./loginRegister.html">Connexion / Inscription</a></button>
+            <button id="restart-game-button">Nouvelle partie</button>
+            <button id="start-game-button">Continuer partie</button>
         </div>
 
     </div>
     <!-- MENU PRINCIPAL : TITRE + 2/3 BOUTONS -->
-
-
-
-    <!-- FORMULAIRE CONNEXION / INSCRIPTION -->
-    <!-- <iframe id="loginRegister" class="loginRegisterPopUp" src="./components/modals/loginRegister.html" title="loginRegister"></iframe> -->
-    <div class="loginRegisterPopUp">
-        <div id="croix-log-regis" class="cancel-croix-pop-up"></div>
-        <div id="login">
-            <form id="loginFormulaire">
-                <h1>Se connecter</h1>
-                <input id="loginLog" type="text" name="pseudo" placeholder="Pseudo" required>
-                <input id="loginMdp" type="password" name="password" placeholder="Mot de passe" required>
-                <input id="emptyBtn" type="password" name="password" placeholder="Mot de passe" style="visibility: hidden;">
-                <input id="loginBtn" type="submit" value="Connexion">
-                <span id="loginSpanErreur"></span>
-            </form>
-        </div>
-    
-        <div id="register">
-            <form id="registerFormulaire">
-                <h1>S'inscrire</h1>
-                <input id="registerLog" type="text" name="pseudo" placeholder="Pseudo" required>
-                <input id="registerMdp" type="password" name="password" placeholder="Mot de passe" required>
-                <input id="registerMdpVerif" type="password" name="password" placeholder="Vérifier votre mot de passe" required>
-                <input id="registerBtn" type="submit" value="Inscription">
-                <span id="RegisterSpanErreur"></span>
-            </form>
-        </div>
-    </div>
-    <!-- FORMULAIRE CONNEXION / INSCRIPTION -->
-
 
 
     <!-- FORMULAIRE DECONNEXION -->

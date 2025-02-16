@@ -27,25 +27,19 @@
             display: flex;
             flex-direction: row;
             gap: 2rem;
-            width: 50%;
         }
 
         #player-name {
             text-align: right;
-            margin-right: 5rem;
+            margin-right: 3rem;
         }
 
         #agathe-img {
             height: 50px;
-        
+
             position: absolute;
             top: 0.25rem;
-            right: 3rem;
-        }
-        
-        #player-name:hover {
-            color: var(--red);
-            cursor: pointer;
+            right: 1rem;
         }
     </style>
 </head>
@@ -56,7 +50,7 @@
             <a id="dashboard" href="../leaderboard.html" target="_parent">Scores</a>
             <a id="credits" href="../credits.html" target="_parent">Crédits</a>
         </div>
-        <span id="player-name">Invité</span>
+        <a id="player-name" href="../loginRegister.html" target="_parent">Invité</a>
         <img id="agathe-img" src="../../img/agathe.png" alt="agathe">
     </header>
 
@@ -65,8 +59,9 @@
         const pseudo = getCookie("login"); // récupération de la valeur du cookie "login"
 
         if(pseudo) {
-            const nomJoueur = document.getElementById("player-name");
-            nomJoueur.textContent = pseudo;
+            const pseudoElement = document.getElementById("player-name");
+            pseudoElement.textContent = pseudo;
+            pseudoElement.href = "../logout.html";
         }
     </script>
 </body>

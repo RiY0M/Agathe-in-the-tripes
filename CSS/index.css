@@ -1,230 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
-
-:root {
-    --lightgray: #36393e;
-    --gray: #282b30;
-    --darkgray: #1e2124;
-    --white: #F0F0F0;
-    --black: #0F0F0F;
-    --red: rgb(149, 2, 2);
-}
-
-* {
-    box-sizing: border-box;
-    font-family: 'Rubik', sans-serif;
-}
-
-body {
-    background-color: var(--lightgray);
-    color: var(--white);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0;
-}
-
-iframe {
-    border: none;
-}
-
-a {
-    color: var(--white);
-    text-decoration: none;
-    text-align: center;
-}
-
-a:hover {
-    color: var(--red);
-    cursor: pointer;
-}
-
-#bahaha-header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    border: none;
-}
-
-#bahaha-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-#cancel-cross {
-    position: absolute;
-    /* Those values are doubled in practice, because it takes place once in the original body and once in the iframe body */
-    top: 8px;
-    right: 8px;
-}
-
-#game-over {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: var(--black);
-}
-
-#game-over img {
-    margin-top: 10rem;
-    position: relative;
-    transform: translate(-50%, 0%);
-    left: 50%;
-    right: 50%;
-}
-
-#game-over-buttons {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 32fr 15fr 5fr 15fr 32fr;
-}
-
-#game-over input {
-    padding: 1rem;
-}
-
-
-#game-canvas {
-    background-color: var(--black);
-}
-
-.game-canvas-inside {
-    width: 800px;
-    height: 600px;
-    margin: auto;
-    margin-top: 4rem;
-    aspect-ratio: 4/3;
-}
-
-
-.heart-image {
-    height: 2rem;
-    position: absolute;
-    right: 1rem;
-}
-
-
-#dialogue-area {
-    visibility: hidden;
-
-    background-color: var(--black);
-    border: 3px solid var(--white);
-    height: 150px;
-    width: 500px;
-    
-    position: absolute;
-    top: 575px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: grid;
-    grid-template-columns: 10fr 90fr;
-    align-items: center;
-}
-
-#dialogue-area-pp {
-    padding: 1rem;
-    height: 50px;
-}
-
-.right-dialogue-area {
-    padding: 1rem;
-    display: grid;
-}
-
-.right-bottom-dialogue-area {
-    text-align: right;
-}
-
-#enter-key {
-    height: 20px;
-}
-
-.minor-answer-1:hover, .minor-answer-2:hover {
-    color: var(--red);
-    cursor: pointer;
-}
-
-
-#lvl5-objectifs {
-    visibility: hidden;
-
-    position: absolute;
-    left: 1rem;
-    top: 5rem;
-}
-
-#lvl5-objectifs ul {
-    font-family: monospace;
-    margin-left: -1.5rem;
-    font-size: 0.9rem;
-}
-
-#lvl5-objectifs-2 {
-    visibility: hidden;
-}
-
-
-.tuto {
-    position: absolute;
-    z-index: 1;
-
-    top: 45%;
-    left: 0;
-    text-align: center;
-    width: 100%;
-
-    font-size: 1.5rem;
-    
-    display: grid;
-    grid-template-columns: 40fr 1fr 40fr;
-    align-items: center;
-}
-
-.tuto #tuto-deplacement-left {
-    text-align: right;
-}
-
-.tuto img {
-    margin: 1rem;
-}
-
-.tuto #tuto-deplacement-right {
-    text-align: left;
-}
-
-
-.hole {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    box-shadow: 0 0 0 9999px rgba(0, 0, 0, .95);
-    border-radius: 100%;
-  }
-
+@import url('./main.css');
 
 #main-grid-column {
-    margin-top: 10%;
+    margin-top: 5%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
 
 #game-name {
     font-size: 3rem;
     text-align: left;
 }
 
-
 #game-name h1 {
     margin-left: 5rem;
     padding: 1rem;
-    border-radius: 5px;
     text-shadow: 5px 5px var(--darkgray);
+    font-weight: 700;
 }
 
 
@@ -238,14 +29,10 @@ a:hover {
 #game-buttons button {
     padding: 2rem;
     margin-bottom: 1.5rem;
-    border-radius: 10px;
-    cursor: pointer;
     width: 35rem;
 
-    font-weight: 600;
     font-size: 2rem;
     text-transform: uppercase;
-    color: var(--white);
     text-shadow: 2px 2px var(--darkgray);
 
     background-color: var(--gray);
@@ -255,10 +42,6 @@ a:hover {
     border-color: var(--lightgray) var(--darkgray) var(--darkgray) var(--lightgray);
     
     box-shadow: 5px 5px var(--darkgray);
-}
-
-#game-buttons button:hover {
-    color: var(--red);
 }
 
 #game-buttons button:active {

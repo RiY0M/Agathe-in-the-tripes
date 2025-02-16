@@ -1,69 +1,40 @@
-@import url('./index.css');
+@import url('./main.css');
 
-body {
+#body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
-.loginRegister {
+h1 {
+    margin-top: 0;
+}
+
+#main-content {
     position: relative;
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    border-radius: 5px;
     width: 40%;
     max-width: 800px;
+    padding: 2rem;
     margin: auto;
-    background-color: var(--gray);
-    box-shadow: 10px 10px 10px var(--darkgray);
-    padding: 1rem;
+    gap: 2rem;
 }
 
-#login {
+#login, #register {
     flex: 1;
-    padding: 20px;
-}
-
-#register {
-    flex: 1;
-    padding: 20px;
-}
-
-#loginFormulaire, #registerFormulaire {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#loginFormulaire input[type=text], #registerFormulaire input[type=text], #loginFormulaire input[type=password], #registerFormulaire input[type=password]{
+input[type=text],  input[type=password]{
     margin-bottom: 10px;
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
 
     background-color: var(--lightgray);
-    color: var(--white);
 }
 
-#loginFormulaire input[type=submit], #registerFormulaire input[type=submit] {
-    margin-bottom: 10px;
+input[type=submit] {
     margin-top: 1rem;
-    width: 110%;
-    padding: 10px;
-    border-radius: 5px;
-
-    cursor: pointer;
-    background-color: var(--darkgray);
-    color: var(--white);
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-shadow: 2px 2px var(--gray);
-}
-
-#loginFormulaire input[type=submit]:hover, #registerFormulaire input[type=submit]:hover {
-
-    color: var(--red);
+    width: 100%;
 }

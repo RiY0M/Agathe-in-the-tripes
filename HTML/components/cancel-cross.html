@@ -6,6 +6,7 @@
     <style>
         @import url("../../CSS/index.css");
 
+        /* Because of iframe default dimensions, we ensure that the background don't cover main elements so we set them transparent */
         body {
             background-color: transparent!important;
             margin: 0;
@@ -19,7 +20,7 @@
         }
 
         #cancel-cross:hover {
-            color: var(--red);
+            color: inherit;
         }
     </style>
 </head>

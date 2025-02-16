@@ -5,22 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../img/agathe.png">
-    <link rel="stylesheet" href="../CSS/credit.css">
+    <link rel="stylesheet" href="../CSS/credits.css">
     <title>Crédits</title>
 </head>
 
-<header></header>
-
 <body>
+    <iframe id="bahaha-header" src="./components/bahaha-header.html" title="header"></iframe>
 
     <div id="body">
-        <div id="credit-content">
+        <div id="main-content">
             <div>
-
                 <h1 id="credit-title">Merci d'avoir joué à notre jeu&nbsp;!</h1>
 
-                <h2 id="credit-subtitle">Les développeurs de Agathe In the Tripes souhaitent remercier et
-                    créditer&nbsp;:</h2>
+                <h2 id="credit-subtitle">Les développeurs de Agathe In the Tripes souhaitent remercier et créditer&nbsp;:</h2>
 
                 <ul id="credit-thanks-list">
 
@@ -42,49 +39,41 @@
 
                 <h2>Les développeurs du Bahaha_studio&nbsp;:</h3>
 
-                    <div id="bahaha-devs">
-
-                        <div id="bahaha-dev-justin" class="bahaha-dev">
-                            <img src="../img/justin.png">
-                            <span>Justin</span>
-                        </div>
-
-                        <div id="bahaha-dev-yoni" class="bahaha-dev">
-                            <img src="../img/yoni.png">
-                            <span>Yoni</span>
-                        </div>
-
-                        <div id="bahaha-dev-victor" class="bahaha-dev">
-                            <img src="../img/victor.png">
-                            <span>Victor</span>
-                        </div>
-
-                        <div></div>
-
+                <div id="bahaha-devs">
+                    <div id="bahaha-dev-justin" class="bahaha-dev">
+                        <img src="../img/justin.png">
+                        <span>Justin</span>
                     </div>
+
+                    <div id="bahaha-dev-yoni" class="bahaha-dev">
+                        <img src="../img/yoni.png">
+                        <span>Yoni</span>
+                    </div>
+
+                    <div id="bahaha-dev-victor" class="bahaha-dev">
+                        <img src="../img/victor.png">
+                        <span>Victor</span>
+                    </div>
+                </div>
             </div>
 
 
             <div style="text-align: right; margin-top: auto;">
-                <button id="retour">Accueil</button>
+                <a href="./index.html"><button id="retour">Accueil</button></a>
             </div>
-
         </div>
 
         <div id="img-agathe-artiste-schandel">
             <img src="../img/ait_cover.jpeg" alt="cover" id="image">
         </div>
-
     </div>
 
+    <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>
 </body>
 
-<footer></footer>
-
 <script src="../JS/createCookiesFromData.js"></script>
-<script src="../JS/footer.js"></script>
-<script src="../JS/header.js"></script>
 <script>
+    // Move this code (that remove necessary cookies) to a function that ends the game inside the game engine
     function getCredited() {
         if(getCookie("level_id") != "8") {
             document.cookie = `level_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
@@ -93,14 +82,8 @@
         }
 
         // Changement map
-        window.location.replace(`./index.html`);
+        window.location.replace(`./credits.html`);
     }
-
-    document.getElementById("retour").addEventListener("click", () => {
-
-        getCredited();
-    });
-
 </script>
 
 </html>

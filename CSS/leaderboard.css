@@ -1,6 +1,6 @@
-@import url('./index.css');
+@import url('./main.css');
 
-body, input {
+input {
     margin: 0;
     background-color: var(--lightgray);
     color: var(--white);
@@ -36,7 +36,6 @@ table, tr, td {
     border-top: 7px solid var(--lightgray);
     border-right: transparent;
     border-bottom: transparent;
-    border-radius: 10px;
 
     box-shadow: 7px 7px var(--darkgray);
 }
@@ -47,11 +46,9 @@ table, tr, td {
     justify-content: center;
 }
 
-.body {
+#body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    max-height: 100%;
 }
 
 #leaderboard-buttons {
@@ -62,14 +59,11 @@ table, tr, td {
     padding: 0.25rem;
     margin: 0.5rem;
     border: 2px solid var(--gray);
-    background-color: var(--lightgray);
+    background-color: var(--gray);
     font-size: 1.5rem;
-    border-radius: 10px;
 
     cursor: pointer;
     text-shadow: 2px 2px var(--darkgray);
-
-    background-color: var(--gray);
 
     border-left: 7px solid var(--lightgray);
     border-top: 7px solid var(--lightgray);
@@ -80,10 +74,9 @@ table, tr, td {
 }
 
 #game-buttons>*:hover {
-    color: #950202;
+    color: var(--red);
 }
 
 .active {
-    color: #8f2121;
-    background-color: var(--gray);
+    color: var(--red);
 }

@@ -1,0 +1,51 @@
+@import url('./main.css');
+
+#body {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+#credit-title {
+    margin-top: 0;
+    text-decoration: underline;
+}
+
+#credit-content h2 {
+    font-size: 1.25rem;
+}
+
+#credit-thanks-list li {
+    font-weight: 500;
+}
+
+#bahaha-devs {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.bahaha-dev {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    text-align: center;
+}
+
+#bahaha-devs img {
+    width: auto;
+    height: auto;
+    max-height: 100px;
+}
+
+
+#img-agathe-artiste-schandel {
+    height: var(--max-height);
+    text-align: center;
+}
+
+#image {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}

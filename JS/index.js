@@ -1,5 +1,5 @@
 // VARIABLES TEST
-const isConnected = getCookie("token") ? true : false;
+const isConnected = !!getCookie("token");
 const alreadyInGame = getCookie("level_id");
 
 
@@ -13,7 +13,6 @@ popUpNewGame.style.visibility = "hidden";
 
 
 // BOUTONS PRINCIPAUX
-const loginRegisterButton = document.querySelector("#login-register-button");
 const nouvellePartyButton = document.querySelector("#restart-game-button");
 const continuePartyButton = document.querySelector("#start-game-button");
 const confirmerNouvellePartyButton = document.querySelector("#pop-up-new-game-agree-button");
@@ -22,8 +21,6 @@ const confirmerNouvellePartyButton = document.querySelector("#pop-up-new-game-ag
 const popUpNewGameSubtitle = document.querySelector("#pop-up-new-game-subtitle");
 const span = document.createElement("span");
 
-// PSEUDO DU JOUEUR
-const headerPseudo = document.querySelector("#player-name");
 // bouton de confirmation de déconnexion
 const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
 
@@ -33,25 +30,6 @@ if (!alreadyInGame && getCookie("level_id") !== "7") {
     continuePartyButton.style.display = "none";
     nouvellePartyButton.style.marginTop = "-10rem";
 }
-
-loginRegisterButton.value = !isConnected ? "Inscription" : "Déconnexion";
-
-// on permet à l'utilisateur de voir le formulaire de deconnexion
-
-// DEPUIS LE BOUTON DECONNEXION OU LE PSEUDO DU JOUEUR
-[loginRegisterButton, headerPseudo].forEach(element => {
-    element.addEventListener("click", () => {
-
-        // vidage body
-        ereaseBody();
-        
-        // affichage du formulaire connexion / inscription
-        if(isConnected) {
-            deconnexionForm.style.visibility = "visible";
-        }
-    });
-});
-
 
 // affichage pop-up
 nouvellePartyButton.addEventListener("click", () => {
@@ -114,8 +92,8 @@ if(!isConnected) {
     spanBracket.textContent = "(votre progression ne sera pas sauvegardée)";
 
     // ajout des éléments
-    popUpNewGameSubtitle.appendChild(br);
     popUpNewGameSubtitle.appendChild(spanBracket);
+    popUpNewGameSubtitle.appendChild(br);
 }
 
 popUpNewGameSubtitle.appendChild(span);

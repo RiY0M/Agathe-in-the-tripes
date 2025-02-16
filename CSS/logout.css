@@ -1,10 +1,1 @@
 @import url('./main.css');
-
-#deconnexion-title {
-    text-align: center;
-}
-
-#deconnexion-buttons {
-    display: flex;
-    grid-gap: var(--space-width);
-}

@@ -23,12 +23,6 @@
             justify-content: space-between;
         }
 
-        #header-buttons {
-            display: flex;
-            flex-direction: row;
-            gap: var(--space-width);
-        }
-
         #player-name {
             text-align: right;
             margin-right: calc(var(--space-width) *2);
@@ -45,7 +39,7 @@
 </head>
 <body>
     <header>
-        <div id="header-buttons">
+        <div class="flex-row">
             <a id="accueil" href="../index.html" target="_parent">Accueil</a>
             <a id="dashboard" href="../leaderboard.html" target="_parent">Scores</a>
             <a id="credits" href="../credits.html" target="_parent">Crédits</a>

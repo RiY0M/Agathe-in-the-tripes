@@ -1,9 +1,5 @@
 @import url('./main.css');
 
-#titre-niv {
-    margin: auto;
-}
-
 .number {
     text-align: center;
 }
@@ -19,21 +15,6 @@
 table, tr, td {
     border-collapse: collapse;
     padding: 0.1rem 0.25rem;
-}
-
-#scores, #leaderboard-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#scores {
-    margin: var(--space-height) auto;
-    max-width: 100%;
-}
-
-#leaderboard-buttons {
-    gap: 1rem;
 }
 
 .active {

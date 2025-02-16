@@ -5,23 +5,16 @@
     flex: 3;
 }
 
-#credit-title {
-    margin-top: 0;
-    text-decoration: underline;
-}
-
-#credit-content h2 {
+#main-content h2 {
     font-size: 1.25rem;
 }
 
-#credit-thanks-list li {
+#thanks-list li {
     font-weight: 500;
 }
 
 #bahaha-devs {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-width);
+    justify-content: left;
 }
 
 .bahaha-dev {

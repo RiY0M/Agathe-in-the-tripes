@@ -85,6 +85,11 @@ input:focus {
     outline: none;
 }
 
+nav {
+    margin: var(--space-height) auto 0 auto;
+    max-width: 100%;
+}
+
 #body {
     display: flex;
     justify-content: center;
@@ -143,6 +148,18 @@ input:focus {
     /* Those values are doubled in practice, because it takes place once in the original body and once in the iframe body */
     top: 8px;
     right: 8px;
+}
+
+#title {
+    text-align: center;
+    margin: 0 auto var(--space-height) auto;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-width);
 }
 
 #game-over {

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/credits.css">
+    <script src="../JS/credits.js" type="module" defer></script>
     <title>Crédits - Agathe in the tripes</title>
 </head>
 
@@ -37,17 +38,17 @@
                 <h2>Les développeurs du Bahaha_studio&nbsp;:</h3>
 
                 <div id="bahaha-devs" class="flex-row">
-                    <div id="bahaha-dev-justin" class="bahaha-dev">
+                    <div id="bahaha-dev-justin" class="bahaha-dev flex-column">
                         <img src="../img/justin.png" alt="justin">
                         <span>Justin</span>
                     </div>
 
-                    <div id="bahaha-dev-yoni" class="bahaha-dev">
+                    <div id="bahaha-dev-yoni" class="bahaha-dev flex-column">
                         <img src="../img/yoni.png" alt="yoni">
                         <span>Yoni</span>
                     </div>
 
-                    <div id="bahaha-dev-victor" class="bahaha-dev">
+                    <div id="bahaha-dev-victor" class="bahaha-dev flex-column">
                         <img src="../img/victor.png" alt="victor">
                         <span>Victor</span>
                     </div>
@@ -64,20 +65,5 @@
 
     <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>
 </body>
-
-<script src="../JS/createCookiesFromData.js"></script>
-<script>
-    // Move this code (that remove necessary cookies) to a function that ends the game inside the game engine
-    function getCredited() {
-        if(getCookie("level_id") != "8") {
-            document.cookie = `level_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-            document.cookie = `hpRemain=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-            document.cookie = `nbDynamite=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-        }
-
-        // Changement map
-        window.location.replace(`./credits.html`);
-    }
-</script>
 
 </html>

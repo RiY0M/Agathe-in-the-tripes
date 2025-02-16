@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/logout.css">
+    <script src="../JS/logout.js" type="module" defer></script>
     <title>Déconnexion - Agathe in the tripes</title>
 </head>
 
@@ -15,7 +16,7 @@
             <iframe id="cancel-cross" src="./components/cancel-cross.html" title="cancel-cross"></iframe>
 
             <h1 id="title">Déconnexion</h1>
-    
+
             <nav class="flex-row">
                 <a href="./index.html"><button id="deconnexion-cancel-button" class="cancel-annuler-pop-up">Annuler</button></a>
                 <button id="deconnexion-agree-button">Se&nbsp;déconnecter</button>
@@ -25,15 +26,5 @@
 
     <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>
 </body>
-
-<script src="../JS/createCookiesFromData.js"></script>
-<script>
-    const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
-
-    btnDecoAgree.addEventListener("click", () => {
-        supprimeTousLesCookies();
-        window.location.replace("index.html");
-    });
-</script>
 
 </html>

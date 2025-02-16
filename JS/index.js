@@ -1,17 +1,12 @@
-// VARIABLES TEST
-const isConnected = !!getCookie("token");
-const alreadyInGame = getCookie("level_id");
+import { getCookie, callAPI, createCookiesFromData } from "./createCookiesFromData.js";
 
+const alreadyInGame = getCookie("level_id") && getCookie("level_id") !== "7";
 
-// BOUTONS PRINCIPAUX
-const nouvellePartyButton = document.querySelector("#restart-game");
 const continuePartyButton = document.querySelector("#start-game");
 
-
 // si le joueur n'a pas de partie en cours on cache le bouton "continuer partie"
-if (!alreadyInGame && getCookie("level_id") !== "7") { 
+if (!alreadyInGame) { 
     continuePartyButton.style.display = "none";
-    nouvellePartyButton.style.marginTop = "-10rem";
 }
 
 continuePartyButton.addEventListener("click", async () => {
@@ -36,12 +31,3 @@ continuePartyButton.addEventListener("click", async () => {
         window.location.replace(`../HTML/phaser/lvl${id}.html`);
     }
 });
-
-
-// VIDAGE BODY
-function ereaseBody() {
-
-    // on masque tout ce qui se trouve dans le body pour ne laisser que le formulaire
-    const divInBody = document.querySelectorAll("body>div");
-    divInBody.forEach((div) => div.style.visibility = "hidden");
-}

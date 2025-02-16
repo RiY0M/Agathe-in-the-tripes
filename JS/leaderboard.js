@@ -1,5 +1,7 @@
 "use strict";
 
+import { callAPI } from "./createCookiesFromData.js";
+
 //^ Tag to modify with the data
 const titreNiv = document.getElementById("titre-niv");
 let cases = [];

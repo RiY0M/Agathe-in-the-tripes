@@ -24,7 +24,6 @@
         }
 
         #player-name {
-            text-align: right;
             margin-right: calc(var(--space-width) *2);
         }
 
@@ -48,8 +47,8 @@
         <img id="agathe-img" src="../../img/agathe.png" alt="agathe">
     </header>
 
-    <script src="../../JS/createCookiesFromData.js"></script>
-    <script>
+    <script type="module">
+        import { getCookie } from "../../JS/createCookiesFromData.js";
         const pseudo = getCookie("login"); // récupération de la valeur du cookie "login"
 
         if(pseudo) {

@@ -14,7 +14,7 @@
 
 table, tr, td {
     border-collapse: collapse;
-    padding: 0.1rem 0.25rem;
+    padding: calc(var(--space-height) /10) calc(var(--space-width) /10);
 }
 
 .active {

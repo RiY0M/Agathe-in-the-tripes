@@ -1,9 +1,11 @@
 "use strict";
 
-const loginForm = document.getElementById('loginFormulaire');
-const registerForm = document.getElementById('registerFormulaire');
-const msgErreurLog = document.querySelector("#loginSpanErreur");
-const msgErreurReg = document.querySelector("#RegisterSpanErreur");
+import { callAPI, supprimeTousLesCookies, createCookiesFromData } from "./createCookiesFromData.js";
+
+const loginForm = document.getElementById('login');
+const registerForm = document.getElementById('register');
+const msgErreurLog = document.querySelector("#login-error");
+const msgErreurReg = document.querySelector("#register-error");
 
 //fonction register
 async function register(login, mdp) {

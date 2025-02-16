@@ -16,17 +16,8 @@
     font-weight: 700;
 }
 
-
-#game-buttons {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-}
-
-
 #game-buttons button {
     padding: var(--space-width);
-    margin-bottom: 1.5rem;
     width: 35rem;
 
     font-size: 2rem;

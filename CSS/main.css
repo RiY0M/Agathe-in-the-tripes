@@ -9,8 +9,8 @@
     --red: #950202;
 
     --space-height: 1rem;
-    --space-width: 2rem;
-    --max-height: calc(100vh - 7rem);
+    --space-width: calc(var(--space-height) *2);
+    --max-height: calc(100vh - calc(var(--space-height) *7));
 
     --border-type: 2px solid var(--darkgray);
 }
@@ -78,7 +78,9 @@ button, input[type=submit] {
 }
 
 input:not([type=submit]) {
+    background-color: var(--lightgray);
     font-weight: 500;
+    width: 100%;
 }
 
 input:focus {
@@ -153,6 +155,15 @@ nav {
 #title {
     text-align: center;
     margin: 0 auto var(--space-height) auto;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-height);
 }
 
 .flex-row {

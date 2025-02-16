@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/loginRegister.css">
+    <script src="../JS/loginRegister.js" type="module" defer></script>
     <title>Connexion / Inscription - Agathe in the tripes</title>
 </head>
 
@@ -13,30 +14,27 @@
     <div id="body">
         <div id="main-content">
             <iframe id="cancel-cross" src="./components/cancel-cross.html" title="cancel-cross"></iframe>
-            <form id="login">
+            <form id="login" class="flex-column">
                 <h1>Connexion</h1>
                 <input id="loginLog" type="text" name="pseudo" placeholder="Pseudo" required>
                 <input id="loginMdp" type="password" name="password" placeholder="Mot de passe" required>
                 <input id="emptyBtn" type="password" name="password" placeholder="Mot de passe" style="visibility: hidden;">
                 <input id="loginBtn" type="submit" value="Se connecter">
-                <span id="loginSpanErreur"></span>
+                <span id="login-error"></span>
             </form>            
 
-            <form id="register">
+            <form id="register" class="flex-column">
                 <h1>Inscription</h1>
                 <input id="registerLog" type="text" name="pseudo" placeholder="Pseudo" required>
                 <input id="registerMdp" type="password" name="password" placeholder="Mot de passe" required>
                 <input id="registerMdpVerif" type="password" name="password" placeholder="Vérifier votre mot de passe" required>
                 <input id="registerBtn" type="submit" value="S'inscrire">
-                <span id="RegisterSpanErreur"></span>
+                <span id="register-error"></span>
             </form>
         </div>
     </div>
 
     <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>
 </body>
-
-<script src="../JS/createCookiesFromData.js"></script>
-<script src="../JS/loginRegister.js"></script>
 
 </html>

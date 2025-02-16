@@ -18,10 +18,7 @@
 }
 
 .bahaha-dev {
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-    text-align: center;
+    gap: calc(var(--space-height) /4);
 }
 
 #bahaha-devs img {

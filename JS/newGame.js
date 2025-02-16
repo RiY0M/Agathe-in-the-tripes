@@ -1,9 +1,9 @@
+import { getCookie } from "./createCookiesFromData.js";
+
+
 const isConnected = !!getCookie("token");
 
-
 const agreeButton = document.querySelector("#agree-button");
-
-// récupération pop-up subtitle
 const subtitle = document.querySelector("#subtitle");
 const span = document.getElementById("warning");
 

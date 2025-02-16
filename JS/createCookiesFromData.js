@@ -1,18 +1,18 @@
 "use strict";
 
 //Fonction qui supprime tous les cookies existants
-function supprimeTousLesCookies() {
+export function supprimeTousLesCookies() {
     document.cookie.split(";").forEach(cookie => {
         const [name] = cookie.split("=");
         document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
     });
 }
 
-function getCookie(name) {
+export function getCookie(name) {
     return document.cookie.split("; ").find((row) => row.startsWith(`${name}=`))?.split("=")[1];
 }
 
-async function callAPI(fichierApi, basic, jsonDataPost = {}) {
+export async function callAPI(fichierApi, basic, jsonDataPost = {}) {
 
     try {
         jsonDataPost.token = getCookie("token");
@@ -31,7 +31,7 @@ async function callAPI(fichierApi, basic, jsonDataPost = {}) {
     }
 }
 
-function createCookiesFromData(data) {
+export function createCookiesFromData(data) {
     Object.entries(data).forEach(element => {
         document.cookie = `${element[0]}=${element[1]}; expires=Thu, ${new Date().getTime() + 86400 * 365}; path=/`;
     });

@@ -1,5 +1,7 @@
 "use strict";
 
+import { callAPI } from "./createCookiesFromData.js";
+
 //^ Tag to modify with the data
 const titreNiv = document.getElementById("titre-niv");
 let cases = [];
@@ -11,29 +13,29 @@ cases.push(document.getElementById("you"));
 
 //^ Nav buttons values
 const btnLabels = {
-    0: "Prologue",
-    1: "Niv 1",
-    2: "Niv 2",
-    3: "Niv 3",
-    4: "Niv 4",
-    5: "Niv 5",
-    6: "Niv 6",
+    0: "Forêt",
+    1: "Bouche",
+    2: "Œsophage",
+    3: "Estomac",
+    4: "Intestin",
+    5: "Anus",
+    6: "Sortie",
     7: "Boss",
     8: "Total"
 };
 
 const gameButtons = document.getElementById("leaderboard-buttons");
-let buttons = [];
+const buttons = [];
 
 for(let key in btnLabels) {
-    const input = document.createElement("input");
-    input.id = key;
-    input.type = "button";
-    input.value = btnLabels[key];
-    input.class = "";
-    input.addEventListener("click", () => changeAffichage(key));
-    buttons.push(input);
-    gameButtons.appendChild(input);
+    const button = document.createElement("button");
+    button.id = key;
+    button.type = "button";
+    button.innerText = btnLabels[key];
+    button.class = "";
+    button.addEventListener("click", () => changeAffichage(key));
+    buttons.push(button);
+    gameButtons.appendChild(button);
 };
 
 buttons[5].class = "active";
@@ -45,7 +47,7 @@ async function changeAffichage(valueToChange) {
     const json = await callAPI("getLeaderboard", {
         error: "Not connected to db"
     });
-    if(json.status = 'error') {
+    if(json.status == 'error') {
         console.log(json.message);
     }
 
@@ -55,11 +57,11 @@ async function changeAffichage(valueToChange) {
     const levelInfo = apiData["levels"].filter(data => data["id"] == valueToChange)[0];
     const id = levelInfo["id"];
 
-    buttons.forEach(input => {
-        if(input.classList.contains("active")) input.classList.remove("active");
+    buttons.forEach(button => {
+        if(button.classList.contains("active")) button.classList.remove("active");
     });
-    buttons.forEach(input => {
-        if(input.id == id) input.classList.add("active");
+    buttons.forEach(button => {
+        if(button.id == id) button.classList.add("active");
     });
 
     titreNiv.innerHTML = "Records : " + levelInfo["name"];
@@ -80,5 +82,4 @@ async function changeAffichage(valueToChange) {
 }
 
 //^ Initializer
-
-changeAffichage(7);
+changeAffichage(8);

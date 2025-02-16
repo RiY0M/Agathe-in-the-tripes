@@ -1,11 +1,11 @@
 // bouton retour accueil
-document.querySelector("#header-accueil-button").href = "../../HTML/index.html";
+document.querySelector("#accueil").href = "../../HTML/index.html";
 
 // dashboard scores
-// document.querySelector("#header-dashboard-button").href = "../../HTML/leaderboard.html";
+// document.querySelector("#dashboard").href = "../../HTML/leaderboard.html";
 
 // credits
-document.querySelector("#header-credits-button").href = "../../HTML/credits.html";
+document.querySelector("#credits").href = "../../HTML/credits.html";
 
 // player name
 const playerName = document.querySelector("#header-player-name");
@@ -15,4 +15,4 @@ playerName.addEventListener("mouseover", () => {
 });
 
 // création de la pp
-document.querySelector("#header-agathe-img").src = "../../img/agathe.png";
+document.querySelector("#agathe-img").src = "../../img/agathe.png";

@@ -1,9 +1,11 @@
 "use strict";
 
-const loginForm = document.getElementById('loginFormulaire');
-const registerForm = document.getElementById('registerFormulaire');
-const msgErreurLog = document.querySelector("#loginSpanErreur");
-const msgErreurReg = document.querySelector("#RegisterSpanErreur");
+import { callAPI, supprimeTousLesCookies, createCookiesFromData } from "./createCookiesFromData.js";
+
+const loginForm = document.getElementById('login');
+const registerForm = document.getElementById('register');
+const msgErreurLog = document.querySelector("#login-error");
+const msgErreurReg = document.querySelector("#register-error");
 
 //fonction register
 async function register(login, mdp) {
@@ -84,7 +86,7 @@ registerForm.addEventListener('submit', async function (event) {
     const passwordConfirm = document.querySelector('#registerMdpVerif').value;
 
     if (password === passwordConfirm) await register(login, password);
-    else messageErreur("Les mots de passes ne correspondent pas", msgErreurReg);
+    else messageErreur("Les mots de passe ne correspondent pas", msgErreurReg);
     
 });
 

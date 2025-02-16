@@ -4,62 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <!-- <base href="/"> -->
-    <link rel="stylesheet" type="text/css" href="../CSS/index.css">
     <link rel="stylesheet" type="text/css" href="../CSS/leaderboard.css">
-    
-    <script src="../JS/createCookiesFromData.js" defer></script>
     <script src="../JS/leaderboard.js" type="module" defer></script>
-    <script type="module" src="../JS/header.js" defer></script>
-    <script type="module" src="../JS/footer.js" defer></script>
+    <title>Scores - Agathe in the tripes</title>
 </head>
 
 <body>
-    <header></header>
-    <div class="body">
-        <h1 id="titre-niv">Records :</h1>
-        <div class="flex scores">
-            <table>
-                <tr id="num1">
-                    <td class="number">1</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num2">
-                    <td class="number">2</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num3">
-                    <td class="number">3</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num4">
-                    <td class="number">4</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num5">
-                    <td class="number">5</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr>
-                    <td><br></td>
-                </tr>
-                <tr id="you" class="active">
-                    <td class="number"></td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-            </table>
-        </div>
+    <iframe id="bahaha-header" src="./components/bahaha-header.html" title="header"></iframe>
 
-        <nav id="leaderboard-buttons" class="flex"></nav>
+    <div id="body">
+        <div id="main-content">
+            <iframe id="cancel-cross" src="./components/cancel-cross.html" title="cancel-cross"></iframe>
+            <h1 id="title">Records :</h1>
+            <div id="scores" class="flex-row">
+                <table>
+                    <tr id="num1">
+                        <td class="number">1</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num2">
+                        <td class="number">2</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num3">
+                        <td class="number">3</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num4">
+                        <td class="number">4</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num5">
+                        <td class="number">5</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr id="you" class="active">
+                        <td class="number"></td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <nav id="leaderboard-buttons" class="flex-row"></nav>
+        </div>
     </div>
+
+    <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>
 </body>
-<footer></footer>
 
 </html>

@@ -1,0 +1,48 @@
+@import url('./main.css');
+
+#main-content {
+    /* To change so the #body takes the height of this */
+    flex: 3;
+}
+
+#main-content h2 {
+    font-size: 1.25rem;
+}
+
+#thanks-list li {
+    font-weight: 500;
+}
+
+#bahaha-devs {
+    justify-content: left;
+}
+
+.bahaha-dev {
+    gap: calc(var(--space-height) /4);
+}
+
+#bahaha-devs img {
+    width: auto;
+    height: auto;
+    max-height: 100px;
+}
+
+
+#img-agathe-artiste-schandel {
+    flex: 2;
+    height: 100%;
+    text-align: center;
+}
+
+#image {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+#retour {
+    position: absolute;
+    bottom: var(--space-height);
+    right: var(--space-width);
+}

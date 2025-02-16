@@ -1,102 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
+@import url('./main.css');
 
+h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-height);
+}
 
-.loginRegisterPopUp {   /*Page de connexion et d'inscription */
-    display: flex;
+#main-content {
     flex-direction: row;
-    justify-content: center;
-    border-radius: 5px;
-    flex : 1;
-
-    position: absolute;
-    top: 25%;
-    left: 30%;
-
     width: 40%;
-
-    background-color: #282b30;
-    box-shadow: 10px 10px 10px #1e2124;
-
-    padding: 1rem;
+    min-width: 350px;
+    max-width: 800px;
+    gap: var(--space-width);
 }
 
-#login {
+#login, #register {
     flex: 1;
-    padding: 20px;
 }
 
-#register {
-    flex: 1;
-    padding: 20px;
-}
-
-#loginFormulaire, #registerFormulaire {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#loginFormulaire input[type=text], #registerFormulaire input[type=text], #loginFormulaire input[type=password], #registerFormulaire input[type=password]{
-    margin-bottom: 10px;
+input[type=submit] {
+    margin-top: var(--space-height);
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-
-    background-color: #36393e;
-    color: white;
-}
-
-#loginFormulaire input[type=submit], #registerFormulaire input[type=submit] {
-    margin-bottom: 10px;
-    margin-top: 1rem;
-    width: 110%;
-    padding: 10px;
-    border-radius: 5px;
-
-    cursor: pointer;
-    background-color: #1e2124;
-    color: white;
-    font-family: 'Rubik', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-shadow: 2px 2px #282b30;
-}
-
-#loginFormulaire input[type=submit]:hover, #registerFormulaire input[type=submit]:hover {
-
-    color: rgb(149, 2, 2);
-}
-
-.cancel-croix-pop-up {
-    position: absolute;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    transform: rotate(45deg);
-    font-weight: bold;
-}
-
-#croix-log-regis {
-    left: 95%;
-    top: 2%;
-    width: 5%;
-    height: 3%;    
-}
-
-.cancel-croix-pop-up::before, .cancel-croix-pop-up::after {
-    content: '';
-    position: absolute;
-    background-color: black;
-    width: 100%;
-    height: 5px;
-    top: 50%;
-    left: 0;
-}
-
-.cancel-croix-pop-up::after {
-    transform: rotate(90deg);
-}
-
-.cancel-croix-pop-up:hover::before, .cancel-croix-pop-up:hover::after {
-    background-color: rgb(149, 2, 2);
 }

@@ -1,88 +1,22 @@
-body, input {
-    margin: 0;
-    background-color: #36393e;
-    color: white;
-    font-family: 'Rubik', sans-serif;
-}
-
-#titre-niv {
-    margin: auto;
-    text-shadow: 4px 4px #1e2124;
-    font-size: 2.5rem;
-}
+@import url('./main.css');
 
 .number {
     text-align: center;
 }
 
+.name {
+    text-align: right;
+}
+
+.time {
+    text-align: left;
+}
+
 table, tr, td {
     border-collapse: collapse;
-    padding: 0.1rem 0.25rem;
-}
-
-.scores {
-    font-size: 1.5rem;
-    text-shadow: 2px 2px #1e2124;
-
-    margin: auto;
-    width: 100%;
-    max-width: 17rem;
-    padding: 1rem;
-    
-    background-color: #282b30;
-    
-    border-left: 7px solid #36393e;
-    border-top: 7px solid #36393e;
-    border-right: transparent;
-    border-bottom: transparent;
-    border-radius: 10px;
-
-    box-shadow: 7px 7px #1e2124;
-}
-
-.flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    max-height: 100%;
-}
-
-#leaderboard-buttons {
-    margin: auto auto 4rem auto
-}
-
-#leaderboard-buttons>* {
-    padding: 0.25rem;
-    margin: 0.5rem;
-    border: 2px solid #282b30;
-    background-color: #36393e;
-    font-size: 1.5rem;
-    border-radius: 10px;
-
-    cursor: pointer;
-    text-shadow: 2px 2px #1e2124;
-
-    background-color: #282b30;
-
-    border-left: 7px solid #36393e;
-    border-top: 7px solid #36393e;
-    box-shadow: 7px 7px #1e2124;
-
-    border-right: transparent;
-    border-bottom: transparent;
-}
-
-#game-buttons>*:hover {
-    color: #950202;
+    padding: calc(var(--space-height) /10) calc(var(--space-width) /10);
 }
 
 .active {
-    color: #8f2121;
-    background-color: #282b30;
+    color: var(--red);
 }

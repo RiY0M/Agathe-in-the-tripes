@@ -12,11 +12,11 @@
             top: 0;
             width: 100%;
 
-            padding: 1rem;
+            padding: var(--space-height) var(--space-width);
             vertical-align: baseline;
 
             background-color: var(--gray);   
-            border-bottom: 2px solid var(--darkgray);
+            border-bottom: var(--border-type);
 
             display: flex;
             flex-direction: row;
@@ -26,12 +26,12 @@
         #header-buttons {
             display: flex;
             flex-direction: row;
-            gap: 2rem;
+            gap: var(--space-width);
         }
 
         #player-name {
             text-align: right;
-            margin-right: 3rem;
+            margin-right: calc(var(--space-width) *2);
         }
 
         #agathe-img {
@@ -39,7 +39,7 @@
 
             position: absolute;
             top: 0.25rem;
-            right: 1rem;
+            right: var(--space-width);
         }
     </style>
 </head>

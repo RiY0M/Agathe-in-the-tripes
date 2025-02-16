@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
-    <link rel="icon" type="image/x-icon" href="../img/agathe.png">
     <link rel="stylesheet" type="text/css" href="../CSS/leaderboard.css">
     
     <script src="../JS/createCookiesFromData.js" type="module" defer></script>
@@ -16,46 +15,49 @@
     <iframe id="bahaha-header" src="./components/bahaha-header.html" title="header"></iframe>
 
     <div id="body">
-        <h1 id="titre-niv">Records :</h1>
-        <div class="flex scores">
-            <table>
-                <tr id="num1">
-                    <td class="number">1</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num2">
-                    <td class="number">2</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num3">
-                    <td class="number">3</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num4">
-                    <td class="number">4</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr id="num5">
-                    <td class="number">5</td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-                <tr>
-                    <td><br></td>
-                </tr>
-                <tr id="you" class="active">
-                    <td class="number"></td>
-                    <td class="name"></td>
-                    <td class="time"></td>
-                </tr>
-            </table>
-        </div>
+        <div id="main-content">
+            <iframe id="cancel-cross" src="./components/cancel-cross.html" title="cancel-cross"></iframe>
+            <h1 id="titre-niv">Records :</h1>
+            <div id="scores">
+                <table>
+                    <tr id="num1">
+                        <td class="number">1</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num2">
+                        <td class="number">2</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num3">
+                        <td class="number">3</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num4">
+                        <td class="number">4</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr id="num5">
+                        <td class="number">5</td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr id="you" class="active">
+                        <td class="number"></td>
+                        <td class="name"></td>
+                        <td class="time"></td>
+                    </tr>
+                </table>
+            </div>
 
-        <nav id="leaderboard-buttons" class="flex"></nav>
+            <nav id="leaderboard-buttons"></nav>
+        </div>
     </div>
 
     <iframe id="bahaha-footer" src="./components/bahaha-footer.html" title="footer"></iframe>

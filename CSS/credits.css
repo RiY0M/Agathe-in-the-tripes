@@ -1,8 +1,8 @@
 @import url('./main.css');
 
-#body {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
+#main-content {
+    /* To change so the #body takes the height of this */
+    flex: 3;
 }
 
 #credit-title {
@@ -21,7 +21,7 @@
 #bahaha-devs {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: var(--space-width);
 }
 
 .bahaha-dev {
@@ -39,7 +39,8 @@
 
 
 #img-agathe-artiste-schandel {
-    height: var(--max-height);
+    flex: 2;
+    height: 100%;
     text-align: center;
 }
 
@@ -48,4 +49,10 @@
     max-width: 100%;
     height: auto;
     width: auto;
+}
+
+#retour {
+    position: absolute;
+    bottom: var(--space-height);
+    right: var(--space-width);
 }

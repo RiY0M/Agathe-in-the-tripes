@@ -1,7 +1,6 @@
 @import url('./main.css');
 
 #main-grid-column {
-    margin-top: 5%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -13,7 +12,6 @@
 
 #game-name h1 {
     margin-left: 5rem;
-    padding: 1rem;
     text-shadow: 5px 5px var(--darkgray);
     font-weight: 700;
 }
@@ -27,12 +25,11 @@
 
 
 #game-buttons button {
-    padding: 2rem;
+    padding: var(--space-width);
     margin-bottom: 1.5rem;
     width: 35rem;
 
     font-size: 2rem;
-    text-transform: uppercase;
     text-shadow: 2px 2px var(--darkgray);
 
     background-color: var(--gray);

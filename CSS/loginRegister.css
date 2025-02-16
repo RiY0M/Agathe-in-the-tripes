@@ -1,23 +1,14 @@
 @import url('./main.css');
 
-#body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 h1 {
     margin-top: 0;
 }
 
 #main-content {
-    position: relative;
     flex-direction: row;
     width: 40%;
     max-width: 800px;
-    padding: 2rem;
-    margin: auto;
-    gap: 2rem;
+    gap: var(--space-width);
 }
 
 #login, #register {
@@ -27,14 +18,14 @@ h1 {
     align-items: center;
 }
 
-input[type=text],  input[type=password]{
-    margin-bottom: 10px;
+input[type=text], input[type=password] {
+    margin-bottom: var(--space-height);
     width: 100%;
 
     background-color: var(--lightgray);
 }
 
 input[type=submit] {
-    margin-top: 1rem;
+    margin-top: var(--space-height);
     width: 100%;
 }

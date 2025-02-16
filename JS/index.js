@@ -4,11 +4,9 @@ const alreadyInGame = getCookie("level_id");
 
 
 // FORMULAIRE CONNEXION / INSCRIPTION
-const deconnexionForm = document.querySelector("#deconnexion-player");
 const popUpNewGame = document.querySelector("#pop-up-new-game");
 
 // par défaut, on cache ces formulaires
-deconnexionForm.style.visibility = "hidden";
 popUpNewGame.style.visibility = "hidden";
 
 
@@ -20,9 +18,6 @@ const confirmerNouvellePartyButton = document.querySelector("#pop-up-new-game-ag
 // récupération pop-up subtitle
 const popUpNewGameSubtitle = document.querySelector("#pop-up-new-game-subtitle");
 const span = document.createElement("span");
-
-// bouton de confirmation de déconnexion
-const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
 
 
 // si le joueur n'a pas de partie en cours on cache le bouton "continuer partie"
@@ -105,8 +100,3 @@ function ereaseBody() {
     const divInBody = document.querySelectorAll("body>div");
     divInBody.forEach((div) => div.style.visibility = "hidden");
 }
-
-btnDecoAgree.addEventListener("click", () => {
-    supprimeTousLesCookies();
-    window.location.replace("index.html");
-});

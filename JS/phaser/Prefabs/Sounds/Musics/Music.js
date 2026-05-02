@@ -8,6 +8,7 @@ export default class Music extends Sound {
     constructor(scene) {
         Sound.soundName = Music.soundName;
         super(scene);
+        this.setLoop(true);
         this.play();
     }
 

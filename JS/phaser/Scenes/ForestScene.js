@@ -125,6 +125,7 @@ export default class ForestScene extends Scene {
         }
 
         if (this.agathe.y <= 64) {
+            this.music.stop();
             this.switchScenes();
         }
     }

@@ -1,15 +1,16 @@
-import Sound from "../Sound.js";
+import Music from "./Music.js";
 
-export default class RotationSong extends Sound {
+export default class RotationSong extends Music {
 
     // readonly
     static soundName = "rotation-song";
 
     constructor(scene) {
-        super(scene, RotationSong.soundName);
+        Music.soundName = RotationSong.soundName;
+        super(scene);
     }
 
     static preloadSound(scene) {
-        scene.load.audio(RotationSong.soundName, '../../../../../sounds/musics/rotation-song.mp3');
+        scene.load.audio(RotationSong.soundName, `../../../../../sounds/musics/${RotationSong.soundName}.mp3`);
     }
 }

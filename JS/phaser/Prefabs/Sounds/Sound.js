@@ -6,7 +6,7 @@ export default class Sound extends Phaser.Sound.WebAudioSound {
         super(scene.sound, Sound.soundName);
 
         scene.sound.add(Sound.soundName);
-        this.setLoop(true);
+        // this.setLoop(true);
     }
 
     // protected

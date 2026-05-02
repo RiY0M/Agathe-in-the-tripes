@@ -124,6 +124,7 @@ export default class MouthScene extends Scene {
         }
 
         if (this.agathe.y <= 15) {
+            this.music.stop();
             this.switchScenes();
         }
     }

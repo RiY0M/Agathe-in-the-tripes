@@ -11,6 +11,6 @@ export default class BigBorder extends Border {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(BigBorder.spriteName, "../../../../img/sprites/borders/big-border.png"); // border 0
+        scene.load.image(BigBorder.spriteName, `../../../../img/sprites/borders/${BigBorder.spriteName}.png`); // border 0
     }
 }

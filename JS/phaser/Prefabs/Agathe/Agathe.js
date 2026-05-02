@@ -1,3 +1,9 @@
+import { frameRate } from "../../constants.js"
+import Damage from "../Sounds/Effects/Damage.js";
+import NewHeart from "../Sounds/Effects/NewHeart.js";
+
+// type positions = "left" | "right" | "up" | "down";
+
 // abstract class
 export default class Agathe extends Phaser.Physics.Arcade.Sprite {
 
@@ -7,19 +13,31 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
     currentDirection = "right";
     // protected
     isDead = false;
+    // protected
+    hitPoints;
+    // protected
+    invincibleTime = 0;
+    // protected
     items = {};
+    static invincibleTime = frameRate * 3 // time in second
+    static maxHp = 3;
 
-    constructor(scene, x, y) {
+    constructor(scene, x, y, hitPoints = Agathe.maxHp, startPosition = "right") {
         super(scene, x, y, Agathe.spriteName);
+        this.hitPoints = hitPoints <= Agathe.maxHp ? hitPoints : Agathe.maxHp;
+        this.damage = new Damage(scene);
+        this.newHeart = new NewHeart(scene);
 
         scene.add.existing(this);
         scene.physics.world.enable(this);
-        this.setCollideWorldBounds(true)
+        this.setCollideWorldBounds(true);
 
         this.setSize(21, 8)
         this.setOffset(5, 40);
+        this.setDepth(1);
 
         this.createAnimations(scene);
+        this.anims.play(`afk-${startPosition}`, true);
     }
 
     // private
@@ -65,7 +83,29 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
         this.items[itemName] += 1;
     }
 
+    getHit(damage) {
+        if (this.invincibleTime) {
+            return;
+        }
+
+        this.damage.play();
+
+        this.hitPoints -= damage;
+        if (this.hitPoints <= 0) {
+            this.isDead = true;
+        }
+        this.invincibleTime = Agathe.invincibleTime;
+    }
+
+    recover(hitPoints) {
+        this.newHeart.play();
+
+        this.hitPoints = this.hitPoints + hitPoints <= Agathe.maxHp ? this.hitPoints + hitPoints : Agathe.maxHp;
+    }
+
     static preloadSprite(scene) {
-        scene.load.spritesheet(Agathe.spriteName, "../../../../img/sprites/agathe/agathe-sprite.png", { frameWidth: 32, frameHeight: 48 });
+        scene.load.spritesheet(Agathe.spriteName, "../../../../img/sprites/agathe/agathe-spritesheet.png", { frameWidth: 32, frameHeight: 48 });
+        Damage.preloadSound(scene);
+        NewHeart.preloadSound(scene);
     }
 }

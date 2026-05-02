@@ -1,8 +1,8 @@
 import Agathe from "./Agathe.js";
 
 export default class TopAgathe extends Agathe {
-    constructor(scene, x, y) {
-        super(scene, x, y);
+    constructor(scene, x, y, hitPoints = TopAgathe.maxHp, startPosition = "right") {
+        super(scene, x, y, hitPoints, startPosition);
     }
 
     createMoveX(cursors, diagonal = false) {

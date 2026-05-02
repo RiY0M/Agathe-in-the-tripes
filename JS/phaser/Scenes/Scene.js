@@ -1,3 +1,5 @@
+import AzertyLayout from "../Prefabs/Cursors/AzertyLayout.js";
+
 export default class Scene extends Phaser.Scene {
 
     // public abstract
@@ -54,8 +56,8 @@ export default class Scene extends Phaser.Scene {
     // preload() {}
 
     create() {
-        // this.cursors = new AzertyLayout(this);
-        this.cursors = this.input.keyboard.createCursorKeys();
+        const layout = new AzertyLayout(this);
+        this.cursors = layout.cursors;
     }
 
     // update() {}

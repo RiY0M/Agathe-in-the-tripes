@@ -11,6 +11,6 @@ export default class SmallTree extends Tree {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(SmallTree.spriteName, "../../../../img/sprites/trees/small-tree.png");
+        scene.load.image(SmallTree.spriteName, `../../../../img/sprites/trees/${SmallTree.spriteName}.png`);
     }
 }

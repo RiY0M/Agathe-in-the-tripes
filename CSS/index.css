@@ -15,6 +15,9 @@ body {
     font-family: 'Rubik', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+    min-width: 100vw;
+    min-height: 100vh;
+    margin: 0;
 }
 
 #game-over {
@@ -51,6 +54,7 @@ body {
     /* border: 1px dashed red;  */
 
     background-color: var(--black);
+    z-index: 1;
 }
 
 .game-canvas-inside {
@@ -58,8 +62,30 @@ body {
 
     width: 800px;
     height: 600px;
-    margin: auto;
-    margin-top: 4rem;
+}
+
+#body {
+  margin: auto;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-container {
+    position: relative;
+}
+
+#game-canvas,
+#ui-canvas {
+    position: absolute;
+}
+
+#ui-canvas {
+    pointer-events: none;
+    z-index: 10;
+    background-color: transparent;
 }
 
 

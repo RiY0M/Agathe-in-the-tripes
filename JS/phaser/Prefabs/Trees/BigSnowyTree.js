@@ -11,6 +11,6 @@ export default class BigSnowyTree extends Tree {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(BigSnowyTree.spriteName, "../../../../img/sprites/trees/big-snowy-tree.png");
+        scene.load.image(BigSnowyTree.spriteName, `../../../../img/sprites/trees/${BigSnowyTree.spriteName}.png`);
     }
 }

@@ -11,6 +11,6 @@ export default class MediumRock extends Rock {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(MediumRock.spriteName, "../../../../img/sprites/rocks/medium-rock.png");
+        scene.load.image(MediumRock.spriteName, `../../../../img/sprites/rocks/${MediumRock.spriteName}.png`);
     }
 }

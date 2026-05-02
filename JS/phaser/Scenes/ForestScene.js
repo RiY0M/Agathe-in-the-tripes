@@ -28,9 +28,9 @@ export default class ForestScene extends Scene {
 
     static sceneName = "ForestScene";
     nextSceneName = "TransitionScene";
-    isMoving = false;       // booleen verif si affi ou non tuto
-    idCurrentLvl = 0;      // Id du niveau courant
-    idNextLvl = 1;         // Id du prochain niveau
+    isMoving = false;
+    idCurrentLvl = 0;
+    idNextLvl = 1;
 
     constructor() {
         super(ForestScene.sceneName);
@@ -71,32 +71,23 @@ export default class ForestScene extends Scene {
 
         this.music = new TotallyNotSnowy(this);
 
-        //* SPRITE BORDURE DU HAUT *//
-        this.createTopBorder(this);
+        this.agathe = new TopAgathe(this, 10, 300);
+        this.steps = new StepsOnSnow(this);
 
-        //* SPRITE GROTTE *//
+        this.createTopBorder();
         this.cave = new Cave(this, 728, 50);
 
-        //* SPRITES ARBRES *//
-        this.createTrees(this);
+        this.createTrees();
+        this.createRocks();
 
-        //* SPRITE LAMPE *//
-        this.lamp = new Lamp(this, 90, 155);
+        this.createLamp(this, 90, 155);
 
-        //* SPRITES CAILLOUX *//
-        this.createRocks(this);
-
-        //~ SPRITE AGATHE ~//
-        this.agathe = new TopAgathe(this, 10, 300);
-
-        //* PARTICULES DE NEIGE *//
         this.whiteSnowflakes = new WhiteSnowflakes(this);
         this.blueSnowflakes = new BlueSnowflakes(this);
 
-        this.steps = new StepsOnSnow(this);
 
         this.tutoKeys = new TutoKeys(this);
-        
+
         this.topLight = new TopLight(this, this.agathe.x, this.agathe.y, 60);
         this.darkOverlay = new DarkOverlay(this, this.topLight.mask);
         
@@ -118,18 +109,9 @@ export default class ForestScene extends Scene {
         // const compositeMask = new Phaser.Display.Masks.BitmapMask(scene, maskTexture);
         // compositeMask.invertAlpha = true;
         // this.darkOverlay = new DarkOverlay(this, compositeMask);
-        
-        //! COLLISIONS !//
-        this.physics.add.collider(this.agathe, this.rocks);
-        this.physics.add.collider(this.agathe, this.topBorder);
-
-        //! ACTION RECUP LAMPE !//
-        this.physics.add.overlap(this.agathe, this.lamp, this.collectLamp, null, this);
 
         // afficheInitialHearts(cookies.hpRemain);
     }
-
-
 
     update() {
         this.isMoving = this.agathe.createMove(this.cursors);
@@ -147,19 +129,17 @@ export default class ForestScene extends Scene {
         }
     }
 
-    //* SPRITE BORDURE DU HAUT *//
     createTopBorder() {
-        this.topBorder = this.physics.add.staticGroup();
+        const topBorder = this.physics.add.staticGroup();
 
-        this.topBorder.add(new SmallBorder(this, 800, 70));
-        this.topBorder.add(new MediumBorder(this, 750, 45));
-        this.topBorder.add(new BigBorder(this, 325, 70));
+        topBorder.add(new SmallBorder(this, 800, 70));
+        topBorder.add(new MediumBorder(this, 750, 45));
+        topBorder.add(new BigBorder(this, 325, 70));
+
+        this.physics.add.collider(this.agathe, topBorder);
     }
 
-    //* SPRITES ARBRES *//
     createTrees() {
-        this.trees = this.physics.add.group();
-
         // Contains trees object prototypes
         const treeType = [SmallTree, BigTree, SmallSnowyTree, BigSnowyTree];
 
@@ -191,18 +171,14 @@ export default class ForestScene extends Scene {
             const randomType = Phaser.Math.RND.between(0, 3);
             const treePrototype = treeType[randomType];
             const tree = new treePrototype(this, x, y);
-            this.trees.add(tree);
         }
 
         // hidden tree to the left of the cave
-        this.trees.add(new BigSnowyTree(this, 675, 55));
+        new BigSnowyTree(this, 675, 55);
     }
 
-
-    //* SPRITES CAILLOUX *//
     createRocks() {
-
-        this.rocks = this.physics.add.staticGroup();
+        const rocks = this.physics.add.staticGroup();
 
         const bigRocks = [
             [50, 150],
@@ -221,7 +197,7 @@ export default class ForestScene extends Scene {
         ];
         for (const [x, y] of bigRocks) {
             const rock = new BigRock(this, x, y);
-            this.rocks.add(rock);
+            rocks.add(rock);
         }
 
         const doubleRocks = [
@@ -232,7 +208,7 @@ export default class ForestScene extends Scene {
         ];
         for (const [x, y] of doubleRocks) {
             const rock = new DoubleRock(this, x, y);
-            this.rocks.add(rock);
+            rocks.add(rock);
         }
 
         const mediumRocks = [
@@ -247,7 +223,7 @@ export default class ForestScene extends Scene {
         ];
         for (const [x, y] of mediumRocks) {
             const rock = new MediumRock(this, x, y);
-            this.rocks.add(rock);
+            rocks.add(rock);
         }
 
         const smallRocks = [
@@ -264,16 +240,20 @@ export default class ForestScene extends Scene {
         ];
         for (const [x, y] of smallRocks) {
             const rock = new SmallRock(this, x, y);
-            this.rocks.add(rock);
+            rocks.add(rock);
         }
+
+        this.physics.add.collider(this.agathe, rocks);
     }
 
+    createLamp(x, y) {
+        const lamp = new Lamp(this, x, y);
+        this.physics.add.overlap(this.agathe, lamp, this.collectLamp, null, this);
+    }
 
-    collectLamp() {
-
-        // Delete the lamp
-        this.lamp.disableBody(true, true);
-        this.agathe.getItem(this.lamp);
+    collectLamp(agathe, lamp) {
+        lamp.disableBody(true, true);
+        agathe.getItem(lamp);
         this.topLight.setRadius(100);
     }
 }

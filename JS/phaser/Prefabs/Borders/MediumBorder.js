@@ -11,6 +11,6 @@ export default class MediumBorder extends Border {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(MediumBorder.spriteName, "../../../../img/sprites/borders/medium-border.png"); // border-2
+        scene.load.image(MediumBorder.spriteName, `../../../../img/sprites/borders/${MediumBorder.spriteName}.png`); // border-2
     }
 }

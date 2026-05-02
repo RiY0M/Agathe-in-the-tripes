@@ -9,8 +9,15 @@
 </head>
 
 
-<body id="game-canvas" class="game-canvas-inside">
+<body>
     <header></header>
+    <div id="life-div"></div>
+    <div id="body" class="game-canvas-inside">
+        <div id="game-container" class="game-canvas-inside">
+            <div id="game-canvas" class="game-canvas-inside"></div>
+            <canvas id="ui-canvas" class="game-canvas-inside"></canvas>
+        </div>
+    </div>
 
     <script src="../JS/createCookiesFromData.js" type="module"></script>
 
@@ -25,6 +32,5 @@
 
 <script src="../JS/footer.js" type="module"></script>
 <script src="../JS/header.js" type="module"></script>
-<script src="../JS/headerLevels.js" type="module"></script>
 
 </html>

@@ -11,6 +11,6 @@ export default class BigTree extends Tree {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(BigTree.spriteName, "../../../../img/sprites/trees/big-tree.png");
+        scene.load.image(BigTree.spriteName, `../../../../img/sprites/trees/${BigTree.spriteName}.png`);
     }
 }

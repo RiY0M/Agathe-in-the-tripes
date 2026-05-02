@@ -11,6 +11,6 @@ export default class DoubleRock extends Rock {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(DoubleRock.spriteName, "../../../../img/sprites/rocks/double-rock.png");
+        scene.load.image(DoubleRock.spriteName, `../../../../img/sprites/rocks/${DoubleRock.spriteName}.png`);
     }
 }

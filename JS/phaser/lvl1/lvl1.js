@@ -1,113 +1,12 @@
-// configuration de la taille de l'écran, du type de jeu et des fonctions par défaut
-let config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    backgroundColor: "#d64e45",
-    physics: { default: 'arcade' },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
-    }
-};
-
-
-//$ CREATION FENETRE PHASER $//
-let game = new Phaser.Game(config);
-
-
-function preload()
-{
-    // chargement de tous les sprites
-    loadImages(this);
-}
-
-function create()
-{
-    //* Theme de fond *//
-    music = this.sound.add("theme");
-    music.setLoop(true);
-    music.play();
-    newHeart = this.sound.add("newHeart");
-    
-    //$ CHARGEMENT VARIABLES DE SPRITES $//
-    loadSpriteVariables(this);
-
-    //~ SPRITES ELTS BOUCHE ~//
-    createMouseElts();
-
-    
-    //* SPRITE COEUR DU SQUELETTE *//
-    createSquelettonHeart(this);
-
-    //* SPRITES CHEMIN DENTS FIXES *//
-    createTeethPath();
-
-    //* SPRITES CHEMIN DENTS MOBILES *//
-    createMobileTeethPath();
-
-    //* SPRITE MUR DE SANG *//
-    createFleshWall();
-
-    //* SPRITES BORDURE DENTS *//
-    createBorderTeeth();
-
-
-    //~ SPRITE AGATHE ~//
-    createAgathe(this);
-
-
-    //! COLLISIONS !//
-    this.physics.add.collider(agathe, topBorder);
-    this.physics.add.collider(agathe, staticTeeth, collideTeeth);
-
-    // on ajoute la collision uniquement si la dent est vers le haut
-    this.physics.add.collider(agathe, movingTeeth1, () => {
-        if (isMovingTeeth1Up) collideTeeth();
-    });
-    // on ajoute la collision uniquement si la dent est vers le haut
-    this.physics.add.collider(agathe, movingTeeth2, () => {
-        if (isMovingTeeth2Up) collideTeeth();
-    });
-    // on ajoute la collision uniquement si la dent est vers le haut
-    this.physics.add.collider(agathe, movingTeeth3, () => {
-        if (isMovingTeeth3Up) collideTeeth();
-    });
-    // on ajoute la collision uniquement si la dent est vers le haut
-    this.physics.add.collider(agathe, movingTeeth4, () => {
-        if (isMovingTeeth4Up) collideTeeth();
-    });
-
-    this.physics.add.collider(agathe, deadThings);
-
-    //! ACTION RECUP LAMPE !//
-    this.physics.add.overlap(agathe, squelettonHeart, collectSquelettonHeart, null, this);
-    
-    //! DETECTION DU CLAVIER !//
-    cursors = this.input.keyboard.createCursorKeys();
-
-
-    //^ ANIMATIONS AGATHE (SPRITES) ^//
-
-    //? MOVING ANIMS ?//
-    createAnims(this);
-    
-    //? AFK ANIMS ?//
-    createAFK(this);
-}
+import { frameRate } from "../constants";
 
 function update()
 {
-    // on limite la boucle à 1000 frames pour éviter qu'elle surcharge
-    if (retractingTeethLoop == 1000) retractingTeethLoop = 0;
-    // incrémentation de la boucle
-    retractingTeethLoop++;
 
 
     //? DENTS N°1 -> 100 frames ?//
     // toute les 100 frames (2s)
-    if (retractingTeethLoop % 100 == 0) {
+    if (retractingTeethLoop % (frameRate*2) == 0) {
         // on check les dents n°1 du chemin
         movingTeeth1.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
@@ -137,7 +36,7 @@ function update()
 
     //? DENTS N°2 -> 100 frames delay ?//
     // toute les 100 frames (2s)
-    if (retractingTeethLoop % 100 == 50) {
+    if (retractingTeethLoop % (frameRate*2) == frameRate) {
         // on check les dents n°2 du chemin
         movingTeeth3.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
@@ -167,7 +66,7 @@ function update()
 
     //? DENTS N°3 -> 50 frames ?//
     // toutes les 50 frames (1s)
-    if (retractingTeethLoop % 50 == 0) {
+    if (retractingTeethLoop % frameRate == 0) {
         // on check les dents n°3 du chemin
         movingTeeth2.children.entries.forEach((teeth) => {
             // si elles sont hautes on les descend
@@ -264,46 +163,4 @@ function update()
 
     // vérification de notre vie
     if (nbHearts == 0) displayDeathScreen();
-
-    //^ ANIMATIONS AGATHE (CLAVIER) ^//
-    lastFrame = createMove(agathe, cursors, lastFrame)[0];
-
-    // si agathe rentre dans l'oesophage (y = coordonnées du point d'entrée)
-    if (agathe.y <= 15) {
-        // changement map
-        changeLvl(idCurrentLvl, idNextLvl, startTime, nbHearts);
-    }
-}
-
-
-function collideTeeth()
-{
-    // si agathe n'est pas invincible
-    if (!isInvicible)
-    {
-        // si elle a encore au moins une vie
-        if (nbHearts > 0) {
-            // on lui en retire une
-            nbHearts--;
-            reloadNbHearts();
-        }
-
-        // lancement des 3s d'invincibilité
-        start3sCoolDown = true;
-    }
-}
-
-
-function collectSquelettonHeart(agathe, squelettonHeart) {
-
-    // suppression du coeur du squelette
-    squelettonHeart.disableBody(true, true);
-
-    // si agathe n'a pas toutes ses vies
-    if (nbHearts < 3) {
-        // on lui en rajoute une
-        nbHearts++;
-        reloadNbHearts();
-        newHeart.play();
-    }
 }

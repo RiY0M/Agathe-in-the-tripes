@@ -12,6 +12,6 @@ export default class MouthTransition extends Phaser.GameObjects.Image {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(MouthTransition.spriteName, "../../../img/sprites/mouth-transition.png");
+        scene.load.image(MouthTransition.spriteName, `../../../img/sprites/${MouthTransition.spriteName}.png`);
     }
 }

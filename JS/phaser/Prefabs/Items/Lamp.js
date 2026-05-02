@@ -11,6 +11,6 @@ export default class Lamp extends Phaser.Physics.Arcade.Sprite {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(Lamp.spriteName, "../../../../img/sprites/items/lamp.png");
+        scene.load.image(Lamp.spriteName, `../../../../img/sprites/items/${Lamp.spriteName}.png`);
     }
 }

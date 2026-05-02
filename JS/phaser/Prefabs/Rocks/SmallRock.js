@@ -11,6 +11,6 @@ export default class SmallRock extends Rock {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(SmallRock.spriteName, "../../../../img/sprites/rocks/small-rock.png");
+        scene.load.image(SmallRock.spriteName, `../../../../img/sprites/rocks/${SmallRock.spriteName}.png`);
     }
 }

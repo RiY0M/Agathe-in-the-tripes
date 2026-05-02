@@ -8,7 +8,7 @@ export default class Tree extends Phaser.Physics.Arcade.Sprite {
 
         scene.add.existing(this);
 
-        this.setDepth(1);
+        this.setDepth(5);
     }
 
     // static preloadSprite(scene, path) {

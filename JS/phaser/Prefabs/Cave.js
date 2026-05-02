@@ -11,6 +11,6 @@ export default class Cave extends Phaser.GameObjects.Sprite {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(Cave.spriteName, "../../../img/sprites/cave.png");
+        scene.load.image(Cave.spriteName, `../../../img/sprites/${Cave.spriteName}.png`);
     }
 }

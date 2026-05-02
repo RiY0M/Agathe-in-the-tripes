@@ -11,7 +11,6 @@ export default class WhiteSnowflakes extends Snowflakes {
     }
 
     static preloadSprite(scene) {
-        // super(scene, "../../../../img/assets/lvl0/white-snowflake.png");
-        scene.load.image(WhiteSnowflakes.spriteName, "../../../../img/sprites/snowflakes/white-snowflake.png");
+        scene.load.image(WhiteSnowflakes.spriteName, `../../../../img/sprites/snowflakes/${WhiteSnowflakes.spriteName}.png`);
     }
 }

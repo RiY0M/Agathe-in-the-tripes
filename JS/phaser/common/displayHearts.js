@@ -10,20 +10,15 @@ let delayBeforeDeathScreen = 0;
 let youAreDeadCheh = false;
 
 // div affichage des coeurs
-let lifeDiv = document.createElement("div");
-lifeDiv.className += "life-div";
+const lifeDiv = document.getElementById("life-div");
 
 // image des coeurs
-let heartImage = new Image();
+const heartImage = new Image();
 heartImage.className += "heart-image";
 
 // lien de l'image des coeurs en fonction du nb de coeurs
 heartImage.src = "../../../img/assets/common/" + nbHearts + "-heart.png";
 lifeDiv.appendChild(heartImage);
-
-// affichage de la vie
-document.querySelector("body").appendChild(lifeDiv);
-
 
 
 // rafraichissement des coeurs

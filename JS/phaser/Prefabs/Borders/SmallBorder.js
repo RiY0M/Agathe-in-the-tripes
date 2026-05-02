@@ -11,6 +11,6 @@ export default class SmallBorder extends Border {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(SmallBorder.spriteName, "../../../../img/sprites/borders/small-border.png"); // border 1
+        scene.load.image(SmallBorder.spriteName, `../../../../img/sprites/borders/${SmallBorder.spriteName}.png`); // border 1
     }
 }

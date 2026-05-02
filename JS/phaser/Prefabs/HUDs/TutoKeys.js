@@ -18,6 +18,6 @@ export default class TutoKeys extends HUD {
     }
 
     static preloadSprite(scene) {
-        scene.load.image(TutoKeys.hudName, "../../../../img/sprites/huds/tuto-keys.png");
+        scene.load.image(TutoKeys.hudName, `../../../../img/sprites/huds/${TutoKeys.hudName}.png`);
     }
 }

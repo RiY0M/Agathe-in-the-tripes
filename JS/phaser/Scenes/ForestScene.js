@@ -80,7 +80,7 @@ export default class ForestScene extends Scene {
         this.createTrees();
         this.createRocks();
 
-        this.createLamp(this, 90, 155);
+        this.createLamp(90, 155);
 
         this.whiteSnowflakes = new WhiteSnowflakes(this);
         this.blueSnowflakes = new BlueSnowflakes(this);
@@ -247,8 +247,8 @@ export default class ForestScene extends Scene {
     }
 
     createLamp(x, y) {
-        const lamp = new Lamp(this, x, y);
-        this.physics.add.overlap(this.agathe, lamp, this.collectLamp, null, this);
+        this.lamp = new Lamp(this, x, y);
+        this.physics.add.overlap(this.agathe, this.lamp, this.collectLamp, null, this);
     }
 
     collectLamp(agathe, lamp) {

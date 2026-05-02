@@ -201,26 +201,38 @@ nav {
     padding: 1rem;
 }
 
+#game-container {
+    position: relative;
+}
+
+#game-canvas,
+#ui-canvas {
+    position: absolute;
+}
+
+#ui-canvas {
+    pointer-events: none;
+    z-index: 10;
+    background-color: transparent;
+}
 
 #game-canvas {
-    background-color: var(--black);
+    z-index: 1;
 }
 
 .game-canvas-inside {
     width: 800px;
     height: 600px;
-    margin: auto;
-    margin-top: 4rem;
+    margin: 0;
+    padding: 0;
     aspect-ratio: 4/3;
 }
-
 
 .heart-image {
     height: 2rem;
     position: absolute;
     right: 1rem;
 }
-
 
 #dialogue-area {
     visibility: hidden;
@@ -263,7 +275,6 @@ nav {
     cursor: pointer;
 }
 
-
 #lvl5-objectifs {
     visibility: hidden;
 
@@ -282,40 +293,10 @@ nav {
     visibility: hidden;
 }
 
-
-.tuto {
-    position: absolute;
-    z-index: 1;
-
-    top: 45%;
-    left: 0;
-    text-align: center;
-    width: 100%;
-
-    font-size: 1.5rem;
-    
-    display: grid;
-    grid-template-columns: 40fr 1fr 40fr;
-    align-items: center;
-}
-
-.tuto #tuto-deplacement-left {
-    text-align: right;
-}
-
-.tuto img {
-    margin: 1rem;
-}
-
-.tuto #tuto-deplacement-right {
-    text-align: left;
-}
-
-
 .hole {
     position: absolute;
     width: 120px;
     height: 120px;
     box-shadow: 0 0 0 9999px rgba(0, 0, 0, .95);
     border-radius: 100%;
-  }
+}

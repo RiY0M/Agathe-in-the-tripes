@@ -10,8 +10,8 @@ const config = {
     parent: 'game-canvas',
     physics: { default: 'arcade' },
     scene: [
-        // ForestScene,
-        // TransitionScene,
+        ForestScene,
+        TransitionScene,
         MouthScene,
         // EsophagusScene,
         // StomachScene,

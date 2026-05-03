@@ -12,27 +12,30 @@ export function getCookie(name) {
     return document.cookie.split("; ").find((row) => row.startsWith(`${name}=`))?.split("=")[1];
 }
 
-export async function callAPI(fichierApi, basic, jsonDataPost = {}) {
+export async function callAPI(endpoint, defaultReturn, data = {}) {
 
     try {
-        jsonDataPost.token = getCookie("token");
+        data.token = getCookie("token");
 
-        const response = await fetch(`https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/${fichierApi}.php`, {
+        const response = await fetch(`https://devweb.iutmetz.univ-lorraine.fr/~rigaut6u/SAE_501/API/${endpoint}.php`, {
             method: 'POST',
-            body: new URLSearchParams(jsonDataPost)
+            body: JSON.stringify(data)
         });
 
         return await response.json();
     } catch(error) {
         return {
             status: "success",
-            data: basic
+            data: defaultReturn
         };
     }
 }
 
 export function createCookiesFromData(data) {
+    const cookieLife = 86400 * 365;
+    const timeout = new Date().getTime() + cookieLife;
+
     Object.entries(data).forEach(element => {
-        document.cookie = `${element[0]}=${element[1]}; expires=Thu, ${new Date().getTime() + 86400 * 365}; path=/`;
+        document.cookie = `${element[0]}=${element[1]}; expires=Thu, ${timeout}; path=/`;
     });
 }

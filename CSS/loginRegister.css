@@ -21,3 +21,7 @@ input[type=submit] {
     margin-top: var(--space-height);
     width: 100%;
 }
+
+.error {
+    color: red;
+}

@@ -101,7 +101,7 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
         this.hitPoints = newHp;
 
         this.scene.scene.get(UIScene.sceneName).events.emit('updateHP', newHp);
-        // createCookiesFromData({hpRemain: nbHearts});
+        // createCookiesFromData({hpRemaining: nbHearts});
     }
 
     getHit(damage) {

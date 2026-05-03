@@ -10,16 +10,16 @@ const span = document.getElementById("warning");
 
 agreeButton.addEventListener("click", async () => {
 
-    // const json = await callAPI("creerGame", {
-    //     hpRemain: 3,
-    //     nbDynamite: 0,
-    //     level_id: 0
-    // });
+    const json = await callAPI("creerGame", {
+        hpRemaining: 3,
+        nbDynamite: 0,
+        levelId: 0
+    });
     
-    // createCookiesFromData(json.data);
-    // if (json.status == 'error') {
-    //     console.log(json.message);
-    // }
+    createCookiesFromData(json.data);
+    if (json.status == 'error') {
+        console.log(json.message);
+    }
 
     window.location.replace("../HTML/game.html");
 });

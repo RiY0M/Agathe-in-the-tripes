@@ -29,7 +29,7 @@ export default class Scene extends Phaser.Scene {
         this?.music?.stop();
         this.scene.stop(UIScene.sceneName);
 
-        let hpRemaining = getCookie("hpRemain");
+        let hpRemaining = getCookie("hpRemaining");
         let nbDynamite = getCookie("nbDynamite");
         // Appel API
         // await this.sendData(this.idCurrentLvl, this.idNextLvl, time, hpRemaining, nbDynamite);
@@ -42,14 +42,14 @@ export default class Scene extends Phaser.Scene {
 
         const json = await callAPI("saveScore", {
             level_id: idNextLevel,
-            hpRemain: hpRemaining,
+            hpRemaining: hpRemaining,
             nbDynamite: nbDynamite,
         },
         {
             level_id: idLevel,
             next_level_id: idNextLevel,
             complete_time: time,
-            hp_remain: hpRemaining,
+            hpRemaining: hpRemaining,
             nb_dynamite: nbDynamite,
         });
     

@@ -19,15 +19,15 @@ import DarkOverlay from "../Prefabs/Lighting/DarkOverlay.js";
 import TopLight from "../Prefabs/Lighting/Lights/TopLight.js";
 import TotallyNotSnowy from "../Prefabs/Sounds/Musics/TotallyNotSnowy.js";
 import StepsOnSnow from "../Prefabs/Sounds/Effects/StepsOnSnow.js";
-import TutoKeys from "../Prefabs/HUDs/TutoKeys.js";
+import TransitionScene from "./TransitionScene.js";
+import UIScene from "./UIScene.js";
 
 // TODO : Play the steps when agathe is walking
-// TODO : fix the HUB problem (will probably be fixed when rework of lvl 5 complete)
 
 export default class ForestScene extends Scene {
 
     static sceneName = "ForestScene";
-    nextSceneName = "TransitionScene";
+    nextSceneName = TransitionScene.sceneName;
     isMoving = false;
     idCurrentLvl = 0;
     idNextLvl = 1;
@@ -60,8 +60,6 @@ export default class ForestScene extends Scene {
 
         Lamp.preloadSprite(this);
 
-        TutoKeys.preloadSprite(this);
-
         TotallyNotSnowy.preloadSound(this);
         StepsOnSnow.preloadSound(this);
     }
@@ -74,6 +72,11 @@ export default class ForestScene extends Scene {
         this.agathe = new TopAgathe(this, 10, 300);
         this.steps = new StepsOnSnow(this);
 
+        this.scene.launch(UIScene.sceneName, {
+            sceneName: ForestScene.sceneName,
+            hitPoints: this.agathe.hitPoints
+        });
+
         this.createTopBorder();
         this.cave = new Cave(this, 728, 50);
 
@@ -85,32 +88,8 @@ export default class ForestScene extends Scene {
         this.whiteSnowflakes = new WhiteSnowflakes(this);
         this.blueSnowflakes = new BlueSnowflakes(this);
 
-
-        this.tutoKeys = new TutoKeys(this);
-
         this.topLight = new TopLight(this, this.agathe.x, this.agathe.y, 60);
         this.darkOverlay = new DarkOverlay(this, this.topLight.mask);
-        
-        //* Code to add HUD in front of the dark overlay, not working *//
-        // const maskTexture = this.make.renderTexture({
-        //     width: this.width,
-        //     height: this.height,
-        // }, false);
-
-        // maskTexture.scaleY = -1;
-        // maskTexture.y = this.height;
-        // const masks = [this.topLight, this.tutoKeys]
-        // masks.forEach(mask => console.log(mask));
-        // masks.forEach(mask => maskTexture.draw(mask));
-        
-        // const compositeMask = new Phaser.Display.Masks.BitmapMask(this, maskTexture);
-        // compositeMask.invertAlpha = true;
-        
-        // const compositeMask = new Phaser.Display.Masks.BitmapMask(scene, maskTexture);
-        // compositeMask.invertAlpha = true;
-        // this.darkOverlay = new DarkOverlay(this, compositeMask);
-
-        // afficheInitialHearts(cookies.hpRemain);
     }
 
     update() {
@@ -119,13 +98,12 @@ export default class ForestScene extends Scene {
 
         if (this.isMoving) {
             this.steps.play();
-            this.tutoKeys.destroy();
+            this.scene.get(UIScene.sceneName).events.emit('hideTuto');
         } else {
             this.steps.stop();
         }
 
         if (this.agathe.y <= 64) {
-            this.music.stop();
             this.switchScenes();
         }
     }

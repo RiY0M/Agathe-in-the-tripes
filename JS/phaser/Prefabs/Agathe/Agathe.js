@@ -1,4 +1,5 @@
 import { frameRate } from "../../constants.js"
+import UIScene from "../../Scenes/UIScene.js";
 import Damage from "../Sounds/Effects/Damage.js";
 import NewHeart from "../Sounds/Effects/NewHeart.js";
 
@@ -18,8 +19,11 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
     // protected
     invincibleTime = 0;
     // protected
+    deadStopTime = 0;
+    // protected
     items = {};
     static invincibleTime = frameRate * 3 // time in second
+    static deadStopTime = frameRate * 1 // time in second
     static maxHp = 3;
 
     constructor(scene, x, y, hitPoints = Agathe.maxHp, startPosition = "right") {
@@ -83,6 +87,23 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
         this.items[itemName] += 1;
     }
 
+    // private
+    updateHp(hpDiff) {
+        const newTheoreticalHp = this.hitPoints + hpDiff;
+        let newHp = newTheoreticalHp;
+
+        if (newHp < 0) {
+            newHp = 0;
+        } else if (newHp > Agathe.maxHp) {
+            newHp = Agathe.maxHp;
+        }
+
+        this.hitPoints = newHp;
+
+        this.scene.scene.get(UIScene.sceneName).events.emit('updateHP', newHp);
+        // createCookiesFromData({hpRemain: nbHearts});
+    }
+
     getHit(damage) {
         if (this.invincibleTime) {
             return;
@@ -90,9 +111,13 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
 
         this.damage.play();
 
-        this.hitPoints -= damage;
+        this.updateHp(-damage);
+
         if (this.hitPoints <= 0) {
-            this.isDead = true;
+            this.deadStopTime = Agathe.deadStopTime;
+            this.scene.scene.get(UIScene.sceneName).events.emit('gameOver');
+            this.scene.scene.stop();
+            return;
         }
         this.invincibleTime = Agathe.invincibleTime;
     }
@@ -100,11 +125,15 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
     recover(hitPoints) {
         this.newHeart.play();
 
-        this.hitPoints = this.hitPoints + hitPoints <= Agathe.maxHp ? this.hitPoints + hitPoints : Agathe.maxHp;
+        this.update(hitPoints);
     }
 
     static preloadSprite(scene) {
-        scene.load.spritesheet(Agathe.spriteName, "../../../../img/sprites/agathe/agathe-spritesheet.png", { frameWidth: 32, frameHeight: 48 });
+        scene.load.spritesheet(
+            Agathe.spriteName,
+            `../../../../img/sprites/agathe/${Agathe.spriteName}-spritesheet.png`,
+            { frameWidth: 32, frameHeight: 48 }
+        );
         Damage.preloadSound(scene);
         NewHeart.preloadSound(scene);
     }

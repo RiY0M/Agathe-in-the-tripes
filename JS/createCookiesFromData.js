@@ -1,7 +1,7 @@
 "use strict";
 
 //Fonction qui supprime tous les cookies existants
-export function supprimeTousLesCookies() {
+export function deleteAllCookies() {
     document.cookie.split(";").forEach(cookie => {
         const [name] = cookie.split("=");
         document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;

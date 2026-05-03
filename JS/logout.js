@@ -1,8 +1,8 @@
-import { supprimeTousLesCookies } from "./createCookiesFromData.js";
+import { deleteAllCookies } from "./createCookiesFromData.js";
 
 const btnDecoAgree = document.querySelector("#deconnexion-agree-button");
 
 btnDecoAgree.addEventListener("click", () => {
-    supprimeTousLesCookies();
+    deleteAllCookies();
     window.location.replace("index.html");
 });

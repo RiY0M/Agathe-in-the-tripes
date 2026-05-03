@@ -1,3 +1,5 @@
+import { gameHeight, gameWidth } from "../../constants.js";
+
 export default class DarkOverlay extends Phaser.GameObjects.Graphics {
 
     // readonly
@@ -8,11 +10,11 @@ export default class DarkOverlay extends Phaser.GameObjects.Graphics {
 
     constructor(
         scene,
-        mask,
+        mask = null,
         x = 0,
         y = 0,
-        width = scene.sys.game.config.width,
-        height = scene.sys.game.config.height
+        width = gameWidth,
+        height = gameHeight
     ) {
         super(scene);
 
@@ -21,7 +23,9 @@ export default class DarkOverlay extends Phaser.GameObjects.Graphics {
         this.height = height;
 
         this.drawRectangle();
-        this.addOverlay(scene, mask);
+        if (mask) {
+            this.addOverlay(scene, mask);
+        }
     }
 
     drawRectangle() {

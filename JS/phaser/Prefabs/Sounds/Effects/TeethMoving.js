@@ -6,8 +6,8 @@ export default class TeethMoving extends Effect {
     static soundName = "teeth-moving";
 
     constructor(scene) {
-        Effect.soundName = TeethMoving.soundName;
         super(scene);
+        this.setVolume(.3);
     }
 
     static preloadSound(scene) {

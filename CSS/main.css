@@ -205,33 +205,8 @@ nav {
     position: relative;
 }
 
-#game-canvas,
-#ui-canvas {
-    position: absolute;
-}
-
-#ui-canvas {
-    pointer-events: none;
-    z-index: 10;
-    background-color: transparent;
-}
-
 #game-canvas {
-    z-index: 1;
-}
-
-.game-canvas-inside {
-    width: 800px;
-    height: 600px;
-    margin: 0;
-    padding: 0;
-    aspect-ratio: 4/3;
-}
-
-.heart-image {
-    height: 2rem;
     position: absolute;
-    right: 1rem;
 }
 
 #dialogue-area {

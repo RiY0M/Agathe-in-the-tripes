@@ -1,10 +1,11 @@
+import { gameHeight, gameWidth } from "../../constants.js";
 import HUD from "./HUD.js";
 
 export default class TutoKeys extends HUD {
 
     static hudName = "tuto-keys";
 
-    constructor(scene, x = scene.sys.game.config.width / 2, y = scene.sys.game.config.height / 2) {
+    constructor(scene, x = gameWidth / 2, y = gameHeight / 2) {
         HUD.hudName = TutoKeys.hudName;
 
         super(scene, x, y);
@@ -14,7 +15,7 @@ export default class TutoKeys extends HUD {
         const textRight = scene.add.text(10, 0, "pour vous déplacer", this.textConfig);
         const elements = [textLeft, arrows, textRight];
 
-        elements.forEach(element => this.add(element));
+        this.add(elements);
     }
 
     static preloadSprite(scene) {

@@ -10,7 +10,8 @@ export default class HUD extends Phaser.GameObjects.Container {
 
     constructor(scene, x = 0, y = 0, elements = []) {
         super(scene, x, y);
-        elements.forEach(element => this.add(element));
+        this.setDepth(this.depth);
+        this.add(elements);
         this.createMask(scene);
         scene.add.existing(this);
     }
@@ -18,7 +19,7 @@ export default class HUD extends Phaser.GameObjects.Container {
     setDepth(newDepth) {
         // Do this to not override the initial depth of the children
         this.list.forEach(element => {
-            element.depth -= this.depth + newDepth;
+            element.depth += this.depth + newDepth;
         });
 
         super.setDepth(newDepth);

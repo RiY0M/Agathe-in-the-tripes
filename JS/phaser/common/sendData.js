@@ -65,10 +65,6 @@ function getCookies() {
     };
 }
 
-function afficheInitialHearts(hpRemain = 3) {
-    document.querySelector(".heart-image").src = `../../../img/assets/common/${hpRemain}-heart.png`;
-}
-
 function verifyLvl(idLvlCookie, idCurrentLvl) {
     if (idLvlCookie != idCurrentLvl) {
         window.location.replace("../index.html");
@@ -80,4 +76,3 @@ let nbHearts = cookies.hpRemain;
 let idCurrentLvl = 0;
 
 verifyLvl(cookies.idLvl, idCurrentLvl);
-afficheInitialHearts(cookies.hpRemain);

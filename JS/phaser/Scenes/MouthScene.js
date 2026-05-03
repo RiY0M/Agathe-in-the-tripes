@@ -14,6 +14,7 @@ import GumSquare from "../Prefabs/Gum/GumSquare.js";
 import StaticTooth from "../Prefabs/Teeth/StaticTooth.js";
 import MovingTooth from "../Prefabs/Teeth/MovingTooth.js";
 import { frameRate } from "../constants.js";
+import UIScene from "./UIScene.js";
 
 export default class MouthScene extends Scene {
 
@@ -59,6 +60,11 @@ export default class MouthScene extends Scene {
         this.music = new SpookyTheme(this);
         this.agathe = new TopAgathe(this, 386, 600, TopAgathe.maxHp, "up");
         this.steps = new StepsOnSand(this);
+
+        this.scene.launch(UIScene.sceneName, {
+            sceneName: MouthScene.sceneName,
+            hitPoints: this.agathe.hitPoints
+        });
         
         this.createSkeleton(450, 530);
         this.createRat(600, 385);
@@ -124,7 +130,6 @@ export default class MouthScene extends Scene {
         }
 
         if (this.agathe.y <= 15) {
-            this.music.stop();
             this.switchScenes();
         }
     }

@@ -15,8 +15,7 @@ export default class MovingTooth extends Tooth {
 
         this.setScale(0.7);
         this.movingGum = new MovingGum(scene, x + 1, y + 7).setDepth(-1);
-        scene.sound.add(TeethMoving.soundName);
-        scene.sound.volume -= 0.3;
+        this.scene.sound.add(TeethMoving.soundName);
     }
 
     changeTextureFromState() {
@@ -42,7 +41,7 @@ export default class MovingTooth extends Tooth {
                 up: this.isMovingToothUp
             };
             this.changeTextureFromState();
-            // this.scene.sound.play();
+            this.scene.sound.play(TeethMoving.soundName);
         }
     }
 

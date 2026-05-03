@@ -1,13 +1,12 @@
 "use strict";
 
-import { callAPI, supprimeTousLesCookies, createCookiesFromData } from "./createCookiesFromData.js";
+import { callAPI, deleteAllCookies, createCookiesFromData } from "./createCookiesFromData.js";
 
 const loginForm = document.getElementById('login');
 const registerForm = document.getElementById('register');
 const msgErreurLog = document.querySelector("#login-error");
 const msgErreurReg = document.querySelector("#register-error");
 
-//fonction register
 async function register(login, mdp) {
 
     const json = await callAPI("newUser", {
@@ -43,7 +42,7 @@ async function connectUser(login, mdp) {
             return json.message;
         }
 
-        supprimeTousLesCookies();
+        deleteAllCookies();
         createCookiesFromData(json.data);
 
         json = await callAPI("getGame", {

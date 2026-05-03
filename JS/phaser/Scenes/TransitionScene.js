@@ -3,11 +3,12 @@ import TransitionAgathe from "../Prefabs/Agathe/TransitionAgathe.js";
 import MouthTransition from "../Prefabs/MouthTransition.js";
 import LoadingBar from "../Prefabs/LoadingBar.js";
 import RotationSong from "../Prefabs/Sounds/Musics/RotationSong.js";
+import MouthScene from "./MouthScene.js";
 
 export default class TransitionScene extends Scene {
 
     static sceneName = "TransitionScene";
-    nextSceneName = "MouthScene";
+    nextSceneName = MouthScene.sceneName;
     agathe;
     music;
     mouthTransition;
@@ -43,7 +44,6 @@ export default class TransitionScene extends Scene {
             this.loadingSpeed += 0.0035;
         } else {
             this.agathe.anims.play("afk-down");
-            this.music.stop();
             this.switchScenes();            
         }
         this.loading.updateProgress(this.loadingSpeed);

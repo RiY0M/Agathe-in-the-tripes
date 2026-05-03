@@ -1,32 +1,8 @@
-// nombre de coeurs par défaut (3)
-let nbHearts = 3;
-// immortalité par défaut (non)
-let isInvicible = false;
-
 // délai avant affichage mort
 let delayBeforeDeathScreen = 0;
 
 // mort du perso
 let youAreDeadCheh = false;
-
-// div affichage des coeurs
-const lifeDiv = document.getElementById("life-div");
-
-// image des coeurs
-const heartImage = new Image();
-heartImage.className += "heart-image";
-
-// lien de l'image des coeurs en fonction du nb de coeurs
-heartImage.src = "../../../img/assets/common/" + nbHearts + "-heart.png";
-lifeDiv.appendChild(heartImage);
-
-
-// rafraichissement des coeurs
-function reloadNbHearts()
-{
-    document.querySelector(".heart-image").src = "../../../img/assets/common/" + nbHearts + "-heart.png";
-    // createCookiesFromData({hpRemain: nbHearts}); // Pour synchro les coeurs directement
-}
 
 
 // affichage écran de mort

@@ -111,12 +111,19 @@ export default class Agathe extends Phaser.Physics.Arcade.Sprite {
 
         this.damage.play();
 
-        this.updateHp(-damage);
+        this.updateHp(-3);
 
         if (this.hitPoints <= 0) {
+            this.setVelocity(0, 0);
+            this.body.enable = false;
             this.deadStopTime = Agathe.deadStopTime;
-            this.scene.scene.get(UIScene.sceneName).events.emit('gameOver');
-            this.scene.scene.stop();
+
+            this.scene.time.delayedCall(1000, () => {
+
+                this.setVisible(0);
+                this.scene.scene.get(UIScene.sceneName).events.emit('gameOver');
+            });
+
             return;
         }
         this.invincibleTime = Agathe.invincibleTime;

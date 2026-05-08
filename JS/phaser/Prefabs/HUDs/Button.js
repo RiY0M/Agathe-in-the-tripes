@@ -5,10 +5,10 @@ export default class Button extends HUD {
         super(scene, x, y);
 
         const backgroundColor = 0x222222;
-        const hoverColor = 0x444444;
+        const hoverColor = '#950202';
 
         // const background = scene.add.rectangle(0, 0, width, height, backgroundColor);
-        const text = scene.add.text(0, 0, label, this.textConfig);
+        const text = scene.add.text(0, 0, label, this.textConfig).setOrigin(.5).setDepth(100);
 
         this.add([text]);
 
@@ -23,11 +23,11 @@ export default class Button extends HUD {
                     yoyo: true
                 });
             })
-            // .on('pointerover', () => {
-            //     background.setFillStyle(hoverColor);
-            // })
-            // .on('pointerout', () => {
-            //     background.setFillStyle(backgroundColor);
-            // });
+            .on('pointerover', () => {
+                text.setColor(hoverColor);
+            })
+            .on('pointerout', () => {
+                text.setColor(this.textConfig.color);
+            });
     }
 }

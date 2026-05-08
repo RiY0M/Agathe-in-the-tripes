@@ -62,6 +62,7 @@ export default class MouthScene extends Scene {
         this.steps = new StepsOnSand(this);
 
         this.scene.launch(UIScene.sceneName, {
+            scene: this,
             sceneName: MouthScene.sceneName,
             hitPoints: this.agathe.hitPoints
         });

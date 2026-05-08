@@ -13,14 +13,14 @@ export default class GameOver extends HUD {
         super(scene, x, y);
 
         this.setVisible(false);
-        const darkOverlay = new DarkOverlay(this).setDepth(0);
+        const darkOverlay = new DarkOverlay(scene, null, -x, -y).setDepth(0);
         const retryButton = new Button(
-            this.scene, -150, 50, 200, 60, "Recommencer",
-            () => scene.scene.restart()
+            this.scene, 0, 50, 200, 60, "Recommencer",
+            () => this.hide()
         );
 
         const quitButton = new Button(
-            this.scene, 150, 50, 200, 60, "Quitter",
+            this.scene, 0, 100, 200, 60, "Quitter",
             () => window.location.replace("../../../../HTML/index.html")
         );
 
@@ -28,6 +28,17 @@ export default class GameOver extends HUD {
         const elements = [darkOverlay, retryButton, gameOverImage, quitButton];
 
         this.add(elements);
+    }
+
+    display() {
+        this.setVisible(true);
+        // this.scene.physics.pause();
+    }
+
+    hide() {
+        this.setVisible(false);
+        // this.scene.physics.resume();
+        this.scene.scene.restart();
     }
 
     static preloadSprite(scene) {

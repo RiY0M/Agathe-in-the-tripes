@@ -20,12 +20,12 @@ export default class UIScene extends Phaser.Scene {
     create(data) {
         this.cameras.main.setScroll(0, 0);
 
-        if (data.sceneName !== ForestScene.sceneName) {
+        if (data?.sceneName !== ForestScene.sceneName) {
             this.displayHearts = new DisplayHearts(this, data.hitPoints);
-            // this.gameOver = new GameOver(this); // todo : bugged
+            this.gameOver = new GameOver(data.scene);
         }
 
-        if (data.sceneName === ForestScene.sceneName) {
+        if (data?.sceneName === ForestScene.sceneName) {
             this.tutoKeys = new TutoKeys(this);
         }
 
@@ -34,7 +34,7 @@ export default class UIScene extends Phaser.Scene {
         });
 
         this.events.on('gameOver', () => {
-            this?.gameOver?.setVisible(true);
+            this?.gameOver?.display();
         });
 
         this.events.on('hideTuto', () => {

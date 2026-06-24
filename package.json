@@ -1,5 +1,6 @@
 {
-  "devDependencies": {
-    "phaser": "^3.70.0"
+  "name": "Agathe-in-the-tripes",
+  "dependencies": {
+    "phaser": "^3.87.0"
   }
 }
